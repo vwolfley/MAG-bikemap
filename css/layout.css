@@ -1,0 +1,161 @@
+@charset "utf-8";
+/*** CSS Document Style Sheet ***/
+html, body {
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+}
+
+#main {
+	width:100%; 
+	height:100%; 
+	padding:0;
+}
+
+#map {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+#mapPage {
+	overflow: hidden;
+	width:100%; 
+	height:100%;
+}
+
+.esriSimpleSlider div {
+	height: 40px !important;
+	width: 40px !important;
+}
+
+.esriSimpleSlider {
+	top: 25px !important;
+	left: 25px !important;
+} 
+
+.ui-content {
+	padding: 0px;
+}
+
+.ui-header, .ui-title, .ui-footer .ui-title {
+	text-align:left !important;
+} 
+
+.ui-li-desc {
+	white-space: normal;
+}
+
+.ui-select .ui-btn-text {
+	width: 100%;
+}
+
+.ui-controlgroup, fieldset.ui-controlgroup {
+	margin:0px !important;
+}
+
+.ui-icon-myapp-layers {
+	background: url("images/bikemapmobile_icon_layers.png")no-repeat rgba(0, 0, 0, 0.4) !important;
+}
+
+.ui-icon-myapp-legend {
+	background: url("images/bikemapmobile_icon_legend.png") no-repeat rgba(0, 0, 0, 0.4) !important;
+}
+
+.ui-icon-myapp-locate {
+	background: url("images/bikemapmobile_icon_locate.png") no-repeat rgba(0, 0, 0, 0.4) !important;
+}	 
+
+#maplegend {
+	padding:4px;
+}	  
+ 
+#logo {
+	position: absolute;
+	text-align: middle;
+	font-size: 12px;
+	vertical-align: middle;
+	height: 44px;
+	width:200px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 5px;
+}
+
+#logoimg {
+	vertical-align: middle;
+	height: 40px;
+	width: 40px;
+}
+
+#maglogo {
+	position: absolute;
+ 	width: 100%;
+ 	height: 43px;
+ 	padding: 2px;
+ }
+
+ #maglogoimg {
+ 	padding-top: 7px;
+ 	padding-bottom: 7px;
+ 	float: right;
+	position: relative;
+	height: 30px;
+	width: 135;
+	left:-40%;
+	text-align: left;
+ }
+
+ .loading {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	left: 50%;
+	top: 50%;
+	margin-left: -50px;
+	margin-top: -50px;
+	z-index: 50;
+}
+
+.pagetext {
+	padding: 10px;
+}
+
+#helpimg {
+	height: 26px;
+	width: 26px;
+}
+
+#safeimg {
+	height: 85px;
+	width: 85px;
+}
+
+.onstreetimg {
+	height: 65px;
+	width: 65px;
+}
+
+.onpathimg {
+	height: 65px;
+	width: 65px;
+}
+
+#table1 {
+	width: 100%;
+	border: 0px;
+	padding: 10px;
+}
+
+td {
+	padding: 3px;
+}
+
+.tdstyle {
+	padding: 3px;
+	border-bottom: 1px solid;
+}
+
+#emailwin{
+	cursor: pointer;
+}

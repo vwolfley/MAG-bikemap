@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MAG|Bikeways</title>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9" />
+        <!-- Apple-Specific Meta Tags -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <!-- Fav and touch icons -->
+        <link rel="apple-touch-icon" type="image/png" sizes="152x152" href="images/bike-icon_152x152.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="images/bike-icon_120x120.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="images/bike-icon_76x76.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="images/bike-icon_60x60.png">
+        <link rel="shortcut icon" type="image-favorites-icon" href="images/bike-icon_60x60.png">
+
+        <meta name="description" content="Maricopa County Bikeways Map" />
+        <meta name="keywords" content="MAG, Maricopa Association of Governments, Maricopa County, Mobile, Bike Maps, Bikeways, Bikeshops, Park & Rides, Transit Centers, ArcGIS, JavaScript" />
+        <meta name="author" content="Maricopa Association of Governments" />
+        <meta name="contact" content="www.azmag.gov" />
+        <meta name="creation-date" content="08/03/2012" />
+        <meta name="revision-date" content="10/11/2012" />
+        <meta name="version" content="2" />
+
+        <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.2/js/esri/css/esri.css" />
+        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/layout.css" />
+    </head>
+        <body>
+            <div id="mapPage" data-role="page">
+            <div data-role="header">
+                <div id="logo"><img id="logoimg" src="images/bikesign2.png" alt="Bike Sign" />&nbsp;MAG Bikeways (Beta)</div>
+                <div data-role="controlgroup" data-type="horizontal" style="float:right;">
+                    <a href="#Layers" data-role="button" data-rel="dialog" data-transition="slide" title="Layers"><img src="images/bikemapmobile_icon_layers.png" alt="Map layers" title="Map layers" /></a>
+                    <a href="#Legend" data-role="button" data-rel="dialog" data-transition="slide" title="Map legend"><img src="images/bikemapmobile_icon_legend.png" alt="Map legend" title="Map legend" /></a>
+                    <a href="javascript:findMe();" data-role="button" title="Geolocation"><img src="images/bikemapmobile_icon_locate.png" alt="Geolocation" title="Geolocation"  /></a>
+                    <a href="#Help" data-role="button" data-rel="dialog" data-transition="slide" title="Help/Info"><img id="helpimg" src="images/helpblack.png" alt="Help/Info" title="Help/Info" /></a>&nbsp;
+                </div>
+            </div>
+            <div id="main" data-role="content">
+                <div id="map"></div>
+            </div>
+        </div>
+        <!-- Legend -->
+        <div id="Legend" data-role="page" >
+            <div data-role="header" data-theme="e">
+                <h1>Legend</h1>
+            </div>
+            <!-- /header -->
+            <div data-role="content" data-theme="e">
+                <img id="maplegend" src="images/maplegend.png" alt="Bike map legend"/>
+                <p>
+                    <a href="#mapPage" data-role="button" data-rel="back"  data-inline="true" data-transition="slide" data-icon="back">Back to Map</a>
+                </p>
+            </div>
+            <!-- /content -->
+        </div>
+        <!-- /Legend -->
+
+        <!-- Basemap Layers -->
+        <div id="Layers" data-role="page">
+            <div data-role="header" data-theme="e">
+                <h1>Base Maps</h1>
+            </div>
+            <!-- /header -->
+            <div data-role="content" data-theme="none">
+
+                <div data-role="fieldcontain">
+                    <fieldset id="baseMap" data-role="controlgroup">
+                        <!--<legend>Choose a Map Type:</legend>-->
+                        <input type="radio" name="mapchoice" id="radio-choice-1" value="map" checked="checked" />
+                        <label for="radio-choice-1">Street</label>
+                        <input type="radio" name="mapchoice" id="radio-choice-2" value="aerial" />
+                        <label for="radio-choice-2">Aerial</label>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <!-- /Basemap Layers-->
+        <!-- Help Tab -->
+            <div id="Help" data-role="page">
+            <div data-role="header" data-theme="e">
+                <h1>Terms of Use</h1>
+            </div>
+            <!-- /header -->
+            <div data-role="content" data-theme="e">
+                <div class="pagetext">
+                    <p>
+                        The MAG Bikeways map shows existing, locally-designated bicycle facilities, and is
+                        provided to you by the Maricopa Association of Governments (MAG).
+                        This map has been produced under the direction of the MAG Regional Bicycle Task Force.
+                        Funding was provided by the Federal Highway Administration.  If you have any comments,
+                        please call MAG at (602) 254-6300 or visit our web site at www.azmag.gov.
+                    </p>
+                    <p>
+                        <b>Disclaimer:</b>This map is intended to aid bicyclists in choosing routes
+                        between locations. This map is not in any way a warranty or guarantee as
+                        to the stability of roadway conditions or the fitness of listed routes
+                        for bicycling. Many of the routes identified on this map cross or run along
+                        public roads which are exposed to wear and tear and degradation due to
+                        weather, traffic, and other environmental concerns. Riders should remain
+                        alert as routes may contain pavement rutting, cracks, bumps, expansion
+                        joints, natural or other debris on pavement surfaces, and vegetation which
+                        may encroach on routes or portions thereof. Riders should also remain alert
+                        for areas of visual impairment and other irregularities that may impact
+                        rider and motorist ability to see each other or potential road hazards.
+                        The chance that one may come into an area of visual impairment or a route
+                        irregularity warrants special care on the part of route users.
+                        <br>
+                        <br>Government resources limit the capacity to address conditions and irregularities
+                        like those described above. Accordingly, route users should maintain a
+                        vigilant lookout for these conditions and irregularities. Route users should
+                        always ride with care for their own safety and that of other users. MAG
+                        does not assume liability for bicyclists traveling upon routes
+                        shown in this map. Safe route selection includes consideration of motor
+                        vehicle, bicycle and pedestrian traffic and roadway or route conditions.
+                    </p>
+                    <address>To provide comments or report problems please contact:  Jason Howard -
+                        <a id="emailwin" title="email link" role="navigation" onclick="openemailwin()">Email Jason Howard</a>
+                    </address>
+                    <address>Visit our Website -
+                        <a id="mag" title="website link" role="navigation" target="_blank" href="http://www.azmag.gov/">www.azmag.gov</a>
+                    </address>
+                </div>
+                <p>
+                    <a href="#mapPage" data-role="button" data-inline="true" data-icon="back" data-transition="slidedown">Back to Map</a>
+                    <a href="#Safety" data-role="button" data-rel="dialog" data-inline="true" data-transition="slide" data-icon="forward">Bike Safety</a>
+                    <a href="#OnStreet" data-role="button" data-rel="dialog" data-inline="true" data-transition="slide" data-icon="forward">On the Street</a>
+                    <a href="#OnPaths" data-role="button" data-rel="dialog" data-inline="true" data-transition="slide" data-icon="forward">Multi-Use Paths</a>
+                </p>
+            </div>
+        </div>
+        <!-- /Help Tab -->
+        <!-- Safety Tab -->
+        <div id="Safety" data-role="page">
+            <div data-role="header" data-theme="e">
+                <h1>Bike Safety Tips</h1>
+            </div>
+            <!--/header -->
+            <div data-role="content" data-theme="e">
+                <div class="pagetext">
+                    <table class="table1">
+                        <p><b>Ride Defensively</b><br>
+                            Prepare for the unexpected and plan alternative maneuvers to avoid conflict.
+                            Rules alone do not always protect bicyclists from injury. <b style="color: #a80000">Be Alert. Be Visible. Ride Predictably.</b>
+                        </p>
+                        <hr>
+                        <p><b>Always Maintain Control of Your Bike</b><br>
+                            Keep both hands on the handlebars. Be prepared to stop or make quick turns.
+                            Follow lane markings. Cross railroad tracks at a 90-degree angle.
+                        </p>
+                        <hr>
+                        <tr>
+                            <td class="tdstyle"><b>Wear a Helmet</b><br>
+                            A bike helmet must fit well and be properly adjusted to do its job of protecting your head.
+                            It should fit snugly with the chin strap fastened. When purchasing a helmet, make sure it is
+                            approved by the American National Standards Institute (ANSI) or the Snell Institute.
+                            Helmets should be replaced after the impact of an accident or even after. several years of wear and tear.
+                            </td>
+                            <td class="tdstyle"><img id="safeimg" src="images/safety/bikehelmetinfo.jpg" alt="Helmet Info"/></td>
+                        </tr>
+                        <p><b>Obey Traffic Signs, Signals and Laws</b><br>
+                            Bicyclists must operate their bicycles like drivers of motor vehicles.
+                            Obeying laws helps you to be taken seriously by motorists.
+                        </p>
+                        <hr>
+                        <tr>
+                            <td class="tdstyle"><b>Bike Route Sign</b><br>
+                            May be used to denote multi-use paths, wide outside curb lanes and bicycle routes.
+                            </td>
+                            <td class="tdstyle"><img id="safeimg" src="images/safety/saferoutesign.jpg" alt="Bike Route Sign"/></td>
+                        </tr>
+                        <tr>
+                            <td class="tdstyle"><b>Bicycle Share the Road Sign</b><br>
+                            May be used to denote routes without designated bicycle lanes.
+                            </td>
+                            <td class="tdstyle"><img id="safeimg" src="images/safety/shareroad.png" alt="Share the Road Sign"/></td>
+                        </tr>
+                    </table>
+                </div>
+                    <p>
+                        <a href="#Help" data-role="button" data-inline="true" data-icon="back" data-transition="slidedown">Back</a>
+                        <a href="#mapPage" data-role="button" data-inline="true" data-icon="back" data-transition="slidedown">Back to Map</a>
+                    </p>
+            </div>
+            <!-- /content -->
+        </div>
+        <!-- /Safety Tab -->
+        <!-- OnStreet Tab -->
+        <div id="OnStreet" data-role="page">
+            <div data-role="header" data-theme="e">
+                <h1>On the Steet Bikeways</h1>
+            </div>
+            <!--/header -->
+            <div data-role="content" data-theme="e">
+                <div class="pagetext">
+                    <table class="table1">
+                        <tr>
+                            <td><img class="onstreetimg" src="images/onstreet/img_onStreet_01-Obey.jpg" /></td>
+                            <td><p><span><b>Obey Traffic Signals and Signs</b></span><br>
+                            As avehicle, bicycles must obey all the Rules of the Road. Cyclists have the same privileges and duties as other traffic.</p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onstreetimg" src="images/onstreet/img_onStreet_07-Right.jpg" /></td>
+                            <td><p><span><b>Ride on the Right</b></span><br>
+                            Ride on the right with the flow of traffic. Never ride against traffic on the road, in a bike lane, or on asidewalk.</p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onstreetimg" src="images/onstreet/img_onStreet_02-Lane.jpg" /></td>
+                            <td><p><span><b>Use Appropriate Lane</b></span><br>
+                            Avoid being in a right turn-only lane if you plan to proceed straight through. Move into the through lane early.</p></td>
+                         </tr>
+                         <tr>
+                            <td><img class="onstreetimg" src="images/onstreet/img_onStreet_08-Left.jpg" /></td>
+                            <td><p><span><b>Turning Left -Two Options</b></span><br>
+                                <strong>1.</strong> As avehicle -signal your intentions in advance. Move to the left turn lane and complete the turn when safe.<br>
+                                <strong>2.</strong> As a pedestrian -ride to the far crosswalk and walk across.<br>
+                            </p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onstreetimg" src="images/onstreet/img_onStreet_03-Doors.jpg" /></td>
+                            <td><p><span><b>Beware of Car Doors</b></span><br />
+                            Be wary of parked cars. Motorists can unexpectedly open doors. Be sure your bike is acar door length away from parked cars.</p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onstreetimg" src="images/onstreet/img_onStreet_09-Signals.jpg" /></td>
+                            <td><p><span><b>Use Hand Signals</b></span><br>
+                            Signal all turns and stops ahead of time. Check over your shoulder, then make your turn/stop when safe to do so.</p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onstreetimg" src="images/onstreet/img_onStreet_04-Night.jpg" /></td>
+                            <td><p><span><b>Use Lights at Night</b></span><br>
+                            Always use astrong white headlight, rear light and red reflector at night or when visibility is poor.</p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onstreetimg" src="images/onstreet/img_onStreet_10-Eye.jpg" /></td>
+                            <td><p><span><b>Make Eye Contact</b></span><br>
+                            Confirm that you are seen. Establish eye contact with motorists to ensure that they know you are on the road.
+                            Share the road in a polite and courteous manner.</p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onstreetimg" src="images/onstreet/img_onStreet_05-Scan.jpg" /></td>
+                            <td><p><span><b>Scan the Road Behind</b></span><br>
+                            Look over your shoulder to check behind you regularly and use a mirror to monitor traffic.
+                            Although bicycles have equal right to the road, be prepared to maneuver for safety.</p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onstreetimg" src="images/onstreet/img_onStreet_11-Person.jpg" /></td>
+                            <td><p><span><b>One Person Per Bike</b></span><br>
+                            Riding double is only permitted when carrying achild in an approved carrier or when riding on atandem bicycle.</p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onstreetimg" src="images/onstreet/img_onStreet_06-Helmet.jpg" /></td>
+                            <td><p><span><b>Helmet your Head</b></span><br>
+                            Cyclists should always wear a helmet.</p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onstreetimg" src="images/onstreet/img_onStreet_12-Courteous.jpg" /></td>
+                            <td><p><span><b>Be Courteous</b></span><br>
+                            Share the road and the responsibilities. Motorists and cyclists get along much better when
+                            showing courtesy and consideration towards each other.</p></td>
+                        </tr>
+                    </table>
+                </div>
+                    <p>
+                        <a href="#Help" data-role="button" data-inline="true" data-icon="back" data-transition="slidedown">Back</a>
+                        <a href="#mapPage" data-role="button" data-inline="true" data-icon="back" data-transition="slidedown">Back to Map</a>
+                    </p>
+        </div>
+        <!-- /content -->
+        </div>
+        <!-- /OnStreet Tab -->
+         <!-- OnPaths Tab -->
+        <div id="OnPaths" data-role="page">
+            <div data-role="header" data-theme="e">
+                <h1>On Multi-Use Paths</h1>
+            </div>
+            <!--/header -->
+            <div data-role="content" data-theme="e">
+                <div class="pagetext">
+                    <table class="table1">
+                        <tr>
+                            <td><img class="onpathimg" src="images/onpaths/img_multiUse_01-ToRight.jpg" /></td>
+                            <td><p><span><b>Keep to the Right</b></span><br>
+                              All path users must keep to the right except when passing or turning left. Move off the path to the right when stopping.<br>
+                            </p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onpathimg" src="images/onpaths/img_multiUse_06-Merge.jpg" /></td>
+                            <td><p><span><b>Merge Correctly</b></span><br>
+                              Look both ways. Yield to through traffic at intersections.
+                            </p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onpathimg" src="images/onpaths/img_multiUse_02-Signal.jpg" /></td>
+                            <td><p><span><b>Signal to Others</b></span><br>
+                            Cyclists, when approaching others, sound your bell or horn early, then pass safely on the left. Pedestrians, acknowledge with a wave when someone is overtaking.<br>
+                            </p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onpathimg" src="images/onpaths/img_multiUse_07-Nature.jpg" /></td>
+                            <td><p><span><b>Respect Nature</b></span><br>
+                            Do not disturb or feed wildlife. Keep to well established paths to protect habitats. Do not collect plant or animal material.<br>
+                            </p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onpathimg" src="images/onpaths/img_multiUse_03-RightWay.jpg" /></td>
+                            <td><p><span><b>Right-of-Way</b></span><br>
+                            Cyclists and in-line skaters must yield to pedestrians. Pedestrians always have the right-ol-way.</p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onpathimg" src="images/onpaths/img_multiUse_08-Skate.jpg" /></td>
+                            <td><p><span><b>Where to Skate</b></span><br>
+                            Follow the same rules as cyclists. Ensure your stride does not cross the center of the path.
+                            </p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onpathimg" src="images/onpaths/img_multiUse_04-Pet.jpg" /></td>
+                            <td><p><span><b>Control Your Pet</b></span><br>
+                            Scottsdale ordinances require pets to be leashed while on the path and owners to clean up after their pets.
+                            </p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onpathimg" src="images/onpaths/img_multiUse_09-Visable.jpg" /></td>
+                            <td><p><span><b>Be Visible</b></span><br>
+                            Outfit your bicycle with a headlight, rear light, and reflectors as you would for riding on the road.
+                            </p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onpathimg" src="images/onpaths/img_multiUse_05-Earphone.jpg" /></td>
+                            <td><p><span><b>Earphone Dangers</b></span><br>
+                            Keep the volume sufficiently low to be able to hear other path users approaching.<br>
+                            </p></td>
+                        </tr>
+                        <tr>
+                            <td><img class="onpathimg" src="images/onpaths/img_multiUse_10-Flood.jpg" /></td>
+                            <td><p><span><b>Flooded Paths</b></span><br>
+                            Many of our paths are in flood channels. Do not enter when water is present.
+                            </p></td>
+                        </tr>
+                    </table>
+                </div>
+                    <p>
+                        <a href="#Help" data-role="button" data-inline="true" data-icon="back" data-transition="slidedown">Back</a>
+                        <a href="#mapPage" data-role="button" data-inline="true" data-icon="back" data-transition="slidedown">Back to Map</a>
+                    </p>
+        </div>
+        <!-- /content -->
+        </div>
+        <!-- /OnPaths Tab -->
+<!-- JavaScript -->
+        <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=3.2compact"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"></script>
+        <script type="text/javascript" src="js/map.js"></script>
+<!-- Google Analytics -->
+        <script type="text/javascript">
+              var _gaq = _gaq || [];
+              _gaq.push(['_setAccount', 'UA-35332965-1']);
+              _gaq.push(['_trackPageview']);
+
+              (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+              })();
+        </script>
+<!-- /Google Analytics -->
+<!-- /JavaScript -->
+        </body>
+</html>
