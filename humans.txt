@@ -28,7 +28,7 @@
         Twitter:
         From: Phoenix, AZ
 
-        Name:  Matt Nielsen
+        Name:  Gordon Tyus
         Role: Graphics Specialist
         Contact:
         Twitter:
@@ -40,12 +40,11 @@
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, CSS3, ESRI Javascript API,
-    HTML5BoilerPlate, Normalize.css, jQuery, Modernizr,  Bootstrap 3.0.0
+    HTML5, CSS3, JavaScript, ESRI JavaScript API, jQuery
 
 # SITE
-    Version: 4.0.1
-    Last updated: 2014/02/13
+    Version: 2.0.1
+    Last updated: 2014/03/17
     Language: English
     Doctype: HTML5
     IDE: Sublime Text, Notepad++
