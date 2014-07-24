@@ -1,5 +1,4 @@
-@charset "utf-8";
-/*** CSS Document Style Sheet ***/
+
 html, body {
 	height: 100%;
 	margin: 0px;
@@ -8,8 +7,8 @@ html, body {
 }
 
 #main {
-	width:100%; 
-	height:100%; 
+	width:100%;
+	height:100%;
 	padding:0;
 }
 
@@ -20,7 +19,7 @@ html, body {
 
 #mapPage {
 	overflow: hidden;
-	width:100%; 
+	width:100%;
 	height:100%;
 }
 
@@ -32,7 +31,7 @@ html, body {
 .esriSimpleSlider {
 	top: 25px !important;
 	left: 25px !important;
-} 
+}
 
 .ui-content {
 	padding: 0px;
@@ -40,7 +39,7 @@ html, body {
 
 .ui-header, .ui-title, .ui-footer .ui-title {
 	text-align:left !important;
-} 
+}
 
 .ui-li-desc {
 	white-space: normal;
@@ -55,21 +54,21 @@ html, body {
 }
 
 .ui-icon-myapp-layers {
-	background: url("images/bikemapmobile_icon_layers.png")no-repeat rgba(0, 0, 0, 0.4) !important;
+	background: url("img/bikemapmobile_icon_layers.png")no-repeat rgba(0, 0, 0, 0.4) !important;
 }
 
 .ui-icon-myapp-legend {
-	background: url("images/bikemapmobile_icon_legend.png") no-repeat rgba(0, 0, 0, 0.4) !important;
+	background: url("img/bikemapmobile_icon_legend.png") no-repeat rgba(0, 0, 0, 0.4) !important;
 }
 
 .ui-icon-myapp-locate {
-	background: url("images/bikemapmobile_icon_locate.png") no-repeat rgba(0, 0, 0, 0.4) !important;
-}	 
+	background: url("img/bikemapmobile_icon_locate.png") no-repeat rgba(0, 0, 0, 0.4) !important;
+}
 
 #maplegend {
 	padding:4px;
-}	  
- 
+}
+
 #logo {
 	position: absolute;
 	text-align: middle;

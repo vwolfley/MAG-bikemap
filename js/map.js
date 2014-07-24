@@ -46,7 +46,7 @@ function init() {
                 orientationChanged();
         }, false);
 }
-//*********************************************************************************  
+//*********************************************************************************
 function jQueryReady() {
     var initialExtent =  new esri.geometry.Extent({
             "xmin": -12543622,
@@ -65,7 +65,7 @@ function jQueryReady() {
     });
 
     //*** Base Maps ***//
-	//******************************************************************************** 
+	//********************************************************************************
     STREETMAP = new esri.layers.ArcGISTiledMapServiceLayer(basemapsteetsURL, {
         id: "Map"
     });
@@ -76,7 +76,7 @@ function jQueryReady() {
     });
     map.addLayer(AERIAL);
     AERIAL.hide();
- 
+
 	//*** Layers and Query Tasks ***//
 	//********************************************************************************
 	//**************** Bike Paths ***************//
@@ -140,7 +140,7 @@ function jQueryReady() {
                     query.geometry = evt.mapPoint;
                     featureLayer.selectFeatures(query, esri.layers.FeatureLayer.SELECTION_NEW);
             });
-            
+
             dojo.connect(map.infoWindow, "onHide", function () {
                     map.graphics.clear();
             });
@@ -156,7 +156,7 @@ function jQueryReady() {
                     outFields : ["*"],
                     infoTemplate : info
             });
-                                                                                                                        
+
              var symbol = new esri.symbol.SimpleMarkerSymbol().setStyle(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE).setSize(20).setColor([0, 0, 0, 0.35]);
                 symbol.outline.setWidth("0").setColor([0, 0, 0]);
 
@@ -170,7 +170,7 @@ function jQueryReady() {
                     query.geometry = evt.mapPoint;
                     featureLayer.selectFeatures(query, esri.layers.FeatureLayer.SELECTION_NEW);
             });
-            
+
             dojo.connect(map.infoWindow, "onHide", function () {
                     map.graphics.clear();
             });
@@ -186,7 +186,7 @@ function jQueryReady() {
                     outFields : ["*"],
                     infoTemplate : info
             });
-                                                                                                                        
+
              var symbol = new esri.symbol.SimpleMarkerSymbol().setStyle(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE).setSize(20).setColor([0, 0, 0, 0.35]);
                 symbol.outline.setWidth("0").setColor([0, 0, 0]);
 
@@ -200,7 +200,7 @@ function jQueryReady() {
                     query.geometry = evt.mapPoint;
                     featureLayer.selectFeatures(query, esri.layers.FeatureLayer.SELECTION_NEW);
             });
-            
+
             dojo.connect(map.infoWindow, "onHide", function () {
                     map.graphics.clear();
             });
@@ -216,7 +216,7 @@ function jQueryReady() {
                     outFields : ["*"],
                     infoTemplate : info
             });
-                                                                                                                        
+
              var symbol = new esri.symbol.SimpleMarkerSymbol().setStyle(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE).setSize(20).setColor([0, 0, 0, 0.35]);
                 symbol.outline.setWidth("0").setColor([0, 0, 0]);
 
@@ -230,7 +230,7 @@ function jQueryReady() {
                     query.geometry = evt.mapPoint;
                     featureLayer.selectFeatures(query, esri.layers.FeatureLayer.SELECTION_NEW);
             });
-            
+
             dojo.connect(map.infoWindow, "onHide", function () {
                     map.graphics.clear();
             });
@@ -248,7 +248,7 @@ function jQueryReady() {
 	$('#mapPage').bind('pageshow', function (event, ui) {
 	            orientationChanged()
 	        })
-        
+
     $('[type="radio"]').change(function () {
         $('[type="radio"]').each(function () {
             if (this.checked) {
@@ -367,13 +367,13 @@ function orientationChanged() {
             map.reposition();
             map.resize();
     }
-}   
+}
 //************************
 //*** open email window ***//
 function openemailwin() {
     var emailURL = href=jasonemail;
     win = window.open(emailURL,'', 'resizable=no,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,fullscreen=no,dependent=no,width=600px,height=660px');
-}   
+}
 //*** /open email window ***//
 
 dojo.addOnLoad(init);

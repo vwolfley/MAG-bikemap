@@ -1,0 +1,44 @@
+<div data-role="header" data-position="fixed">
+    <h1><img id="logoimg" src="img/bikesign2.png" alt="Bike Sign" />&nbsp;MAG Bikeways</h1>
+
+    <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+        <a href="#mapPage"   class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-home"></a>
+        <!-- <a href="#Layers"   class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-bars"></a> -->
+        <!-- <a href="#Legend"   class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-info"></a> -->
+        <!-- <a href="#Legend"   class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-bullets"></a> -->
+        <a href="#Help"     class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-gear"></a>
+    </div>
+
+</div>
+<!-- /header -->
+<div data-role="main" class="ui-content">
+    <h2 class="ui-bar ui-bar-b ui-corner-all">Legend</h2>
+    <div class="ui-body ui-body-b ui-corner-all">
+
+        <form class="ui-field-contain">
+            <fieldset data-role="controlgroup">
+                <input type="checkbox" name="bikeshops" id="bikeshops" class="check"><label for="bikeshops">Bike Shops</label>
+                <input type="checkbox" name="bikepics" id="bikepics" class="check"><label for="bikepics">Bikeways Pics</label>
+                <input type="checkbox" name="transit" id="transit" class="check"><label for="transit">Transit Locations</label>
+                <input type="checkbox" name="lightrail" id="lightrail" class="check"><label for="lightrail">Light Rail</label>
+            </fieldset>
+        </form>
+
+        <form>
+            <fieldset id="toggleDiv" data-role="controlgroup"></fieldset>
+        </form>
+
+
+        <div id="legendDiv"></div>
+        <!-- <img id="maplegend" src="img/maplegend.png" alt="Bike map legend"/> -->
+
+        <div data-role="controlgroup">
+            <a href="#mapPage" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-left">Back to Map</a>
+            <a href="#Safety" class="ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Bike Safety</a>
+            <a href="#OnStreet" class="ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Street Safety</a>
+            <a href="#OnPaths" class="ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Multi-Use Safety</a>
+        </div>
+
+    </div>
+</div>
+<!-- /content -->

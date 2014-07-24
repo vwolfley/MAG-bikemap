@@ -36,15 +36,20 @@
 
 
 # THANKS
-
+    Maureen DeCindis
+    Alex Oreschak
+    Paulo Vandenberg
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, CSS3, JavaScript, ESRI JavaScript API, jQuery
+    Standards:  HTML5, CSS3
+    Components:  JavaScript, ArcGIS JavaScript API, jQuery
 
 # SITE
-    Version: 2.0.1
-    Last updated: 2014/03/17
+    Site name:  MAG Bikeways
+    Site URL:  http://geo.azmag.gov/maps/bikemap/
+    Version: 3.0.0
+    Last updated: 03/07/2014
     Language: English
     Doctype: HTML5
-    IDE: Sublime Text, Notepad++
+    IDE: Sublime Text
