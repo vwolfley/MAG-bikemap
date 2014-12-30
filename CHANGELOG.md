@@ -1,13 +1,19 @@
-# CHANGELOG for Bikeways Website
+CHANGELOG for Bikeways Website
+================================
 
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
 
 `Major/Minor/Patch 0.0.0`
 
 
-
 ### Version 3.0.0 (05/06/2014)
 
+* added home button
+* update email link
+* update mainifest file
+* update to [ArcGIS API for JavaScript 3.12compact] (https://developers.arcgis.com/javascript/index.html)
+* update to [jQuery mobile v1.4.4] (http://jquerymobile.com/)
+* update to [Normalize.css 3.0.2] (http://necolas.github.io/normalize.css/)
 * added layer checkboxes
 * added dynamic legend/TOC
 * changed page layouts and button styles

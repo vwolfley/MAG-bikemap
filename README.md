@@ -1,4 +1,5 @@
-# MAG Bikeways Map Viewer
+MAG Bikeways Map Viewer
+========================
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![dependencies](https://david-dm.org/vwolfley/MyProject.png)](https://david-dm.org/vwolfley/MyProject)
