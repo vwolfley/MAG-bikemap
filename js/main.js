@@ -17,6 +17,8 @@ require([
     "esri/layers/FeatureLayer",
     "esri/dijit/Popup",
 
+    "esri/layers/ArcGISDynamicMapServiceLayer",
+
     "esri/dijit/Legend",
     "dijit/form/CheckBox",
     "dojo/_base/array",
@@ -31,7 +33,7 @@ require([
     "dojo/_base/Color",
     "dojo/domReady!"
   ],
-  function(dom, dc, on, parser, ready, Map, Locator, BasemapToggle, HomeButton, InfoTemplate, FeatureLayer, Popup, Legend, CheckBox, arrayUtils, Graphic, Point, PictureMarkerSymbol, SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, Color) {
+  function(dom, dc, on, parser, ready, Map, Locator, BasemapToggle, HomeButton, InfoTemplate, FeatureLayer, Popup, ArcGISDynamicMapServiceLayer, Legend, CheckBox, arrayUtils, Graphic, Point, PictureMarkerSymbol, SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, Color) {
     parser.parse();
 
     var map;
@@ -100,6 +102,23 @@ require([
         infoTemplate: template1
       });
       map.addLayer(bikeways);
+      // var content1 = "${NAME}<br>${CITY}<br><small>MAGID: ${MAGID}</small>";
+      // var template1 = new InfoTemplate("${PATHTYPE}", content1);
+      // var bikeways = new ArcGISDynamicMapServiceLayer(appConfig.MainURL, {
+      //   id: "paths",
+      //   visible: true,
+      //   opacity: .75,
+      //   outFields: ["*"],
+      //   infoTemplate: template1
+      // });
+      // bikeways.setInfoTemplates({
+      //   4: {
+      //     infoTemplate: template1
+      //   }
+      // });
+      // bikeways.setVisibleLayers([4]);
+      // map.addLayer(bikeways);
+
 
       //add a feature layer Bikeways Crossings Types
       //=================================================================================>
@@ -134,7 +153,7 @@ require([
       var template4 = new InfoTemplate("${Category}", content4);
       var transit = new FeatureLayer(appConfig.publicTransitURL + "/0", {
         id: "Transit Locations",
-        visible: false,
+        visible: true,
         mode: FeatureLayer.MODE_ONDEMAND,
         outFields: ["*"],
         infoTemplate: template4
@@ -147,7 +166,7 @@ require([
       var template5 = new InfoTemplate("Light Rail", content5);
       var lightrail = new FeatureLayer(appConfig.publicTransitURL + "/1", {
         id: "Light Rail",
-        visible: false,
+        visible: true,
         mode: FeatureLayer.MODE_ONDEMAND,
         outFields: ["*"],
         infoTemplate: template5
@@ -160,7 +179,7 @@ require([
       var template6 = new InfoTemplate("${Name}", content6);
       var bikepics = new FeatureLayer(appConfig.bikePicsURL + "/0", {
         id: "Bikeways Pics",
-        visible: false,
+        visible: true,
         mode: FeatureLayer.MODE_ONDEMAND,
         outFields: ["*"],
         infoTemplate: template6
@@ -220,9 +239,9 @@ require([
       }, "legendDiv");
       legend.startup();
 
-      jQuery.each(tocLayers, function(index, layer) {
-        console.log(this.value);
-      });
+      // jQuery.each(tocLayers, function(index, layer) {
+      //   console.log(this.value);
+      // });
 
       $(".check").bind("click", function(layer) {
         // alert("Found YOU!");
@@ -306,7 +325,9 @@ require([
       map.centerAndZoom(pt, 22);
     }
 
-
+    // on main help page
+    $("#version").html(appConfig.Version);
+    // $("#legal").load
 
   }); // end of main function
 
@@ -321,6 +342,8 @@ $(document).ready(function() {
   $("#OnStreet").load("views/onStreetPage.html");
   $("#OnPaths").load("views/onPathsPage.html");
   $("#Legend").load("views/legendPage.html");
+  $("#Legal").load("views/legalPage.html");
+
   // $("#Layers").load("views/layersPage.html");
 });
 

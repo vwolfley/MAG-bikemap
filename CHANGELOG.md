@@ -8,6 +8,7 @@ CHANGELOG for Bikeways Website
 
 ### Version 3.0.0 (05/06/2014)
 
+* update to [jQuery mobile v1.4.5] (http://jquerymobile.com/)
 * added home button
 * update email link
 * update mainifest file
@@ -70,6 +71,8 @@ CHANGELOG for Bikeways Website
 ## Resources
 
 #### ***Reference Example Sites***
+
+    * http://www.bicyclela.org/fullscreenmap.html
 
     * http://bikesy.com/mobile.html
     * http://www5.kingcounty.gov/mobile/bikemapMobile/

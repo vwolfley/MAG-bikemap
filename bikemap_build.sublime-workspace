@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"bike",
+				"bikeways"
+			],
+			[
 				"li",
 				"line-height"
 			],
@@ -510,15 +514,35 @@
 			[
 				"C",
 				"Comments"
-			],
-			[
-				"ex",
-				"executeIdentifyTask"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "CHANGELOG.md",
+			"settings":
+			{
+				"buffer_size": 3176,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/config.js",
+			"settings":
+			{
+				"buffer_size": 1151,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/main.js",
+			"settings":
+			{
+				"buffer_size": 12063,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "Packages/JSHint/JSHint.sublime-build",
 	"command_palette":
@@ -576,13 +600,23 @@
 	},
 	"file_history":
 	[
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/CHANGELOG.md",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/config.js",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/main.js",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/config.js",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/css/main.css",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/index.html",
+		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/JsFormat/JsFormat.sublime-settings",
+		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/Javascript Beautify/JavascriptBeautify.sublime-settings",
+		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/Javascript Beautify/Default (Windows).sublime-keymap",
+		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/JsFormat/Default (Windows).sublime-keymap",
+		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/User/JsFormat.sublime-settings",
+		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/arcgis.manifest",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/README.md",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/package.json",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/css/normalize.css",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/CHANGELOG.md",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/helpPage.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/legendPage.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/css/main.css",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/deploy/build_working/app/main.js",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/map.js",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/layersPage.html",
@@ -595,10 +629,8 @@
 		"/D/address/index.html",
 		"/C/Users/vwolfley/Desktop/google14c4dad344d14f91.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/demographics_project/Gruntfile.js",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/README.md",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/page5.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/node_modules/jshint-stylish-ex/stylish.js",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/package.json",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/humans.txt",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/robots.txt",
@@ -695,15 +727,7 @@
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/views/panel-view.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/helpers/printMap-delegate.js",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/reference.txt",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/views/colorRamp-view.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/views/demographic-view.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/views/demographicChartHelp-view.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/helpers/layer-delegate.js",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/views/demographicSelFeaturesHelp-view.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/views/selectedFeaturesTabPage-view.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/views/alert2-view.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/views/alert1-view.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/vm/alert-vm.js"
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/views/colorRamp-view.html"
 	],
 	"find":
 	{
@@ -949,8 +973,301 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "CHANGELOG.md",
+					"settings":
+					{
+						"buffer_size": 3176,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								233,
+								233
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/config.js",
+					"settings":
+					{
+						"buffer_size": 1151,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								715,
+								722
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/main.js",
+					"settings":
+					{
+						"buffer_size": 12063,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5072,
+								5072
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Better JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2448.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
