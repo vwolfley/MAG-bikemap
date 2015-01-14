@@ -288,6 +288,12 @@ td {
 .ui-overlay-b, .ui-page-theme-b, .ui-page-theme-b .ui-panel-wrapper {
     text-shadow: none;
 }
+.esriPopup .titleButton.next {
+    right: 26px;
+}
+.esriPopup .titleButton.prev {
+    right: 44px;
+}
 /* ==========================================
 **** Legend View Custom Styles ****
 ============================================= */
@@ -296,10 +302,19 @@ td {
     }
 #legendDiv {
     font-size: 0.8em;
-    line-height: 1;
+    line-height: normal;
 }
 .esriLegendService {
-    padding-bottom: 5px;
+    padding-bottom: 2px;
+}
+.esriLegendServiceLabel {
+    display: none;
+}
+table.esriLegendLayerLabel {
+    display: none;
+}
+#legendDiv td {
+    padding: 1px;
 }
 
 

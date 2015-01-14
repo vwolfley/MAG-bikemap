@@ -6,6 +6,7 @@ require([
     "dojo/on",
     "dojo/parser",
     "dojo/ready",
+    "dojo/query",
 
     "esri/map",
 
@@ -18,6 +19,7 @@ require([
     "esri/dijit/Popup",
 
     "esri/layers/ArcGISDynamicMapServiceLayer",
+    "esri/layers/ImageParameters",
 
     "esri/dijit/Legend",
     "dijit/form/CheckBox",
@@ -33,7 +35,7 @@ require([
     "dojo/_base/Color",
     "dojo/domReady!"
   ],
-  function(dom, dc, on, parser, ready, Map, Locator, BasemapToggle, HomeButton, InfoTemplate, FeatureLayer, Popup, ArcGISDynamicMapServiceLayer, Legend, CheckBox, arrayUtils, Graphic, Point, PictureMarkerSymbol, SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, Color) {
+  function(dom, dc, on, parser, ready, query, Map, Locator, BasemapToggle, HomeButton, InfoTemplate, FeatureLayer, Popup, ArcGISDynamicMapServiceLayer, ImageParameters, Legend, CheckBox, arrayUtils, Graphic, Point, PictureMarkerSymbol, SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, Color) {
     parser.parse();
 
     var map;
@@ -89,44 +91,37 @@ require([
       on(dom.byId("geolocationButton"), "click", getLocation);
 
 
-      //add a feature layer Bikeways Types
+      //add a dynamic layer Bikeways Types
       //=================================================================================>
+      var bikewaysParms = new ImageParameters();
+      bikewaysParms.layerIds = [0];
+      bikewaysParms.layerOption = ImageParameters.LAYER_OPTION_SHOW;
+
       var content1 = "${NAME}<br>${CITY}<br><small>MAGID: ${MAGID}</small>";
       var template1 = new InfoTemplate("${PATHTYPE}", content1);
-      var bikeways = new FeatureLayer(appConfig.bikeMapURL + "/1", {
-        id: "paths",
+
+      var bikeways = new ArcGISDynamicMapServiceLayer(appConfig.MainURL, {
+        id: "Bike Paths",
         visible: true,
-        mode: FeatureLayer.MODE_ONDEMAND,
-        opacity: 0.75,
+        opacity: .75,
+        imageParameters: bikewaysParms,
         outFields: ["*"],
         infoTemplate: template1
       });
+      bikeways.setInfoTemplates({
+        0: {
+          infoTemplate: template1
+        }
+      });
       map.addLayer(bikeways);
-      // var content1 = "${NAME}<br>${CITY}<br><small>MAGID: ${MAGID}</small>";
-      // var template1 = new InfoTemplate("${PATHTYPE}", content1);
-      // var bikeways = new ArcGISDynamicMapServiceLayer(appConfig.MainURL, {
-      //   id: "paths",
-      //   visible: true,
-      //   opacity: .75,
-      //   outFields: ["*"],
-      //   infoTemplate: template1
-      // });
-      // bikeways.setInfoTemplates({
-      //   4: {
-      //     infoTemplate: template1
-      //   }
-      // });
-      // bikeways.setVisibleLayers([4]);
-      // map.addLayer(bikeways);
-
 
       //add a feature layer Bikeways Crossings Types
       //=================================================================================>
       var content2 = "${Type}<br>${Discript}<br>${City}<br><small>MAGID: ${MAGID}</small>";
       var template2 = new InfoTemplate("Bikeways Crossing", content2);
-      var crossings = new FeatureLayer(appConfig.bikeMapURL + "/0", {
+      var crossings = new FeatureLayer(appConfig.bikeMapURL + "/1", {
         id: "crossings",
-        visible: true,
+        visible: false,
         mode: FeatureLayer.MODE_ONDEMAND,
         opacity: 0.75,
         outFields: ["*"],
@@ -134,37 +129,11 @@ require([
       });
       map.addLayer(crossings);
 
-      //add a feature layer Bike Shops
-      //=================================================================================>
-      var content3 = "${Address}<br>${City}<br>Phone: ${Phone}<br>Website: <a target='_blank'href=http://${Website}>${Website}</a>";
-      var template3 = new InfoTemplate("${Name}", content3);
-      var bikeshops = new FeatureLayer(appConfig.bikeShopsURL + "/0", {
-        id: "Bike Shops",
-        visible: false,
-        mode: FeatureLayer.MODE_ONDEMAND,
-        outFields: ["*"],
-        infoTemplate: template3
-      });
-      map.addLayer(bikeshops);
-
-      //add a feature layer Public Transit Locations
-      //=================================================================================>
-      var content4 = "${Name}<br>${Location}<br>${City}";
-      var template4 = new InfoTemplate("${Category}", content4);
-      var transit = new FeatureLayer(appConfig.publicTransitURL + "/0", {
-        id: "Transit Locations",
-        visible: true,
-        mode: FeatureLayer.MODE_ONDEMAND,
-        outFields: ["*"],
-        infoTemplate: template4
-      });
-      map.addLayer(transit);
-
       //add a feature layer Light Rail
       //=================================================================================>
       var content5 = "${SERVICE}<br>${CITY}";
       var template5 = new InfoTemplate("Light Rail", content5);
-      var lightrail = new FeatureLayer(appConfig.publicTransitURL + "/1", {
+      var lightrail = new FeatureLayer(appConfig.MainURL + "/4", {
         id: "Light Rail",
         visible: true,
         mode: FeatureLayer.MODE_ONDEMAND,
@@ -173,11 +142,38 @@ require([
       });
       map.addLayer(lightrail);
 
+      //add a feature layer Public Transit Locations
+      //=================================================================================>
+      var content4 = "${Name}<br>${Location}<br>${City}";
+      var template4 = new InfoTemplate("${Category}", content4);
+      var transit = new FeatureLayer(appConfig.MainURL + "/3", {
+        id: "Transit Locations",
+        visible: true,
+        mode: FeatureLayer.MODE_ONDEMAND,
+        outFields: ["*"],
+        infoTemplate: template4
+      });
+      map.addLayer(transit);
+
       //add a feature layer Bike Shops
       //=================================================================================>
+      var content3 = "${Address}<br>${City}<br>Phone: ${Phone}<br>Website: <a target='_blank'href=http://${Website}>${Website}</a>";
+      var template3 = new InfoTemplate("${Name}", content3);
+      var bikeshops = new FeatureLayer(appConfig.MainURL + "/2", {
+        id: "Bike Shops",
+        visible: true,
+        mode: FeatureLayer.MODE_ONDEMAND,
+        outFields: ["*"],
+        infoTemplate: template3
+      });
+      map.addLayer(bikeshops);
+      $("#bikeshops").attr("checked", "checked");
+
+      //add a feature layer Bike Route Pictures
+      //=================================================================================>
       var content6 = "${Name}<br>${Discription}<br><img src='img/bikepics/${urlName}.jpg'>";
-      var template6 = new InfoTemplate("${Name}", content6);
-      var bikepics = new FeatureLayer(appConfig.bikePicsURL + "/0", {
+      var template6 = new InfoTemplate("Bike Route Pictures", content6);
+      var bikepics = new FeatureLayer(appConfig.MainURL + "/5", {
         id: "Bikeways Pics",
         visible: true,
         mode: FeatureLayer.MODE_ONDEMAND,
@@ -185,8 +181,18 @@ require([
         infoTemplate: template6
       });
       map.addLayer(bikepics);
+      $("#bikepics").attr("checked", "checked");
 
-      //TOC Layers
+      //add a feature layer MAG MPO Boundary
+      //=================================================================================>
+      var mpoBoundary = new FeatureLayer(appConfig.MainURL + "/6", {
+        id: "MAG MPO Boundary",
+        visible: true,
+        mode: FeatureLayer.MODE_ONDEMAND,
+      });
+      map.addLayer(mpoBoundary);
+
+      // Map Layers
       //=================================================================================>
       tocLayers.push({
         layer: bikeshops,
@@ -197,6 +203,10 @@ require([
         title: "Bikeways Pics"
       });
       tocLayers.push({
+        layer: crossings,
+        title: "Bike Crossings Types"
+      });
+      tocLayers.push({
         layer: transit,
         title: "Transit Locations"
       });
@@ -204,9 +214,14 @@ require([
         layer: lightrail,
         title: "Light Rail"
       });
+      // console.log(tocLayers);
 
       // Legend Layers
       //=================================================================================>
+      legendLayers.push({
+        layer: mpoBoundary,
+        title: "MAG MPO Boundary"
+      });
       legendLayers.push({
         layer: bikepics,
         title: "Bikeways Pics"
@@ -231,6 +246,7 @@ require([
         layer: bikeways,
         title: "Bikeways Types"
       });
+      // console.log(legendLayers);
 
       // create legend dijit
       var legend = new Legend({
@@ -239,38 +255,20 @@ require([
       }, "legendDiv");
       legend.startup();
 
-      // jQuery.each(tocLayers, function(index, layer) {
-      //   console.log(this.value);
-      // });
 
-      $(".check").bind("click", function(layer) {
-        // alert("Found YOU!");
-        var chklayer = map.getLayer(this.value);
-        chklayer.setVisibility(!chklayer.visible);
-        this.checked = chklayer.visible;
-      });
 
-      // //add check boxes
-      // arrayUtils.forEach(tocLayers, function (layer) {
-      //   var layerName = layer.title;
-      //   var checkBox = new CheckBox({
-      //       name    : "checkBox" + layer.layer.id,
-      //       value   : layer.layer.id,
-      //       checked : layer.layer.visible,
-      //       onChange:function () {
-      //           var clayer = map.getLayer(this.value);
-      //           clayer.setVisibility(!clayer.visible);
-      //           this.checked = clayer.visible;
-      //       }
+      var checked = $("#bikeshops").is(":checked");
+      // console.log(checked);
+      // on(map, "load", getMapLayers);
+
+      // on(map, "layers", function(evt) {
+      //   var layerInfo = arrayUtils.map(evt.layers, function(layer, index) {
+      //     return {
+      //       layer: layer.layer,
+      //       title: layer.layer.name
+      //     };
       //   });
-
-      //   //add the check box and label to the toc
-      //   dc.place(checkBox.domNode, dom.byId("toggleDiv"));
-      //   var checkLabel = dc.create("label", {
-      //       "for":checkBox.name,
-      //       innerHTML:"&nbsp;&nbsp;" + layerName
-      //   }, checkBox.domNode, "after");
-      //   dc.place("<br>", checkLabel, "after");
+      //   console.log(layerInfo);
       // });
 
 
