@@ -11,15 +11,15 @@ var appConfig = new function() {
     this.emailLink = "https://www.azmag.gov/EmailPages/JasonHoward.asp";
 
     this.initExtent = {
-        "xmin": -12642942,
-        "ymin": 3873732,
-        "xmax": -12349424,
-        "ymax": 4025842,
+        "xmin": -12621311,
+        "ymin": 3879618,
+        "xmax": -12327792,
+        "ymax": 4031727,
         "spatialReference": {
             "wkid": 102100
         }
     };
 
-    this.center = [-112.255, 33.410];
+    this.center = [-112.061, 33.454];
 
 }; // end appConfig

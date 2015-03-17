@@ -8,6 +8,9 @@ CHANGELOG for Bikeways Website
 
 ### Version 3.0.0 (05/06/2014)
 
+* added GRID Bike Share Points to the map
+* update to [ArcGIS API for JavaScript 3.13compact] (https://developers.arcgis.com/javascript/index.html)
+* added checkboxes to legend - checkboxes turn layers on and off
 * update to [jQuery mobile v1.4.5] (http://jquerymobile.com/)
 * added home button
 * update email link

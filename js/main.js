@@ -48,10 +48,17 @@ require([
             // create a new symbols to highlight popup features
             var pointSymbol = new SimpleMarkerSymbol("circle", 32, null,
                 new Color([0, 0, 0, 0.25]));
+
+            var lineSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
+            new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
+                new Color([0, 0, 0, 0.35]), 5), null);
+
             var popup = new Popup({
                 // fillSymbol:
-                // lineSymbol:
-                markerSymbol: pointSymbol
+                // lineSymbol: lineSymbol,
+                markerSymbol: pointSymbol,
+                visibleWhenEmpty: false,
+                hideDelay: -1
             }, dc.create("div"));
 
             map = new Map("mapDiv", {
@@ -101,7 +108,7 @@ require([
             var bikeways = new ArcGISDynamicMapServiceLayer(appConfig.MainURL, {
                 id: "Bike Paths",
                 visible: true,
-                opacity: .75,
+                opacity: .65,
                 imageParameters: bikewaysParms,
                 outFields: ["*"],
                 infoTemplate: template1
@@ -182,8 +189,8 @@ require([
 
             //add a feature layer Bike Shops
             //=================================================================================>
-            var content3 = "${Address}<br>${City}<br>Phone: ${Phone}<br>Website: <a target='_blank'href=http://${Website}>${Website}</a>";
-            var template3 = new InfoTemplate("${Name}", content3);
+            var content3 = "<strong>${Name}</strong><br>${Address}<br>${City}<br>Phone: ${Phone}<br><a target='_blank'href=http://${Website}>${Website}</a>";
+            var template3 = new InfoTemplate("Bike Shop", content3);
             var bikeshops = new FeatureLayer(appConfig.MainURL + "/2", {
                 id: "Bike Shops",
                 visible: false,
@@ -224,9 +231,31 @@ require([
                 }
             });
 
+             //add a feature layer GRID Bike Share locations
+            //=================================================================================>
+            var content7 = "<strong>${Station_Name}</strong><br>Location: ${Station_Location}<br>Station Number: ${Station_Number}";
+            var template7 = new InfoTemplate("GRID Bike Share", content7);
+            var GRID = new FeatureLayer(appConfig.MainURL + "/6", {
+                id: "GRID Bike Share",
+                visible: false,
+                mode: FeatureLayer.MODE_ONDEMAND,
+                outFields: ["*"],
+                infoTemplate: template7
+            });
+            map.addLayer(GRID);
+
+            // for checkbox turns layer on and off
+            $("#grid").click(function() {
+                if ($(this).is(":checked")) {
+                    GRID.show();
+                } else {
+                    GRID.hide();
+                }
+            });
+
             //add a feature layer MAG MPO Boundary
             //=================================================================================>
-            var mpoBoundary = new FeatureLayer(appConfig.MainURL + "/6", {
+            var mpoBoundary = new FeatureLayer(appConfig.MainURL + "/7", {
                 id: "MAG MPO Boundary",
                 visible: true,
                 mode: FeatureLayer.MODE_ONDEMAND,
@@ -255,6 +284,10 @@ require([
                 layer: lightrail,
                 title: "Light Rail"
             });
+            tocLayers.push({
+                layer: GRID,
+                title: "GRID Bike Share"
+            });
             // console.log(tocLayers);
 
             // Legend Layers
@@ -262,6 +295,10 @@ require([
             legendLayers.push({
                 layer: mpoBoundary,
                 title: "MAG MPO Boundary"
+            });
+            legendLayers.push({
+                layer: GRID,
+                title: "GRID Bike Share"
             });
             legendLayers.push({
                 layer: bikepics,
