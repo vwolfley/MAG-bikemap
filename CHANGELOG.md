@@ -6,8 +6,9 @@ CHANGELOG for Bikeways Website
 `Major/Minor/Patch 0.0.0`
 
 
-### Version 3.0.0 (05/06/2014)
+### Version 3.0.0 (03/17/2015)
 
+* adjusted center point of map
 * added GRID Bike Share Points to the map
 * update to [ArcGIS API for JavaScript 3.13compact] (https://developers.arcgis.com/javascript/index.html)
 * added checkboxes to legend - checkboxes turn layers on and off

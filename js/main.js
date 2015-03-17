@@ -50,8 +50,8 @@ require([
                 new Color([0, 0, 0, 0.25]));
 
             var lineSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
-            new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
-                new Color([0, 0, 0, 0.35]), 5), null);
+                new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
+                    new Color([0, 0, 0, 0.35]), 5), null);
 
             var popup = new Popup({
                 // fillSymbol:
@@ -108,7 +108,7 @@ require([
             var bikeways = new ArcGISDynamicMapServiceLayer(appConfig.MainURL, {
                 id: "Bike Paths",
                 visible: true,
-                opacity: .65,
+                opacity: 0.65,
                 imageParameters: bikewaysParms,
                 outFields: ["*"],
                 infoTemplate: template1
@@ -231,7 +231,7 @@ require([
                 }
             });
 
-             //add a feature layer GRID Bike Share locations
+            //add a feature layer GRID Bike Share locations
             //=================================================================================>
             var content7 = "<strong>${Station_Name}</strong><br>Location: ${Station_Location}<br>Station Number: ${Station_Number}";
             var template7 = new InfoTemplate("GRID Bike Share", content7);

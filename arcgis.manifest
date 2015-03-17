@@ -3,7 +3,7 @@ CACHE MANIFEST
 
 #cached items
 CACHE:
-http://js.arcgis.com/3.12compact/
+http://js.arcgis.com/3.13compact/
 http://code.jquery.com/jquery-1.11.1.min.js
 http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js
 
