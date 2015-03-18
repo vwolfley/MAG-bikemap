@@ -294,6 +294,14 @@ td {
 .esriPopup .titleButton.prev {
     right: 44px;
 }
+.youTube {
+    width: 250px;
+    height: 140px;
+}
+.pics {
+    max-width: 200px;
+    max-height: 200px
+}
 /* ==========================================
 **** Legend View Custom Styles ****
 ============================================= */
@@ -315,6 +323,14 @@ table.esriLegendLayerLabel {
 }
 #legendDiv td {
     padding: 1px;
+}
+/* ==========================================
+**** Help View Custom Styles ****
+============================================= */
+#pdf {
+    height: 37px;
+    width: auto;
+    margin: 0 10px 0 15px;
 }
 
 

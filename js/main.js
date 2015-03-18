@@ -211,7 +211,7 @@ require([
 
             //add a feature layer Bike Route Pictures
             //=================================================================================>
-            var content6 = "<strong>${Name}</strong><br><img src='img/bikepics/${urlName}.jpg'><br>${Discription}";
+            var content6 = "<strong>${Name}</strong><br><img class='pics' src='img/bikepics/${urlName}.jpg'><br>${Discription}";
             var template6 = new InfoTemplate("Bike Route Pictures", content6);
             var bikepics = new FeatureLayer(appConfig.MainURL + "/5", {
                 id: "Bikeways Pics",
@@ -222,12 +222,26 @@ require([
             });
             map.addLayer(bikepics);
 
+            // add a feature layer for Bike Youtube Videos
+            var content8 = "<strong>${Name}</strong><br><iframe class='youTube' src='${Link}' frameborder='0' allowfullscreen></iframe><br>${Discription}";
+            var template8 = new InfoTemplate("Bike Route Videos", content8);
+            var bikevideos = new FeatureLayer(appConfig.MainURL + "/6", {
+                id: "Bikeways Videos",
+                visible: false,
+                mode: FeatureLayer.MODE_ONDEMAND,
+                outFields: ["*"],
+                infoTemplate: template8
+            });
+            map.addLayer(bikevideos);
+
             // for checkbox turns layer on and off
             $("#bikepics").click(function() {
                 if ($(this).is(":checked")) {
                     bikepics.show();
+                    bikevideos.show();
                 } else {
                     bikepics.hide();
+                    bikevideos.hide();
                 }
             });
 
@@ -235,7 +249,7 @@ require([
             //=================================================================================>
             var content7 = "<strong>${Station_Name}</strong><br>Location: ${Station_Location}<br>Station Number: ${Station_Number}<br><a href='http://www.gridbikes.com/' target='_blank'>www.gridbikes.com</a>";
             var template7 = new InfoTemplate("GRID Bike Share", content7);
-            var GRID = new FeatureLayer(appConfig.MainURL + "/6", {
+            var GRID = new FeatureLayer(appConfig.MainURL + "/7", {
                 id: "GRID Bike Share",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
@@ -255,7 +269,7 @@ require([
 
             //add a feature layer MAG MPO Boundary
             //=================================================================================>
-            var mpoBoundary = new FeatureLayer(appConfig.MainURL + "/7", {
+            var mpoBoundary = new FeatureLayer(appConfig.MainURL + "/8", {
                 id: "MAG MPO Boundary",
                 visible: true,
                 mode: FeatureLayer.MODE_ONDEMAND,
