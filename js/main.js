@@ -122,7 +122,7 @@ require([
 
             //add a feature layer Bikeways Crossings Types
             //=================================================================================>
-            var content2 = "${Type}<br>${Discript}<br>${City}<br><small>MAGID: ${MAGID}</small>";
+            var content2 = "<strong>${PathType}</strong><br>${Name}<br>${City}<br><small>MAGID: ${MAGID}</small>";
             var template2 = new InfoTemplate("Bikeways Crossing", content2);
             var crossings = new FeatureLayer(appConfig.MainURL + "/1", {
                 id: "crossings",
@@ -167,7 +167,7 @@ require([
 
             //add a feature layer Public Transit Locations
             //=================================================================================>
-            var content4 = "${Name}<br>${Location}<br>${City}";
+            var content4 = "<strong>${Name}</strong><br>${Location}<br>${City}<br><a target='_blank'href=${webLink}>Transit Web Link Info</a>";
             var template4 = new InfoTemplate("${Category}", content4);
             var transit = new FeatureLayer(appConfig.MainURL + "/3", {
                 id: "Transit Locations",
@@ -211,7 +211,7 @@ require([
 
             //add a feature layer Bike Route Pictures
             //=================================================================================>
-            var content6 = "${Name}<br>${Discription}<br><img src='img/bikepics/${urlName}.jpg'>";
+            var content6 = "<strong>${Name}</strong><br><img src='img/bikepics/${urlName}.jpg'><br>${Discription}";
             var template6 = new InfoTemplate("Bike Route Pictures", content6);
             var bikepics = new FeatureLayer(appConfig.MainURL + "/5", {
                 id: "Bikeways Pics",
@@ -233,7 +233,7 @@ require([
 
             //add a feature layer GRID Bike Share locations
             //=================================================================================>
-            var content7 = "<strong>${Station_Name}</strong><br>Location: ${Station_Location}<br>Station Number: ${Station_Number}";
+            var content7 = "<strong>${Station_Name}</strong><br>Location: ${Station_Location}<br>Station Number: ${Station_Number}<br><a href='http://www.gridbikes.com/' target='_blank'>www.gridbikes.com</a>";
             var template7 = new InfoTemplate("GRID Bike Share", content7);
             var GRID = new FeatureLayer(appConfig.MainURL + "/6", {
                 id: "GRID Bike Share",

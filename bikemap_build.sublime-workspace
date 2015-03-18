@@ -523,7 +523,7 @@
 			"file": "CHANGELOG.md",
 			"settings":
 			{
-				"buffer_size": 3460,
+				"buffer_size": 3533,
 				"line_ending": "Windows"
 			}
 		},
@@ -531,23 +531,7 @@
 			"file": "js/main.js",
 			"settings":
 			{
-				"buffer_size": 14366,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "views/helpPage.html",
-			"settings":
-			{
-				"buffer_size": 4023,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 5702,
+				"buffer_size": 15932,
 				"line_ending": "Windows"
 			}
 		}
@@ -608,30 +592,31 @@
 	},
 	"file_history":
 	[
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/config.js",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/README.md",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/humans.txt",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/package.json",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/arcgis.manifest",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/safteyPage.html",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/onStreetPage.html",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/onPathsPage.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/legendPage.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/CHANGELOG.md",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/main.js",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/css/main.css",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/index.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/legalPage.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/helpPage.html",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/index.html",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/main.js",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/config.js",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/CHANGELOG.md",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/css/main.css",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/JsFormat/JsFormat.sublime-settings",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/Javascript Beautify/JavascriptBeautify.sublime-settings",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/Javascript Beautify/Default (Windows).sublime-keymap",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/JsFormat/Default (Windows).sublime-keymap",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/User/JsFormat.sublime-settings",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/arcgis.manifest",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/README.md",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/package.json",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/css/normalize.css",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/deploy/build_working/app/main.js",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/map.js",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/layersPage.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/onPathsPage.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/onStreetPage.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/safteyPage.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/css/layout.css",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/Gruntfile.js",
 		"/C/Users/vwolfley/Desktop/arcgis.manifest",
@@ -640,7 +625,6 @@
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/demographics_project/Gruntfile.js",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/page5.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/node_modules/jshint-stylish-ex/stylish.js",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/humans.txt",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/robots.txt",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/splash/splash_page_project/CHANGELOG.md",
@@ -981,7 +965,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -989,15 +973,15 @@
 					"file": "CHANGELOG.md",
 					"settings":
 					{
-						"buffer_size": 3460,
+						"buffer_size": 3533,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								486,
-								486
+								181,
+								181
 							]
 						],
 						"settings":
@@ -1055,7 +1039,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 120.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1065,15 +1049,15 @@
 					"file": "js/main.js",
 					"settings":
 					{
-						"buffer_size": 14366,
+						"buffer_size": 15932,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								11784,
-								11784
+								8690,
+								8690
 							]
 						],
 						"settings":
@@ -1128,163 +1112,10 @@
 							],
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 6720.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "views/helpPage.html",
-					"settings":
-					{
-						"buffer_size": 4023,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3594,
-								3594
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 300.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "index.html",
-					"settings":
-					{
-						"buffer_size": 5702,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4628,
-								4628
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 7.0,
+						"translation.y": 4216.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
