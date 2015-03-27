@@ -10,6 +10,12 @@ CHANGELOG for Bikeways Website
 * Application Cache Manifest - http://www.html5rocks.com/en/tutorials/appcache/beginner/
 * geo tracking
 
+### Version 3.1.0 (03/27/2015)
+
+* production release
+* minified CSS and JS files
+* Concatenated CSS and JS files
+
 ### Version 3.0.0 (03/27/2015)
 
 * added icon for bike safety no earphones

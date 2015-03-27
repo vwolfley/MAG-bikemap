@@ -17,7 +17,7 @@ module.exports = function(grunt) {
             '*/\n',
 
         bannerjs: '/*!\n' +
-            '*@main.min.js\n' +
+            '*@main_concat.min.js\n' +
             '*@JavaScript document for Bikeways Viewer @ MAG\n' +
             '*@For Production\n' +
             '*@<%= pkg.name %> - v<%= pkg.version %> | <%= grunt.template.today("mm-dd-yyyy") %>\n' +
@@ -68,7 +68,7 @@ module.exports = function(grunt) {
         },
 
         jshint: {
-            files: ["js/config.js", "js/main.js"],
+            files: ["js/config.js", "js/main.js", "js/plugins.js"],
             options: {
                 // strict: true,
                 sub: true,
@@ -88,8 +88,9 @@ module.exports = function(grunt) {
         uglify: {
             options: {
                 // add banner to top of output file
-                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> | <%= grunt.template.today("mm-dd-yyyy") %> */\n',
-                // mangle: false,
+                banner: '/* <%= pkg.name %> - v<%= pkg.version %> | <%= grunt.template.today("mm-dd-yyyy") %> */\n',
+                preserveComments: "some",
+                mangle: false,
                 // compress: true,
             },
             build: {
@@ -101,7 +102,7 @@ module.exports = function(grunt) {
             }
         },
 
-        concatJS: {
+        concat: {
             options: {
                 stripBanners: true,
                 banner: '<%= bannerjs %>'
@@ -125,16 +126,16 @@ module.exports = function(grunt) {
             }
         },
 
-        concatCSS: {
-            options: {
-                stripBanners: true,
-                banner: '<%= bannercss %>'
-            },
-            dist: {
-                src: ["css/normalize.min.css", "css/main.min.css"],
-                dest: 'css/concat.min.css'
-            }
-        },
+        // concat: {
+        //     options: {
+        //         stripBanners: true,
+        //         banner: '<%= bannercss %>'
+        //     },
+        //     dist: {
+        //         src: ["css/normalize.min.css", "css/main.min.css"],
+        //         dest: 'css/concat.min.css'
+        //     }
+        // },
 
         watch: {
             scripts: {
@@ -152,8 +153,8 @@ module.exports = function(grunt) {
     // this would be run by typing "grunt test" on the command line
     grunt.registerTask("work", ["jshint"]);
 
-    grunt.registerTask("buildcss", ["cssmin", "concatCSS"]);
-    grunt.registerTask("buildjs", ["uglify", "concatJS"]);
+    grunt.registerTask("buildcss", ["cssmin", "concat"]);
+    grunt.registerTask("buildjs", ["uglify", "concat"]);
 
     // the default task can be run just by typing "grunt" on the command line
     grunt.registerTask("default", []);
