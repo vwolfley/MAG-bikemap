@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"concat",
+				"concatJS"
+			],
+			[
 				"max",
 				"max-height"
 			],
@@ -510,20 +514,16 @@
 			[
 				"ac",
 				"actionList"
-			],
-			[
-				"email",
-				"emailLink"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "CHANGELOG.md",
+			"file": "Gruntfile.js",
 			"settings":
 			{
-				"buffer_size": 4037,
+				"buffer_size": 6257,
 				"line_ending": "Windows"
 			}
 		}
@@ -584,21 +584,22 @@
 	},
 	"file_history":
 	[
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/css/main.css",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/index.html",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/legendPage.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/main.js",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/helpPage.html",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/plugins.js",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/CHANGELOG.md",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/README.md",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/package.json",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/humans.txt",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/config.js",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/arcgis.manifest",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/css/main.css",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/onStreetPage.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/legendPage.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/safteyPage.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/onPathsPage.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/README.md",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/humans.txt",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/package.json",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/arcgis.manifest",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/legalPage.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/index.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/config.js",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/CHANGELOG.md",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/JsFormat/JsFormat.sublime-settings",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/Javascript Beautify/JavascriptBeautify.sublime-settings",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/Javascript Beautify/Default (Windows).sublime-keymap",
@@ -710,8 +711,7 @@
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/FileDiffs/FileDiffs.sublime-settings",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/views/panel-view.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/helpers/printMap-delegate.js",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/reference.txt"
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Demographics/deploy/build_working/app/helpers/printMap-delegate.js"
 	],
 	"find":
 	{
@@ -729,6 +729,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"'",
+			"popup",
 			"point",
 			"legend layers",
 			"green",
@@ -854,9 +856,7 @@
 			"valueUniqueId",
 			"home",
 			"logo",
-			"err",
-			"Failed",
-			"failed"
+			"err"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -961,18 +961,18 @@
 			[
 				{
 					"buffer": 0,
-					"file": "CHANGELOG.md",
+					"file": "Gruntfile.js",
 					"settings":
 					{
-						"buffer_size": 4037,
+						"buffer_size": 6257,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								211,
-								211
+								558,
+								558
 							]
 						],
 						"settings":
@@ -1025,7 +1025,7 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close"
 							],
-							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},

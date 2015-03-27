@@ -62,7 +62,7 @@ require([
             }, dc.create("div"));
 
             map = new Map("mapDiv", {
-                basemap: "streets",    //"gray"
+                basemap: "streets", //"gray"
                 center: appConfig.center,
                 zoom: 1,
                 minZoom: 10,
@@ -145,7 +145,7 @@ require([
 
             //add a feature layer Light Rail
             //=================================================================================>
-            var content5 = "${SERVICE}<br>${CITY}";
+            var content5 = "Light Rail Route<br>${CITY}";
             var template5 = new InfoTemplate("Light Rail", content5);
             var lightrail = new FeatureLayer(appConfig.MainURL + "/4", {
                 id: "Light Rail",
@@ -156,14 +156,14 @@ require([
             });
             map.addLayer(lightrail);
 
-            // for checkbox turns layer on and off
-            $("#lightrail").click(function() {
-                if ($(this).is(":checked")) {
-                    lightrail.show();
-                } else {
-                    lightrail.hide();
-                }
-            });
+            // // for checkbox turns layer on and off
+            // $("#lightrail").click(function() {
+            //     if ($(this).is(":checked")) {
+            //         lightrail.show();
+            //     } else {
+            //         lightrail.hide();
+            //     }
+            // });
 
             //add a feature layer Public Transit Locations
             //=================================================================================>
@@ -182,8 +182,10 @@ require([
             $("#transit").click(function() {
                 if ($(this).is(":checked")) {
                     transit.show();
+                    lightrail.show();
                 } else {
                     transit.hide();
+                    lightrail.hide();
                 }
             });
 
