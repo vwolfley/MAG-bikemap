@@ -2,11 +2,8 @@
     <h1><img id="logoimg" src="img/bikesign2.png" alt="Bike Sign" />&nbsp;MAG Bikeways</h1>
 
     <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-        <a href="#mapPage"   class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-home"></a>
-        <!-- <a href="#Layers"   class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-bars"></a> -->
-        <!-- <a href="#Legend"   class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-info"></a> -->
-        <!-- <a href="#Legend"   class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-bullets"></a> -->
-        <a href="#Help"     class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-gear"></a>
+        <a href="#mapPage" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-home"></a>
+        <a href="#Help" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-gear"></a>
     </div>
 
 </div>
@@ -15,22 +12,28 @@
     <h2 class="ui-bar ui-bar-b ui-corner-all">Legend</h2>
     <div class="ui-body ui-body-b ui-corner-all">
 
-        <form class="ui-field-contain">
-            <fieldset data-role="controlgroup">
-                <input type="checkbox" name="bikeshops" id="bikeshops" class="check"><label for="bikeshops">Bike Shops</label>
-                <input type="checkbox" name="bikepics" id="bikepics" class="check"><label for="bikepics">Bikeways Pics</label>
-                <input type="checkbox" name="transit" id="transit" class="check"><label for="transit">Transit Locations</label>
-                <input type="checkbox" name="lightrail" id="lightrail" class="check"><label for="lightrail">Light Rail</label>
-            </fieldset>
-        </form>
+        <div data-role="controlgroup" data-enhanced="true" class="ui-controlgroup ui-controlgroup-vertical ui-group-theme-b ui-corner-all">
+            <div role="heading" class="ui-controlgroup-label">
 
-        <form>
-            <fieldset id="toggleDiv" data-role="controlgroup"></fieldset>
-        </form>
-
+                <legend>Map Layers:</legend>
+            </div>
+            <div class="ui-controlgroup-controls ui-shadow">
+                <label for="bikeshops">Bike Shops</label>
+                    <input type="checkbox" id="bikeshops" class="check" name="bikeshops"/>
+                <label for="bikepics">Bikeways Pics & Videos</label>
+                    <input type="checkbox" id="bikepics" class="check" name="bikepics"/>
+                <label for="crossings">Bike Crossing Types</label>
+                    <input type="checkbox" id="crossings" class="check" name="crossings"/>
+                <label for="transit">Transit Locations</label>
+                    <input type="checkbox" id="transit" class="check" name="transit"/>
+                <label for="lightrail">Light Rail</label>
+                    <input type="checkbox" id="lightrail" class="check" name="lightrail"/>
+                <label for="grid">GRID Bike Share</label>
+                    <input type="checkbox" id="grid" class="check" name="grid"/>
+            </div>
+        </div>
 
         <div id="legendDiv"></div>
-        <!-- <img id="maplegend" src="img/maplegend.png" alt="Bike map legend"/> -->
 
         <div data-role="controlgroup">
             <a href="#mapPage" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-left">Back to Map</a>

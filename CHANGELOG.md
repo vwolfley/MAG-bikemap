@@ -1,13 +1,37 @@
-# CHANGELOG for Bikeways Website
+CHANGELOG for Bikeways Website
+================================
 
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
 
 `Major/Minor/Patch 0.0.0`
 
+### Items to Add
+* Search box
+* Application Cache Manifest - http://www.html5rocks.com/en/tutorials/appcache/beginner/
+* geo tracking
 
+### Version 3.0.0 (03/27/2015)
 
-### Version 3.0.0 (05/06/2014)
-
+* added icon for bike safety no earphones
+* added link to ARS documents
+* made changes to onPathsPage text
+* made changes to onStreetPage text
+* made changes to saftyPage text
+* added pdf link to paper map
+* added facebook link
+* added youtube videos
+* added new pics
+* adjusted center point of map
+* added GRID Bike Share Points to the map
+* update to [ArcGIS API for JavaScript 3.13compact] (https://developers.arcgis.com/javascript/index.html)
+* added checkboxes to legend - checkboxes turn layers on and off
+* update to [jQuery mobile v1.4.5] (http://jquerymobile.com/)
+* added home button
+* update email link
+* update mainifest file
+* update to [ArcGIS API for JavaScript 3.12compact] (https://developers.arcgis.com/javascript/index.html)
+* update to [jQuery mobile v1.4.4] (http://jquerymobile.com/)
+* update to [Normalize.css 3.0.2] (http://necolas.github.io/normalize.css/)
 * added layer checkboxes
 * added dynamic legend/TOC
 * changed page layouts and button styles
@@ -63,7 +87,13 @@
 
 ## Resources
 
+* http://www.azbikeped.org/index.asp
+* http://www.azleg.gov/ArizonaRevisedStatutes.asp?Title=28
+* http://www.azmag.gov/Documents/MAG_2012-10-19_Bike-Pathways-Map.pdf
+
 #### ***Reference Example Sites***
+
+    * http://www.bicyclela.org/fullscreenmap.html
 
     * http://bikesy.com/mobile.html
     * http://www5.kingcounty.gov/mobile/bikemapMobile/
@@ -75,6 +105,7 @@
     * http://36cs.maps.arcgis.com/apps/OnePane/basicviewer/index.html?appid=60dbc11f3f214506b85fb3d9ecd91034
     * http://web6.seattle.gov/SDOT/BikeMap/
     * http://cyclodeo.com/#/
+    * http://gis.drcog.org/bikeroutes/
 
 #### ***Bike Shop Data Base App Reference***
 

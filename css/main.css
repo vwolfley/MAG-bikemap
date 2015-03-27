@@ -122,6 +122,59 @@ html, body {
     cursor: pointer;
     text-decoration: none;
 }
+/* ==========================================
+**** Map Controls Custom Styles ****
+============================================= */
+#BasemapToggle {
+    position: absolute;
+    bottom: 45px;
+    right: 60px;
+    z-index: 50;
+}
+.BasemapToggle .basemapImage {
+    width: 41px;
+    height: 55px;
+}
+.BasemapToggle .basemapTitle {
+    width: auto;
+}
+.HomeButton {
+    position: absolute;
+    bottom: 110px;
+    right: 20px;
+}
+.HomeButton .home {
+    background-color: #5b5b5b;
+    padding: 0 0 0 0;
+}
+.HomeButton .home:hover {
+    background-color: #484848;
+}
+.esriSimpleSlider {
+    border: none;
+    background-color: #5b5b5b;
+    color: #fff;
+}
+.esriSimpleSliderDecrementButton:hover,
+.esriSimpleSliderIncrementButton:hover {
+  background-color: #484848;
+}
+.esriSimpleSliderVertical .esriSimpleSliderIncrementButton,
+.esriSimpleSliderVertical .esriSimpleSliderDecrementButton{
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+}
+.esriSimpleSliderVertical .esriSimpleSliderIncrementButton {
+  border-bottom: 1px solid #cccccc;
+}
+.esriSimpleSliderDisabledButton,
+.esriSimpleSliderDisabledButton:active,
+.esriSimpleSliderDisabledButton:hover {
+cursor: default;
+background-color: #cdcdcd;
+color: #fff;
+}
 
 /* ==========================================
 **** navbar custom styles ****
@@ -225,22 +278,7 @@ td {
     padding: 3px;
     border-bottom: 1px solid;
 }
-/* ==========================================
-**** Map Controls Custom Styles ****
-============================================= */
-#BasemapToggle {
-    position: absolute;
-    bottom: 45px;
-    right: 60px;
-    z-index: 50;
-}
-.BasemapToggle .basemapImage {
-    width: 41px;
-    height: 41px;
-}
-.BasemapToggle .basemapTitle {
-    width: auto;
-}
+
 /* ==========================================
 **** Popup Custom Styles ****
 ============================================= */
@@ -250,6 +288,20 @@ td {
 .ui-overlay-b, .ui-page-theme-b, .ui-page-theme-b .ui-panel-wrapper {
     text-shadow: none;
 }
+.esriPopup .titleButton.next {
+    right: 26px;
+}
+.esriPopup .titleButton.prev {
+    right: 44px;
+}
+.youTube {
+    width: 250px;
+    height: 140px;
+}
+.pics {
+    max-width: 200px;
+    max-height: 200px
+}
 /* ==========================================
 **** Legend View Custom Styles ****
 ============================================= */
@@ -258,10 +310,27 @@ td {
     }
 #legendDiv {
     font-size: 0.8em;
-    line-height: 1;
+    line-height: normal;
 }
 .esriLegendService {
-    padding-bottom: 5px;
+    padding-bottom: 2px;
+}
+.esriLegendServiceLabel {
+    display: none;
+}
+table.esriLegendLayerLabel {
+    display: none;
+}
+#legendDiv td {
+    padding: 1px;
+}
+/* ==========================================
+**** Help View Custom Styles ****
+============================================= */
+#pdf {
+    height: 37px;
+    width: auto;
+    margin: 0 10px 0 15px;
 }
 
 

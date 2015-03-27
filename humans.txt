@@ -36,6 +36,7 @@
 
 
 # THANKS
+    Eileen Yazzie
     Maureen DeCindis
     Alex Oreschak
     Paulo Vandenberg
@@ -49,7 +50,8 @@
     Site name:  MAG Bikeways
     Site URL:  http://geo.azmag.gov/maps/bikemap/
     Version: 3.0.0
-    Last updated: 03/07/2014
+    Last updated: 03/27/2015
+    Creation date: 08/03/2012
     Language: English
     Doctype: HTML5
     IDE: Sublime Text

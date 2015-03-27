@@ -1,4 +1,5 @@
-# MAG Bikeways Map Viewer
+MAG Bikeways Map Viewer
+========================
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![dependencies](https://david-dm.org/vwolfley/MyProject.png)](https://david-dm.org/vwolfley/MyProject)
@@ -12,7 +13,9 @@ This web app viewer was developed by MAG staff for MAG member agencies and the p
 
 ### Version
 
-#### `3.0.0 - 05/06/2014`
+#### `3.0.0 - 03/27/2015`
+
+#### `Created: 08/03/2012`
 
 ### Keywords
 
