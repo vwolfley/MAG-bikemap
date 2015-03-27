@@ -1,10 +1,11 @@
 {
-  "name": "Bikeways",
+  "name": "Bikeways-Project",
   "version": "3.0.0",
-  "date": "03/17/2015",
+  "date": "03/27/2015",
   "author": "Vern Wolfley",
   "email": "vwolfley@azmag.gov",
-  "url": "http://geo.azmag.gov/maps/test/bikeways/",
+  "test-url": "http://mag1113/maps/bikeways/",
+  "url": "http://geo.azmag.gov/maps/bikeways/",
   "private": true,
 
   "devDependencies": {

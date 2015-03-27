@@ -5,15 +5,16 @@ CACHE MANIFEST
 CACHE:
 http://js.arcgis.com/3.13compact/
 http://code.jquery.com/jquery-1.11.1.min.js
-http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js
+http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js
 
-images/bluedot.png
-images/geolocate.png
-images/info.png
-images/legend.png
-images/mapdetails.png
-images/pointerbottom.png
-images/pointertop.png
+img/bluedot.png
+img/geolocate.png
+img/info.png
+img/legend.png
+img/mapdetails.png
+img/pointerbottom.png
+img/pointertop.png
+
 
 #browser should always go to server for resources except the ones specified in manifest
 NETWORK:

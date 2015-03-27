@@ -5,8 +5,12 @@ CHANGELOG for Bikeways Website
 
 `Major/Minor/Patch 0.0.0`
 
+### Items to Add
+* Search box
+* Application Cache Manifest - http://www.html5rocks.com/en/tutorials/appcache/beginner/
+* geo tracking
 
-### Version 3.0.0 (03/17/2015)
+### Version 3.0.0 (03/27/2015)
 
 * added icon for bike safety no earphones
 * added link to ARS documents

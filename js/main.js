@@ -62,7 +62,7 @@ require([
             }, dc.create("div"));
 
             map = new Map("mapDiv", {
-                basemap: "streets",
+                basemap: "streets",    //"gray"
                 center: appConfig.center,
                 zoom: 1,
                 minZoom: 10,
@@ -96,13 +96,13 @@ require([
 
             on(dom.byId("geolocationButton"), "click", getLocation);
 
-            //add a dynamic layer Bikeways Types
+            //add a dynamic layer Bikeways Paths
             //=================================================================================>
             var bikewaysParms = new ImageParameters();
             bikewaysParms.layerIds = [0];
             bikewaysParms.layerOption = ImageParameters.LAYER_OPTION_SHOW;
 
-            var content1 = "${NAME}<br>${CITY}<br><small>MAGID: ${MAGID}</small>";
+            var content1 = "<strong>${NAME}</strong><br>${CITY}<br><small>MAGID: ${MAGID}</small>";
             var template1 = new InfoTemplate("${PATHTYPE}", content1);
 
             var bikeways = new ArcGISDynamicMapServiceLayer(appConfig.MainURL, {
@@ -120,9 +120,9 @@ require([
             });
             map.addLayer(bikeways);
 
-            //add a feature layer Bikeways Crossings Types
+            //add a feature layer Bikeways Crossings
             //=================================================================================>
-            var content2 = "<strong>${PathType}</strong><br>${Name}<br>${City}<br><small>MAGID: ${MAGID}</small>";
+            var content2 = "<strong>${Discript}</strong><br>${City}<br><small>MAGID: ${MAGID}</small>";
             var template2 = new InfoTemplate("Bikeways Crossing", content2);
             var crossings = new FeatureLayer(appConfig.MainURL + "/1", {
                 id: "crossings",
@@ -349,6 +349,10 @@ require([
 
             // add version control number to help
             dom.byId("version").innerHTML = appConfig.Version;
+
+            // used to refresh map on page changes
+            map.reposition();
+            map.resize();
 
         }); // end ready function
 

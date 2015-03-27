@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"max",
+				"max-height"
+			],
+			[
 				"visibl",
 				"visibleLayerIds"
 			],
@@ -74,10 +78,6 @@
 			[
 				"min",
 				"min-height"
-			],
-			[
-				"max",
-				"max-width"
 			],
 			[
 				"op",
@@ -523,15 +523,7 @@
 			"file": "CHANGELOG.md",
 			"settings":
 			{
-				"buffer_size": 3533,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/main.js",
-			"settings":
-			{
-				"buffer_size": 15932,
+				"buffer_size": 4037,
 				"line_ending": "Windows"
 			}
 		}
@@ -592,21 +584,21 @@
 	},
 	"file_history":
 	[
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/css/main.css",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/main.js",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/helpPage.html",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/onStreetPage.html",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/legendPage.html",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/safteyPage.html",
+		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/onPathsPage.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/README.md",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/humans.txt",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/package.json",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/arcgis.manifest",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/safteyPage.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/onStreetPage.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/onPathsPage.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/legendPage.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/legalPage.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/views/helpPage.html",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/index.html",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/main.js",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/js/config.js",
 		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/CHANGELOG.md",
-		"/I/Projects/ArcGIS Server/10.2/javascript_apps/Bikemap/bikemap_project/css/main.css",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/JsFormat/JsFormat.sublime-settings",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/Javascript Beautify/JavascriptBeautify.sublime-settings",
 		"/C/Users/vwolfley/AppData/Roaming/Sublime Text 2/Packages/Javascript Beautify/Default (Windows).sublime-keymap",
@@ -737,6 +729,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"point",
+			"legend layers",
+			"green",
 			"esriLegend",
 			"baselayer",
 			"basemap",
@@ -861,10 +856,7 @@
 			"logo",
 			"err",
 			"Failed",
-			"failed",
-			"feature count",
-			"custom",
-			"get"
+			"failed"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -965,7 +957,6 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
 				{
@@ -973,15 +964,15 @@
 					"file": "CHANGELOG.md",
 					"settings":
 					{
-						"buffer_size": 3533,
+						"buffer_size": 4037,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								181,
-								181
+								211,
+								211
 							]
 						],
 						"settings":
@@ -1040,82 +1031,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "js/main.js",
-					"settings":
-					{
-						"buffer_size": 15932,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8690,
-								8690
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4216.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
