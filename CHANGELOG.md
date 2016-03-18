@@ -10,6 +10,10 @@ CHANGELOG for Bikeways Website
 * Application Cache Manifest - http://www.html5rocks.com/en/tutorials/appcache/beginner/
 * geo tracking
 
+### Version 3.1.1 (03/18/2016)
+
+* Updated pdf link to 2015 bike map
+
 ### Version 3.1.0 (03/27/2015)
 
 * production release
