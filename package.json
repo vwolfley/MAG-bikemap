@@ -1,0 +1,37 @@
+{
+  "name": "Bikeways-Project",
+  "version": "3.1.1",
+  "date": "03/27/2015",
+  "description": "MAG Bikeways Viewer",
+  "keywords": ["bikeways", "bikemap", "biking", "bicycles", "cycling", "routes", "transportation", "Maricopa", "Pinal", "County", "Arizona", "MAG", "maps", "ESRI", "#MAGmaps"],
+  "main": "index.js",
+  "homepage": "http://geo.azmag.gov/maps/azdemographics/",
+  "author": "Vern Wolfley <vwolfley@azmag.gov>",
+  "contributors": [{
+    "name": "Vern Wolfley",
+    "email": "vwolfley@azmag.gov"
+  }, {
+    "name": "Jack Fairfield",
+    "email": "jfairfield@azmag.gov"
+  }],
+  "private": true,
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "grunt":                    "*",
+    "grunt-contrib-concat":     "*",
+    "grunt-contrib-cssmin":     "*",
+    "grunt-contrib-csslint":    "*",
+    "grunt-contrib-jshint":     "*",
+    "grunt-contrib-uglify":     "*",
+    "grunt-contrib-watch":      "*",
+    "grunt-htmlhint":           "*",
+    "grunt-text-replace":       "*",
+    "matchdep":                 "*",
+    "lodash":                   "*",
+    "jshint-stylish-ex":        "*",
+    "normalize.css":            "*"
+  },
+  "license": "MIT"
+}
