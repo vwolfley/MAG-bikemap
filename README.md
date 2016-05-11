@@ -18,11 +18,11 @@ Use this site to explore bicycle paths and facilities throughout Maricopa County
 
 This web app viewer was developed by MAG staff for MAG member agencies and the public using ESRI's JavaScript API.
 
-### Keywords
+## Keywords
 
 `bikeways` `bikemap` `biking` `bicycles` `Maricopa County` `MAG` `maps` `ESRI` `#MAGmaps`
 
-#### Version
+## Version
 
 #### `version 3.1.1` ####
  `Updated: 03/27/2015`
@@ -40,23 +40,23 @@ And constructed with the following guidelines:
 
 ***************************************************************************************************************
 
-### Credits
+## Credits
 
 `Maricopa Association of Governments (MAG) and the MAG member agencies`
 
-### Site URL's
+## Site URL's
 
 * [Site] (http://geo.azmag.gov/maps/bikemap/)
 
-### Documentation
+## Documentation
 
 A detailed list of the changes and fixes in each version update can be found in the CHANGELOG.md.
 
 * [CHANGELOG] (CHANGELOG.md)
 
-### Resources
+## Resources
 
-### Legal Disclaimer
+## Legal Disclaimer
 
 The Maricopa Association of Governments provides the data within these pages as a public resource of general information for use "as is." The TMaricopa Association of Governments GIS (Geographic Information System) departments provides this information with the understanding that it is not guaranteed to be accurate, correct or complete and any conclusions drawn from such information are the sole responsibility of the user. Further, the Maricopa Association of Governments GIS departments makes no warranty, representation or guaranty as to the content, sequence, accuracy, timeliness or completeness of any of the spatial or database information provided herein. While every effort has been made to ensure the content, sequence, accuracy, timeliness or completeness of materials presented within these pages, the Maricopa Association of Governments GIS Departments assumes no responsibility for errors or omissions, and explicitly disclaims any representations and warranties, including, without limitation, the implied warranties of merchantability and fitness for a particular purpose. The Maricopa Association of Governments GIS Departments shall assume no liability for:
 
@@ -71,7 +71,7 @@ To assist the Maricopa Association of Governments in the maintenance and/or corr
 
 Please acknowledge the Maricopa Association of Governments (MAG) GIS as the source when Map Server data is used in the preparation of reports, papers, publications, maps, or other products.
 
-### Copyright and Licensing
+## Copyright and Licensing
 
 Code released under the MIT license.
 
