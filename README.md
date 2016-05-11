@@ -1,9 +1,6 @@
 # MAG Bikeways Map Viewer
 MAG mapping application showing locally-designated bicycle facilities data
 
-
-========================
-
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![dependencies](https://david-dm.org/AZMAG/map-Bikeways.png)](https://david-dm.org/AZMAG/map-Bikeways)
 [![devDependency Status](https://david-dm.org/AZMAG/map-Bikeways/dev-status.png)](https://david-dm.org/AZMAG/map-Bikeways)
@@ -37,8 +34,6 @@ And constructed with the following guidelines:
 1. MAJOR version when you make incompatible API changes **bumps the major** resets minor and patch
 2. MINOR version when you add functionality in a backwards-compatible manner **bumps the minor** resets patch
 3. PATCH version when you make backwards-compatible bug fixes and misc changes **bumps only the patch**
-
-***************************************************************************************************************
 
 ## Credits
 
