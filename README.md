@@ -23,7 +23,7 @@ This web app viewer was developed by MAG staff for MAG member agencies and the p
 ## Version
 
 #### `version 3.1.1` ####
- `Updated: 03/27/2015`
+ `Updated: 03/27/2015`  
  `Created: 08/03/2012`
 
 Releases will be numbered with the following format:
@@ -53,6 +53,7 @@ A detailed list of the changes and fixes in each version update can be found in 
 ## Resources
 
 [2015 Bikeways Map PDF] (https://www.azmag.gov/Documents/MAG_2015-10-21_Bike-Pathways-Map.pdf)
+
 [2012 Bikeways Map PDF] (http://www.azmag.gov/Documents/MAG_2012-10-19_Bike-Pathways-Map.pdf)
 
 ## Legal Disclaimer
