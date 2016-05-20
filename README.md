@@ -1,10 +1,10 @@
-# MAG Bikeways Map Viewer
+# MAG Bikeways Map Viewer ![](http://geo.azmag.gov/maps/readonaz/app/resources/img/maglogo_black.png)
 MAG mapping application showing locally-designated bicycle facilities data
 
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![dependencies](https://david-dm.org/AZMAG/map-Bikeways.png)](https://david-dm.org/AZMAG/map-Bikeways)
 [![devDependency Status](https://david-dm.org/AZMAG/map-Bikeways/dev-status.png)](https://david-dm.org/AZMAG/map-Bikeways)
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ***********************************************************************************************************
