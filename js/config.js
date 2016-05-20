@@ -5,7 +5,7 @@ var appConfig = new function() {
     this.Version = "v3.1.0 | 03/27/2015";
 
     // layers
-    this.MainURL = "http://geo.azmag.gov/gismag/rest/services/maps/BikeMap_New/MapServer";
+    this.MainURL = "https://geo.azmag.gov/gismag/rest/services/maps/BikeMap_New/MapServer";
 
     // email link
     this.emailLink = "https://www.azmag.gov/EmailPages/JasonHoward.asp";
