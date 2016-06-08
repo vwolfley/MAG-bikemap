@@ -2,7 +2,7 @@
 
 var appConfig = new function() {
 
-    this.Version = "v3.1.0 | 03/27/2015";
+    this.Version = "v3.1.2 | 06/08/2016";
 
     // layers
     this.MainURL = "https://geo.azmag.gov/gismag/rest/services/maps/BikeMap_New/MapServer";
