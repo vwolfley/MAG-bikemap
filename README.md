@@ -1,4 +1,5 @@
-# MAG Bikeways Map Viewer ![](http://geo.azmag.gov/maps/readonaz/app/resources/img/maglogo_black.png)
+ ![](http://geo.azmag.gov/maps/readonaz/app/resources/img/maglogo_black.png)  
+# MAG Bikeways Map Viewer
 MAG mapping application showing locally-designated bicycle facilities data
 
 [![GitHub issues](https://img.shields.io/github/issues/AZMAG/map-Bikeways.svg)](https://github.com/AZMAG/map-Bikeways/issues)
