@@ -1,11 +1,11 @@
 {
   "name": "Bikeways-Project",
-  "version": "3.1.1",
-  "date": "03/27/2015",
+  "version": "3.1.2",
+  "date": "06/08/2016",
   "description": "MAG Bikeways Viewer",
   "keywords": ["bikeways", "bikemap", "biking", "bicycles", "cycling", "routes", "transportation", "Maricopa", "Pinal", "County", "Arizona", "MAG", "maps", "ESRI", "#MAGmaps"],
   "main": "index.js",
-  "homepage": "http://geo.azmag.gov/maps/azdemographics/",
+  "homepage": "http://geo.azmag.gov/maps/bikemap/",
   "author": "Vern Wolfley <vwolfley@azmag.gov>",
   "contributors": [{
     "name": "Vern Wolfley",
