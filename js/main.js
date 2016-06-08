@@ -191,7 +191,7 @@ require([
 
             //add a feature layer Bike Shops
             //=================================================================================>
-            var content3 = "<strong>${Name}</strong><br>${Address}<br>${City}<br>Phone: ${Phone}<br><a target='_blank'href=http://${Website}>${Website}</a>";
+            var content3 = "<strong>${Name}</strong><br>${Address}<br>${City}<br>Phone: ${Phone}<br><a target='_blank'href=https://${Website}>${Website}</a>";
             var template3 = new InfoTemplate("Bike Shop", content3);
             var bikeshops = new FeatureLayer(appConfig.MainURL + "/2", {
                 id: "Bike Shops",
@@ -249,7 +249,7 @@ require([
 
             //add a feature layer GRID Bike Share locations
             //=================================================================================>
-            var content7 = "<strong>${Station_Name}</strong><br>Location: ${Station_Location}<br>Station Number: ${Station_Number}<br><a href='http://www.gridbikes.com/' target='_blank'>www.gridbikes.com</a>";
+            var content7 = "<strong>${Station_Name}</strong><br>Location: ${Station_Location}<br>Station Number: ${Station_Number}<br><a href='https://www.gridbikes.com/' target='_blank'>www.gridbikes.com</a>";
             var template7 = new InfoTemplate("GRID Bike Share", content7);
             var GRID = new FeatureLayer(appConfig.MainURL + "/7", {
                 id: "GRID Bike Share",

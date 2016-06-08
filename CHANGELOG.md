@@ -1,16 +1,38 @@
-CHANGELOG for Bikeways Website
-================================
+# CHANGELOG #
+###  MAG Bikeways Website ###
 
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
 
-`Major/Minor/Patch 0.0.0`
+All notable changes to this project will be documented in this file.
 
-### Items to Add
+Releases will be numbered with the following format:
+
+`<major>.<minor>.<patch>`
+
+And constructed with the following guidelines:
+
+1. MAJOR version when you make incompatible API changes **bumps the major** resets minor and patch
+2. MINOR version when you add functionality in a backwards-compatible manner **bumps the minor** resets patch
+3. PATCH version when you make backwards-compatible bug fixes and misc changes **bumps only the patch**
+=========================================================================================================
+
+## Outstanding Items
+
+#### Items to Add
 * Search box
 * Application Cache Manifest - http://www.html5rocks.com/en/tutorials/appcache/beginner/
 * geo tracking
 
-### Version 3.1.0 (03/27/2015)
+===========================================================================================================
+
+## Version 3.1.2 | 06/08/2016
+
+* add Google site verification doc
+* updated Google Analytics
+* Updated to force https to enable location
+* Updated pdf link to 2015 bike map
+
+## Version 3.1.0 | 03/27/2015
 
 * production release
 * minified CSS and JS files
