@@ -60,13 +60,13 @@ A detailed list of the changes and fixes in each version update can be found in 
 
 #### Examples ####
 
-[San Diego Region] (http://gis1.sandag.org/BikeMap2016/index.html)
-[AZ Bike Ped Org] (http://www.azbikeped.org/)
-[Spokane Regional Bike Map] (https://www.arcgis.com/home/webmap/viewer.html?webmap=a9c8901a015b4aea8c5e23a927a7fc41)
-[Kansas City Regional Trails and Bikeways Map] (http://marc-gis.maps.arcgis.com/home/webmap/viewer.html?webmap=c0328d965cf44a10bfb710f3014619ac&extent=-94.837,38.9196,-94.33,39.1809)
-[ride the city] (http://www.ridethecity.com/dc#)
-[Washington DC] (http://washcycle.typepad.com/bikemap/)
-[Bike 36 Interactive Map] (http://36commutingsolutions.org/commuting-us-36/commute-options/bikewalk/bikelinks-36/)
+* [San Diego Region] (http://gis1.sandag.org/BikeMap2016/index.html)
+* [AZ Bike Ped Org] (http://www.azbikeped.org/)
+* [Spokane Regional Bike Map] (https://www.arcgis.com/home/webmap/viewer.html?webmap=a9c8901a015b4aea8c5e23a927a7fc41)
+* [Kansas City Regional Trails and Bikeways Map] (http://marc-gis.maps.arcgis.com/home/webmap/viewer.html?webmap=c0328d965cf44a10bfb710f3014619ac&extent=-94.837,38.9196,-94.33,39.1809)
+* [ride the city] (http://www.ridethecity.com/dc#)
+* [Washington DC] (http://washcycle.typepad.com/bikemap/)
+* [Bike 36 Interactive Map] (http://36commutingsolutions.org/commuting-us-36/commute-options/bikewalk/bikelinks-36/)
 
 
 ## Legal Disclaimer
