@@ -28,6 +28,7 @@
     "grunt-contrib-watch":      "*",
     "grunt-htmlhint":           "*",
     "grunt-text-replace":       "*",
+    "grunt-version-check":      "*",
     "matchdep":                 "*",
     "lodash":                   "*",
     "jshint-stylish-ex":        "*",

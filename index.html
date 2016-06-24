@@ -69,13 +69,17 @@
             <h1><img id="logoimg" src="img/bikesign2.png" alt="Bike Sign" />&nbsp;MAG Bikeways</h1>
             <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
                 <a href="#Legend" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-bullets"></a>
+                <a href="#search" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-search" onclick="opensearchwin()"></a>
                 <a id="geolocationButton" href="#" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-location"></a>
-                <a href="#Help" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-gear"></a>
+
+                <a href="#Info" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-info"></a>
             </div>
         </div>
         <!-- /header -->
         <div id="mapContent" role="main" class="ui-content">
             <div id="mapDiv"></div>
+            <!-- <div id="search-anchor"><div id="search"></div></div> -->
+            <div id="search"></div>
         </div>
         <!-- /content -->
     </div>
@@ -84,6 +88,9 @@
     <!-- Legend -->
     <div id="Legend" data-role="page" data-theme="b"></div>
     <!-- /Legend -->
+    <!-- Info Tab -->
+    <div id="Info" data-role="page" data-theme="b"></div>
+    <!-- /Info Tab -->
     <!-- Help Tab -->
     <div id="Help" data-role="page" data-theme="b"></div>
     <!-- /Help Tab -->
@@ -106,10 +113,10 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="//js.arcgis.com/3.13compact/"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/main.js"></script>
-    <!-- <script src="js/main_concat.min.js"></script> -->
+    <!-- // <script src="js/plugins.js"></script> -->
+    <!-- // <script src="js/config.js"></script> -->
+    <!-- // <script src="js/main.js"></script> -->
+    <script src="js/main_concat.min.js"></script>
 
     <!-- /JavaScript -->
 </body>

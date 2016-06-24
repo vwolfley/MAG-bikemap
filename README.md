@@ -20,23 +20,25 @@ This web app viewer was developed by MAG staff for MAG member agencies and the p
 
 ## Keywords
 
-`bikeways` `bikemap` `biking` `bicycles` `Maricopa County` `MAG` `maps` `ESRI` `#MAGmaps`
+`bike` `bikeways` `bikemap` `biking` `bicycles` `bike lanes` `bike routes` `bike path` `transportation` `recreation` `Maricopa County` `MAG` `maps` `Arizona` `#MAGmaps`
 
 ## Version
 
-#### `version 3.1.2` ####
+#### version 3.1.2 ####
+
  `Updated: 06/08/2016`
+
  `Created: 08/03/2012`
 
 Releases will be numbered with the following format:
 
-`<major>.<minor>.<patch>`
+**`<major>.<minor>.<patch>`**
 
 And constructed with the following guidelines:
 
-1. MAJOR version when you make incompatible API changes **bumps the major** resets minor and patch
-2. MINOR version when you add functionality in a backwards-compatible manner **bumps the minor** resets patch
-3. PATCH version when you make backwards-compatible bug fixes and misc changes **bumps only the patch**
+1. **MAJOR** version when you make incompatible API changes **bumps the major** resets minor and patch
+2. **MINOR** version when you add functionality in a backwards-compatible manner **bumps the minor** resets patch
+3. **PATCH** version when you make backwards-compatible bug fixes and misc changes **bumps only the patch**
 
 ## Credits
 
@@ -44,7 +46,7 @@ And constructed with the following guidelines:
 
 ## Site URL's
 
-* [Site] (http://geo.azmag.gov/maps/bikemap/)
+* [http://geo.azmag.gov/maps/bikemap/] (http://geo.azmag.gov/maps/bikemap/)
 
 ## Documentation
 
@@ -54,9 +56,19 @@ A detailed list of the changes and fixes in each version update can be found in 
 
 ## Resources
 
-[2015 Bikeways Map PDF] (https://www.azmag.gov/Documents/MAG_2015-10-21_Bike-Pathways-Map.pdf)
+* [2015 Bikeways Map PDF] (https://www.azmag.gov/Documents/MAG_2015-10-21_Bike-Pathways-Map.pdf)
 
-[2012 Bikeways Map PDF] (http://www.azmag.gov/Documents/MAG_2012-10-19_Bike-Pathways-Map.pdf)
+* [2012 Bikeways Map PDF] (http://www.azmag.gov/Documents/MAG_2012-10-19_Bike-Pathways-Map.pdf)
+
+#### Examples ####
+
+* [San Diego Region] (http://gis1.sandag.org/BikeMap2016/index.html)
+* [AZ Bike Ped Org] (http://www.azbikeped.org/)
+* [Spokane Regional Bike Map] (https://www.arcgis.com/home/webmap/viewer.html?webmap=a9c8901a015b4aea8c5e23a927a7fc41)
+* [Kansas City Regional Trails and Bikeways Map] (http://marc-gis.maps.arcgis.com/home/webmap/viewer.html?webmap=c0328d965cf44a10bfb710f3014619ac&extent=-94.837,38.9196,-94.33,39.1809)
+* [ride the city] (http://www.ridethecity.com/dc#)
+* [Washington DC] (http://washcycle.typepad.com/bikemap/)
+* [Bike 36 Interactive Map] (http://36commutingsolutions.org/commuting-us-36/commute-options/bikewalk/bikelinks-36/)
 
 ## Legal Disclaimer
 
@@ -76,6 +88,8 @@ Please acknowledge the Maricopa Association of Governments (MAG) GIS as the sour
 ## Copyright and Licensing
 
 Code released under the MIT license.
+
+* [LICENSE] (LICENSE)
 
 Copyright (c) 2016 Maricopa Association of Governments
 

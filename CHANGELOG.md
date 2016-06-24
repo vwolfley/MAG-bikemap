@@ -7,13 +7,14 @@ All notable changes to this project will be documented in this file.
 
 Releases will be numbered with the following format:
 
-`<major>.<minor>.<patch>`
+**`<major>.<minor>.<patch>`**
 
 And constructed with the following guidelines:
 
-1. MAJOR version when you make incompatible API changes **bumps the major** resets minor and patch
-2. MINOR version when you add functionality in a backwards-compatible manner **bumps the minor** resets patch
-3. PATCH version when you make backwards-compatible bug fixes and misc changes **bumps only the patch**
+1. **MAJOR** version when you make incompatible API changes **bumps the major** resets minor and patch
+2. **MINOR** version when you add functionality in a backwards-compatible manner **bumps the minor** resets patch
+3. **PATCH** version when you make backwards-compatible bug fixes and misc changes **bumps only the patch**
+
 =========================================================================================================
 
 ## Outstanding Items
@@ -24,6 +25,16 @@ And constructed with the following guidelines:
 * geo tracking
 
 ===========================================================================================================
+
+## Version 3.1.3 | 06/23/2016
+
+* added a help page
+* added a search function
+* changed menu icon from Gear to Info
+* added USBR90 to map
+* Updated Light Rail Line
+* Updated Transit Locations
+* updated Bike Shop info
 
 ## Version 3.1.2 | 06/08/2016
 
