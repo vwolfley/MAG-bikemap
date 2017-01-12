@@ -2,10 +2,13 @@
 
 var appConfig = new function() {
 
-    this.Version = "v3.1.2 | 06/08/2016";
+    this.Version = "v3.2.0 | 01/12/2017";
 
     // layers
-    this.MainURL = "https://geo.azmag.gov/gismag/rest/services/maps/BikeMap_New/MapServer";
+    this.MainURL = "https://geo.azmag.gov/gismag/rest/services/maps/BikeMap/MapServer";
+
+    this.geoCoderService = "//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer";
+    // http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer
 
     // email link
     this.emailLink = "https://www.azmag.gov/EmailPages/JasonHoward.asp";

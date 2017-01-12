@@ -1,12 +1,26 @@
-/*! main.css | HTML5 Boilerplate v4.3.0 | MIT License | https://h5bp.com/ */
+/* ========================================================================
+ * Maricopa Association of Governments
+ * CSS document for MAG Bikeways Viewer
+ * @main.css | http://ims.azmag.gov/
+ * MAG State Demographics Map Viewer
+ * ========================================================================
+ * Copyright 2016 MAG
+ * Licensed under MIT
+ * ======================================================================== */
+
+/*! ==========================================
+ *  @main.css | version | 3.2.0 | MIT License
+ *  ==========================================
+ */
 
 
 /*
+ * HTML5 Boilerplate | version | v4.3.0 | MIT License | https://h5bp.com/
+ *
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
  * Kroc Camen, and the H5BP dev community and team.
  */
-
 
 /* ==========================================================================
    Base styles: opinionated defaults
@@ -18,7 +32,6 @@ html {
     font-size: 1em;
     line-height: 1.4;
 }
-
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -49,7 +62,6 @@ hr {
     margin: 1em 0;
     padding: 0;
 }
-
 
 /*
  * Remove the gap between images, videos, audio and canvas and the bottom of
@@ -331,6 +343,14 @@ td {
     border-bottom: 1px solid;
 }
 
+#search {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 55px;
+    right: 5px;
+}
+
 
 /* ==========================================
 **** Popup Custom Styles ****
@@ -402,7 +422,27 @@ table.esriLegendLayerLabel {
     width: auto;
     margin: 0 10px 0 15px;
 }
-
+.imgZoom {
+    height: 25px;
+    padding-left: 3px;
+}
+.help4 {
+    margin: 5px 0 5px 0;
+}
+.indentP{
+    text-indent: 50px;
+}
+.helpCont {
+    margin-left: 15px;
+}
+.helpCont img {
+    margin-right: 10px;
+    float: left;
+}
+.helpPop {
+    margin-left: 25px;
+    height: 90px;
+}
 
 /* ==========================================================================
    Helper classes

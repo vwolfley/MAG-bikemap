@@ -13,6 +13,8 @@ require([
         "esri/tasks/locator",
         "esri/dijit/BasemapToggle",
         "esri/dijit/HomeButton",
+        "esri/dijit/Search",
+        "esri/geometry/Extent",
 
         "esri/InfoTemplate",
         "esri/layers/FeatureLayer",
@@ -35,7 +37,7 @@ require([
         "dojo/_base/Color",
         "dojo/domReady!"
     ],
-    function(dom, dc, on, parser, ready, query, Map, Locator, BasemapToggle, HomeButton, InfoTemplate, FeatureLayer, Popup, ArcGISDynamicMapServiceLayer, ImageParameters, Legend, CheckBox, arrayUtils, Graphic, Point, PictureMarkerSymbol, SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, Color) {
+    function(dom, dc, on, parser, ready, query, Map, Locator, BasemapToggle, HomeButton, Search, Extent, InfoTemplate, FeatureLayer, Popup, ArcGISDynamicMapServiceLayer, ImageParameters, Legend, CheckBox, arrayUtils, Graphic, Point, PictureMarkerSymbol, SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, Color) {
         parser.parse();
 
         var map;
@@ -94,7 +96,95 @@ require([
             homeButton._homeNode.title = "Original Extent";
             homeButton.startup();
 
+            var sourcesConfig = [{
+                locator: new Locator(appConfig.geoCoderService),
+                singleLineFieldName: "SingleLine",
+                countryCode: "US",
+                autoNavigate: true,
+                highlightSymbol: new PictureMarkerSymbol("https://js.arcgis.com/3.17/esri/dijit/Search/images/search-pointer.png", 36, 36).setOffset(9, 18),
+                enableLabel: false,
+                enableInfoWindow: true,
+                showInfoWindowOnSelect: false,
+                enableHighlight: true,
+                autoSelect: false,
+                name: "Address",
+                searchExtent: new Extent({
+                    "xmin": -114.68,
+                    "ymin": 31.29,
+                    "xmax": -109.06,
+                    "ymax": 36.99
+                }),
+                placeholder: "302 N 1st Ave, Phoenix, Arizona"
+            }, {
+                featureLayer: new FeatureLayer(appConfig.MainURL + "/4"),
+                searchFields: ["Name"],
+                displayField: "Name",
+                name: "Bike Shops",
+                outFields: ["Name", "Address", "City", "Phone", "Website", "Facebook"],
+                highlightSymbol: new PictureMarkerSymbol("https://js.arcgis.com/3.17/esri/dijit/Search/images/search-pointer.png", 36, 36).setOffset(9, 18),
+                enableLabel: false,
+                enableInfoWindow: true,
+                showInfoWindowOnSelect: false,
+                enableHighlight: true,
+                placeholder: "Bike Shops"
+            }];
+
+            // create div for search
+            var search = new Search({
+                map: map,
+                sources: []
+            }, "search");
+            search.set("sources", sourcesConfig);
+            search.startup();
+            $("#search").hide();
+
             on(dom.byId("geolocationButton"), "click", getLocation);
+
+            //add a feature layer US Bike Route 90
+            //=================================================================================>
+            var content8 = "<strong>${Name}</strong></br>" + "${MPA}</br>" + "${COUNTY} County</br>"  + "${MILES:NumberFormat(places:1)} miles";
+            var template8 = new InfoTemplate("USBR90", content8);
+            var us90 = new FeatureLayer(appConfig.MainURL + "/1", {
+                id: "USBR90",
+                visible: false,
+                mode: FeatureLayer.MODE_ONDEMAND,
+                opacity: 0.65,
+                outFields: ["Name", "COUNTY", "MPA", "MILES"],
+                infoTemplate: template8
+            });
+            // map.addLayer(us90);
+
+            // for checkbox turns layer on and off
+            $("#us90").click(function() {
+                if ($(this).is(":checked")) {
+                    us90.show();
+                } else {
+                    us90.hide();
+                }
+            });
+
+            //add a feature layer Phoenix Sonoran Bikeway
+            //=================================================================================>
+            var content9 = "<strong>${Name}</strong></br>" + "${MPA}</br>" + "${miles:NumberFormat(places:1)} miles";
+            var template9 = new InfoTemplate("PSBikeway", content9);
+            var psbikeway = new FeatureLayer(appConfig.MainURL + "/2", {
+                id: "PSBikeway",
+                visible: false,
+                mode: FeatureLayer.MODE_ONDEMAND,
+                opacity: 0.65,
+                outFields: ["Name", "MPA", "Miles"],
+                infoTemplate: template9
+            });
+            // map.addLayer(psbikeway);
+
+            // for checkbox turns layer on and off
+            $("#psbikeway").click(function() {
+                if ($(this).is(":checked")) {
+                    psbikeway.show();
+                } else {
+                    psbikeway.hide();
+                }
+            });
 
             //add a dynamic layer Bikeways Paths
             //=================================================================================>
@@ -108,9 +198,9 @@ require([
             var bikeways = new ArcGISDynamicMapServiceLayer(appConfig.MainURL, {
                 id: "Bike Paths",
                 visible: true,
-                opacity: 0.65,
+                opacity: 0.75,
                 imageParameters: bikewaysParms,
-                outFields: ["*"],
+                outFields: ["NAME", "CITY", "MAGID", "PATHTYPE"],
                 infoTemplate: template1
             });
             bikeways.setInfoTemplates({
@@ -118,21 +208,21 @@ require([
                     infoTemplate: template1
                 }
             });
-            map.addLayer(bikeways);
+            // map.addLayer(bikeways);
 
             //add a feature layer Bikeways Crossings
             //=================================================================================>
             var content2 = "<strong>${Discript}</strong><br>${City}<br><small>MAGID: ${MAGID}</small>";
             var template2 = new InfoTemplate("Bikeways Crossing", content2);
-            var crossings = new FeatureLayer(appConfig.MainURL + "/1", {
+            var crossings = new FeatureLayer(appConfig.MainURL + "/3", {
                 id: "crossings",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
                 opacity: 0.75,
-                outFields: ["*"],
+                outFields: ["Discript", "City", "MAGID"],
                 infoTemplate: template2
             });
-            map.addLayer(crossings);
+            // map.addLayer(crossings);
 
             // for checkbox turns layer on and off
             $("#crossings").click(function() {
@@ -145,16 +235,16 @@ require([
 
             //add a feature layer Light Rail
             //=================================================================================>
-            var content5 = "Light Rail Route<br>${CITY}";
+            var content5 = "Light Rail Route</br>" + "${Route}</br>" + "${City}";
             var template5 = new InfoTemplate("Light Rail", content5);
-            var lightrail = new FeatureLayer(appConfig.MainURL + "/4", {
+            var lightrail = new FeatureLayer(appConfig.MainURL + "/6", {
                 id: "Light Rail",
-                visible: false,
+                visible: true,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["*"],
+                outFields: ["Route", "City"],
                 infoTemplate: template5
             });
-            map.addLayer(lightrail);
+            // map.addLayer(lightrail);
 
             // // for checkbox turns layer on and off
             // $("#lightrail").click(function() {
@@ -169,14 +259,17 @@ require([
             //=================================================================================>
             var content4 = "<strong>${Name}</strong><br>${Location}<br>${City}<br><a target='_blank'href=${webLink}>Transit Web Link Info</a>";
             var template4 = new InfoTemplate("${Category}", content4);
-            var transit = new FeatureLayer(appConfig.MainURL + "/3", {
+            var transit = new FeatureLayer(appConfig.MainURL + "/5", {
                 id: "Transit Locations",
-                visible: false,
+                visible: true,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["*"],
+                outFields: ["Name", "Location", "City", "webLink", "Category"],
                 infoTemplate: template4
             });
-            map.addLayer(transit);
+            // map.addLayer(transit);
+
+            // beginning status of checkbox
+            $("#transit").prop("checked", true);
 
             // for checkbox turns layer on and off
             $("#transit").click(function() {
@@ -191,16 +284,17 @@ require([
 
             //add a feature layer Bike Shops
             //=================================================================================>
-            var content3 = "<strong>${Name}</strong><br>${Address}<br>${City}<br>Phone: ${Phone}<br><a target='_blank'href=https://${Website}>${Website}</a>";
+            var content3 = "<strong>${Name}</strong><br>${Address}<br>${City}<br>${Phone}<br><a target='_blank'href=https://${Website}>${Website}</a></br>" +
+            "<a target='blank' href=https://${Facebook}>Facebook</a>";
             var template3 = new InfoTemplate("Bike Shop", content3);
-            var bikeshops = new FeatureLayer(appConfig.MainURL + "/2", {
+            var bikeshops = new FeatureLayer(appConfig.MainURL + "/4", {
                 id: "Bike Shops",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["*"],
+                outFields: ["Name", "Address", "City", "Phone", "Website", "Facebook"],
                 infoTemplate: template3
             });
-            map.addLayer(bikeshops);
+            // map.addLayer(bikeshops);
 
             // for checkbox turns layer on and off
             $("#bikeshops").click(function() {
@@ -215,26 +309,26 @@ require([
             //=================================================================================>
             var content6 = "<strong>${Name}</strong><br><img class='pics' src='img/bikepics/${urlName}.jpg'><br>${Discription}";
             var template6 = new InfoTemplate("Bike Route Pictures", content6);
-            var bikepics = new FeatureLayer(appConfig.MainURL + "/5", {
+            var bikepics = new FeatureLayer(appConfig.MainURL + "/7", {
                 id: "Bikeways Pics",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["*"],
+                outFields: ["Name", "urlName"],
                 infoTemplate: template6
             });
-            map.addLayer(bikepics);
+            // map.addLayer(bikepics);
 
             // add a feature layer for Bike Youtube Videos
             var content8 = "<strong>${Name}</strong><br><iframe class='youTube' src='${Link}' frameborder='0' allowfullscreen></iframe><br>${Discription}";
             var template8 = new InfoTemplate("Bike Route Videos", content8);
-            var bikevideos = new FeatureLayer(appConfig.MainURL + "/6", {
+            var bikevideos = new FeatureLayer(appConfig.MainURL + "/8", {
                 id: "Bikeways Videos",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["*"],
+                outFields: ["Name", "Discription", "Link"],
                 infoTemplate: template8
             });
-            map.addLayer(bikevideos);
+            // map.addLayer(bikevideos);
 
             // for checkbox turns layer on and off
             $("#bikepics").click(function() {
@@ -251,14 +345,14 @@ require([
             //=================================================================================>
             var content7 = "<strong>${Station_Name}</strong><br>Location: ${Station_Location}<br>Station Number: ${Station_Number}<br><a href='https://www.gridbikes.com/' target='_blank'>www.gridbikes.com</a>";
             var template7 = new InfoTemplate("GRID Bike Share", content7);
-            var GRID = new FeatureLayer(appConfig.MainURL + "/7", {
+            var GRID = new FeatureLayer(appConfig.MainURL + "/9", {
                 id: "GRID Bike Share",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["*"],
+                outFields: ["Station_Name", "Station_Location", "Station_Number"],
                 infoTemplate: template7
             });
-            map.addLayer(GRID);
+            // map.addLayer(GRID);
 
             // for checkbox turns layer on and off
             $("#grid").click(function() {
@@ -271,12 +365,14 @@ require([
 
             //add a feature layer MAG MPO Boundary
             //=================================================================================>
-            var mpoBoundary = new FeatureLayer(appConfig.MainURL + "/8", {
+            var mpoBoundary = new FeatureLayer(appConfig.MainURL + "/10", {
                 id: "MAG MPO Boundary",
                 visible: true,
                 mode: FeatureLayer.MODE_ONDEMAND,
             });
-            map.addLayer(mpoBoundary);
+            // map.addLayer(mpoBoundary);
+
+            map.addLayers([psbikeway, us90, bikeways, crossings, lightrail, transit, bikeshops, bikepics, bikevideos, GRID, mpoBoundary]);
 
             // Map Layers
             //=================================================================================>
@@ -303,6 +399,14 @@ require([
             tocLayers.push({
                 layer: GRID,
                 title: "GRID Bike Share"
+            });
+            tocLayers.push({
+                layer: us90,
+                title: "US Bike Route 90"
+            });
+            tocLayers.push({
+                layer: psbikeway,
+                title: "Phoenix Sonoran Bikeway"
             });
             // console.log(tocLayers);
 
@@ -335,6 +439,14 @@ require([
             legendLayers.push({
                 layer: crossings,
                 title: "Bikeways Crossings"
+            });
+            legendLayers.push({
+                layer: psbikeway,
+                title: "Phoenix Sonoran Bikeway"
+            });
+            legendLayers.push({
+                layer: us90,
+                title: "US Bike Route 90"
             });
             legendLayers.push({
                 layer: bikeways,
@@ -412,12 +524,15 @@ require([
 //=================================================================================>
 //
 $(document).ready(function() {
-    $("#Help").load("views/helpPage.html");
+    $("#Info").load("views/infoPage.html");
     $("#Safety").load("views/safteyPage.html");
     $("#OnStreet").load("views/onStreetPage.html");
     $("#OnPaths").load("views/onPathsPage.html");
     $("#Legend").load("views/legendPage.html");
     $("#Legal").load("views/legalPage.html");
+    $("#Help").load("views/helpPage.html");
+
+
 
     // $("#Layers").load("views/layersPage.html");
 });
@@ -444,5 +559,13 @@ function openemailwin() {
     // Puts focus on the newWindow
     if (window.focus) {
         newWindow.focus();
+    }
+}
+
+function opensearchwin() {
+    if ($("#search").is(":hidden")) {
+        $("#search").show();
+    } else {
+        $("#search").hide();
     }
 }

@@ -8,21 +8,29 @@ module.exports = function(grunt) {
 
         pkg: grunt.file.readJSON("package.json"),
 
-        bannercss: '/*!\n' +
-            '*@concat.min.css\n' +
-            '*@CSS Document for Bikeways Viewer @ MAG\n' +
-            '*@For Production\n' +
-            '*@<%= pkg.name %> - v<%= pkg.version %> | <%= grunt.template.today("mm-dd-yyyy") %>\n' +
-            '*@author <%= pkg.author %>\n' +
-            '*/\n',
+        bannercss:  '/*! ========================================================================\n' +
+                ' * Maricopa Association of Governments\n' +
+                ' * CSS files for MAG Bikeways Viewer\n' +
+                ' * @concat.min.css | version | <%= pkg.version %>\n' +
+                ' * Production | <%= pkg.date %>\n' +
+                ' * http://ims.azmag.gov/\n' +
+                ' * MAG Bikeways Viewer\n' +
+                ' * ==========================================================================\n' +
+                ' * Copyright 2017 MAG\n' +
+                ' * Licensed under MIT\n' +
+                ' * ========================================================================== */\n',
 
-        bannerjs: '/*!\n' +
-            '*@main_concat.min.js\n' +
-            '*@JavaScript document for Bikeways Viewer @ MAG\n' +
-            '*@For Production\n' +
-            '*@<%= pkg.name %> - v<%= pkg.version %> | <%= grunt.template.today("mm-dd-yyyy") %>\n' +
-            '*@author <%= pkg.author %>\n' +
-            '*/\n',
+        bannerjs:  '/*! ========================================================================\n' +
+                    ' * Maricopa Association of Governments\n' +
+                    ' * JavaScript files for MAG Bikeways Viewer\n' +
+                    ' * @main_concat.min.js | version | <%= pkg.version %>\n' +
+                    ' * Production | <%= pkg.date %>\n' +
+                    ' * http://ims.azmag.gov/\n' +
+                    ' * MAG Bikeways Viewer\n' +
+                    ' * ==========================================================================\n' +
+                    ' * Copyright 2017 MAG\n' +
+                    ' * Licensed under MIT\n' +
+                    ' * ========================================================================== */\n',
 
         htmlhint: {
             build: {
@@ -88,7 +96,7 @@ module.exports = function(grunt) {
         uglify: {
             options: {
                 // add banner to top of output file
-                banner: '/* <%= pkg.name %> - v<%= pkg.version %> | <%= grunt.template.today("mm-dd-yyyy") %> */\n',
+                banner: '/* <%= pkg.name %> - v<%= pkg.version %> | <%= pkg.date %> */\n',
                 preserveComments: "some",
                 mangle: false,
                 // compress: true,
@@ -103,13 +111,23 @@ module.exports = function(grunt) {
         },
 
         concat: {
-            options: {
-                stripBanners: true,
-                banner: '<%= bannerjs %>'
+            css: {
+                options: {
+                    stripBanners: true,
+                    banner: "<%= bannercss %>"
+                },
+                src: ["css/normalize.min.css", "css/main.min.css"],
+                dest: "css/concat.min.css",
+                nonull: true,
             },
-            dist: {
+            js: {
+                options: {
+                    stripBanners: true,
+                    banner: "<%= bannerjs %>"
+                },
                 src: ["js/plugins.min.js", "js/config.min.js", "js/main.min.js"],
-                dest: "js/main_concat.min.js"
+                dest: "js/main_concat.min.js",
+                nonull: true,
             }
         },
 
@@ -117,7 +135,7 @@ module.exports = function(grunt) {
             add_banner: {
                 options: {
                     // add banner to top of output file
-                    banner: '/* <%= pkg.name %> - v<%= pkg.version %> | <%= grunt.template.today("mm-dd-yyyy") %> */\n'
+                    banner: '/* <%= pkg.name %> - v<%= pkg.version %> | <%= pkg.date %> */\n'
                 },
                 files: {
                     "css/main.min.css": ["css/main.css"],
@@ -125,17 +143,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-
-        // concat: {
-        //     options: {
-        //         stripBanners: true,
-        //         banner: '<%= bannercss %>'
-        //     },
-        //     dist: {
-        //         src: ["css/normalize.min.css", "css/main.min.css"],
-        //         dest: 'css/concat.min.css'
-        //     }
-        // },
 
         watch: {
             scripts: {
@@ -148,6 +155,54 @@ module.exports = function(grunt) {
             },
         },
 
+        versioncheck: {
+            options: {
+                skip: ["semver", "npm", "lodash"],
+                hideUpToDate: false
+            }
+        },
+
+        replace: {
+            update_Meta: {
+                src: ["index.html", "config.js", "humans.txt", "README.md", "app/resources/css/main.css"], // source files array
+                // src: ["README.md"], // source files array
+                overwrite: true, // overwrite matched source files
+                replacements: [{
+                    // html pages
+                    from: /(<meta name="revision-date" content=")[0-9]{2}\/[0-9]{2}\/[0-9]{4}(">)/g,
+                    to: '<meta name="revision-date" content="' + '<%= pkg.date %>' + '">',
+                }, {
+                    // html pages
+                    from: /(<meta name="version" content=")([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))(">)/g,
+                    to: '<meta name="version" content="' + '<%= pkg.version %>' + '">',
+                }, {
+                    // config.js
+                    from: /(v)([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))( \| )[0-9]{2}\/[0-9]{2}\/[0-9]{4}/g,
+                    to: 'v' + '<%= pkg.version %>' + ' | ' + '<%= pkg.date %>',
+                }, {
+                    // humans.txt
+                    from: /(Version\: )([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/g,
+                    to: "Version: " + '<%= pkg.version %>',
+                }, {
+                    // humans.txt
+                    from: /(Last updated\: )[0-9]{2}\/[0-9]{2}\/[0-9]{4}/g,
+                    to: "Last updated: " + '<%= pkg.date %>',
+                }, {
+                    // README.md
+                    from: /(#### version )([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/g,
+                    to: "#### version " + '<%= pkg.version %>',
+                }, {
+                    // README.md
+                    from: /(`Updated: )[0-9]{2}\/[0-9]{2}\/[0-9]{4}/g,
+                    to: "`Updated: " + '<%= pkg.date %>',
+                }, {
+                    // main.css
+                    from: /(main.css)( \| )(version)( \| )([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/g,
+                    to: "main.css | version |" +' <%= pkg.version %>',
+                }]
+            }
+        }
+
     });
 
     // this would be run by typing "grunt test" on the command line
@@ -155,6 +210,10 @@ module.exports = function(grunt) {
 
     grunt.registerTask("buildcss", ["cssmin", "concat"]);
     grunt.registerTask("buildjs", ["uglify", "concat"]);
+    grunt.registerTask("check", ["versioncheck"]);
+    grunt.registerTask("update", ["replace"]);
+
+    grunt.registerTask("build", ["replace", "cssmin", "uglify", "concat"]);
 
     // the default task can be run just by typing "grunt" on the command line
     grunt.registerTask("default", []);

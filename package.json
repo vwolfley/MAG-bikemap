@@ -1,7 +1,7 @@
 {
   "name": "Bikeways-Project",
-  "version": "3.1.2",
-  "date": "06/08/2016",
+  "version": "3.2.0",
+  "date": "01/12/2017",
   "description": "MAG Bikeways Viewer",
   "keywords": ["bikeways", "bikemap", "biking", "bicycles", "cycling", "routes", "transportation", "Maricopa", "Pinal", "County", "Arizona", "MAG", "maps", "ESRI", "#MAGmaps"],
   "main": "index.js",
@@ -28,6 +28,7 @@
     "grunt-contrib-watch":      "*",
     "grunt-htmlhint":           "*",
     "grunt-text-replace":       "*",
+    "grunt-version-check":      "*",
     "matchdep":                 "*",
     "lodash":                   "*",
     "jshint-stylish-ex":        "*",
