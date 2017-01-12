@@ -20,11 +20,17 @@ And constructed with the following guidelines:
 ## Outstanding Items
 
 #### Items to Add
-* Search box
 * Application Cache Manifest - http://www.html5rocks.com/en/tutorials/appcache/beginner/
 * geo tracking
 
 ===========================================================================================================
+
+## Version 3.2.0 | 01/12/2017
+
+* added Phoenix Sonoran Bikeway to map
+* updates to Bikeways data
+* updates to GRIDshare data
+* update to [ArcGIS API for JavaScript 3.19compact] (https://developers.arcgis.com/javascript/index.html)
 
 ## Version 3.1.3 | 06/23/2016
 

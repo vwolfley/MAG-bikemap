@@ -16,7 +16,7 @@ module.exports = function(grunt) {
                 ' * http://ims.azmag.gov/\n' +
                 ' * MAG Bikeways Viewer\n' +
                 ' * ==========================================================================\n' +
-                ' * Copyright 2016 MAG\n' +
+                ' * Copyright 2017 MAG\n' +
                 ' * Licensed under MIT\n' +
                 ' * ========================================================================== */\n',
 
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
                     ' * http://ims.azmag.gov/\n' +
                     ' * MAG Bikeways Viewer\n' +
                     ' * ==========================================================================\n' +
-                    ' * Copyright 2016 MAG\n' +
+                    ' * Copyright 2017 MAG\n' +
                     ' * Licensed under MIT\n' +
                     ' * ========================================================================== */\n',
 
@@ -181,8 +181,8 @@ module.exports = function(grunt) {
                     to: 'v' + '<%= pkg.version %>' + ' | ' + '<%= pkg.date %>',
                 }, {
                     // humans.txt
-                    from: /(Version\: v)([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/g,
-                    to: "Version: v" + '<%= pkg.version %>',
+                    from: /(Version\: )([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/g,
+                    to: "Version: " + '<%= pkg.version %>',
                 }, {
                     // humans.txt
                     from: /(Last updated\: )[0-9]{2}\/[0-9]{2}\/[0-9]{4}/g,
