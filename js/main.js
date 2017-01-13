@@ -165,7 +165,7 @@ require([
 
             //add a feature layer Phoenix Sonoran Bikeway
             //=================================================================================>
-            var content9 = "<strong>${Name}</strong></br>" + "${MPA}</br>" + "${miles:NumberFormat(places:1)} miles";
+            var content9 = "<strong>${Name}</strong></br>" + "${MPA}</br>" + "${Miles:NumberFormat(places:1)} miles";
             var template9 = new InfoTemplate("PSBikeway", content9);
             var psbikeway = new FeatureLayer(appConfig.MainURL + "/2", {
                 id: "PSBikeway",
