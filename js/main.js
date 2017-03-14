@@ -116,7 +116,7 @@ require([
                 }),
                 placeholder: "302 N 1st Ave, Phoenix, Arizona"
             }, {
-                featureLayer: new FeatureLayer(appConfig.MainURL + "/4"),
+                featureLayer: new FeatureLayer(appConfig.MainURL + "/6"),
                 searchFields: ["Name"],
                 displayField: "Name",
                 name: "Bike Shops",
@@ -144,7 +144,7 @@ require([
             //=================================================================================>
             var content8 = "<strong>${Name}</strong></br>" + "${MPA}</br>" + "${COUNTY} County</br>"  + "${MILES:NumberFormat(places:1)} miles";
             var template8 = new InfoTemplate("USBR90", content8);
-            var us90 = new FeatureLayer(appConfig.MainURL + "/1", {
+            var us90 = new FeatureLayer(appConfig.MainURL + "/3", {
                 id: "USBR90",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
@@ -167,7 +167,7 @@ require([
             //=================================================================================>
             var content9 = "<strong>${Name}</strong></br>" + "${MPA}</br>" + "${Miles:NumberFormat(places:1)} miles";
             var template9 = new InfoTemplate("PSBikeway", content9);
-            var psbikeway = new FeatureLayer(appConfig.MainURL + "/2", {
+            var psbikeway = new FeatureLayer(appConfig.MainURL + "/4", {
                 id: "PSBikeway",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
@@ -188,39 +188,79 @@ require([
 
             //add a dynamic layer Bikeways Paths
             //=================================================================================>
-            var bikewaysParms = new ImageParameters();
-            bikewaysParms.layerIds = [0];
-            bikewaysParms.layerOption = ImageParameters.LAYER_OPTION_SHOW;
+            // var bikewaysParms = new ImageParameters();
+            // bikewaysParms.layerIds = [0];
+            // bikewaysParms.layerOption = ImageParameters.LAYER_OPTION_SHOW;
 
-            var content1 = "<strong>${NAME}</strong><br>${CITY}<br><small>MAGID: ${MAGID}</small>";
-            var template1 = new InfoTemplate("${PATHTYPE}", content1);
+            // var content1 = "<strong>${NAME}</strong><br>${CITY}<br><small>MAGID: ${MAGID}</small>";
+            // var template1 = new InfoTemplate("${PATHTYPE}", content1);
 
-            var bikeways = new ArcGISDynamicMapServiceLayer(appConfig.MainURL, {
-                id: "Bike Paths",
+            // var bikeways = new ArcGISDynamicMapServiceLayer(appConfig.MainURL, {
+            //     id: "Bike Paths",
+            //     visible: true,
+            //     opacity: 0.75,
+            //     imageParameters: bikewaysParms,
+            //     outFields: ["NAME", "CITY", "MAGID", "PATHTYPE"],
+            //     infoTemplate: template1
+            // });
+            // bikeways.setInfoTemplates({
+            //     0: {
+            //         infoTemplate: template1
+            //     }
+            // });
+            // map.addLayer(bikeways);
+//=================================================================================>
+
+            //add a feature layer Bikeways Level 0
+            //=================================================================================>
+            var content0 = "<strong>${NAME}</strong><br>${CITY}<br><small>MAGID: ${MAGID}</small>";
+            var template0 = new InfoTemplate("${PATHTYPE}", content0);
+            var bikeways0 = new FeatureLayer(appConfig.MainURL + "/0", {
+                id: "Bike Paths 0",
                 visible: true,
                 opacity: 0.75,
-                imageParameters: bikewaysParms,
+                mode: FeatureLayer.MODE_ONDEMAND,
+                outFields: ["NAME", "CITY", "MAGID", "PATHTYPE"],
+                infoTemplate: template0
+            });
+
+            //add a feature layer Bikeways Level 1
+            //=================================================================================>
+            var content1 = "<strong>${NAME}</strong><br>${CITY}<br><small>MAGID: ${MAGID}</small>";
+            var template1 = new InfoTemplate("${PATHTYPE}", content1);
+            var bikeways1 = new FeatureLayer(appConfig.MainURL + "/1", {
+                id: "Bike Paths 1",
+                visible: true,
+                opacity: 0.75,
+                mode: FeatureLayer.MODE_ONDEMAND,
                 outFields: ["NAME", "CITY", "MAGID", "PATHTYPE"],
                 infoTemplate: template1
             });
-            bikeways.setInfoTemplates({
-                0: {
-                    infoTemplate: template1
-                }
+
+            //add a feature layer Bikeways Level 2
+            //=================================================================================>
+            var content2 = "<strong>${NAME}</strong><br>${CITY}<br><small>MAGID: ${MAGID}</small>";
+            var template2 = new InfoTemplate("${PATHTYPE}", content2);
+            var bikeways2 = new FeatureLayer(appConfig.MainURL + "/2", {
+                id: "Bike Paths 2",
+                visible: true,
+                opacity: 0.75,
+                mode: FeatureLayer.MODE_ONDEMAND,
+                outFields: ["NAME", "CITY", "MAGID", "PATHTYPE"],
+                infoTemplate: template2
             });
-            // map.addLayer(bikeways);
 
             //add a feature layer Bikeways Crossings
             //=================================================================================>
-            var content2 = "<strong>${Discript}</strong><br>${City}<br><small>MAGID: ${MAGID}</small>";
-            var template2 = new InfoTemplate("Bikeways Crossing", content2);
-            var crossings = new FeatureLayer(appConfig.MainURL + "/3", {
+            var content12 = "<strong>${Discript}</strong><br>${City}<br><small>MAGID: ${MAGID}</small>";
+            var template12 = new InfoTemplate("Bikeways Crossing", content12);
+            var crossings = new FeatureLayer(appConfig.MainURL + "/5", {
                 id: "crossings",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
                 opacity: 0.75,
                 outFields: ["Discript", "City", "MAGID"],
-                infoTemplate: template2
+                infoTemplate: template12
             });
             // map.addLayer(crossings);
 
@@ -237,7 +277,7 @@ require([
             //=================================================================================>
             var content5 = "Light Rail Route</br>" + "${Route}</br>" + "${City}";
             var template5 = new InfoTemplate("Light Rail", content5);
-            var lightrail = new FeatureLayer(appConfig.MainURL + "/6", {
+            var lightrail = new FeatureLayer(appConfig.MainURL + "/8", {
                 id: "Light Rail",
                 visible: true,
                 mode: FeatureLayer.MODE_ONDEMAND,
@@ -259,7 +299,7 @@ require([
             //=================================================================================>
             var content4 = "<strong>${Name}</strong><br>${Location}<br>${City}<br><a target='_blank'href=${webLink}>Transit Web Link Info</a>";
             var template4 = new InfoTemplate("${Category}", content4);
-            var transit = new FeatureLayer(appConfig.MainURL + "/5", {
+            var transit = new FeatureLayer(appConfig.MainURL + "/7", {
                 id: "Transit Locations",
                 visible: true,
                 mode: FeatureLayer.MODE_ONDEMAND,
@@ -287,7 +327,7 @@ require([
             var content3 = "<strong>${Name}</strong><br>${Address}<br>${City}<br>${Phone}<br><a target='_blank'href=https://${Website}>${Website}</a></br>" +
             "<a target='blank' href=https://${Facebook}>Facebook</a>";
             var template3 = new InfoTemplate("Bike Shop", content3);
-            var bikeshops = new FeatureLayer(appConfig.MainURL + "/4", {
+            var bikeshops = new FeatureLayer(appConfig.MainURL + "/6", {
                 id: "Bike Shops",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
@@ -309,7 +349,7 @@ require([
             //=================================================================================>
             var content6 = "<strong>${Name}</strong><br><img class='pics' src='img/bikepics/${urlName}.jpg'><br>${Discription}";
             var template6 = new InfoTemplate("Bike Route Pictures", content6);
-            var bikepics = new FeatureLayer(appConfig.MainURL + "/7", {
+            var bikepics = new FeatureLayer(appConfig.MainURL + "/9", {
                 id: "Bikeways Pics",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
@@ -321,7 +361,7 @@ require([
             // add a feature layer for Bike Youtube Videos
             var content8 = "<strong>${Name}</strong><br><iframe class='youTube' src='${Link}' frameborder='0' allowfullscreen></iframe><br>${Discription}";
             var template8 = new InfoTemplate("Bike Route Videos", content8);
-            var bikevideos = new FeatureLayer(appConfig.MainURL + "/8", {
+            var bikevideos = new FeatureLayer(appConfig.MainURL + "/10", {
                 id: "Bikeways Videos",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
@@ -345,7 +385,7 @@ require([
             //=================================================================================>
             var content7 = "<strong>${Station_Name}</strong><br>Location: ${Station_Location}<br>Station Number: ${Station_Number}<br><a href='https://www.gridbikes.com/' target='_blank'>www.gridbikes.com</a>";
             var template7 = new InfoTemplate("GRID Bike Share", content7);
-            var GRID = new FeatureLayer(appConfig.MainURL + "/9", {
+            var GRID = new FeatureLayer(appConfig.MainURL + "/11", {
                 id: "GRID Bike Share",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
@@ -365,7 +405,7 @@ require([
 
             //add a feature layer MAG MPO Boundary
             //=================================================================================>
-            var mpoBoundary = new FeatureLayer(appConfig.MainURL + "/10", {
+            var mpoBoundary = new FeatureLayer(appConfig.MainURL + "/12", {
                 id: "MAG MPO Boundary",
                 visible: true,
                 mode: FeatureLayer.MODE_ONDEMAND,
