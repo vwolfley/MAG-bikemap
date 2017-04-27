@@ -1,5 +1,19 @@
-/*! main.js | MAG Bikeways */
-
+/* ========================================================================
+ * MAG Bikeways
+ * Maricopa Association of Governments
+ * @file main.js
+ * @summary JavaScript document for MAG Bikeways Viewer
+ * @version 3.2.1 | 04/27/2017
+ * http://ims.azmag.gov/
+ * ========================================================================
+ * @copyright 2017 MAG
+ * @license MIT
+ * ========================================================================
+ */
+/*! ==========================================================
+ * @file main.js | @version 3.2.1 | 04/27/2017 | MAG Bikeways
+ * ===========================================================
+ */
 require([
         "dojo/dom",
         "dojo/dom-construct",

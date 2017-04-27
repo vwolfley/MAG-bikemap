@@ -25,6 +25,12 @@ And constructed with the following guidelines:
 
 ===========================================================================================================
 
+## Version 3.2.1 | 04/27/2017
+
+* update bikeways to use three different levels
+* main URL from [http://geo.azmag.gov/gismag/rest/services/maps/BikeMap_v2/MapServer]
+* main URL to [http://geo.azmag.gov/gismag/rest/services/maps/BikeMap/MapServer]
+
 ## Version 3.2.0 | 01/12/2017
 
 * added Phoenix Sonoran Bikeway to map
