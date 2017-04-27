@@ -188,66 +188,31 @@ require([
 
             //add a dynamic layer Bikeways Paths
             //=================================================================================>
-            // var bikewaysParms = new ImageParameters();
-            // bikewaysParms.layerIds = [0];
-            // bikewaysParms.layerOption = ImageParameters.LAYER_OPTION_SHOW;
+            var bikewaysParms = new ImageParameters();
+            bikewaysParms.layerIds = [0, 1, 2];
+            bikewaysParms.layerOption = ImageParameters.LAYER_OPTION_SHOW;
 
-            // var content1 = "<strong>${NAME}</strong><br>${CITY}<br><small>MAGID: ${MAGID}</small>";
-            // var template1 = new InfoTemplate("${PATHTYPE}", content1);
-
-            // var bikeways = new ArcGISDynamicMapServiceLayer(appConfig.MainURL, {
-            //     id: "Bike Paths",
-            //     visible: true,
-            //     opacity: 0.75,
-            //     imageParameters: bikewaysParms,
-            //     outFields: ["NAME", "CITY", "MAGID", "PATHTYPE"],
-            //     infoTemplate: template1
-            // });
-            // bikeways.setInfoTemplates({
-            //     0: {
-            //         infoTemplate: template1
-            //     }
-            // });
-            // map.addLayer(bikeways);
-//=================================================================================>
-
-            //add a feature layer Bikeways Level 0
-            //=================================================================================>
-            var content0 = "<strong>${NAME}</strong><br>${CITY}<br><small>MAGID: ${MAGID}</small>";
-            var template0 = new InfoTemplate("${PATHTYPE}", content0);
-            var bikeways0 = new FeatureLayer(appConfig.MainURL + "/0", {
-                id: "Bike Paths 0",
-                visible: true,
-                opacity: 0.75,
-                mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["NAME", "CITY", "MAGID", "PATHTYPE"],
-                infoTemplate: template0
-            });
-
-            //add a feature layer Bikeways Level 1
-            //=================================================================================>
             var content1 = "<strong>${NAME}</strong><br>${CITY}<br><small>MAGID: ${MAGID}</small>";
             var template1 = new InfoTemplate("${PATHTYPE}", content1);
-            var bikeways1 = new FeatureLayer(appConfig.MainURL + "/1", {
-                id: "Bike Paths 1",
+
+            var bikeways = new ArcGISDynamicMapServiceLayer(appConfig.MainURL, {
+                id: "Bike Paths",
                 visible: true,
                 opacity: 0.75,
-                mode: FeatureLayer.MODE_ONDEMAND,
+                imageParameters: bikewaysParms,
                 outFields: ["NAME", "CITY", "MAGID", "PATHTYPE"],
                 infoTemplate: template1
             });
-
-            //add a feature layer Bikeways Level 2
-            //=================================================================================>
-            var content2 = "<strong>${NAME}</strong><br>${CITY}<br><small>MAGID: ${MAGID}</small>";
-            var template2 = new InfoTemplate("${PATHTYPE}", content2);
-            var bikeways2 = new FeatureLayer(appConfig.MainURL + "/2", {
-                id: "Bike Paths 2",
-                visible: true,
-                opacity: 0.75,
-                mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["NAME", "CITY", "MAGID", "PATHTYPE"],
-                infoTemplate: template2
+            bikeways.setInfoTemplates({
+                0: {
+                    infoTemplate: template1
+                },
+                1: {
+                    infoTemplate: template1
+                },
+                2: {
+                    infoTemplate: template1
+                }
             });
 
             //add a feature layer Bikeways Crossings
@@ -413,6 +378,7 @@ require([
             // map.addLayer(mpoBoundary);
 
             map.addLayers([psbikeway, us90, bikeways, crossings, lightrail, transit, bikeshops, bikepics, bikevideos, GRID, mpoBoundary]);
+            // map.addLayers([psbikeway, us90, bikeways0, bikeways1, bikeways2, crossings, lightrail, transit, bikeshops, bikepics, bikevideos, GRID, mpoBoundary]);
 
             // Map Layers
             //=================================================================================>
@@ -492,6 +458,14 @@ require([
                 layer: bikeways,
                 title: "Bikeways Types"
             });
+            // legendLayers.push({
+            //     layer: bikeways1,
+            //     title: "Bikeways Types"
+            // });
+            // legendLayers.push({
+            //     layer: bikeways2,
+            //     title: "Bikeways Types"
+            // });
             // console.log(legendLayers);
 
             // create legend dijit
@@ -571,8 +545,6 @@ $(document).ready(function() {
     $("#Legend").load("views/legendPage.html");
     $("#Legal").load("views/legalPage.html");
     $("#Help").load("views/helpPage.html");
-
-
 
     // $("#Layers").load("views/layersPage.html");
 });
