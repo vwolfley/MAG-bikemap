@@ -1,18 +1,19 @@
 /* ========================================================================
+ * MAG Bikeways
  * Maricopa Association of Governments
- * CSS document for MAG Bikeways Viewer
- * @main.css | http://ims.azmag.gov/
- * MAG State Demographics Map Viewer
+ * @file main.css
+ * @summary CSS document for MAG Bikeways Viewer
+ * @version 3.2.1 | 04/27/2017
+ * http://ims.azmag.gov/
  * ========================================================================
- * Copyright 2016 MAG
- * Licensed under MIT
- * ======================================================================== */
-
-/*! ==========================================
- *  @main.css | version | 3.2.0 | MIT License
- *  ==========================================
+ * @copyright 2017 MAG
+ * @license MIT
+ * ========================================================================
  */
-
+/*! ===========================================================
+ *  @file main.css | @version 3.2.1 | 04/27/2017 | MAG Bikeways
+ *  ===========================================================
+ */
 
 /*
  * HTML5 Boilerplate | version | v4.3.0 | MIT License | https://h5bp.com/
