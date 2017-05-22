@@ -213,3 +213,10 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+##################
+## Custom Ignores
+##################
+
+# http://www.patrickcatanzariti.com/2014/11/how-to-remove-node_modules-from-your-git-repo/
+node_modules/
