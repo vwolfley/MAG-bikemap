@@ -15,12 +15,9 @@
     "email": "jfairfield@azmag.gov"
   }],
   "private": true,
-<<<<<<< HEAD
   "dependencies": {
   },
-=======
   "dependencies": {},
->>>>>>> release/v3.3.0
   "devDependencies": {
     "grunt": "1.0.1",
     "grunt-contrib-concat": "1.0.1",
