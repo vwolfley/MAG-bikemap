@@ -224,4 +224,8 @@ node_modules
 bower_components
 
  # workspace files are user-specific don't track
+<<<<<<< HEAD
  *.sublime-workspace
+=======
+ *.sublime-workspace
+>>>>>>> 4a27ea5bd7ab6fcddeedd2e9d72e1f7d14d2c682

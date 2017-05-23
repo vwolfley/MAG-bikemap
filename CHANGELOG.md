@@ -1,20 +1,61 @@
-CHANGELOG for Bikeways Website
-================================
+# CHANGELOG #
+###  MAG Bikeways Website ###
 
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
 
-`Major/Minor/Patch 0.0.0`
+All notable changes to this project will be documented in this file.
 
-### Items to Add
-* Search box
+Releases will be numbered with the following format:
+
+**`<major>.<minor>.<patch>`**
+
+And constructed with the following guidelines:
+
+1. **MAJOR** version when you make incompatible API changes **bumps the major** resets minor and patch
+2. **MINOR** version when you add functionality in a backwards-compatible manner **bumps the minor** resets patch
+3. **PATCH** version when you make backwards-compatible bug fixes and misc changes **bumps only the patch**
+
+=========================================================================================================
+
+## Outstanding Items
+
+#### Items to Add
 * Application Cache Manifest - http://www.html5rocks.com/en/tutorials/appcache/beginner/
 * geo tracking
 
-### Version 3.1.1 (03/18/2016)
+===========================================================================================================
 
+## Version 3.2.1 | 04/27/2017
+
+* update bikeways to use three different levels
+* main URL from [http://geo.azmag.gov/gismag/rest/services/maps/BikeMap_v2/MapServer]
+* main URL to [http://geo.azmag.gov/gismag/rest/services/maps/BikeMap/MapServer]
+
+## Version 3.2.0 | 01/12/2017
+
+* added Phoenix Sonoran Bikeway to map
+* updates to Bikeways data
+* updates to GRIDshare data
+* update to [ArcGIS API for JavaScript 3.19compact] (https://developers.arcgis.com/javascript/index.html)
+
+## Version 3.1.3 | 06/23/2016
+
+* added a help page
+* added a search function
+* changed menu icon from Gear to Info
+* added USBR90 to map
+* Updated Light Rail Line
+* Updated Transit Locations
+* updated Bike Shop info
+
+## Version 3.1.2 | 06/08/2016
+
+* add Google site verification doc
+* updated Google Analytics
+* Updated to force https to enable location
 * Updated pdf link to 2015 bike map
 
-### Version 3.1.0 (03/27/2015)
+## Version 3.1.0 | 03/27/2015
 
 * production release
 * minified CSS and JS files
