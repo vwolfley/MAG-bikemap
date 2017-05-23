@@ -25,6 +25,15 @@ And constructed with the following guidelines:
 
 ===========================================================================================================
 
+## Version 3.3.0 | 05/23/2017
+
+* made changes to file structure only!
+* untracked node_modules
+* updated .gitignore file
+* added src folder
+* moved files to src folder
+* added build folder
+
 ## Version 3.2.1 | 04/27/2017
 
 * update bikeways to use three different levels

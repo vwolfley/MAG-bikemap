@@ -1,7 +1,7 @@
 {
   "name": "MAG-Bikeways",
-  "version": "3.2.1",
-  "date": "04/27/2017",
+  "version": "3.3.0",
+  "date": "05/23/2017",
   "description": "MAG Bikeways Viewer",
   "keywords": ["bikeways", "bikemap", "biking", "bicycles", "cycling", "routes", "transportation", "Maricopa", "Pinal", "County", "Arizona", "MAG", "maps", "ESRI", "#MAGmaps"],
   "main": "index.js",
@@ -15,8 +15,12 @@
     "email": "jfairfield@azmag.gov"
   }],
   "private": true,
+<<<<<<< HEAD
   "dependencies": {
   },
+=======
+  "dependencies": {},
+>>>>>>> release/v3.3.0
   "devDependencies": {
     "grunt": "1.0.1",
     "grunt-contrib-concat": "1.0.1",
