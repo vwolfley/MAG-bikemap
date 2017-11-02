@@ -25,7 +25,7 @@ module.exports = function(grunt) {
             " * Maricopa Association of Governments\n" +
             " * @file concat.min.css\n" +
             " * @summary CSS minified and concatenated document for MAG Bikeways Viewer\n" +
-            " * @version 3.2.0\n" +
+            " * @version 3.2.1\n" +
             " * Production | <%= pkg.date %>\n" +
             " * http://ims.azmag.gov/\n" +
             " * ==========================================================================\n" +
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
             " * Maricopa Association of Governments\n" +
             " * @file main_concat.min.js\n" +
             " * @summary JavaScript minified and concatenated document for MAG Bikeways Viewer\n" +
-            " * @version 3.2.0\n" +
+            " * @version 3.2.1\n" +
             " * Production | <%= pkg.date %>\n" +
             " * http://ims.azmag.gov/\n" +
             " * ==========================================================================\n" +
