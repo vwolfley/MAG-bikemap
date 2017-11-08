@@ -170,9 +170,11 @@ module.exports = function(grunt) {
         },
 
         versioncheck: {
-            options: {
-                skip: ["semver", "npm", "lodash"],
-                hideUpToDate: false
+            target: {
+                options: {
+                    skip: ["semver", "npm", "lodash"],
+                    hideUpToDate: false
+                }
             }
         },
 
