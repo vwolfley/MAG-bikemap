@@ -131,10 +131,10 @@ require([
                 placeholder: "302 N 1st Ave, Phoenix, Arizona"
             }, {
                 featureLayer: new FeatureLayer(appConfig.MainURL + "/6"),
-                searchFields: ["Name"],
-                displayField: "Name",
+                searchFields: ["NAME"],
+                displayField: "NAME",
                 name: "Bike Shops",
-                outFields: ["Name", "Address", "City", "Phone", "Website", "Facebook"],
+                outFields: ["NAME", "ADDRESS", "CITY", "PHONE", "WEBSITE", "FACEBOOK"],
                 highlightSymbol: new PictureMarkerSymbol("https://js.arcgis.com/3.17/esri/dijit/Search/images/search-pointer.png", 36, 36).setOffset(9, 18),
                 enableLabel: false,
                 enableInfoWindow: true,
@@ -303,14 +303,14 @@ require([
 
             //add a feature layer Bike Shops
             //=================================================================================>
-            var content3 = "<strong>${Name}</strong><br>${Address}<br>${City}<br>${Phone}<br><a target='_blank'href=https://${Website}>${Website}</a></br>" +
-            "<a target='blank' href=https://${Facebook}>Facebook</a>";
+            var content3 = "<strong>${NAME}</strong><br>${ADDRESS}<br>${CITY}<br>${PHONE}<br><a target='_blank'href=https://${Website}>${WEBSITE}</a></br>" +
+            "<a target='blank' href=https://${FACEBOOK}>Facebook</a>";
             var template3 = new InfoTemplate("Bike Shop", content3);
             var bikeshops = new FeatureLayer(appConfig.MainURL + "/6", {
                 id: "Bike Shops",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["Name", "Address", "City", "Phone", "Website", "Facebook"],
+                outFields: ["NAME", "ADDRESS", "CITY", "PHONE", "WEBSITE", "FACEBOOK"],
                 infoTemplate: template3
             });
             // map.addLayer(bikeshops);

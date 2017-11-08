@@ -25,6 +25,11 @@ And constructed with the following guidelines:
 
 ===========================================================================================================
 
+## Version 3.3.1 | 11/02/2017
+
+* Fixed bikemap popup bug
+* Fixed PDF link
+
 ## Version 3.3.0 | 05/23/2017
 
 * made changes to file structure only!
