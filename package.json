@@ -1,37 +1,67 @@
 {
   "name": "MAG-Bikeways",
-  "version": "3.3.0",
-  "date": "05/23/2017",
+  "version": "3.3.1",
+  "date": "11/21/2017",
   "description": "MAG Bikeways Viewer",
-  "keywords": ["bikeways", "bikemap", "biking", "bicycles", "cycling", "routes", "transportation", "Maricopa", "Pinal", "County", "Arizona", "MAG", "maps", "ESRI", "#MAGmaps"],
+  "keywords": [
+    "bikeways",
+    "bikemap",
+    "biking",
+    "bicycles",
+    "cycling",
+    "routes",
+    "transportation",
+    "Maricopa",
+    "Pinal",
+    "County",
+    "Arizona",
+    "MAG",
+    "maps",
+    "ESRI",
+    "#MAGmaps"
+  ],
   "main": "index.js",
+  "repository": [
+    {
+      "type": "git",
+      "url": "https://github.com/AZMAG/map-Bikeways"
+    },
+    {
+      "type": "git",
+      "url": "I:/Projects/Git_repos/bikemap-app.git"
+    }
+  ],
   "homepage": "http://geo.azmag.gov/maps/bikemap/",
-  "author": "Vern Wolfley <vwolfley@azmag.gov>",
-  "contributors": [{
-    "name": "Vern Wolfley",
-    "email": "vwolfley@azmag.gov"
-  }, {
-    "name": "Jack Fairfield",
-    "email": "jfairfield@azmag.gov"
-  }],
+  "author": "MAG Information Services (http://www.azmag.gov/About-Us/Divisions/Information-Services-Division)",
+  "contributors": [
+    {
+      "name": "Vern Wolfley",
+      "email": "vwolfley@azmag.gov"
+    },
+    {
+      "name": "Jack Fairfield",
+      "email": "jfairfield@azmag.gov"
+    }
+  ],
   "private": true,
   "dependencies": {
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "1.0.1",
-    "grunt-contrib-concat": "1.0.1",
-    "grunt-contrib-csslint": "2.0.0",
-    "grunt-contrib-cssmin": "2.2.0",
-    "grunt-contrib-jshint": "1.1.0",
-    "grunt-contrib-uglify": "3.0.0",
-    "grunt-contrib-watch": "1.0.0",
-    "grunt-text-replace": "0.4.0",
-    "grunt-version-check": "0.3.7",
-    "jshint-stylish-ex": "0.2.0",
-    "lodash": "4.17.4",
-    "matchdep": "1.0.1",
-    "normalize.css": ">=7.0.0"
+    "grunt": "^1.0.1",
+    "grunt-comment-toggler": "^0.2.2",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^3.1.0",
+    "grunt-text-replace": "^0.4.0",
+    "jshint-stylish": "^2.2.1",
+    "jshint-stylish-ex": "^0.2.0",
+    "lodash": "^4.17.4",
+    "matchdep": "^2.0.0",
+    "normalize.css": "^7.0.0"
   },
   "license": "MIT"
 }

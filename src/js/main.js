@@ -3,7 +3,7 @@
  * Maricopa Association of Governments
  * @file main.js
  * @summary JavaScript document for MAG Bikeways Viewer
- * @version 3.2.1 | 04/27/2017
+ * @version 3.3.1 | 11/21/2017
  * http://ims.azmag.gov/
  * ========================================================================
  * @copyright 2017 MAG
@@ -11,7 +11,7 @@
  * ========================================================================
  */
 /*! ==========================================================
- * @file main.js | @version 3.2.1 | 04/27/2017 | MAG Bikeways
+ * @file main.js | @version 3.3.1 | 11/21/2017 | MAG Bikeways
  * ===========================================================
  */
 require([
@@ -254,13 +254,13 @@ require([
 
             //add a feature layer Light Rail
             //=================================================================================>
-            var content5 = "Light Rail Route</br>" + "${Route}</br>" + "${City}";
+            var content5 = "Light Rail Route</br>" + "${NAME}</br>" + "${CITY}";
             var template5 = new InfoTemplate("Light Rail", content5);
             var lightrail = new FeatureLayer(appConfig.MainURL + "/8", {
                 id: "Light Rail",
                 visible: true,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["Route", "City"],
+                outFields: ["NAME", "CITY"],
                 infoTemplate: template5
             });
             // map.addLayer(lightrail);
@@ -303,8 +303,8 @@ require([
 
             //add a feature layer Bike Shops
             //=================================================================================>
-            var content3 = "<strong>${NAME}</strong><br>${ADDRESS}<br>${CITY}<br>${PHONE}<br><a target='_blank'href=https://${Website}>${WEBSITE}</a></br>" +
-            "<a target='blank' href=https://${FACEBOOK}>Facebook</a>";
+
+            var content3 = "<strong>${NAME}</strong><br>${ADDRESS}<br>${CITY}<br>${PHONE}<br><a target='_blank'href=https://${WEBSITE}>${WEBSITE}</a></br>" + "<a target='blank' href=https://${FACEBOOK}>Facebook</a>";
             var template3 = new InfoTemplate("Bike Shop", content3);
             var bikeshops = new FeatureLayer(appConfig.MainURL + "/6", {
                 id: "Bike Shops",
@@ -326,25 +326,25 @@ require([
 
             //add a feature layer Bike Route Pictures
             //=================================================================================>
-            var content6 = "<strong>${Name}</strong><br><img class='pics' src='img/bikepics/${urlName}.jpg'><br>${Discription}";
+            var content6 = "<strong>${NAME}</strong><br><img class='pics' src='img/bikepics/${URL_NAME}.jpg'><br>${DESCRIPTION}";
             var template6 = new InfoTemplate("Bike Route Pictures", content6);
             var bikepics = new FeatureLayer(appConfig.MainURL + "/9", {
                 id: "Bikeways Pics",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["Name", "urlName"],
+                outFields: ["NAME", "URL_NAME"],
                 infoTemplate: template6
             });
             // map.addLayer(bikepics);
 
             // add a feature layer for Bike Youtube Videos
-            var content8 = "<strong>${Name}</strong><br><iframe class='youTube' src='${Link}' frameborder='0' allowfullscreen></iframe><br>${Discription}";
+            var content8 = "<strong>${NAME}</strong><br><iframe class='youTube' src='${LINK}' frameborder='0' allowfullscreen></iframe><br>${DESCRIPTION}";
             var template8 = new InfoTemplate("Bike Route Videos", content8);
             var bikevideos = new FeatureLayer(appConfig.MainURL + "/10", {
                 id: "Bikeways Videos",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["Name", "Discription", "Link"],
+                outFields: ["NAME", "DESCRIPTION", "LINK"],
                 infoTemplate: template8
             });
             // map.addLayer(bikevideos);
@@ -491,6 +491,7 @@ require([
 
             // add version control number to help
             dom.byId("version").innerHTML = appConfig.Version;
+            dom.byId("copyright").innerHTML = appConfig.copyright;
 
             // used to refresh map on page changes
             map.reposition();
@@ -543,7 +544,7 @@ require([
         }
 
         // on main help page
-        $("#version").html(appConfig.Version);
+        // $("#version").html(appConfig.Version);
         // $("#legal").load
 
     }); // end of main function

@@ -25,10 +25,12 @@ And constructed with the following guidelines:
 
 ===========================================================================================================
 
-## Version 3.3.1 | 11/02/2017
+## Version 3.3.1 | 11/21/2017
 
+* updates to popup info - schema changes were made!
 * Fixed bikemap popup bug
 * Fixed PDF link
+* fixed copyright issue
 
 ## Version 3.3.0 | 05/23/2017
 

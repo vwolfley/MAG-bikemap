@@ -20,77 +20,36 @@ module.exports = function(grunt) {
 
         pkg: grunt.file.readJSON("package.json"),
 
-        bannercss: "/*! ========================================================================\n" +
+            bannercss: "/*! =============================================================\n" +
             " * MAG Bikeways\n" +
             " * Maricopa Association of Governments\n" +
-            " * @file concat.min.css\n" +
-            " * @summary CSS minified and concatenated document for MAG Bikeways Viewer\n" +
-            " * @version 3.2.1\n" +
-            " * Production | <%= pkg.date %>\n" +
-            " * http://ims.azmag.gov/\n" +
-            " * ==========================================================================\n" +
-            " * @copyright 2017 MAG\n" +
-            " * @licensed MIT\n" +
-            " * ========================================================================== */\n",
+            " * Style document for MAG Bikeways\n" +
+            " * =============================================================\n" +
+            " * @project    MAG Bikeways\n" +
+            " * @file       concat.min.css\n" +
+            " * @version    <%= pkg.version %>\n" +
+            " * @date       <%= pkg.date %>\n" +
+            " * @copyright  <%= pkg.copyright %> MAG\n" +
+            " * @license    MIT\n" +
+            " * ===============================================================\n" +
+            " */",
 
-        bannerjs: "/*! ========================================================================\n" +
+            bannerjs: "/*! =============================================================\n" +
             " * MAG Bikeways\n" +
             " * Maricopa Association of Governments\n" +
-            " * @file main_concat.min.js\n" +
-            " * @summary JavaScript minified and concatenated document for MAG Bikeways Viewer\n" +
-            " * @version 3.2.1\n" +
-            " * Production | <%= pkg.date %>\n" +
-            " * http://ims.azmag.gov/\n" +
-            " * ==========================================================================\n" +
-            " * @copyright 2017 MAG\n" +
-            " * @licensed MIT\n" +
-            " * ========================================================================== */\n",
-
-        htmlhint: {
-            build: {
-                options: {
-                    "tag-pair": true, // Force tags to have a closing pair
-                    "tagname-lowercase": true, // Force tags to be lowercase
-                    "tag-self-close": true, // The empty tag must closed by self
-                    "attr-lowercase": true, // Force attribute names to be lowercase e.g. <div id="header"> is invalid
-                    "attr-value-double-quotes": true, // Force attributes to have double quotes rather than single
-                    "attr-value-not-empty": true, // Attribute must set value
-                    "doctype-first": true, // Force the DOCTYPE declaration to come first in the document
-                    "spec-char-escape": true, // Force special characters to be escaped
-                    "id-unique": true, // Prevent using the same ID multiple times in a document
-                    // "head-script-disabled": false,    // Prevent script tags being loaded in the head for performance reasons
-                    "style-disabled": true, // Prevent style tags. CSS should be loaded through
-                    "src-not-empty": true, // src of img(script,link) must set value
-                    "img-alt-require": true, // Alt of img tag must be set value
-                    "csslint": true, // Scan css with csslint
-                    "jshint": true, // Scan script with jshint
-                    "force": false // Report HTMLHint errors but don't fail the task
-                },
-                src: ["index.html"]
-            }
-        },
-
-        // CSSLint. Tests CSS code quality
-        // https://github.com/gruntjs/grunt-contrib-csslint
-        csslint: {
-            // define the files to lint
-            files: ["css/main.css"],
-            strict: {
-                options: {
-                    "import": 0,
-                    "empty-rules": 0,
-                    "display-property-grouping": 0,
-                    "shorthand": 0,
-                    "font-sizes": 0,
-                    "zero-units": 0,
-                    "important": 0,
-                    "duplicate-properties": 0,
-                }
-            }
-        },
+            " * JavaScript document for MAG Bikeways\n" +
+            " * =============================================================\n" +
+            " * @project    MAG Bikeways\n" +
+            " * @file       main-concat.min.js\n" +
+            " * @version    <%= pkg.version %>\n" +
+            " * @date       <%= pkg.date %>\n" +
+            " * @copyright  <%= pkg.copyright %> MAG\n" +
+            " * @license    MIT\n" +
+            " * ===============================================================\n" +
+            " */",
 
         jshint: {
-            files: ["js/config.js", "js/main.js", "js/plugins.js"],
+            files: ["Gruntfile.js", "src/js/config.js", "src/js/main.js", "src/js/plugins.js"],
             options: {
                 // strict: true,
                 sub: true,
@@ -103,7 +62,7 @@ module.exports = function(grunt) {
                 dojo: true, // This option defines globals exposed by the jQuery JavaScript library.
                 jquery: true, // Set force to true to report JSHint errors but not fail the task.
                 force: true,
-                reporter: require("jshint-stylish-ex")
+                reporter: require("jshint-stylish")
             }
         },
 
@@ -117,10 +76,29 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    "js/main.min.js": ["js/main.js"],
-                    "js/config.min.js": ["js/config.js"],
-                    "js/plugins.min.js": ["js/plugins.js"]
+                    "dist/js/main.min.js": ["dist/js/main.js"],
+                    "dist/js/config.min.js": ["dist/js/config.js"],
+                    "dist/js/plugins.min.js": ["dist/js/plugins.js"]
                 }
+            }
+        },
+
+        cssmin: {
+            options: {
+                specialComments: "all",
+                processImport: false,
+                roundingPrecision: -1,
+                mergeIntoShorthands: false,
+                advanced: false,
+            },
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: "dist/css",
+                    src: ["normalize.css", "main.css"],
+                    dest: "dist/css",
+                    ext: ".min.css"
+                }]
             }
         },
 
@@ -130,8 +108,8 @@ module.exports = function(grunt) {
                     stripBanners: true,
                     banner: "<%= bannercss %>"
                 },
-                src: ["css/normalize.min.css", "css/main.min.css"],
-                dest: "css/concat.min.css",
+                src: ["dist/css/normalize.min.css", "dist/css/main.min.css"],
+                dest: "dist/css/concat.min.css",
                 nonull: true,
             },
             js: {
@@ -139,47 +117,48 @@ module.exports = function(grunt) {
                     stripBanners: true,
                     banner: "<%= bannerjs %>"
                 },
-                src: ["js/plugins.min.js", "js/config.min.js", "js/main.min.js"],
-                dest: "js/main_concat.min.js",
+                src: ["dist/js/plugins.min.js", "dist/js/config.min.js", "dist/js/main.min.js"],
+                dest: "dist/js/main-concat.min.js",
                 nonull: true,
             }
         },
 
-        cssmin: {
-            add_banner: {
-                options: {
-                    // add banner to top of output file
-                    // banner: "/* <%= pkg.name %> - v<%= pkg.version %> | <%= pkg.date %> */\n"
-                },
-                files: {
-                    "css/main.min.css": ["css/main.css"],
-                    "css/normalize.min.css": ["css/normalize.css"],
-                }
-            }
-        },
-
-        watch: {
-            scripts: {
-                files: ["js/main.js", "js/config.js"],
-                tasks: ["jshint"],
-                options: {
-                    spawn: false,
-                    interrupt: true,
-                },
+        clean: {
+            build: {
+                src: ["dist/"]
+            },
+            cleancss: {
+                src: ["dist/css/*.css", "!dist/css/concat.min.css"]
+            },
+            cleanjs: {
+                src: ["dist/js/*.js", "!dist/js/main-concat.min.js"]
             },
         },
 
-        versioncheck: {
-            options: {
-                skip: ["semver", "npm", "lodash"],
-                hideUpToDate: false
+        copy: {
+            build: {
+                cwd: "src/",
+                src: ["**"],
+                dest: "dist/",
+                expand: true,
+                dot: true
+            }
+        },
+
+        toggleComments: {
+            customOptions: {
+                options: {
+                    removeCommands: false
+                },
+                files: {
+                    "dist/index.html": "src/index.html"
+                }
             }
         },
 
         replace: {
             update_Meta: {
-                src: ["index.html", "humans.txt", "README.md", "css/main.css", "js/config.js", "js/main.js", "js/plugins.js"], // source files array
-                // src: ["README.md"], // source files array
+                src: ["src/index.html", "src/humans.txt", "README.md", "src/css/main.css", "src/js/config.js", "src/js/main.js", "src/js/plugins.js"],
                 overwrite: true, // overwrite matched source files
                 replacements: [{
                     // html pages
@@ -224,10 +203,9 @@ module.exports = function(grunt) {
 
     grunt.registerTask("buildcss", ["cssmin", "concat"]);
     grunt.registerTask("buildjs", ["uglify", "concat"]);
-    grunt.registerTask("check", ["versioncheck"]);
     grunt.registerTask("update", ["replace"]);
 
-    grunt.registerTask("build", ["replace", "cssmin", "uglify", "concat"]);
+    grunt.registerTask("build", ["clean:build", "replace", "copy", "cssmin", "uglify", "concat", "clean:cleancss", "clean:cleanjs", "toggleComments"]);
 
     // the default task can be run just by typing "grunt" on the command line
     grunt.registerTask("default", []);

@@ -3,7 +3,7 @@
  * Maricopa Association of Governments
  * @file plugins.js
  * @summary JavaScript document for MAG Bikeways Viewer
- * @version 3.2.1 | 04/27/2017
+ * @version 3.3.1 | 11/21/2017
  * http://ims.azmag.gov/
  * ========================================================================
  * @copyright 2017 MAG
@@ -11,7 +11,7 @@
  * ========================================================================
  */
 /*! =============================================================
- * @file plugins.js | @version 3.2.1 | 04/27/2017 | MAG Bikeways
+ * @file plugins.js | @version 3.3.1 | 11/21/2017 | MAG Bikeways
  * ==============================================================
  */
 // Avoid `console` errors in browsers that lack a console.
