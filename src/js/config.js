@@ -3,7 +3,7 @@
  * Maricopa Association of Governments
  * @file config.js
  * @summary JavaScript config file for MAG Bikeways Viewer
- * @version 3.2.1 | 04/27/2017
+ * @version 3.3.1 | 11/21/2017
  * http://ims.azmag.gov/
  * ========================================================================
  * @copyright 2017 MAG
@@ -11,12 +11,13 @@
  * ========================================================================
  */
 /*! ============================================================
- * @file config.js | @version 3.2.1 | 04/27/2017 | MAG Bikeways
+ * @file config.js | @version 3.3.1 | 11/21/2017 | MAG Bikeways
  * =============================================================
  */
 var appConfig = new function() {
 
-    this.Version = "v3.2.1 | 04/27/2017";
+    this.Version = "v3.3.1 | 11/21/2017";
+    this.copyright = "2017";
 
     // layers
     this.MainURL = "https://geo.azmag.gov/gismag/rest/services/maps/BikeMap/MapServer";
@@ -25,7 +26,8 @@ var appConfig = new function() {
     // http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer
 
     // email link
-    this.emailLink = "https://www.azmag.gov/EmailPages/JasonHoward.asp";
+    // this.emailLink = "https://www.azmag.gov/EmailPages/JasonHoward.asp";
+    this.emailLink = "http://www.azmag.gov/Contact/4788?s=geo.azmag.gov/maps/bikemap&n=Jason%20Howard&popUp=true";
 
     this.initExtent = {
         "xmin": -12621311,

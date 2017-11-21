@@ -76,9 +76,9 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    "dist/js/main.min.js": ["src/js/main.js"],
-                    "dist/js/config.min.js": ["src/js/config.js"],
-                    "dist/js/plugins.min.js": ["src/js/plugins.js"]
+                    "dist/js/main.min.js": ["dist/js/main.js"],
+                    "dist/js/config.min.js": ["dist/js/config.js"],
+                    "dist/js/plugins.min.js": ["dist/js/plugins.js"]
                 }
             }
         },
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
             target: {
                 files: [{
                     expand: true,
-                    cwd: "src/css",
+                    cwd: "dist/css",
                     src: ["normalize.css", "main.css"],
                     dest: "dist/css",
                     ext: ".min.css"
@@ -158,8 +158,7 @@ module.exports = function(grunt) {
 
         replace: {
             update_Meta: {
-                src: ["index.html", "humans.txt", "README.md", "css/main.css", "js/config.js", "js/main.js", "js/plugins.js"], // source files array
-                // src: ["README.md"], // source files array
+                src: ["src/index.html", "src/humans.txt", "README.md", "src/css/main.css", "src/js/config.js", "src/js/main.js", "src/js/plugins.js"],
                 overwrite: true, // overwrite matched source files
                 replacements: [{
                     // html pages
