@@ -3,7 +3,7 @@
  * Maricopa Association of Governments
  * @file main.js
  * @summary JavaScript document for MAG Bikeways Viewer
- * @version 3.2.1 | 04/27/2017
+ * @version 3.3.1 | 11/21/2017
  * http://ims.azmag.gov/
  * ========================================================================
  * @copyright 2017 MAG
@@ -11,7 +11,7 @@
  * ========================================================================
  */
 /*! ==========================================================
- * @file main.js | @version 3.2.1 | 04/27/2017 | MAG Bikeways
+ * @file main.js | @version 3.3.1 | 11/21/2017 | MAG Bikeways
  * ===========================================================
  */
 require([
@@ -254,13 +254,13 @@ require([
 
             //add a feature layer Light Rail
             //=================================================================================>
-            var content5 = "Light Rail Route</br>" + "${Route}</br>" + "${City}";
+            var content5 = "Light Rail Route</br>" + "${NAME}</br>" + "${CITY}";
             var template5 = new InfoTemplate("Light Rail", content5);
             var lightrail = new FeatureLayer(appConfig.MainURL + "/8", {
                 id: "Light Rail",
                 visible: true,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["Route", "City"],
+                outFields: ["NAME", "CITY"],
                 infoTemplate: template5
             });
             // map.addLayer(lightrail);
@@ -491,6 +491,7 @@ require([
 
             // add version control number to help
             dom.byId("version").innerHTML = appConfig.Version;
+            dom.byId("copyright").innerHTML = appConfig.copyright;
 
             // used to refresh map on page changes
             map.reposition();
@@ -543,7 +544,7 @@ require([
         }
 
         // on main help page
-        $("#version").html(appConfig.Version);
+        // $("#version").html(appConfig.Version);
         // $("#legal").load
 
     }); // end of main function
