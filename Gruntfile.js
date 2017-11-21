@@ -76,9 +76,9 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    "dist/js/main.min.js": ["src/js/main.js"],
-                    "dist/js/config.min.js": ["src/js/config.js"],
-                    "dist/js/plugins.min.js": ["src/js/plugins.js"]
+                    "dist/js/main.min.js": ["dist/js/main.js"],
+                    "dist/js/config.min.js": ["dist/js/config.js"],
+                    "dist/js/plugins.min.js": ["dist/js/plugins.js"]
                 }
             }
         },
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
             target: {
                 files: [{
                     expand: true,
-                    cwd: "src/css",
+                    cwd: "dist/css",
                     src: ["normalize.css", "main.css"],
                     dest: "dist/css",
                     ext: ".min.css"

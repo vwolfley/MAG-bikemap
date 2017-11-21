@@ -26,7 +26,8 @@ var appConfig = new function() {
     // http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/Locators/ESRI_Geocode_USA/GeocodeServer
 
     // email link
-    this.emailLink = "https://www.azmag.gov/EmailPages/JasonHoward.asp";
+    // this.emailLink = "https://www.azmag.gov/EmailPages/JasonHoward.asp";
+    this.emailLink = "http://www.azmag.gov/Contact/4788?s=geo.azmag.gov/maps/bikemap&n=Jason%20Howard&popUp=true";
 
     this.initExtent = {
         "xmin": -12621311,
