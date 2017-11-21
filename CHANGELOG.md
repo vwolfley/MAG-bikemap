@@ -25,6 +25,10 @@ And constructed with the following guidelines:
 
 ===========================================================================================================
 
+## Version 3.3.1 | 11/21/2017
+
+* updates to popup info - schema changes were made!
+
 ## Version 3.3.0 | 05/23/2017
 
 * made changes to file structure only!

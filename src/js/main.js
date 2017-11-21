@@ -303,14 +303,14 @@ require([
 
             //add a feature layer Bike Shops
             //=================================================================================>
-            var content3 = "<strong>${Name}</strong><br>${Address}<br>${City}<br>${Phone}<br><a target='_blank'href=https://${Website}>${Website}</a></br>" +
-            "<a target='blank' href=https://${Facebook}>Facebook</a>";
+            var content3 = "<strong>${NAME}</strong><br>${ADDRESS}<br>${CITY}<br>${PHONE}<br><a target='_blank'href=https://${WEBSITE}>${WEBSITE}</a></br>" +
+            "<a target='blank' href=https://${FACEBOOK}>Facebook</a>";
             var template3 = new InfoTemplate("Bike Shop", content3);
             var bikeshops = new FeatureLayer(appConfig.MainURL + "/6", {
                 id: "Bike Shops",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["Name", "Address", "City", "Phone", "Website", "Facebook"],
+                outFields: ["NAME", "ADDRESS", "CITY", "PHONE", "WEBSITE", "FACEBOOK"],
                 infoTemplate: template3
             });
             // map.addLayer(bikeshops);
@@ -326,25 +326,25 @@ require([
 
             //add a feature layer Bike Route Pictures
             //=================================================================================>
-            var content6 = "<strong>${Name}</strong><br><img class='pics' src='img/bikepics/${urlName}.jpg'><br>${Discription}";
+            var content6 = "<strong>${NAME}</strong><br><img class='pics' src='img/bikepics/${URL_NAME}.jpg'><br>${DESCRIPTION}";
             var template6 = new InfoTemplate("Bike Route Pictures", content6);
             var bikepics = new FeatureLayer(appConfig.MainURL + "/9", {
                 id: "Bikeways Pics",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["Name", "urlName"],
+                outFields: ["NAME", "URL_NAME"],
                 infoTemplate: template6
             });
             // map.addLayer(bikepics);
 
             // add a feature layer for Bike Youtube Videos
-            var content8 = "<strong>${Name}</strong><br><iframe class='youTube' src='${Link}' frameborder='0' allowfullscreen></iframe><br>${Discription}";
+            var content8 = "<strong>${NAME}</strong><br><iframe class='youTube' src='${LINK}' frameborder='0' allowfullscreen></iframe><br>${DESCRIPTION}";
             var template8 = new InfoTemplate("Bike Route Videos", content8);
             var bikevideos = new FeatureLayer(appConfig.MainURL + "/10", {
                 id: "Bikeways Videos",
                 visible: false,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["Name", "Discription", "Link"],
+                outFields: ["NAME", "DESCRIPTION", "LINK"],
                 infoTemplate: template8
             });
             // map.addLayer(bikevideos);
