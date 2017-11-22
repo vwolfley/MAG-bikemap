@@ -254,13 +254,13 @@ require([
 
             //add a feature layer Light Rail
             //=================================================================================>
-            var content5 = "Light Rail Route</br>" + "${NAME}</br>" + "${CITY}";
+            var content5 = "Light Rail Route</br>" + "${Route}</br>" + "${City}";
             var template5 = new InfoTemplate("Light Rail", content5);
             var lightrail = new FeatureLayer(appConfig.MainURL + "/8", {
                 id: "Light Rail",
                 visible: true,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["NAME", "CITY"],
+                outFields: ["Route", "City"],
                 infoTemplate: template5
             });
             // map.addLayer(lightrail);
