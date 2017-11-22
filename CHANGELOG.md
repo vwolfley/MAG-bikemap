@@ -25,6 +25,12 @@ And constructed with the following guidelines:
 
 ===========================================================================================================
 
+## Version 3.3.2 | 11/22/2017
+
+* fixed light rail popup issues
+* added "addtohomescreen" info tab 
+* [addtohomescreen](https://github.com/cubiq/add-to-homescreen)
+
 ## Version 3.3.1 | 11/21/2017
 
 * updates to popup info - schema changes were made!

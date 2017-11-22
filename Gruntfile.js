@@ -95,7 +95,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: "dist/css",
-                    src: ["normalize.css", "main.css"],
+                    src: ["normalize.css", "addtohomescreen.css", "main.css"],
                     dest: "dist/css",
                     ext: ".min.css"
                 }]
@@ -108,7 +108,7 @@ module.exports = function(grunt) {
                     stripBanners: true,
                     banner: "<%= bannercss %>"
                 },
-                src: ["dist/css/normalize.min.css", "dist/css/main.min.css"],
+                src: ["dist/css/normalize.min.css", "dist/css/addtohomescreen.min.css", "dist/css/main.min.css"],
                 dest: "dist/css/concat.min.css",
                 nonull: true,
             },
