@@ -37,11 +37,11 @@
 	z-index: 2147483641;
 	padding: 0.7em 0.6em;
 	width: 18em;
-
-	background: #eee;
+    background: #333;
+	/* background: #eee; */
 	background-size: 100% auto;
-
-	box-shadow: 0 0.2em 0 #d1d1d1;
+    /* box-shadow: 0 0.2em 0 #d1d1d1; */
+	box-shadow: 0 0.2em 0 #777;
 
 	font-family: sans-serif;
 	font-size: 15px;
@@ -182,7 +182,8 @@
 
 .ath-ios.ath-phone:after {
 	content: '';
-	background: #eee;
+	/* background: #eee; */
+    background: #333;
 	position: absolute;
 	width: 2em;
 	height: 2em;
@@ -191,12 +192,14 @@
 	margin-left: -1em;
 	-webkit-transform: scaleX(0.9) rotate(45deg);
 	transform: scaleX(0.9) rotate(45deg);
-	box-shadow: 0.2em 0.2em 0 #d1d1d1;
+	/* box-shadow: 0.2em 0.2em 0 #d1d1d1; */
+    box-shadow: 0.2em 0.2em 0 #777;
 }
 
 .ath-ios.ath-tablet:after {
 	content: '';
-	background: #eee;
+	background: #333;
+    /* background: #eee; */
 	position: absolute;
 	width: 2em;
 	height: 2em;

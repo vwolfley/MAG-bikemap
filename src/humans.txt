@@ -62,8 +62,8 @@
 # SITE
     Site name:  MAG Bikeways
     Site URL:  http://geo.azmag.gov/maps/bikemap/
-    Version: 3.3.1
-    Last updated: 11/21/2017
+    Version: 3.3.2
+    Last updated: 11/22/2017
     Creation date: 08/03/2012
     Language: English
     Doctype: HTML5

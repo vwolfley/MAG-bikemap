@@ -3,7 +3,7 @@
  * Maricopa Association of Governments
  * @file main.js
  * @summary JavaScript document for MAG Bikeways Viewer
- * @version 3.3.1 | 11/21/2017
+ * @version 3.3.2 | 11/22/2017
  * http://ims.azmag.gov/
  * ========================================================================
  * @copyright 2017 MAG
@@ -11,7 +11,7 @@
  * ========================================================================
  */
 /*! ==========================================================
- * @file main.js | @version 3.3.1 | 11/21/2017 | MAG Bikeways
+ * @file main.js | @version 3.3.2 | 11/22/2017 | MAG Bikeways
  * ===========================================================
  */
 require([
@@ -60,6 +60,16 @@ require([
         var legendLayers = [];
 
         ready(function() {
+
+            // $("#openDialog").load("views/openModal.html");
+            $("#openDialog").dialog({
+                modal: true,
+                buttons: {
+                    Ok: function() {
+                        $(this).dialog("close");
+                    }
+                }
+            });
 
             // create a new symbols to highlight popup features
             var pointSymbol = new SimpleMarkerSymbol("circle", 32, null,
@@ -156,7 +166,7 @@ require([
 
             //add a feature layer US Bike Route 90
             //=================================================================================>
-            var content8 = "<strong>${Name}</strong></br>" + "${MPA}</br>" + "${COUNTY} County</br>"  + "${MILES:NumberFormat(places:1)} miles";
+            var content8 = "<strong>${Name}</strong></br>" + "${MPA}</br>" + "${COUNTY} County</br>" + "${MILES:NumberFormat(places:1)} miles";
             var template8 = new InfoTemplate("USBR90", content8);
             var us90 = new FeatureLayer(appConfig.MainURL + "/3", {
                 id: "USBR90",
@@ -304,7 +314,7 @@ require([
             //add a feature layer Bike Shops
             //=================================================================================>
             var content3 = "<strong>${NAME}</strong><br>${ADDRESS}<br>${CITY}<br>${PHONE}<br><a target='_blank'href=https://${WEBSITE}>${WEBSITE}</a></br>" +
-            "<a target='blank' href=https://${FACEBOOK}>Facebook</a>";
+                "<a target='blank' href=https://${FACEBOOK}>Facebook</a>";
             var template3 = new InfoTemplate("Bike Shop", content3);
             var bikeshops = new FeatureLayer(appConfig.MainURL + "/6", {
                 id: "Bike Shops",
@@ -553,6 +563,9 @@ require([
 //=================================================================================>
 //
 $(document).ready(function() {
+
+    $("#loadModal").load("views/openModal.html");
+
     $("#Info").load("views/infoPage.html");
     $("#Safety").load("views/safteyPage.html");
     $("#OnStreet").load("views/onStreetPage.html");
@@ -560,9 +573,37 @@ $(document).ready(function() {
     $("#Legend").load("views/legendPage.html");
     $("#Legal").load("views/legalPage.html");
     $("#Help").load("views/helpPage.html");
-
-    // $("#Layers").load("views/layersPage.html");
 });
+
+// $( document ).on("#mapPage", "pageinit", function() {
+//   $("#loadModal").popup("open"); //popup
+// });
+
+
+// $(document).on('pageinit', function() {
+//     // show the dialog
+//     // $.mobile.changePage('#loadModal');
+//     $("#loadModal").popup();
+//     $
+// });
+
+$(document).on("#mapPage", "pageinit", [], function() {
+
+    $.mobile.changePage("#loadModal", {
+        transition: "pop",
+        reverse: false,
+        changeHash: false,
+        role: "dialog"
+    });
+});
+
+// $(document).on('pageshow', '#Info', function() {
+//     setTimeout(function() {
+//         // show the dialog
+//         $.mobile.changePage('#loadModal');
+//     }, 100); // delay above zero
+// });
+
 
 //*** open email window ***//
 //=================================================================================>
