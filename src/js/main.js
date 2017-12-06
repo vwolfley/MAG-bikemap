@@ -587,15 +587,15 @@ $(document).ready(function() {
 //     $
 // });
 
-$(document).on("#mapPage", "pageinit", [], function() {
+// $(document).on("#mapPage", "pageinit", [], function() {
 
-    $.mobile.changePage("#loadModal", {
-        transition: "pop",
-        reverse: false,
-        changeHash: false,
-        role: "dialog"
-    });
-});
+//     $.mobile.changePage("#loadModal", {
+//         transition: "pop",
+//         reverse: false,
+//         changeHash: false,
+//         role: "dialog"
+//     });
+// });
 
 // $(document).on('pageshow', '#Info', function() {
 //     setTimeout(function() {

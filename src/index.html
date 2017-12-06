@@ -70,22 +70,19 @@
 </head>
 
 <body>
+    <script>
+        // addToHomescreen.removeSession(); // use this to remove the localStorage variable
+        addToHomescreen({
+            skipFirstVisit: true,
+            startDelay: 1,
+            maxDisplayCount: 1,
+            // lifespan: 0,
+            // debug: true
+        });
+    </script>
     <!--[if lt IE 8]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <script>
-        var addToHomeConfig = {
-            animationIn: 'fade',
-            animationOut: 'bubble',
-            lifespan: 10000,
-            expire: 0,
-            touchIcon: true
-        };
-        addToHomescreen({
-            skipFirstVisit: true,
-            maxDisplayCount: 2
-        });
-    </script>
     <!-- Add site content here -->
     <div id="mapPage" data-role="page" data-theme="b">
         <!-- header -->
@@ -95,7 +92,6 @@
                 <a href="#Legend" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-bullets"></a>
                 <a href="#search" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-search" onclick="opensearchwin()"></a>
                 <a id="geolocationButton" href="#" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-location"></a>
-
                 <a href="#Info" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-info"></a>
             </div>
         </div>
@@ -108,10 +104,7 @@
     </div>
     <!-- /mapPage -->
     <!-- Alt Pages ============================================ -->
-
-
     <div id="loadModal" class="ui-dialog-theme" data-role="dialog" data-history="false" data-close-btn="right" data-dialog="true" data-overlay-theme="b" data-theme="b"></div>
-
     <!-- Legend -->
     <div id="Legend" data-role="page" data-theme="b"></div>
     <!-- /Legend -->
