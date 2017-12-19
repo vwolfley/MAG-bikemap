@@ -236,7 +236,6 @@ body {
     margin-left: 10px;
 }
 
-
 /* navbar icons*/
 
 .ui-controlgroup-horizontal .ui-controlgroup-controls>.ui-btn {
@@ -388,6 +387,28 @@ td {
 .pics {
     max-width: 200px;
     max-height: 200px
+}
+#popupModal .ui-header .ui-title {
+    text-align: center;
+    margin: 0 30%;
+    padding: 0.7em 0 !important;
+}
+#popupModal .ui-content {
+ padding: 20px !important;
+}
+#popupModal .ui-popup-screen {
+    opacity: 0.75 !important
+}
+
+/* #popupModal {
+    max-width:500px;
+    background:#404040;
+    color:#fff;
+    padding:20px;
+    position:absolute;
+    top:25%;
+    left:50%;
+    margin-left:-250px;
 }
 
 

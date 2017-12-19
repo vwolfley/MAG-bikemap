@@ -25,8 +25,9 @@ And constructed with the following guidelines:
 
 ===========================================================================================================
 
-## Version 3.3.2 | 11/22/2017
+## Version 3.3.2 | 12/06/2017
 
+* fixed link to pdf bikeways map
 * fixed light rail popup issues
 * added "addtohomescreen" info tab 
 * [addtohomescreen](https://github.com/cubiq/add-to-homescreen)

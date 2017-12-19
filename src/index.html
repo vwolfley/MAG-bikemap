@@ -71,14 +71,14 @@
 
 <body>
     <script>
-        // addToHomescreen.removeSession(); // use this to remove the localStorage variable
-        addToHomescreen({
-            skipFirstVisit: true,
-            startDelay: 1,
-            maxDisplayCount: 1,
-            // lifespan: 0,
-            // debug: true
-        });
+    // addToHomescreen.removeSession(); // use this to remove the localStorage variable
+    addToHomescreen({
+        skipFirstVisit: true,
+        startDelay: 1,
+        maxDisplayCount: 1,
+        // lifespan: 0,
+        // debug: true
+    });
     </script>
     <!--[if lt IE 8]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -89,6 +89,7 @@
         <div data-role="header" data-position="fixed">
             <h1><img id="logoimg" src="img/bikesign2.png" alt="Bike Sign" />&nbsp;MAG Bikeways</h1>
             <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                <a data-rel="popup" href="#popupModal" class="ui-shadow ui-btn ui-corner-all ui-btn-inline" data-transition="pop">Open dialog</a>
                 <a href="#Legend" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-bullets"></a>
                 <a href="#search" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-search" onclick="opensearchwin()"></a>
                 <a id="geolocationButton" href="#" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-location"></a>
@@ -101,10 +102,19 @@
             <div id="search"></div>
         </div>
         <!-- /content -->
+        <div id="popupModal" data-dismissible="true" data-role="popup" data-overlay-theme="b" data-dialog="true" data-position-to="window" data-close-btn="right" data-history="false">
+            <div data-role="header" data-theme="b">
+                <h1>Message</h1>
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            </div>
+            <div role="main" class="ui-content">
+                <p>Hey, checkout out one of our new viewers at MAG the RAD viewer</p>
+                <a href="https://geo.azmag.gov/maps/recreation/" "RAD Viewer">RAD Viewer</a>
+            </div>
+        </div>
     </div>
     <!-- /mapPage -->
     <!-- Alt Pages ============================================ -->
-    <div id="loadModal" class="ui-dialog-theme" data-role="dialog" data-history="false" data-close-btn="right" data-dialog="true" data-overlay-theme="b" data-theme="b"></div>
     <!-- Legend -->
     <div id="Legend" data-role="page" data-theme="b"></div>
     <!-- /Legend -->

@@ -61,15 +61,7 @@ require([
 
         ready(function() {
 
-            // $("#openDialog").load("views/openModal.html");
-            $("#openDialog").dialog({
-                modal: true,
-                buttons: {
-                    Ok: function() {
-                        $(this).dialog("close");
-                    }
-                }
-            });
+            $(document).on('pagebeforeshow', '#index', function() {});
 
             // create a new symbols to highlight popup features
             var pointSymbol = new SimpleMarkerSymbol("circle", 32, null,
@@ -564,8 +556,6 @@ require([
 //
 $(document).ready(function() {
 
-    $("#loadModal").load("views/openModal.html");
-
     $("#Info").load("views/infoPage.html");
     $("#Safety").load("views/safteyPage.html");
     $("#OnStreet").load("views/onStreetPage.html");
@@ -575,15 +565,45 @@ $(document).ready(function() {
     $("#Help").load("views/helpPage.html");
 });
 
-// $( document ).on("#mapPage", "pageinit", function() {
-//   $("#loadModal").popup("open"); //popup
+
+
+// $(document).on("pagecontainerload", function() {
+//     setTimeout(function() {
+//         $("#popupModal").popup("open");
+//     }, 300);
+// });
+
+// $(document).delegate("#mapPage", "pageinit", function() {
+//     $("#popupModal").popup(); //vip popup
+//     // $("#openvipPopup").trigger("click"); //openvipPopup is the id of the anchor for popup
+// });
+
+// $(document).on("pageinit", function () {
+//     setTimeout(function () {
+//         $("#modal").popup("open");
+//     }, 100);
+// });
+
+// $(document).on('pageshow', function() {
+//     setTimeout(function() {
+//         $.mobile.changePage('#modal');
+//     }, 100); // delay above zero
+// });
+
+// $(document).on("pagecreate","mapPage", function(event) {
+//     $.mobile.changePage('#modal');
+//     $("#modal").popup();
+// });
+
+// $(document).on("#mapPage", "pageinit", function() {
+//     $("#modal").popup("open"); //popup
 // });
 
 
 // $(document).on('pageinit', function() {
 //     // show the dialog
 //     // $.mobile.changePage('#loadModal');
-//     $("#loadModal").popup();
+//     $("#modal").popup();
 //     $
 // });
 
