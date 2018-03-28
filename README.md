@@ -9,6 +9,7 @@ MAG mapping application showing locally-designated bicycle facilities data
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=my-website)](https://geo.azmag.gov/maps/bikemap/)
 
 ***********************************************************************************************************
 
