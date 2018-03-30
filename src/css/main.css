@@ -10,10 +10,6 @@
  * @license MIT
  * ========================================================================
  */
-/*! ===========================================================
- *  @file main.css | @version 3.3.2 | 11/22/2017 | MAG Bikeways
- *  ===========================================================
- */
 
 /*
  * HTML5 Boilerplate | version | v4.3.0 | MIT License | https://h5bp.com/
@@ -274,7 +270,7 @@ body {
     padding-left: 5px;
 }
 
-#logoimg {
+#logoimg, .logoimg {
     vertical-align: middle;
     height: 40px;
     width: 40px;
@@ -469,6 +465,49 @@ table.esriLegendLayerLabel {
 .helpPop {
     margin-left: 25px;
     height: 90px;
+}
+#popupModal {
+    border-style: none;
+    max-width: 450px;
+}
+.pHeader{
+    height: 45px;
+    background-color: #666666;
+    color: white;
+    text-align: center;
+    text-shadow: none;
+}
+
+.pHeader h2 {
+    margin: 0;
+    padding-top: 5px;
+}
+
+.pContent {
+    padding: 5px 20px 5px 20px;
+    font-size: 0.9em;
+}
+
+.pFooter {
+    padding: 0 10px 5px 10px;
+    font-size: 11px;
+    text-align: center;
+}
+.pFooter p {
+    margin: 0;
+}
+.pft {
+    margin: 1px 0 2px 0;
+}
+.pButton {
+    font-size: 13px;
+    background-color: green;
+    text-shadow: none;
+}
+
+.buttonSpan {
+    display: block;
+    text-align: center;
 }
 
 /* ==========================================================================

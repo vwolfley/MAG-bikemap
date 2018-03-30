@@ -1,19 +1,13 @@
 /* ========================================================================
- * MAG Bikeways
  * Maricopa Association of Governments
- * @file main.js
- * @summary JavaScript document for MAG Bikeways Viewer
- * @version 3.3.2 | 11/22/2017
- * http://ims.azmag.gov/
+ * JS document
+ * @project     MAG Bikeways
  * ========================================================================
- * @copyright 2017 MAG
- * @license MIT
+ * @file        main.js
+ * @summary     Main JavaScript file for MAG Bikeways Viewer
  * ========================================================================
  */
-/*! ==========================================================
- * @file main.js | @version 3.3.2 | 11/22/2017 | MAG Bikeways
- * ===========================================================
- */
+
 require([
         "dojo/dom",
         "dojo/dom-construct",
@@ -60,8 +54,6 @@ require([
         var legendLayers = [];
 
         ready(function() {
-
-            $(document).on('pagebeforeshow', '#index', function() {});
 
             // create a new symbols to highlight popup features
             var pointSymbol = new SimpleMarkerSymbol("circle", 32, null,
@@ -267,15 +259,6 @@ require([
             });
             // map.addLayer(lightrail);
 
-            // // for checkbox turns layer on and off
-            // $("#lightrail").click(function() {
-            //     if ($(this).is(":checked")) {
-            //         lightrail.show();
-            //     } else {
-            //         lightrail.hide();
-            //     }
-            // });
-
             //add a feature layer Public Transit Locations
             //=================================================================================>
             var content4 = "<strong>${Name}</strong><br>${Location}<br>${City}<br><a target='_blank'href=${webLink}>Transit Web Link Info</a>";
@@ -394,7 +377,6 @@ require([
             // map.addLayer(mpoBoundary);
 
             map.addLayers([psbikeway, us90, bikeways, crossings, lightrail, transit, bikeshops, bikepics, bikevideos, GRID, mpoBoundary]);
-            // map.addLayers([psbikeway, us90, bikeways0, bikeways1, bikeways2, crossings, lightrail, transit, bikeshops, bikepics, bikevideos, GRID, mpoBoundary]);
 
             // Map Layers
             //=================================================================================>
@@ -474,15 +456,6 @@ require([
                 layer: bikeways,
                 title: "Bikeways Types"
             });
-            // legendLayers.push({
-            //     layer: bikeways1,
-            //     title: "Bikeways Types"
-            // });
-            // legendLayers.push({
-            //     layer: bikeways2,
-            //     title: "Bikeways Types"
-            // });
-            // console.log(legendLayers);
 
             // create legend dijit
             var legend = new Legend({
@@ -492,8 +465,12 @@ require([
             legend.startup();
 
             // add version control number to help
-            dom.byId("version").innerHTML = appConfig.Version;
-            dom.byId("copyright").innerHTML = appConfig.copyright;
+            // dom.byId("version").innerHTML = appConfig.Version;
+            // dom.byId("copyright").innerHTML = appConfig.copyright;
+
+            // add version control & copyright
+            $(".version").text(appConfig.Version);
+            $(".copyright").text(appConfig.copyright);
 
             // used to refresh map on page changes
             map.reposition();
@@ -545,10 +522,6 @@ require([
             map.centerAndZoom(pt, 22);
         }
 
-        // on main help page
-        // $("#version").html(appConfig.Version);
-        // $("#legal").load
-
     }); // end of main function
 
 // Page Bindings
@@ -565,65 +538,9 @@ $(document).ready(function() {
     $("#Help").load("views/helpPage.html");
 });
 
-
-
-// $(document).on("pagecontainerload", function() {
-//     setTimeout(function() {
-//         $("#popupModal").popup("open");
-//     }, 300);
-// });
-
-// $(document).delegate("#mapPage", "pageinit", function() {
-//     $("#popupModal").popup(); //vip popup
-//     // $("#openvipPopup").trigger("click"); //openvipPopup is the id of the anchor for popup
-// });
-
-// $(document).on("pageinit", function () {
-//     setTimeout(function () {
-//         $("#modal").popup("open");
-//     }, 100);
-// });
-
-// $(document).on('pageshow', function() {
-//     setTimeout(function() {
-//         $.mobile.changePage('#modal');
-//     }, 100); // delay above zero
-// });
-
-// $(document).on("pagecreate","mapPage", function(event) {
-//     $.mobile.changePage('#modal');
-//     $("#modal").popup();
-// });
-
-// $(document).on("#mapPage", "pageinit", function() {
-//     $("#modal").popup("open"); //popup
-// });
-
-
-// $(document).on('pageinit', function() {
-//     // show the dialog
-//     // $.mobile.changePage('#loadModal');
-//     $("#modal").popup();
-//     $
-// });
-
-// $(document).on("#mapPage", "pageinit", [], function() {
-
-//     $.mobile.changePage("#loadModal", {
-//         transition: "pop",
-//         reverse: false,
-//         changeHash: false,
-//         role: "dialog"
-//     });
-// });
-
-// $(document).on('pageshow', '#Info', function() {
-//     setTimeout(function() {
-//         // show the dialog
-//         $.mobile.changePage('#loadModal');
-//     }, 100); // delay above zero
-// });
-
+$(document).on("pageinit", function(event) {
+    $("#popupModal").popup({ positionTo: "window" }).popup("open");
+});
 
 //*** open email window ***//
 //=================================================================================>
