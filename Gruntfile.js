@@ -76,9 +76,9 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-                    "dist/js/main.min.js": ["src/js/main.js"],
-                    "dist/js/config.min.js": ["src/js/config.js"],
-                    "dist/js/plugins.min.js": ["src/js/plugins.js"]
+                    "dist/js/main.min.js": ["dist/js/main.js"],
+                    "dist/js/config.min.js": ["dist/js/config.js"],
+                    "dist/js/plugins.min.js": ["dist/js/plugins.js"]
                 }
             }
         },
@@ -94,8 +94,8 @@ module.exports = function(grunt) {
             target: {
                 files: [{
                     expand: true,
-                    cwd: "src/css",
-                    src: ["normalize.css", "main.css"],
+                    cwd: "dist/css",
+                    src: ["normalize.css", "addtohomescreen.css", "main.css"],
                     dest: "dist/css",
                     ext: ".min.css"
                 }]
@@ -108,7 +108,7 @@ module.exports = function(grunt) {
                     stripBanners: true,
                     banner: "<%= bannercss %>"
                 },
-                src: ["dist/css/normalize.min.css", "dist/css/main.min.css"],
+                src: ["dist/css/normalize.min.css", "dist/css/addtohomescreen.min.css", "dist/css/main.min.css"],
                 dest: "dist/css/concat.min.css",
                 nonull: true,
             },
@@ -158,12 +158,11 @@ module.exports = function(grunt) {
 
         replace: {
             update_Meta: {
-                src: ["index.html", "humans.txt", "README.md", "css/main.css", "js/config.js", "js/main.js", "js/plugins.js"], // source files array
-                // src: ["README.md"], // source files array
+                src: ["src/index.html", "src/humans.txt", "README.md", "src/css/main.css", "src/js/config.js", "src/js/main.js", "src/js/plugins.js"],
                 overwrite: true, // overwrite matched source files
                 replacements: [{
                     // html pages
-                    from: /(<meta name="revision-date" content=")[0-9]{2}\/[0-9]{2}\/[0-9]{4}(">)/g,
+                    from: /(<meta name="revision-date" content=")[0-9]{4}-[0-9]{2}-[0-9]{2}(">)/g,
                     to: '<meta name="revision-date" content="' + "<%= pkg.date %>" + '">',
                 }, {
                     // html pages
@@ -175,7 +174,7 @@ module.exports = function(grunt) {
                     to: "Version: " + "<%= pkg.version %>",
                 }, {
                     // humans.txt
-                    from: /(Last updated\: )[0-9]{2}\/[0-9]{2}\/[0-9]{4}/g,
+                    from: /(Last updated\: )[0-9]{4}-[0-9]{2}-[0-9]{2}/g,
                     to: "Last updated: " + "<%= pkg.date %>",
                 }, {
                     // README.md
@@ -183,16 +182,12 @@ module.exports = function(grunt) {
                     to: "version | " + "<%= pkg.version %>",
                 }, {
                     // README.md
-                    from: /(Updated)( \| )[0-9]{2}\/[0-9]{2}\/[0-9]{4}/g,
+                    from: /(Updated)( \| )[0-9]{4}-[0-9]{2}-[0-9]{2}/g,
                     to: "Updated | " + "<%= pkg.date %>",
                 }, {
                     // config.js
-                    from: /(v)([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))( \| )[0-9]{2}\/[0-9]{2}\/[0-9]{4}/g,
+                    from: /(v)([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))( \| )[0-9]{4}-[0-9]{2}-[0-9]{2}/g,
                     to: "v" + "<%= pkg.version %>" + " | " + "<%= pkg.date %>",
-                }, {
-                    // main.css, main.js, config.js, plugins.js, Gruntfile.js
-                    from: /(@version )([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))( \| )[0-9]{2}\/[0-9]{2}\/[0-9]{4}/g,
-                    to: "@version <%= pkg.version %>" + " | " + "<%= pkg.date %>",
                 }]
             }
         }
