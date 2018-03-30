@@ -1,13 +1,10 @@
 /* ========================================================================
- * MAG Bikeways
  * Maricopa Association of Governments
- * @file main.css
- * @summary CSS document for MAG Bikeways Viewer
- * @version 3.3.2 | 11/22/2017
- * http://ims.azmag.gov/
+ * CSS document
+ * @project     MAG Bikeways Viewer
  * ========================================================================
- * @copyright 2017 MAG
- * @license MIT
+ * @file        custom.css
+ * @summary     CSS document guiding layout for project
  * ========================================================================
  */
 
@@ -501,8 +498,6 @@ table.esriLegendLayerLabel {
 }
 .pButton {
     font-size: 13px;
-    background-color: green;
-    text-shadow: none;
 }
 
 .buttonSpan {

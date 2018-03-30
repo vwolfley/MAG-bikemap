@@ -36,8 +36,11 @@ And constructed with the following guidelines:
 
 ***********************************************
 
-## Version 3.3.2 | 2018-03-28
+## Version 3.3.2 | 2018-03-30
 
+* added Google Analytics tracking info
+* add info popup to opening
+* change version control info
 * Added Pathways info and link
 * fixed link to pdf bikeways map
 * fixed light rail popup issues

@@ -464,10 +464,6 @@ require([
             }, "legendDiv");
             legend.startup();
 
-            // add version control number to help
-            // dom.byId("version").innerHTML = appConfig.Version;
-            // dom.byId("copyright").innerHTML = appConfig.copyright;
-
             // add version control & copyright
             $(".version").text(appConfig.Version);
             $(".copyright").text(appConfig.copyright);
@@ -486,6 +482,9 @@ require([
                     setHighAccuracy: true
                 });
             }
+            // <!-- comments:uncomment // -->
+            // ga("send", "event", "Click", "Geo Location Click", "geolocationButton");
+            // <!-- endcomments -->
         }
 
         // Create the marker symbol
@@ -573,4 +572,45 @@ function opensearchwin() {
     } else {
         $("#search").hide();
     }
+    // console.log("Search");
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Search Click", "Search Menu");
+    // <!-- endcomments -->
 }
+
+$("#legendBut").on("click", function() {
+    // console.log("Legend");
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Legend Click", "Legend Menu");
+    // <!-- endcomments -->
+});
+
+$("#infoBut").on("click", function() {
+    // console.log("Info");
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Info Click", "Info Menu");
+    // <!-- endcomments -->
+});
+
+$("#safeBut").on("click", function() {
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Safety Click", "Safety Menu");
+    // <!-- endcomments -->
+});
+
+$("#streetBut").on("click", function() {
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Streets Click", "Streets Menu");
+    // <!-- endcomments -->
+});
+
+$("#pathsBut").on("click", function() {
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Paths Click", "Paths Menu");
+    // <!-- endcomments -->
+});
+$("#helpBut").on("click", function() {
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Help Click", "Help Menu");
+    // <!-- endcomments -->
+});

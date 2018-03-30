@@ -9,7 +9,7 @@
  */
 var appConfig = new function() {
 
-    this.Version = "v3.3.2 | 11/22/2017";
+    this.Version = "v3.3.2 | 2018-03-30";
     this.copyright = "2017";
 
     // layers
