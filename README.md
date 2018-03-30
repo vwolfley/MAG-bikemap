@@ -9,6 +9,7 @@ MAG mapping application showing locally-designated bicycle facilities data
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=my-website)](https://geo.azmag.gov/maps/bikemap/)
 
 ***********************************************************************************************************
 
@@ -24,11 +25,11 @@ This web app viewer was developed by MAG staff for MAG member agencies and the p
 
 ## Version ##
 
-* ### version | 3.3.1 ###
+* ### version | 3.3.2 ###
 
-* #### Updated | 11/21/2017 ####
+* #### Updated | 2018-03-30 ####
 
-* #### Created | 08/03/2012 ####
+* #### Created | 2012-08-03 ####
 
 Releases will be numbered with the following format:
 
@@ -44,9 +45,9 @@ And constructed with the following guidelines:
 
 `Maricopa Association of Governments (MAG) and the MAG member agencies`
 
-## Site URL's ##
+## Site URL ##
 
-* [http://geo.azmag.gov/maps/bikemap/](http://geo.azmag.gov/maps/bikemap/)
+* [MAG Bikemap](http://geo.azmag.gov/maps/bikemap/) : http://geo.azmag.gov/maps/bikemap/
 
 ## Documentation ##
 
@@ -56,11 +57,11 @@ A detailed list of the changes and fixes in each version update can be found in 
 
 ## Resources ##
 
-* [2015 Bikeways Map PDF](https://www.azmag.gov/Documents/MAG_2015-10-21_Bike-Pathways-Map.pdf)
+* [2015 Bikeways Map PDF](http://www.azmag.gov/portals/0/Documents/MAG_2015-10-21_Bike-Pathways-Map.pdf)
 
 * [2012 Bikeways Map PDF](http://www.azmag.gov/Documents/MAG_2012-10-19_Bike-Pathways-Map.pdf)
 
-#### Examples ####
+## Examples ##
 
 * [San Diego Region](http://gis1.sandag.org/BikeMap2016/index.html)
 * [AZ Bike Ped Org](http://www.azbikeped.org/)
@@ -69,6 +70,11 @@ A detailed list of the changes and fixes in each version update can be found in 
 * [ride the city](http://www.ridethecity.com/dc#)
 * [Washington DC](http://washcycle.typepad.com/bikemap/)
 * [Bike 36 Interactive Map](http://36commutingsolutions.org/commuting-us-36/commute-options/bikewalk/bikelinks-36/)
+
+## Dependencies ##
+
+* [git-labelmaker](https://github.com/himynameisdave/git-labelmaker?utm_source=hashnode.com)
+* [add-tohome-screen](http://cubiq.org/add-to-home-screen)
 
 ## Legal Disclaimer ##
 
@@ -90,12 +96,4 @@ Please acknowledge the Maricopa Association of Governments (MAG) GIS as the sour
 Code released under the MIT license.
 
 * [LICENSE](LICENSE)
-
-Copyright (c) 2017 Maricopa Association of Governments
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 

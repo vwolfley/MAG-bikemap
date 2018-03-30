@@ -13,16 +13,17 @@
     </script> -->
     <!-- endcomments -->
     <meta name="description" content="Bikeways Map Viewer is one of the Maricopa Association of Governments, (MAG) interactive mapping sites, showing locally-designated bicycle data and facilities">
-    <meta name="keywords" content="bike, bicycle, bike maps, bikeways, trails, routes, bikeshops, park & rides, transit centers, interactive, mobile, MAG, Maricopa Association of Governments, Maricopa County, Arizona, AZ">
+    <meta name="keywords" content="bike, bicycle, bike maps, bikeways, trails, routes, valley path, wayfinding, bikeshops, park & rides, transit centers, interactive, mobile, MAG, Maricopa Association of Governments, Maricopa County, Arizona, AZ">
     <meta name="author" content="Maricopa Association of Governments">
     <link type="text/plain" rel="author" href="https://geo.azmag.gov/maps/bikemap/humans.txt">
     <meta name="contact" content="www.azmag.gov">
     <meta name="url" content="https://geo.azmag.gov/maps/bikemap/">
-    <meta name="creation-date" content="08/03/2012">
-    <meta name="revision-date" content="11/21/2017">
-    <meta name="version" content="3.3.1">
+    <meta name="creation-date" content="2012-08-03">
+    <meta name="revision-date" content="2018-03-30">
+    <meta name="version" content="3.3.2">
     <!-- Apple-Specific Meta Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <!-- Chrome for Android -->
@@ -39,6 +40,7 @@
     <!-- Custom styles for the UI of this application -->
     <!-- comments:comment html -->
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/addtohomescreen.css">
     <link rel="stylesheet" href="css/main.css">
     <!-- endcomments -->
     <!-- comments:uncomment html -->
@@ -64,29 +66,56 @@
     </script> -->
     <!-- endcomments -->
     <!-- /Google Analytics -->
+    <script src="js/vendor/addtohomescreen.min.js"></script>
 </head>
 
 <body>
+    <script>
+    // addToHomescreen.removeSession(); // use this to remove the localStorage variable
+    addToHomescreen({
+        skipFirstVisit: true,
+        startDelay: 5,
+        maxDisplayCount: 1,
+        lifespan: 0,
+        // debug: true
+    });
+
+    </script>
     <!--[if lt IE 8]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <!-- Add site content here -->
+    <!-- Global Popup -->
+    <div id="popupModal" data-role="popup" data-dismissible="true" data-overlay-theme="b" data-theme="a" data-position-to="window" data-history="false">
+        <div data-role="header" class="pHeader">
+            <h2>MAG Bikeways Info</h2>
+            <a href="#" data-rel="back" class="ui-btn-right ui-icon-delete ui-btn-icon-notext"></a>
+        </div>
+        <div role="main" class="pContent">
+            <p><img class="logoimg" src="img/bikesign2.png" alt="Bike Sign" />&nbsp;The MAG Bikeways map shows existing, locally-designated bicycle facilities, and is provided to you by the Maricopa Association of Governments (MAG). This map has been produced under the direction of the MAG Regional Bicycle Task Force. If you have any comments, please call MAG at (602) 254-6300 or visit our web site at <a class="links" title="MAG Website" role="navigation" target="_blank" href="http://azmag.gov/">www.azmag.gov</a></p>
+            <p><a href="https://geo.azmag.gov/maps/recreation/" class="links" title="RAD Viewer" role="navigation" target="_blank"><img class="logoimg" src="img/RAD_Icon_72x72.png" alt="RAD Icon" /></a>&nbsp;If you are looking for more recreation information checkout out one of our new viewers the RAD viewer. The RAD viewer includes all public parks and recreation areas in the region along with highlighted destinations as well as bicycle paths and public transit routes to help you get around.</p>
+            <span class="buttonSpan"><a href="https://geo.azmag.gov/maps/recreation/" class="links ui-btn ui-btn-inline ui-corner-all pButton" title="RAD Viewer" role="navigation" target="_blank">Visit RAD Viewer</a></span>
+        </div>
+        <hr class="pft">
+        <div data-role="footer" class="pFooter">
+            <p>Copyright &copy; <span class="copyright"></span> <a class="links" title="MAG Website" role="navigation" target="_blank" href="https://www.azmag.gov/">Maricopa Association of Governments</a> | <a href="#Legal" class="links" title="Legal Disclaimer">Legal Disclaimer</a></br><span class="version"></span></p>
+        </div>
+    </div>
+    <!-- /Global Popup -->
     <div id="mapPage" data-role="page" data-theme="b">
         <!-- header -->
         <div data-role="header" data-position="fixed">
             <h1><img id="logoimg" src="img/bikesign2.png" alt="Bike Sign" />&nbsp;MAG Bikeways</h1>
             <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-                <a href="#Legend" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-bullets"></a>
-                <a href="#search" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-search" onclick="opensearchwin()"></a>
+                <a id="legendBut" href="#Legend" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-bullets"></a>
+                <a id="searchBut" href="#search" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-search" onclick="opensearchwin()"></a>
                 <a id="geolocationButton" href="#" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-location"></a>
-
-                <a href="#Info" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-info"></a>
+                <a id="infoBut" href="#Info" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-info"></a>
             </div>
         </div>
         <!-- /header -->
         <div id="mapContent" role="main" class="ui-content">
             <div id="mapDiv"></div>
-            <!-- <div id="search-anchor"><div id="search"></div></div> -->
             <div id="search"></div>
         </div>
         <!-- /content -->
@@ -113,7 +142,7 @@
     <!-- /OnPaths Tab -->
     <!-- Legal Page -->
     <div id="Legal" data-role="page" data-theme="b"></div>
-    <!-- /OnPaths Tab -->
+    <!-- /Legal Tab -->
     <!-- Core JavaScript
 =========================================================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
