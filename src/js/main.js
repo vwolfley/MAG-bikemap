@@ -1,19 +1,13 @@
 /* ========================================================================
- * MAG Bikeways
  * Maricopa Association of Governments
- * @file main.js
- * @summary JavaScript document for MAG Bikeways Viewer
- * @version 3.3.1 | 11/21/2017
- * http://ims.azmag.gov/
+ * JS document
+ * @project     MAG Bikeways
  * ========================================================================
- * @copyright 2017 MAG
- * @license MIT
+ * @file        main.js
+ * @summary     Main JavaScript file for MAG Bikeways Viewer
  * ========================================================================
  */
-/*! ==========================================================
- * @file main.js | @version 3.3.1 | 11/21/2017 | MAG Bikeways
- * ===========================================================
- */
+
 require([
         "dojo/dom",
         "dojo/dom-construct",
@@ -156,7 +150,7 @@ require([
 
             //add a feature layer US Bike Route 90
             //=================================================================================>
-            var content8 = "<strong>${Name}</strong></br>" + "${MPA}</br>" + "${COUNTY} County</br>"  + "${MILES:NumberFormat(places:1)} miles";
+            var content8 = "<strong>${Name}</strong></br>" + "${MPA}</br>" + "${COUNTY} County</br>" + "${MILES:NumberFormat(places:1)} miles";
             var template8 = new InfoTemplate("USBR90", content8);
             var us90 = new FeatureLayer(appConfig.MainURL + "/3", {
                 id: "USBR90",
@@ -254,25 +248,16 @@ require([
 
             //add a feature layer Light Rail
             //=================================================================================>
-            var content5 = "Light Rail Route</br>" + "${NAME}</br>" + "${CITY}";
+            var content5 = "Light Rail Route</br>" + "${Route}</br>" + "${City}";
             var template5 = new InfoTemplate("Light Rail", content5);
             var lightrail = new FeatureLayer(appConfig.MainURL + "/8", {
                 id: "Light Rail",
                 visible: true,
                 mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["NAME", "CITY"],
+                outFields: ["Route", "City"],
                 infoTemplate: template5
             });
             // map.addLayer(lightrail);
-
-            // // for checkbox turns layer on and off
-            // $("#lightrail").click(function() {
-            //     if ($(this).is(":checked")) {
-            //         lightrail.show();
-            //     } else {
-            //         lightrail.hide();
-            //     }
-            // });
 
             //add a feature layer Public Transit Locations
             //=================================================================================>
@@ -304,7 +289,8 @@ require([
             //add a feature layer Bike Shops
             //=================================================================================>
 
-            var content3 = "<strong>${NAME}</strong><br>${ADDRESS}<br>${CITY}<br>${PHONE}<br><a target='_blank'href=https://${WEBSITE}>${WEBSITE}</a></br>" + "<a target='blank' href=https://${FACEBOOK}>Facebook</a>";
+            var content3 = "<strong>${NAME}</strong><br>${ADDRESS}<br>${CITY}<br>${PHONE}<br><a target='_blank'href=https://${WEBSITE}>${WEBSITE}</a></br>" +
+                "<a target='blank' href=https://${FACEBOOK}>Facebook</a>";
             var template3 = new InfoTemplate("Bike Shop", content3);
             var bikeshops = new FeatureLayer(appConfig.MainURL + "/6", {
                 id: "Bike Shops",
@@ -392,7 +378,6 @@ require([
             // map.addLayer(mpoBoundary);
 
             map.addLayers([psbikeway, us90, bikeways, crossings, lightrail, transit, bikeshops, bikepics, bikevideos, GRID, mpoBoundary]);
-            // map.addLayers([psbikeway, us90, bikeways0, bikeways1, bikeways2, crossings, lightrail, transit, bikeshops, bikepics, bikevideos, GRID, mpoBoundary]);
 
             // Map Layers
             //=================================================================================>
@@ -472,15 +457,6 @@ require([
                 layer: bikeways,
                 title: "Bikeways Types"
             });
-            // legendLayers.push({
-            //     layer: bikeways1,
-            //     title: "Bikeways Types"
-            // });
-            // legendLayers.push({
-            //     layer: bikeways2,
-            //     title: "Bikeways Types"
-            // });
-            // console.log(legendLayers);
 
             // create legend dijit
             var legend = new Legend({
@@ -489,9 +465,9 @@ require([
             }, "legendDiv");
             legend.startup();
 
-            // add version control number to help
-            dom.byId("version").innerHTML = appConfig.Version;
-            dom.byId("copyright").innerHTML = appConfig.copyright;
+            // add version control & copyright
+            $(".version").text(appConfig.Version);
+            $(".copyright").text(appConfig.copyright);
 
             // used to refresh map on page changes
             map.reposition();
@@ -507,6 +483,9 @@ require([
                     setHighAccuracy: true
                 });
             }
+            // <!-- comments:uncomment // -->
+            // ga("send", "event", "Click", "Geo Location Click", "geolocationButton");
+            // <!-- endcomments -->
         }
 
         // Create the marker symbol
@@ -543,16 +522,13 @@ require([
             map.centerAndZoom(pt, 22);
         }
 
-        // on main help page
-        // $("#version").html(appConfig.Version);
-        // $("#legal").load
-
     }); // end of main function
 
 // Page Bindings
 //=================================================================================>
 //
 $(document).ready(function() {
+
     $("#Info").load("views/infoPage.html");
     $("#Safety").load("views/safteyPage.html");
     $("#OnStreet").load("views/onStreetPage.html");
@@ -560,8 +536,10 @@ $(document).ready(function() {
     $("#Legend").load("views/legendPage.html");
     $("#Legal").load("views/legalPage.html");
     $("#Help").load("views/helpPage.html");
+});
 
-    // $("#Layers").load("views/layersPage.html");
+$(document).on("pageinit", function(event) {
+    $("#popupModal").popup({ positionTo: "window" }).popup("open");
 });
 
 //*** open email window ***//
@@ -595,4 +573,45 @@ function opensearchwin() {
     } else {
         $("#search").hide();
     }
+    // console.log("Search");
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Search Click", "Search Menu");
+    // <!-- endcomments -->
 }
+
+$("#legendBut").on("click", function() {
+    // console.log("Legend");
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Legend Click", "Legend Menu");
+    // <!-- endcomments -->
+});
+
+$("#infoBut").on("click", function() {
+    // console.log("Info");
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Info Click", "Info Menu");
+    // <!-- endcomments -->
+});
+
+$("#safeBut").on("click", function() {
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Safety Click", "Safety Menu");
+    // <!-- endcomments -->
+});
+
+$("#streetBut").on("click", function() {
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Streets Click", "Streets Menu");
+    // <!-- endcomments -->
+});
+
+$("#pathsBut").on("click", function() {
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Paths Click", "Paths Menu");
+    // <!-- endcomments -->
+});
+$("#helpBut").on("click", function() {
+    // <!-- comments:uncomment // -->
+    // ga("send", "event", "Click", "Help Click", "Help Menu");
+    // <!-- endcomments -->
+});
