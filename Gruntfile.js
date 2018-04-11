@@ -151,7 +151,8 @@ module.exports = function(grunt) {
                     removeCommands: false
                 },
                 files: {
-                    "dist/index.html": "src/index.html"
+                    "dist/index.html": "src/index.html",
+                    "dist/js/main.js": "src/js/main.js"
                 }
             }
         },
@@ -201,7 +202,7 @@ module.exports = function(grunt) {
     grunt.registerTask("buildjs", ["uglify", "concat"]);
     grunt.registerTask("update", ["replace"]);
 
-    grunt.registerTask("build", ["clean:build", "replace", "copy", "cssmin", "uglify", "concat", "clean:cleancss", "clean:cleanjs", "toggleComments"]);
+    grunt.registerTask("build", ["clean:build", "replace", "copy", "toggleComments", "cssmin", "uglify", "concat", "clean:cleancss", "clean:cleanjs"]);
 
     // the default task can be run just by typing "grunt" on the command line
     grunt.registerTask("default", []);
