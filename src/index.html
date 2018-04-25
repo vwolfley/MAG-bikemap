@@ -1,0 +1,164 @@
+<!doctype html>
+<html class="no-js" manifest="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MAG|Bikeways</title>
+    <!-- comments:uncomment-block html -->
+    <!-- <script type="text/javascript">
+        if (window.location.protocol !== 'https:') {
+            window.location = 'https://' + window.location.hostname + window.location.pathname + window.location.hash;
+        }
+    </script> -->
+    <!-- endcomments -->
+    <meta name="description" content="Bikeways Map Viewer is one of the Maricopa Association of Governments, (MAG) interactive mapping sites, showing locally-designated bicycle data and facilities">
+    <meta name="keywords" content="bike, bicycle, bike maps, bikeways, trails, routes, valley path, wayfinding, bikeshops, park & rides, transit centers, interactive, mobile, MAG, Maricopa Association of Governments, Maricopa County, Arizona, AZ">
+    <meta name="author" content="Maricopa Association of Governments">
+    <link type="text/plain" rel="author" href="https://geo.azmag.gov/maps/bikemap/humans.txt">
+    <meta name="contact" content="www.azmag.gov">
+    <meta name="url" content="https://geo.azmag.gov/maps/bikemap/">
+    <meta name="creation-date" content="2012-08-03">
+    <meta name="revision-date" content="2018-04-11">
+    <meta name="version" content="3.3.3">
+    <!-- Apple-Specific Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <!-- Chrome for Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon" type="image/png" sizes="152x152" href="img/bike-icon_152x152.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="img/bike-icon_120x120.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="img/bike-icon_76x76.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="img/bike-icon_60x60.png">
+    <link rel="shortcut icon" type="image-favorites-icon" href="img/bike-icon_60x60.png">
+    <!-- Load CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/3.19/esri/css/esri.css">
+    <!-- Custom styles for the UI of this application -->
+    <!-- comments:comment html -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/addtohomescreen.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- endcomments -->
+    <!-- comments:uncomment html -->
+    <!-- <link rel="stylesheet" href="css/concat.min.css"> -->
+    <!-- endcomments -->
+    <!-- Google Analytics -->
+    <!-- comments:uncomment-block html -->
+    <!-- <script>
+    (function(b, o, i, l, e, r) {
+        b.GoogleAnalyticsObject = l;
+        b[l] || (b[l] =
+            function() {
+                (b[l].q = b[l].q || []).push(arguments)
+            });
+        b[l].l = +new Date;
+        e = o.createElement(i);
+        r = o.getElementsByTagName(i)[0];
+        e.src = '//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e, r)
+    }(window, document, 'script', 'ga'));
+    ga('create', 'UA-29422512-1');
+    ga('send', 'pageview');
+    </script> -->
+    <!-- endcomments -->
+    <!-- /Google Analytics -->
+    <script src="js/vendor/addtohomescreen.min.js"></script>
+</head>
+
+<body>
+    <script>
+    // addToHomescreen.removeSession(); // use this to remove the localStorage variable
+    addToHomescreen({
+        skipFirstVisit: true,
+        startDelay: 5,
+        maxDisplayCount: 1,
+        lifespan: 0,
+        // debug: true
+    });
+
+    </script>
+    <!--[if lt IE 8]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- Add site content here -->
+    <!-- Global Popup -->
+    <div id="popupModal" data-role="popup" data-dismissible="true" data-overlay-theme="b" data-theme="a" data-position-to="window" data-history="false">
+        <div data-role="header" class="pHeader">
+            <h2>MAG Bikeways Info</h2>
+            <a href="#" data-rel="back" class="ui-btn-right ui-icon-delete ui-btn-icon-notext"></a>
+        </div>
+        <div role="main" class="pContent">
+            <p><img class="logoimg" src="img/bikesign2.png" alt="Bike Sign" />&nbsp;The MAG Bikeways map shows existing, locally-designated bicycle facilities, and is provided to you by the Maricopa Association of Governments (MAG). This map has been produced under the direction of the MAG Regional Bicycle Task Force. If you have any comments, please call MAG at (602) 254-6300 or visit our web site at <a class="links" title="MAG Website" role="navigation" target="_blank" href="http://azmag.gov/">www.azmag.gov</a></p>
+            <p><a href="https://geo.azmag.gov/maps/recreation/" class="links" title="RAD Viewer" role="navigation" target="_blank"><img class="logoimg" src="img/RAD_Icon_72x72.png" alt="RAD Icon" /></a>&nbsp;If you are looking for more recreation information checkout out one of our new viewers the RAD viewer. The RAD viewer includes all public parks and recreation areas in the region along with highlighted destinations as well as bicycle paths and public transit routes to help you get around.</p>
+            <span class="buttonSpan"><a href="https://geo.azmag.gov/maps/recreation/" class="links ui-btn ui-btn-inline ui-corner-all pButton" title="RAD Viewer" role="navigation" target="_blank">Visit RAD Viewer</a></span>
+        </div>
+        <hr class="pft">
+        <div data-role="footer" class="pFooter">
+            <p>Copyright &copy; <span class="copyright"></span> <a class="links" title="MAG Website" role="navigation" target="_blank" href="https://www.azmag.gov/">Maricopa Association of Governments</a> | <a href="#Legal" class="links" title="Legal Disclaimer">Legal Disclaimer</a></br><span class="version"></span></p>
+        </div>
+    </div>
+    <!-- /Global Popup -->
+    <div id="mapPage" data-role="page" data-theme="b">
+        <!-- header -->
+        <div data-role="header" data-position="fixed">
+            <h1><img id="logoimg" src="img/bikesign2.png" alt="Bike Sign" />&nbsp;MAG Bikeways</h1>
+            <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+                <a id="legendBut" href="#Legend" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-bullets"></a>
+                <a id="searchBut" href="#search" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-search" onclick="opensearchwin()"></a>
+                <a id="geolocationButton" href="#" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-location"></a>
+                <a id="infoBut" href="#Info" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-info"></a>
+            </div>
+        </div>
+        <!-- /header -->
+        <div id="mapContent" role="main" class="ui-content">
+            <div id="mapDiv"></div>
+            <div id="search"></div>
+        </div>
+        <!-- /content -->
+    </div>
+    <!-- /mapPage -->
+    <!-- Alt Pages ============================================ -->
+    <!-- Legend -->
+    <div id="Legend" data-role="page" data-theme="b"></div>
+    <!-- /Legend -->
+    <!-- Info Tab -->
+    <div id="Info" data-role="page" data-theme="b"></div>
+    <!-- /Info Tab -->
+    <!-- Help Tab -->
+    <div id="Help" data-role="page" data-theme="b"></div>
+    <!-- /Help Tab -->
+    <!-- Safety Tab -->
+    <div id="Safety" data-role="page" data-theme="b"></div>
+    <!-- /Safety Tab -->
+    <!-- OnStreet Tab -->
+    <div id="OnStreet" data-role="page" data-theme="b"></div>
+    <!-- /OnStreet Tab -->
+    <!-- OnPaths Tab -->
+    <div id="OnPaths" data-role="page" data-theme="b"></div>
+    <!-- /OnPaths Tab -->
+    <!-- Legal Page -->
+    <div id="Legal" data-role="page" data-theme="b"></div>
+    <!-- /Legal Tab -->
+    <!-- Core JavaScript
+=========================================================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JavaScript -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="//js.arcgis.com/3.19compact/"></script>
+    <!-- comments:comment html -->
+    <script src="js/plugins.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <!-- endcomments -->
+    <!-- comments:uncomment html -->
+    <!-- <script src="js/main-concat.min.js"></script> -->
+    <!-- endcomments -->
+    <!-- /JavaScript -->
+</body>
+
+</html>

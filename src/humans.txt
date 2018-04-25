@@ -1,0 +1,70 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Maricopa Association of Governments
+        Name:  Vern Wolfley
+        Role: GIS Analyst/Developer
+        Contact:
+        Twitter: @vernwolfley
+        From: Litchfield Park, AZ
+
+        Name: Jack Fairfield
+        Role: Decision Support Analyst I
+        Contact:
+        Twitter:
+        From: Tempe, AZ
+
+        Name: Nicole Funicello
+        Role: GIS Analyst I
+        Contact:
+        Twitter:
+        From: Mesa, AZ
+
+        Name:  Scott Bridwell
+        Role: GIS Modeler/Developer
+        Contact:
+        Twitter:
+        From: Chandler, AZ
+
+        Name:  Jason Howard
+        Role: GIS Program Manager
+        Contact:
+        Twitter:
+        From: Chandler, AZ
+
+        Name:  Anubhav Bagley
+        Role: Information Services Manager
+        Contact:
+        Twitter:
+        From: Phoenix, AZ
+
+        Name:  Gordon Tyus
+        Role: Graphics Specialist
+        Contact:
+        Twitter:
+        From: Phoenix, AZ
+
+
+# THANKS
+    Jason Stephens
+    Eileen Yazzie
+    Maureen DeCindis
+    Alex Oreschak
+    Paulo Vandenberg
+
+# TECHNOLOGY COLOPHON
+
+    Standards:  HTML5, CSS3
+    Components:  JavaScript, ArcGIS JavaScript API, jQuery
+
+# SITE
+    Site name:  MAG Bikeways
+    Site URL:  http://geo.azmag.gov/maps/bikemap/
+    Version: 3.3.3
+    Creation date: 2012-08-03
+    Last updated: 2018-04-11
+    Language: English
+    Doctype: HTML5
+    IDE: Sublime Text

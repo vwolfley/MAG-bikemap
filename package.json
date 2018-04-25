@@ -1,0 +1,68 @@
+{
+  "name": "MAG-Bikeways",
+  "version": "3.3.3",
+  "date": "2018-04-11",
+  "copyright": "2018",
+  "description": "MAG Bikeways Viewer",
+  "keywords": [
+    "bikeways",
+    "bikemap",
+    "biking",
+    "bicycles",
+    "cycling",
+    "routes",
+    "valley path",
+    "wayfinding",
+    "transportation",
+    "Maricopa",
+    "Pinal",
+    "County",
+    "Arizona",
+    "MAG",
+    "maps",
+    "ESRI",
+    "#MAGmaps"
+  ],
+  "main": "index.js",
+  "repository": [
+    {
+      "type": "git",
+      "url": "https://github.com/AZMAG/map-Bikeways"
+    },
+    {
+      "type": "git",
+      "url": "I:/Projects/Git_repos/bikemap-app.git"
+    }
+  ],
+  "homepage": "http://geo.azmag.gov/maps/bikemap/",
+  "author": "MAG Information Services (http://www.azmag.gov/About-Us/Divisions/Information-Services-Division)",
+  "contributors": [
+    {
+      "name": "Vern Wolfley",
+      "email": "vwolfley@azmag.gov"
+    },
+    {
+      "name": "Jack Fairfield",
+      "email": "jfairfield@azmag.gov"
+    }
+  ],
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-comment-toggler": "^0.2.2",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^3.1.0",
+    "grunt-text-replace": "^0.4.0",
+    "jshint-stylish": "^2.2.1",
+    "jshint-stylish-ex": "^0.2.0",
+    "lodash": "^4.17.4",
+    "matchdep": "^2.0.0",
+    "normalize.css": "^7.0.0"
+  },
+  "license": "MIT"
+}

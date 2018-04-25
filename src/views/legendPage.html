@@ -1,0 +1,49 @@
+<div data-role="header" data-position="fixed">
+    <h1><img id="logoimg" src="img/bikesign2.png" alt="Bike Sign" />&nbsp;MAG Bikeways</h1>
+
+    <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+        <a href="#mapPage" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-home"></a>
+        <a href="#Info" class="index ui-btn ui-corner-all ui-btn-icon-notext ui-icon-info"></a>
+    </div>
+
+</div>
+<!-- /header -->
+<div data-role="main" class="ui-content">
+    <h2 class="ui-bar ui-bar-b ui-corner-all">Legend</h2>
+    <div class="ui-body ui-body-b ui-corner-all">
+
+        <div data-role="controlgroup" data-enhanced="true" class="ui-controlgroup ui-controlgroup-vertical ui-group-theme-b ui-corner-all">
+            <div role="heading" class="ui-controlgroup-label">
+
+                <legend>Map Layers:</legend>
+            </div>
+            <div class="ui-controlgroup-controls ui-shadow">
+                <label for="bikeshops">Bike Shops</label>
+                    <input type="checkbox" id="bikeshops" class="check" name="bikeshops"/>
+                <label for="bikepics">Bikeways Pics & Videos</label>
+                    <input type="checkbox" id="bikepics" class="check" name="bikepics"/>
+                <label for="crossings">Bike Crossing Types</label>
+                    <input type="checkbox" id="crossings" class="check" name="crossings"/>
+                <label for="transit">Light Rail & Transit Locations</label>
+                    <input type="checkbox" id="transit" class="check" name="transit"/>
+                <label for="grid">GRID Bike Share</label>
+                    <input type="checkbox" id="grid" class="check" name="grid"/>
+                <label for="us90">US Bicycle Route 90</label>
+                    <input type="checkbox" id="us90" class="check" name="us90"/>
+                <label for="psbikeway">Phoenix Sonoran Bikeway</label>
+                    <input type="checkbox" id="psbikeway" class="check" name="psbikeway"/>
+            </div>
+        </div>
+
+        <div id="legendDiv"></div>
+
+        <div data-role="controlgroup">
+            <a href="#mapPage" id="" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-left">Back to Map</a>
+            <a href="#Safety" id="safeBut" class="ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Bike Safety</a>
+            <a href="#OnStreet" id="streetBut" class="ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Street Safety</a>
+            <a href="#OnPaths" id="pathsBut" class="ui-btn ui-corner-all ui-icon-action ui-btn-icon-left">Multi-Use Safety</a>
+        </div>
+
+    </div>
+</div>
+<!-- /content -->

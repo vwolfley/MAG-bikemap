@@ -1,0 +1,665 @@
+/* ========================================================================
+ * Maricopa Association of Governments
+ * CSS document
+ * @project     MAG Bikeways Viewer
+ * ========================================================================
+ * @file        custom.css
+ * @summary     CSS document guiding layout for project
+ * ========================================================================
+ */
+
+/*
+ * HTML5 Boilerplate | version | v4.3.0 | MIT License | https://h5bp.com/
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #f3f0cf;
+    /*antiquewhite*/
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+
+audio,
+canvas,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#mapPage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 0 !important;
+}
+
+.ui-content {
+    padding: 0 !important;
+}
+
+#mapContent {}
+
+#mapDiv {
+    position: absolute;
+    background-color: #EEEEDD;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.links {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.ui-dialog-theme {
+    background-color: #000;
+    opacity: 0.75
+}
+
+
+/* ==========================================
+**** Map Controls Custom Styles ****
+============================================= */
+
+#BasemapToggle {
+    position: absolute;
+    bottom: 45px;
+    right: 60px;
+    z-index: 50;
+}
+
+.BasemapToggle .basemapImage {
+    width: 41px;
+    height: 55px;
+}
+
+.BasemapToggle .basemapTitle {
+    width: auto;
+}
+
+.HomeButton {
+    position: absolute;
+    bottom: 110px;
+    right: 20px;
+}
+
+.HomeButton .home {
+    background-color: #5b5b5b;
+    padding: 0 0 0 0;
+}
+
+.HomeButton .home:hover {
+    background-color: #484848;
+}
+
+.esriSimpleSlider {
+    border: none;
+    background-color: #5b5b5b;
+    color: #fff;
+}
+
+.esriSimpleSliderDecrementButton:hover,
+.esriSimpleSliderIncrementButton:hover {
+    background-color: #484848;
+}
+
+.esriSimpleSliderVertical .esriSimpleSliderIncrementButton,
+.esriSimpleSliderVertical .esriSimpleSliderDecrementButton {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 27px;
+}
+
+.esriSimpleSliderVertical .esriSimpleSliderIncrementButton {
+    border-bottom: 1px solid #cccccc;
+}
+
+.esriSimpleSliderDisabledButton,
+.esriSimpleSliderDisabledButton:active,
+.esriSimpleSliderDisabledButton:hover {
+    cursor: default;
+    background-color: #cdcdcd;
+    color: #fff;
+}
+
+
+/* ==========================================
+**** navbar custom styles ****
+============================================= */
+
+.ui-title {
+    padding: 5px 0 !important;
+}
+
+.ui-header .ui-title {
+    text-align: left;
+    margin-left: 10px;
+}
+
+/* navbar icons*/
+
+.ui-controlgroup-horizontal .ui-controlgroup-controls>.ui-btn {
+    height: 20px;
+}
+
+.index .ui-btn-icon-left:after,
+.ui-btn-icon-right:after,
+.ui-btn-icon-top:after,
+.ui-btn-icon-bottom:after,
+.ui-btn-icon-notext:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 32px;
+    height: 32px;
+    left: 50%;
+    margin-left: -15px;
+    top: 50%;
+    margin-top: -15px;
+}
+
+#maplegend {
+    padding: 4px;
+}
+
+#logo {
+    position: absolute;
+    text-align: middle;
+    font-size: 12px;
+    vertical-align: middle;
+    height: 44px;
+    width: 200px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+}
+
+#logoimg, .logoimg {
+    vertical-align: middle;
+    height: 40px;
+    width: 40px;
+}
+
+#maglogo {
+    position: absolute;
+    width: 100%;
+    height: 43px;
+    padding: 2px;
+}
+
+#maglogoimg {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    float: right;
+    position: relative;
+    height: 30px;
+    width: 135;
+    left: -40%;
+    text-align: left;
+}
+
+.loading {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 50%;
+    top: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+    z-index: 50;
+}
+
+.pagetext {
+    padding: 10px;
+}
+
+#helpimg {
+    height: 26px;
+    width: 26px;
+}
+
+#safeimg {
+    height: 85px;
+    width: 85px;
+}
+
+.onstreetimg {
+    height: 65px;
+    width: 65px;
+}
+
+.onpathimg {
+    height: 65px;
+    width: 65px;
+}
+
+#table1 {
+    width: 100%;
+    border: 0px;
+    padding: 10px;
+}
+
+td {
+    padding: 3px;
+}
+
+.tdstyle {
+    padding: 3px;
+    border-bottom: 1px solid;
+}
+
+#search {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 55px;
+    right: 5px;
+}
+
+
+/* ==========================================
+**** Popup Custom Styles ****
+============================================= */
+
+.esriPopup .titleButton.maximize {
+    display: none;
+}
+
+.ui-overlay-b,
+.ui-page-theme-b,
+.ui-page-theme-b .ui-panel-wrapper {
+    text-shadow: none;
+}
+
+.esriPopup .titleButton.next {
+    right: 26px;
+}
+
+.esriPopup .titleButton.prev {
+    right: 44px;
+}
+
+.youTube {
+    width: 250px;
+    height: 140px;
+}
+
+.pics {
+    max-width: 200px;
+    max-height: 200px
+}
+#popupModal .ui-header .ui-title {
+    text-align: center;
+    margin: 0 30%;
+    padding: 0.7em 0 !important;
+}
+#popupModal .ui-content {
+ padding: 20px !important;
+}
+#popupModal .ui-popup-screen {
+    opacity: 0.75 !important
+}
+
+/* #popupModal {
+    max-width:500px;
+    background:#404040;
+    color:#fff;
+    padding:20px;
+    position:absolute;
+    top:25%;
+    left:50%;
+    margin-left:-250px;
+}
+
+
+/* ==========================================
+**** Legend View Custom Styles ****
+============================================= */
+
+#toggleDiv {}
+
+#legendDiv {
+    font-size: 0.8em;
+    line-height: normal;
+}
+
+.esriLegendService {
+    padding-bottom: 2px;
+}
+
+.esriLegendServiceLabel {
+    display: none;
+}
+
+table.esriLegendLayerLabel {
+    display: none;
+}
+
+#legendDiv td {
+    padding: 1px;
+}
+
+
+/* ==========================================
+**** Help View Custom Styles ****
+============================================= */
+
+#pdf {
+    height: 37px;
+    width: auto;
+    margin: 0 10px 0 15px;
+}
+.imgZoom {
+    height: 25px;
+    padding-left: 3px;
+}
+.help4 {
+    margin: 5px 0 5px 0;
+}
+.indentP{
+    text-indent: 50px;
+}
+.helpCont {
+    margin-left: 15px;
+}
+.helpCont img {
+    margin-right: 10px;
+    float: left;
+}
+.helpPop {
+    margin-left: 25px;
+    height: 90px;
+}
+#popupModal {
+    border-style: none;
+    max-width: 450px;
+}
+.pHeader{
+    height: 45px;
+    background-color: #666666;
+    color: white;
+    text-align: center;
+    text-shadow: none;
+}
+
+.pHeader h2 {
+    margin: 0;
+    padding-top: 5px;
+}
+
+.pContent {
+    padding: 5px 20px 5px 20px;
+    font-size: 0.9em;
+}
+
+.pFooter {
+    padding: 0 10px 5px 10px;
+    font-size: 11px;
+    text-align: center;
+}
+.pFooter p {
+    margin: 0;
+}
+.pft {
+    margin: 1px 0 2px 0;
+}
+.pButton {
+    font-size: 13px;
+}
+
+.buttonSpan {
+    display: block;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+
+/*
+ * Hide visually and from screen readers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+
+/*
+ * Hide only visually, but have it available for screen readers: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+(-o-min-device-pixel-ratio: 5/4),
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    thead {
+        display: table-header-group;
+        /* h5bp.com/t */
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    img {
+        max-width: 100% !important;
+    }
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
