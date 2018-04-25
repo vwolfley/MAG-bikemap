@@ -1,0 +1,10 @@
+# Built Files
+dist/
+
+# Dependency directory
+node_modules
+bower_components
+
+# workspace files are user-specific don't track
+*.sublime-workspace
+.vscode/launch.json
