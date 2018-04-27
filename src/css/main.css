@@ -1,665 +1,197 @@
-/* ========================================================================
- * Maricopa Association of Governments
- * CSS document
- * @project     MAG Bikeways Viewer
- * ========================================================================
- * @file        custom.css
- * @summary     CSS document guiding layout for project
- * ========================================================================
- */
-
-/*
- * HTML5 Boilerplate | version | v4.3.0 | MIT License | https://h5bp.com/
- *
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
-html {
-    color: #f3f0cf;
-    /*antiquewhite*/
-    font-size: 1em;
-    line-height: 1.4;
-}
-
-/*
- * Remove text-shadow in selection highlight: h5bp.com/i
- * These selection rule sets have to be separate.
- * Customize the background color to match your design.
- */
-
-::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
-}
-
-/*
- * Remove the gap between images, videos, audio and canvas and the bottom of
- * their containers: h5bp.com/i/440
- */
-
-audio,
-canvas,
-img,
-svg,
-video {
-    vertical-align: middle;
-}
-
-
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-
-/*
- * Allow only vertical resizing of textareas.
- */
-
-textarea {
-    resize: vertical;
-}
-
-
-/* ==========================================================================
-   Browse Happy prompt
-   ========================================================================== */
-
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
-
-
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
 html,
-body {
-    height: 100%;
-    width: 100%;
+body,
+#container {
+    padding: 0;
     margin: 0;
-    padding: 0;
-}
-
-#mapPage {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    padding: 0 !important;
-}
-
-.ui-content {
-    padding: 0 !important;
-}
-
-#mapContent {}
-
-#mapDiv {
-    position: absolute;
-    background-color: #EEEEDD;
     height: 100%;
     width: 100%;
-    padding: 0;
-    overflow: hidden;
-    z-index: 0;
 }
 
-.links {
+#container {
+    display: flex;
+}
+
+@media (max-width: 900px) {
+    #container {
+        flex-direction: column;
+        overflow: hidden;
+    }
+    #sidePanel {
+        flex: 1;
+        max-height:55%;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+#viewDiv {
+    flex: 4;
+}
+
+#sidePanel {
+    flex: 1;
+    background-color: #1d1d1d;
+    border-color: #1b1b1b;
+    color: #fff;
+    text-shadow: 0 1px 0 #111;
+    font-weight: 700;
+}
+
+@media (max-width: 1614px) {
+    #sidePanel {
+        flex: 1.5;
+    }
+}
+
+@media (max-width: 1188px) {
+    #sidePanel {
+        flex: 2.3;
+    }
+}
+
+#layerList {
+    padding: 5%;
+}
+
+#layerList .checkbox-div {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border-color: #1d1d1d;
+    color: #fff;
+    text-shadow: 0 1px 0 #111;
+    display: flex;
+    align-items: center;
+    margin: 1px;
+}
+
+#layerList .checkbox-div:hover {
+    background-color: #373737;
+    border-color: #1f1f1f;
+    color: #fff;
+    text-shadow: 0 1px 0 #111;
+    box-shadow: 0 0 12px #2ad;
     cursor: pointer;
-    text-decoration: none;
 }
 
-.ui-dialog-theme {
-    background-color: #000;
-    opacity: 0.75
+#layerList .regular-checkbox:hover,
+label:hover,
+.regular-checkbox:hover {
+    cursor: pointer;
 }
 
-
-/* ==========================================
-**** Map Controls Custom Styles ****
-============================================= */
-
-#BasemapToggle {
-    position: absolute;
-    bottom: 45px;
-    right: 60px;
-    z-index: 50;
+#layerList .layerLabel {
+    margin-left: 5%;
+    font-size: 14px;
 }
 
-.BasemapToggle .basemapImage {
-    width: 41px;
-    height: 55px;
+#layerList .regular-checkbox {
+    background-color: #37AADB;
 }
 
-.BasemapToggle .basemapTitle {
-    width: auto;
+#layerList label {
+    display: inline;
 }
 
-.HomeButton {
-    position: absolute;
-    bottom: 110px;
-    right: 20px;
+#layerList .regular-checkbox {
+    display: none;
 }
 
-.HomeButton .home {
-    background-color: #5b5b5b;
-    padding: 0 0 0 0;
-}
-
-.HomeButton .home:hover {
-    background-color: #484848;
-}
-
-.esriSimpleSlider {
-    border: none;
-    background-color: #5b5b5b;
-    color: #fff;
-}
-
-.esriSimpleSliderDecrementButton:hover,
-.esriSimpleSliderIncrementButton:hover {
-    background-color: #484848;
-}
-
-.esriSimpleSliderVertical .esriSimpleSliderIncrementButton,
-.esriSimpleSliderVertical .esriSimpleSliderDecrementButton {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 27px;
-}
-
-.esriSimpleSliderVertical .esriSimpleSliderIncrementButton {
-    border-bottom: 1px solid #cccccc;
-}
-
-.esriSimpleSliderDisabledButton,
-.esriSimpleSliderDisabledButton:active,
-.esriSimpleSliderDisabledButton:hover {
-    cursor: default;
-    background-color: #cdcdcd;
-    color: #fff;
-}
-
-
-/* ==========================================
-**** navbar custom styles ****
-============================================= */
-
-.ui-title {
-    padding: 5px 0 !important;
-}
-
-.ui-header .ui-title {
-    text-align: left;
-    margin-left: 10px;
-}
-
-/* navbar icons*/
-
-.ui-controlgroup-horizontal .ui-controlgroup-controls>.ui-btn {
-    height: 20px;
-}
-
-.index .ui-btn-icon-left:after,
-.ui-btn-icon-right:after,
-.ui-btn-icon-top:after,
-.ui-btn-icon-bottom:after,
-.ui-btn-icon-notext:after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 32px;
-    height: 32px;
-    left: 50%;
-    margin-left: -15px;
-    top: 50%;
-    margin-top: -15px;
-}
-
-#maplegend {
-    padding: 4px;
-}
-
-#logo {
-    position: absolute;
-    text-align: middle;
-    font-size: 12px;
-    vertical-align: middle;
-    height: 44px;
-    width: 200px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 5px;
-}
-
-#logoimg, .logoimg {
-    vertical-align: middle;
-    height: 40px;
-    width: 40px;
-}
-
-#maglogo {
-    position: absolute;
-    width: 100%;
-    height: 43px;
-    padding: 2px;
-}
-
-#maglogoimg {
-    padding-top: 7px;
-    padding-bottom: 7px;
-    float: right;
+#layerList .regular-checkbox+label {
+    /* background-color: #37AADB; */
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+    padding: 9px;
+    border-radius: 3px;
+    display: inline-block;
     position: relative;
-    height: 30px;
-    width: 135;
-    left: -40%;
-    text-align: left;
 }
 
-.loading {
+#layerList .regular-checkbox+label:active,
+.regular-checkbox:checked+label:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#layerList .regular-checkbox:checked+label {
+    background-color: #37AADB;
+    border: 1px solid #adb8c0;
+    color: #000;
+}
+
+#layerList .regular-checkbox:checked+label:after {
+    content: '\2714';
+    font-size: 10px;
     position: absolute;
-    width: 100px;
-    height: 100px;
-    left: 50%;
-    top: 50%;
-    margin-left: -50px;
-    margin-top: -50px;
-    z-index: 50;
+    top: 0px;
+    left: 3px;
+    color: #fff;
 }
 
-.pagetext {
+#layerList .big-checkbox+label {
     padding: 10px;
 }
 
-#helpimg {
-    height: 26px;
-    width: 26px;
+#layerList .big-checkbox:checked+label:after {
+    font-size: 15.5555px;
+    /* left: 4px; */
 }
 
-#safeimg {
-    height: 85px;
-    width: 85px;
+#layerList .legendDiv {
+    padding: 10px;
+    color: #fff;
+    text-shadow: 0 1px 0 #111;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
 }
 
-.onstreetimg {
-    height: 65px;
-    width: 65px;
+#layerList .hiddenLegend {
+    display: none;
 }
 
-.onpathimg {
-    height: 65px;
-    width: 65px;
+#layerList .legendItem {
+    width: 90%;
 }
 
-#table1 {
+#layerList .legendItemLabel {
+    color: #d1d1d1;
+    font-size: 12px;
+    font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.3em;
+    margin-left: 1%;
+}
+
+#layerList img {
+    vertical-align: middle;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+    border-bottom: 1px solid #1d1d1d;
+    border-top: 1px solid #1d1d1d;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #d1d1d1;
+    border: 2px solid #1d1d1d;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.popupItem{
+    display:flex;
     width: 100%;
-    border: 0px;
-    padding: 10px;
 }
 
-td {
-    padding: 3px;
+.popupItem span{
+    flex: 3;
 }
-
-.tdstyle {
-    padding: 3px;
-    border-bottom: 1px solid;
-}
-
-#search {
-    display: block;
-    position: absolute;
-    z-index: 2;
-    top: 55px;
-    right: 5px;
-}
-
-
-/* ==========================================
-**** Popup Custom Styles ****
-============================================= */
-
-.esriPopup .titleButton.maximize {
-    display: none;
-}
-
-.ui-overlay-b,
-.ui-page-theme-b,
-.ui-page-theme-b .ui-panel-wrapper {
-    text-shadow: none;
-}
-
-.esriPopup .titleButton.next {
-    right: 26px;
-}
-
-.esriPopup .titleButton.prev {
-    right: 44px;
-}
-
-.youTube {
-    width: 250px;
-    height: 140px;
-}
-
-.pics {
-    max-width: 200px;
-    max-height: 200px
-}
-#popupModal .ui-header .ui-title {
-    text-align: center;
-    margin: 0 30%;
-    padding: 0.7em 0 !important;
-}
-#popupModal .ui-content {
- padding: 20px !important;
-}
-#popupModal .ui-popup-screen {
-    opacity: 0.75 !important
-}
-
-/* #popupModal {
-    max-width:500px;
-    background:#404040;
-    color:#fff;
-    padding:20px;
-    position:absolute;
-    top:25%;
-    left:50%;
-    margin-left:-250px;
-}
-
-
-/* ==========================================
-**** Legend View Custom Styles ****
-============================================= */
-
-#toggleDiv {}
-
-#legendDiv {
-    font-size: 0.8em;
-    line-height: normal;
-}
-
-.esriLegendService {
-    padding-bottom: 2px;
-}
-
-.esriLegendServiceLabel {
-    display: none;
-}
-
-table.esriLegendLayerLabel {
-    display: none;
-}
-
-#legendDiv td {
-    padding: 1px;
-}
-
-
-/* ==========================================
-**** Help View Custom Styles ****
-============================================= */
-
-#pdf {
-    height: 37px;
-    width: auto;
-    margin: 0 10px 0 15px;
-}
-.imgZoom {
-    height: 25px;
-    padding-left: 3px;
-}
-.help4 {
-    margin: 5px 0 5px 0;
-}
-.indentP{
-    text-indent: 50px;
-}
-.helpCont {
-    margin-left: 15px;
-}
-.helpCont img {
-    margin-right: 10px;
-    float: left;
-}
-.helpPop {
-    margin-left: 25px;
-    height: 90px;
-}
-#popupModal {
-    border-style: none;
-    max-width: 450px;
-}
-.pHeader{
-    height: 45px;
-    background-color: #666666;
-    color: white;
-    text-align: center;
-    text-shadow: none;
-}
-
-.pHeader h2 {
-    margin: 0;
-    padding-top: 5px;
-}
-
-.pContent {
-    padding: 5px 20px 5px 20px;
-    font-size: 0.9em;
-}
-
-.pFooter {
-    padding: 0 10px 5px 10px;
-    font-size: 11px;
-    text-align: center;
-}
-.pFooter p {
-    margin: 0;
-}
-.pft {
-    margin: 1px 0 2px 0;
-}
-.pButton {
-    font-size: 13px;
-}
-
-.buttonSpan {
-    display: block;
-    text-align: center;
-}
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-
-/*
- * Hide visually and from screen readers: h5bp.com/u
- */
-
-.hidden {
-    display: none !important;
-    visibility: hidden;
-}
-
-
-/*
- * Hide only visually, but have it available for screen readers: h5bp.com/v
- */
-
-.visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-}
-
-
-/*
- * Extends the .visuallyhidden class to allow the element to be focusable
- * when navigated to via the keyboard: h5bp.com/p
- */
-
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
-}
-
-
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-    visibility: hidden;
-}
-
-
-/*
- * Clearfix: contain floats
- *
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-
-.clearfix:before,
-.clearfix:after {
-    content: " ";
-    /* 1 */
-    display: table;
-    /* 2 */
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-(-o-min-device-pixel-ratio: 5/4),
-(-webkit-min-device-pixel-ratio: 1.25),
-(min-resolution: 1.25dppx),
-(min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
-}
-
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request: h5bp.com/r
-   ========================================================================== */
-
-@media print {
-    * {
-        background: transparent !important;
-        color: #000 !important;
-        /* Black prints faster: h5bp.com/s */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-    /*
-     * Don't show links that are fragment identifiers,
-     * or use the `javascript:` pseudo protocol
-     */
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
-    }
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-    thead {
-        display: table-header-group;
-        /* h5bp.com/t */
-    }
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-    img {
-        max-width: 100% !important;
-    }
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+.popupItem .popupLabel {
+    flex: 1;
+    font-weight: bold;
 }

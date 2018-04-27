@@ -191,6 +191,18 @@ module.exports = function(grunt) {
                     to: "v" + "<%= pkg.version %>" + " | " + "<%= pkg.date %>",
                 }]
             }
+        },
+
+        babel: {
+            options: {
+                sourceMap: true,
+                presets: ['env']
+            },
+            dist: {
+                files: {
+                    'src/js/legend.js': 'src/js/legend_.js'
+                }
+            }
         }
 
     });
@@ -206,6 +218,7 @@ module.exports = function(grunt) {
 
     // the default task can be run just by typing "grunt" on the command line
     grunt.registerTask("default", []);
+    grunt.registerTask("babel", ["babel"])
 
 };
 
