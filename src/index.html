@@ -6,7 +6,7 @@
 
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>MAG|Bikeways</title>
+    <title>MAG Bikeways</title>
     <!-- comments:uncomment-block html -->
     <!-- <script type="text/javascript">
             if (window.location.protocol !== 'https:') {
@@ -40,7 +40,7 @@
 
     <!-- Load CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://js.arcgis.com/4.7/esri/themes/dark/main.css">
+    <link rel="stylesheet" href="https://js.arcgis.com/4.7/esri/css/main.css">
     <!-- <link rel="stylesheet" href="css/sidebar.css"> -->
     <!-- <link rel="stylesheet" href="css/toggleSwitch.css"> -->
     <link rel="stylesheet" href="css/main.css">
@@ -72,7 +72,6 @@
                         <input id="legendToggle" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
-
                     <span class="arrow-left" style: "display:'block';"></span>
                 </li>
                 <li panel-target="layers">
@@ -104,19 +103,21 @@
                     <span class="arrow-left"></span>
                 </li>
             </ul>
-            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                <i class="glyphicon glyphicon-align-left"></i>
-            </button>
-
             <ul class="list-unstyled CTAs">
                 <li>
                     <a href="https://maps.azmag.gov" class="article">Back to more MAG maps</a>
                 </li>
             </ul>
+            <div id="collapseBtnContainer">
+                <button type="button" id="sidebarCollapseInBar" title="Toggle Sidebar" class="sidebarCollapse btn btn-info navbar-btn">
+                    <i class="glyphicon glyphicon-menu-hamburger"></i>
+                    <span class="direction">Collapse Sidebar</span>
+                </button>
+            </div>
         </nav>
-        
+
         <!-- Page Content Holder -->
-        <div id="content" style="display:block !important;">
+        <div id="content">
             <!-- style="display:block !important;" -->
             <a id="closePanel" href="#">
                 <i style="float: right;" class="glyphicon glyphicon-remove"></i>
@@ -124,7 +125,7 @@
             <div class="panelDiv" panel-id="layers">
                 <div id="layerList"></div>
             </div>
-            <div class="panelDiv" style="display:block !important;" panel-id="about">
+            <div class="panelDiv" panel-id="about">
                 <div class="aboutTab">
                     <h4>About the MAG Interactive Bikeways Viewer</h4>
                     <div class="safetyContainer">
@@ -178,9 +179,10 @@
                     <hr>
                     <div id="copyDiv">
                         <span class="copyright">Copyright © 2018</span>
-                        <a class="link" title="website link" role="navigation" target="_blank" href="https://www.azmag.gov/">MAG</a>  |
-                        <span class="version">v3.3.3 | 2018-04-11</span> |
+                        <a class="link" title="website link" role="navigation" target="_blank" href="https://www.azmag.gov/">Maricopa Association of Governments</a> |
                         <a href="#Legal" class="link" title="Legal">Legal Disclaimer</a>
+                        <br>
+                        <span class="version">v3.3.3 | 2018-04-11</span>
                     </div>
                 </div>
             </div>
@@ -444,12 +446,13 @@
         <div id="container">
             <div id="viewDiv"></div>
         </div>
-
     </div>
     <div id="legend">
         <div id="legendDiv"></div>
     </div>
-
+    <button type="button" id="sidebarCollapse" title="Toggle Sidebar" class="sidebarCollapse btn btn-info navbar-btn">
+        <i class="glyphicon glyphicon-menu-hamburger"></i>
+    </button>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://js.arcgis.com/4.7/"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

@@ -10,9 +10,13 @@ require([
 
     $(document).ready(function () {
         var $sidebar = $('#sidebar');
-        $('#sidebarCollapse').on('click', function () {
+        var $sidebarCollapse = $("#sidebarCollapse");
+
+        $('.sidebarCollapse').on('click', function () {
             $sidebar.toggleClass('active');
+            $sidebarCollapse.toggleClass('active');
         });
+
         var $links = $('.components li');
         var $arrows = $('.arrow-left');
         var $panelDivs = $(".panelDiv");
@@ -79,6 +83,9 @@ require([
 
     var legend = $("#legend");
     app.view.ui.add("legend", "top-right");
+
+    var sidebarCollapse = $("#sidebarCollapse");
+    app.view.ui.add("sidebarCollapse", "bottom-left");
 
     app.view.when(function () {
         $.get(config.mainUrl + "/?f=json", function (data) {
@@ -203,7 +210,7 @@ require([
         }]
     });
 
-    $("#legal").load("views/legalPage.html");
+    // $("#legal").load("views/legalPage.html");
 
 
     // function watchScale() {
