@@ -1,13 +1,23 @@
 function startLegend() {
     $.getJSON(config.mainUrl + "/legend?f=pjson", function (data) {
         var $layerList = $("#layerList");
+        var $legendDiv = $("#legendDiv");
         var legendLayers = config.layers.filter(conf => conf.legend);
+
         var sort = function (a, b) {
             return a.legend.sort - b.legend.sort
         }
 
+        var conf = {
+            id: "bikeways",
+            layerName: "Bikeways"
+        }
+        
+        $legendDiv.append(`<div class="legendDiv" id="l-${conf.id}">${getLegendHtml(conf)}</div>`)
+
+
         for (const conf of legendLayers.sort(sort)) {
-            var legendHTML = getLegendHtml(conf);
+            
             var html = `
             <div>
                 <div class="checkbox-div">
@@ -15,11 +25,17 @@ function startLegend() {
                     <label></label>
                     <label class="layerLabel">${conf.title}</label>
                 </div>
-                <div class="legendDiv ${conf.visible ? '' : 'hiddenLegend'}" id="l-${conf.id}">${legendHTML}</div>
             </div>
             `
+
             $layerList.append(html);
+
+            var legendHTML = getLegendHtml(conf);
+            var legend = `<div class="legendDiv ${conf.visible ? '' : 'hiddenLegend'}" id="l-${conf.id}">${legendHTML}</div>`;
+            $legendDiv.append(legend);
+
         }
+        $("#legend").show();
 
         $layerList.find(".checkbox-div").click(toggleLayerItem);
 
@@ -29,13 +45,13 @@ function startLegend() {
             var $cbox = $(this).find(".big-checkbox");
             $cbox.prop("checked", !$cbox.prop("checked"));
 
-            //Toggle Legend Div
-            var $legend = $(this).siblings(".legendDiv");
-            $legend.slideToggle(50);
-
             //Toggle Layer
             var layer = app.map.findLayerById($cbox.data('layer-id'));;
             layer.visible = !layer.visible;
+
+            //Toggle Legend Div
+            var $legend = $("#l-" + $cbox.data('layer-id'));
+            $legend.slideToggle(50);
         }
 
         function getLegendHtml(confObj) {

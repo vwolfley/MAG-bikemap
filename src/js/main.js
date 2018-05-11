@@ -8,6 +8,57 @@ require([
     "dojo/domReady!"
 ], function (Map, MapView, MapImageLayer, Legend, BasemapToggle) {
 
+    $(document).ready(function () {
+        var $sidebar = $('#sidebar');
+        $('#sidebarCollapse').on('click', function () {
+            $sidebar.toggleClass('active');
+        });
+        var $links = $('.components li');
+        var $arrows = $('.arrow-left');
+        var $panelDivs = $(".panelDiv");
+        var $content = $("#content");
+        var $legendToggle = $("#legendToggle");
+
+        $links.on('click', function (e) {
+            var target = $(this).attr("panel-target");
+            if (target === "legend") {
+                toggleLegend();
+            } else {
+                var isActive = $(this).hasClass('active');
+                $links.removeClass('active');
+                $arrows.hide();
+                $panelDivs.hide();
+
+                if (isActive) {
+                    $content.hide();
+                } else {
+                    $content.show();
+                    $(this).addClass('active');
+                    $(this).find('.arrow-left').show();
+
+                    $(`div[panel-id=${target}`).fadeIn(400);
+                }
+            }
+        });
+        
+        $legendToggle.click(function(e){
+            return false;
+        });
+
+        $("#closePanel").click(function () {
+            $links.removeClass('active');
+            $arrows.hide();
+            $panelDivs.hide();
+            $content.hide();
+        });
+
+        function toggleLegend(){
+            $("#legend").fadeToggle();
+            $legendToggle.prop("checked", !$legendToggle.prop("checked"));
+        }
+
+    });
+
     app.map = new Map({
         basemap: "streets"
     });
@@ -25,6 +76,9 @@ require([
         nextBasemap: "hybrid"
     });
     app.view.ui.add(toggle, "top-left");
+
+    var legend = $("#legend");
+    app.view.ui.add("legend", "top-right");
 
     app.view.when(function () {
         $.get(config.mainUrl + "/?f=json", function (data) {
@@ -161,11 +215,7 @@ require([
 
 
     // var legend = new Legend({
-    //     view: app.view,
-    //     layerInfos: [{
-    //         layer: mainLayer,
-    //         title: "Legend"
-    //     }]
+    //     view: app.view
     // });
     // app.view.ui.add(legend, "bottom-right");
 

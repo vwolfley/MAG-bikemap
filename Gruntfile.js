@@ -1,16 +1,4 @@
-/* ========================================================================
- * MAG Bikeways
- * Maricopa Association of Governments
- * @file Gruntfile.js
- * @summary Grunt file for task automation for MAG Bikeways Viewer
- * @version 3.2.0
- * http://ims.azmag.gov/
- * ========================================================================
- * @copyright 2017 MAG
- * @license MIT
- * ========================================================================
- */
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     "use strict";
 
@@ -20,36 +8,44 @@ module.exports = function(grunt) {
 
         pkg: grunt.file.readJSON("package.json"),
 
-            bannercss: "/*! =============================================================\n" +
-            " * MAG Bikeways\n" +
+        options: {
+            base: "app",
+            dist: "//MAG1113/ArcGISVirtualRoot/maps/vw/employ/app",
+        },
+
+        bannercss: "/*! =============================================================\n" +
+            " * MAG Employment Map Viewer\n" +
             " * Maricopa Association of Governments\n" +
-            " * Style document for MAG Bikeways\n" +
+            " * Style document for MAG Employment Map Viewer\n" +
             " * =============================================================\n" +
-            " * @project    MAG Bikeways\n" +
-            " * @file       concat.min.css\n" +
-            " * @version    <%= pkg.version %>\n" +
-            " * @date       <%= pkg.date %>\n" +
-            " * @copyright  <%= pkg.copyright %> MAG\n" +
-            " * @license    MIT\n" +
+            " * @project 	MAG Employment Map Viewer\n" +
+            " * @file		main.css\n" +
+            " * @version 	<%= pkg.version %>\n" +
+            " * @date 		<%= pkg.date %>\n" +
+            " * @copyright	<%= pkg.copyright %> MAG\n" +
+            " * @license 	MIT\n" +
             " * ===============================================================\n" +
             " */",
 
-            bannerjs: "/*! =============================================================\n" +
-            " * MAG Bikeways\n" +
-            " * Maricopa Association of Governments\n" +
-            " * JavaScript document for MAG Bikeways\n" +
-            " * =============================================================\n" +
-            " * @project    MAG Bikeways\n" +
-            " * @file       main-concat.min.js\n" +
-            " * @version    <%= pkg.version %>\n" +
-            " * @date       <%= pkg.date %>\n" +
-            " * @copyright  <%= pkg.copyright %> MAG\n" +
-            " * @license    MIT\n" +
-            " * ===============================================================\n" +
-            " */",
+        htmlhint: {
+            build: {
+                options: {
+                    "tag-pair": true, // Force tags to have a closing pair
+                    "tagname-lowercase": true, // Force tags to be lowercase
+                    "attr-lowercase": true, // Force attribute names to be lowercase e.g. <div id="header"> is invalid
+                    "attr-value-double-quotes": true, // Force attributes to have double quotes rather than single
+                    // "doctype-first": true,           // Force the DOCTYPE declaration to come first in the document
+                    "spec-char-escape": true, // Force special characters to be escaped
+                    "id-unique": true, // Prevent using the same ID multiple times in a document
+                    // "head-script-disabled": false,   // Prevent script tags being loaded in the head for performance reasons
+                    "style-disabled": true // Prevent style tags. CSS should be loaded through
+                },
+                src: ["src/index.html", "src/app/views/*.html"]
+            }
+        },
 
         jshint: {
-            files: ["Gruntfile.js", "src/js/config.js", "src/js/main.js", "src/js/plugins.js"],
+            files: ["src/config.js", "src/app/*.js", "src/app/config/*.js", "src/app/helpers/*.js", "src/app/models/*.js", "src/app/vm/*.js"],
             options: {
                 // strict: true,
                 sub: true,
@@ -62,24 +58,43 @@ module.exports = function(grunt) {
                 dojo: true, // This option defines globals exposed by the jQuery JavaScript library.
                 jquery: true, // Set force to true to report JSHint errors but not fail the task.
                 force: true,
-                reporter: require("jshint-stylish")
+                reporter: require("jshint-stylish-ex")
             }
         },
 
         uglify: {
             options: {
                 // add banner to top of output file
-                banner: "/*! <%= pkg.name %> - @version <%= pkg.version %> | <%= pkg.date %> */\n",
-                preserveComments: "false",
-                mangle: false,
-                // compress: true,
+                banner: '/*! main.js | <%= pkg.name %> - v<%= pkg.version %> | <%= grunt.template.today("mm-dd-yyyy") %> */\n'
             },
             build: {
                 files: {
-                    "dist/js/main.min.js": ["dist/js/main.js"],
-                    "dist/js/config.min.js": ["dist/js/config.js"],
-                    "dist/js/plugins.min.js": ["dist/js/plugins.js"]
+                    // config files
+                    "../deploy/build.min/app/config/cbrConfig.js": ["app/config/cbrConfig.js"],
+                    "../deploy/build.min/app/config/colorRampConfig.js": ["app/config/colorRampConfig.js"],
                 }
+            }
+        },
+
+        csslint: {
+            options: {
+                csslintrc: ".csslintrc",
+                formatters: [{
+                    id: require("csslint-stylish"),
+                    dest: "reports/csslint_stylish.xml"
+                }]
+            },
+            strict: {
+                options: {
+                    import: 2
+                },
+                src: ["src/app/resources/css/main.css"]
+            },
+            lax: {
+                options: {
+                    import: false
+                },
+                src: ["src/app/resources/css/main.css"]
             }
         },
 
@@ -94,32 +109,22 @@ module.exports = function(grunt) {
             target: {
                 files: [{
                     expand: true,
-                    cwd: "dist/css",
-                    src: ["normalize.css", "addtohomescreen.css", "main.css"],
-                    dest: "dist/css",
+                    cwd: "src/app/resources/css",
+                    src: ["normalize.css", "main.css"],
+                    dest: "dist/app/resources/css",
                     ext: ".min.css"
                 }]
             }
         },
 
         concat: {
-            css: {
-                options: {
-                    stripBanners: true,
-                    banner: "<%= bannercss %>"
-                },
-                src: ["dist/css/normalize.min.css", "dist/css/addtohomescreen.min.css", "dist/css/main.min.css"],
-                dest: "dist/css/concat.min.css",
-                nonull: true,
+            options: {
+                stripBanners: true,
+                banner: "<%= bannercss %>\n"
             },
-            js: {
-                options: {
-                    stripBanners: true,
-                    banner: "<%= bannerjs %>"
-                },
-                src: ["dist/js/plugins.min.js", "dist/js/config.min.js", "dist/js/main.min.js"],
-                dest: "dist/js/main-concat.min.js",
-                nonull: true,
+            dist: {
+                src: ["dist/app/resources/css/normalize.css", "dist/app/resources/css/main.css"],
+                dest: "dist/app/resources/css/concat.min.css"
             }
         },
 
@@ -128,10 +133,7 @@ module.exports = function(grunt) {
                 src: ["dist/"]
             },
             cleancss: {
-                src: ["dist/css/*.css", "!dist/css/concat.min.css"]
-            },
-            cleanjs: {
-                src: ["dist/js/*.js", "!dist/js/main-concat.min.js"]
+                src: ["dist/app/resources/css/*.css", "!dist/app/resources/css/concat.min.css"]
             },
         },
 
@@ -145,84 +147,136 @@ module.exports = function(grunt) {
             }
         },
 
+        watch: {
+            html: {
+                files: ["index.html"],
+                tasks: ["htmlhint"]
+            },
+            css: {
+                files: ["app/resources/css/main.css"],
+                tasks: ["csslint"]
+            },
+            js: {
+                files: ["app/main.js"],
+                tasks: ["jshint"]
+            }
+        },
+
+        versioncheck: {
+            options: {
+                skip: ["semver", "npm", "lodash"],
+                hideUpToDate: false
+            }
+        },
+
         toggleComments: {
             customOptions: {
                 options: {
-                    removeCommands: false
+                    removeCommands: true
                 },
                 files: {
-                    "dist/index.html": "src/index.html",
-                    "dist/js/main.js": "src/js/main.js"
+                    "dist/index.html": "dist/index.html",
+                    "dist/app/vm/cbr-vm.js": "dist/app/vm/cbr-vm.js",
+                    "dist/app/vm/contact-vm.js": "dist/app/vm/contact-vm.js",
+                    "dist/app/vm/customData-vm.js": "dist/app/vm/customData-vm.js",
+                    "dist/app/vm/definitions-vm.js": "dist/app/vm/definitions-vm.js",
+                    "dist/app/vm/help-vm.js": "dist/app/vm/help-vm.js",
+                    "dist/app/vm/legend-vm.js": "dist/app/vm/legend-vm.js",
+                    "dist/app/vm/markupTools-vm.js": "dist/app/vm/markupTools-vm.js",
+                    "dist/app/vm/print-vm.js": "dist/app/vm/print-vm.js",
+                    "dist/app/vm/reports-vm.js": "dist/app/vm/reports-vm.js",
+                    "dist/app/vm/social-vm.js": "dist/app/vm/social-vm.js",
                 }
             }
         },
 
         replace: {
             update_Meta: {
-                src: ["src/index.html", "src/humans.txt", "README.md", "src/css/main.css", "src/js/config.js", "src/js/main.js", "src/js/plugins.js"],
+                // source files array
+                src: ["src/index.html", "src/config.js", "src/humans.txt", "README.md", "src/app/resources/css/main.css"],
                 overwrite: true, // overwrite matched source files
                 replacements: [{
                     // html pages
                     from: /(<meta name="revision-date" content=")[0-9]{4}-[0-9]{2}-[0-9]{2}(">)/g,
-                    to: '<meta name="revision-date" content="' + "<%= pkg.date %>" + '">',
+                    to: '<meta name="revision-date" content="' + '<%= pkg.date %>' + '">',
                 }, {
                     // html pages
                     from: /(<meta name="version" content=")([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))(">)/g,
-                    to: '<meta name="version" content="' + "<%= pkg.version %>" + '">',
-                }, {
-                    // humans.txt
-                    from: /(Version\: )([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/g,
-                    to: "Version: " + "<%= pkg.version %>",
-                }, {
-                    // humans.txt
-                    from: /(Last updated\: )[0-9]{4}-[0-9]{2}-[0-9]{2}/g,
-                    to: "Last updated: " + "<%= pkg.date %>",
-                }, {
-                    // README.md
-                    from: /(version)( \| )([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/g,
-                    to: "version | " + "<%= pkg.version %>",
-                }, {
-                    // README.md
-                    from: /(Updated)( \| )[0-9]{4}-[0-9]{2}-[0-9]{2}/g,
-                    to: "Updated | " + "<%= pkg.date %>",
+                    to: '<meta name="version" content="' + '<%= pkg.version %>' + '">',
                 }, {
                     // config.js
                     from: /(v)([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))( \| )[0-9]{4}-[0-9]{2}-[0-9]{2}/g,
-                    to: "v" + "<%= pkg.version %>" + " | " + "<%= pkg.date %>",
+                    to: 'v' + '<%= pkg.version %>' + ' | ' + '<%= pkg.date %>',
+                }, {
+                    // config.js    this.copyright = "2018";
+                    from: /(this.copyright = )+(")([0-9]{4})+(")/g,
+                    to: 'this.copyright = "' + "<%= pkg.copyright %>" + '"'
+                }, {
+                    // humans.txt
+                    from: /(Version\: )([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/g,
+                    to: "Version: " + '<%= pkg.version %>',
+                }, {
+                    // humans.txt
+                    from: /(Last updated\: )[0-9]{4}-[0-9]{2}-[0-9]{2}/g,
+                    to: "Last updated: " + '<%= pkg.date %>',
+                }, {
+                    // README.md
+                    from: /(### version )([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/g,
+                    to: "### version " + '<%= pkg.version %>',
+                }, {
+                    // README.md
+                    from: /(`Updated: )[0-9]{4}-[0-9]{2}-[0-9]{2}/g,
+                    to: "`Updated: " + '<%= pkg.date %>',
+                }, {
+                    // main.css
+                    from: /(@version 	)([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/g,
+                    to: "@version 	" + "<%= pkg.version %>",
+                }, {
+                    // main.css
+                    from: /(@copyright 	)[0-9]{4}/g,
+                    to: "@copyright 	" + "<%= pkg.copyright %>",
+                }, {
+                    // main.css
+                    from: /(main.css)( \| )(v)([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/g,
+                    to: "main.css | v" + "<%= pkg.version %>",
+                }, {
+                    // main.css
+                    from: /( \| )(@copyright )[0-9]{4}/g,
+                    to: " | @copyright " + "<%= pkg.copyright %>",
                 }]
             }
-        },
-
-        babel: {
-            options: {
-                sourceMap: true,
-                presets: ['env']
-            },
-            dist: {
-                files: {
-                    'src/js/legend.js': 'src/js/legend_.js'
-                }
-            }
         }
+
 
     });
 
     // this would be run by typing "grunt test" on the command line
+    // grunt.registerTask("test", ["uglify", "cssmin", "concat"]);
+
+    grunt.registerTask("check", ["versioncheck"]);
+
     grunt.registerTask("work", ["jshint"]);
 
+    grunt.registerTask("workcss", ["csslint"]);
+
+    grunt.registerTask("testcss", ["cssmin"]);
+
     grunt.registerTask("buildcss", ["cssmin", "concat"]);
-    grunt.registerTask("buildjs", ["uglify", "concat"]);
+
     grunt.registerTask("update", ["replace"]);
 
-    grunt.registerTask("build", ["clean:build", "replace", "copy", "toggleComments", "cssmin", "uglify", "concat", "clean:cleancss", "clean:cleanjs"]);
+    // grunt.registerTask("build", ["replace", "cssmin", "concat"]);
+    grunt.registerTask("build", ["clean:build", "replace", "copy", "concat", "toggleComments"]);
 
     // the default task can be run just by typing "grunt" on the command line
     grunt.registerTask("default", []);
-    grunt.registerTask("babel", ["babel"])
 
 };
 
-// ref
+// reference
+//
 // http://coding.smashingmagazine.com/2013/10/29/get-up-running-grunt/
 // http://csslint.net/about.html
 // http://www.jshint.com/docs/options/
+//
+// [git-labelmaker](https://github.com/himynameisdave/git-labelmaker?utm_source=hashnode.com)

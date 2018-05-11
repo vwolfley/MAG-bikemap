@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <!-- Our Custom CSS -->
+
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>MAG|Bikeways</title>
@@ -39,50 +41,424 @@
     <!-- Load CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://js.arcgis.com/4.7/esri/themes/dark/main.css">
+    <!-- <link rel="stylesheet" href="css/sidebar.css"> -->
+    <!-- <link rel="stylesheet" href="css/toggleSwitch.css"> -->
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-    <div id="container">
-        <div id="viewDiv"></div>
-        <div id="sidePanel">
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a data-toggle="tab" href="#legend">Layers</a>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <div class="bigLogo">
+                    <img title="MAG Interactive Bikeways" width="80" src="img\bike-icon_120x120.png" alt="Bikemap Icon">
+                    <div>
+                        MAG Interactive Bikeways
+                    </div>
+                </div>
+                <div class="smallLogo">
+                    <img title="MAG Interactive Bikeways" width="40" src="img\bike-icon_60x60.png" alt="Bikemap Icon">
+                </div>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li id="legendToggleLI" panel-target="legend">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                        Legend
+                    </a>
+                    <label class="switch">
+                        <input id="legendToggle" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+
+                    <span class="arrow-left" style: "display:'block';"></span>
                 </li>
-                <li>
-                    <a data-toggle="tab" href="#legal">Legal</a>
+                <li panel-target="layers">
+                    <a href="#">
+                        <i class="glyphicon glyphicon glyphicon-check"></i>
+                        Layers
+                    </a>
+                    <span class="arrow-left" style: "display:'block';"></span>
                 </li>
-                <li>
-                    <a data-toggle="tab" href="#menu2">Menu 2</a>
+                <li panel-target="safety">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-exclamation-sign"></i>
+                        Safety
+                    </a>
+                    <span class="arrow-left"></span>
+                </li>
+                <li panel-target="about">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-briefcase"></i>
+                        About
+                    </a>
+                    <span class="arrow-left"></span>
+                </li>
+                <li panel-target="contact">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-send"></i>
+                        Contact
+                    </a>
+                    <span class="arrow-left"></span>
                 </li>
             </ul>
-            
-            <div class="tab-content">
-                <div id="legend" class="tab-pane fade in active">
-                    <div id="layerList"></div>
+            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                <i class="glyphicon glyphicon-align-left"></i>
+            </button>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://maps.azmag.gov" class="article">Back to more MAG maps</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <!-- Page Content Holder -->
+        <div id="content" style="display:block !important;">
+            <!-- style="display:block !important;" -->
+            <a id="closePanel" href="#">
+                <i style="float: right;" class="glyphicon glyphicon-remove"></i>
+            </a>
+            <div class="panelDiv" panel-id="layers">
+                <div id="layerList"></div>
+            </div>
+            <div class="panelDiv" style="display:block !important;" panel-id="about">
+                <div class="aboutTab">
+                    <h4>About the MAG Interactive Bikeways Viewer</h4>
+                    <div class="safetyContainer">
+                        <div>
+                            The MAG Bikeways map shows existing, locally-designated bicycle facilities, and is provided to you by the Maricopa Association
+                            of Governments (MAG). This map has been produced under the direction of the MAG Regional Bicycle
+                            Task Force. Funding was provided by the Federal Highway Administration. If you have any comments,
+                            please call MAG at (602) 254-6300 or visit our web site at
+                            <a class="link" title="website link" role="navigation" target="_blank" href="http://azmag.gov/">www.azmag.gov</a>.
+                        </div>
+                    </div>
+                    <div class="safetyContainer">
+                        <img src="img/valley-path-logo.png" width="145" height="105" style="padding: 0 10px 0 10px">
+                        <div>
+                            The Valley Path Brand &amp; Wayfinding Signage Guidelines serve as a technical resource to guide parks and transportation
+                            agencies as they plan, design and implement the brand and wayfinding signage along the off-street
+                            bicycle network in the Phoenix metro area. The Maricopa Association of Governments (MAG) and
+                            member agencies developed this manual in response to requests from the public for better uniformity
+                            and consistency of wayfinding signage throughout the regional off-street bicycle network. For
+                            more information visit
+                            <a class="link" title="website link" role="navigation" target="_blank" href="http://azmag.gov/Programs/Transportation/Active-Transportation">MAG Active-Transportation</a>.
+                        </div>
+                    </div>
+                    <div class="legal">
+                        <strong>Disclaimer:</strong> This map is intended to aid bike riders in choosing routes between locations.
+                        This map is not in any way a warranty or guarantee as to the stability of roadway conditions or the
+                        fitness of listed routes for riding bikes. Many of the routes identified on this map cross or run
+                        along public roads which are exposed to wear and tear and degradation due to weather, traffic, and
+                        other environmental concerns. Riders should remain alert as routes may contain pavement rutting,
+                        cracks, bumps, expansion joints, natural or other debris on pavement surfaces, and vegetation which
+                        may encroach on routes or portions thereof. Riders should also remain alert for areas of visual impairment
+                        and other irregularities that may impact rider and motorist ability to see each other or potential
+                        road hazards. The chance that one may come into an area of visual impairment or a route irregularity
+                        warrants special care on the part of route users.
+                        <br> Government resources limit the capacity to address conditions and irregularities like those described
+                        above. Accordingly, route users should maintain a vigilant lookout for these conditions and irregularities.
+                        Route users are urged to exercise discretion when choosing where and when to ride based on personal
+                        comfort and safety and the comfort and safety of others. Safe route selection includes consideration
+                        of motor vehicle, bicycle and pedestrian traffic and roadway or route conditions. MAG does not assume
+                        liability for bike riders traveling upon routes shown in this map.
+                    </div>
+                    <div id="socialLinks">
+                        <a href="https://www.facebook.com/MAGBikeways" target="_blank" class="ui-link">
+                            <img class="aboutSocialImg" id="facebook" src="img/FB_FindUsOnFacebook-144.png">
+                        </a>
+                        <a href="http://www.azmag.gov/portals/0/Documents/MAG_2015-10-21_Bike-Pathways-Map.pdf" target="_blank" class="ui-link">
+                            <img class="aboutSocialImg" id="pdf" src="img/pdf_icon.jpg">
+                            <small class="link">2015 MAG Bikeways Map</small>
+                        </a>
+                    </div>
+                    <hr>
+                    <div id="copyDiv">
+                        <span class="copyright">Copyright © 2018</span>
+                        <a class="link" title="website link" role="navigation" target="_blank" href="https://www.azmag.gov/">MAG</a>  |
+                        <span class="version">v3.3.3 | 2018-04-11</span> |
+                        <a href="#Legal" class="link" title="Legal">Legal Disclaimer</a>
+                    </div>
                 </div>
-                <div id="legal" class="tab-pane fade">
-                    
-                </div>
-                <div id="menu2" class="tab-pane fade">
-                    <h3>Menu 2</h3>
-                    <p>Some content in menu 2.</p>
+            </div>
+            <div class="panelDiv" panel-id="contact">
+                Contact Page
+            </div>
+            <div class="panelDiv" panel-id="safety">
+                <ul class="nav nav-pills">
+                    <li class="active">
+                        <a data-toggle="pill" href="#bikeSafety">Bike Safety</a>
+                    </li>
+                    <li>
+                        <a data-toggle="pill" href="#streetSafety">Street Safety</a>
+                    </li>
+                    <li>
+                        <a data-toggle="pill" href="#multiSafety">Multi-Use Safety</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="bikeSafety" class="tab-pane fade in active">
+                        <h4>Bike Safety Tips</h4>
+                        <b>Ride Defensively</b>
+                        <div class="safetyContainer">
+                            <div class="safetyDetails">
+                                Prepare for the unexpected and plan alternative maneuvers to avoid conflict. Traffic laws alone do not always protect bicyclists
+                                from injury.
+                                <br>
+                                <b style="color: #a80000">Be Alert. Be Visible. Ride Predictably.</b>
+                            </div>
+                        </div>
+                        <b>Always Maintain Control of Your Bike</b>
+                        <div class="safetyContainer">
+                            <div class="safetyDetails">
+                                Except while signaling, keep both hands on the handlebars. Always be prepared to stop or make quick turns. Follow lane markings.
+                                Cross railroad tracks at a 90-degree angle.
+                            </div>
+                        </div>
+                        <b>Wear a Helmet</b>
+                        <div class="safetyContainer">
+                            <div class="safetyDetails">
+                                A bike helmet must fit well and be properly adjusted to do its job of protecting your head. It should fit snugly with the
+                                chin strap fastened. When purchasing a helmet, make sure it is approved by the American National
+                                Standards Institute (ANSI) or the Snell Institute. Helmets should be replaced after the impact
+                                of a collision or even after several years of wear and tear.
+                            </div>
+                            <img class="safetyImg" src="img/safety/bikehelmetinfo.jpg" alt="Helmet Info" />
+                        </div>
+                        <b>Obey Traffic Signs, Signals and Laws</b>
+                        <div class="safetyContainer">
+                            <div class="safetyDetails">
+                                When on the road, bicyclists have the same rights and responsibilities as drivers of vehicles. Knowing and following the
+                                rules of the road help all road users properly anticipate and react to each other. See Arizona
+                                Revised Statutes.
+                                <a class="link" href="https://www.azleg.gov/ArizonaRevisedStatutes.asp?Title=28" target="_blank">(ARS) Sections 28-811 to 28-817</a> for more information.
+                            </div>
+                        </div>
+                        <b>Bike Route Sign</b>
+                        <div class="safetyContainer">
+                            <div class="safetyDetails">
+                                Generally used to denote streets that do not have bike lanes, but that are good streets to ride a bike on. These roads usually
+                                have lower speeds and volumes.
+                            </div>
+                            <img class="safetyImg" src="img/safety/saferoutesign.jpg" alt="Bike Route Sign" />
+                        </div>
+
+                        <b>Bicycle Share the Road Sign</b>
+                        <div class="safetyContainer">
+                            <div class="safetyDetails">
+                                May be used to denote routes without designated bicycle lanes, where bikes and cars are expected to share a lane. Drivers
+                                are required by state law to provide at least three feet of separation when passing a bike
+                                rider.
+                            </div>
+                            <img class="safetyImg" src="img/safety/shareroad.png" alt="Share the Road Sign" />
+                        </div>
+                    </div>
+                    <div id="streetSafety" class="tab-pane fade">
+                        <h4>Street Safety Tips</h4>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onstreet/img_onStreet_01-Obey.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Obey Traffic Signals and Signs</b>
+                                <div class="safetyDetails">As a vehicle</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onstreet/img_onStreet_07-Right.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Ride on the Right</b>
+                                <div class="safetyDetails">Ride on the right with the flow of traffic. Never ride against traffic on the road</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onstreet/img_onStreet_02-Lane.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Use Appropriate Lane</b>
+                                <div class="safetyDetails">Avoid being in a right turn-only lane if you plan to proceed straight through. Move into
+                                    the through lane early.</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onstreet/img_onStreet_08-Left.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Turning Left -Two Options</b>
+                                <div class="safetyDetails">
+                                    <strong>1.</strong> As a vehicle -signal your intentions in advance. Move to the left turn lane
+                                    and complete the turn when safe.
+                                    <br>
+                                    <strong>2.</strong> As a pedestrian -ride to the far crosswalk and walk across.</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onstreet/img_onStreet_03-Doors.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Beware of Car Doors</b>
+                                <div class="safetyDetails">Be wary of parked cars. Motorists can unexpectedly open doors. Be sure your bike is a car
+                                    door length away from parked cars.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onstreet/img_onStreet_09-Signals.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Use Hand Signals</b>
+                                <div class="safetyDetails">Signal all turns and stops ahead of time. Check over your shoulder</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onstreet/img_onStreet_04-Night.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Use Lights at Night</b>
+                                <div class="safetyDetails">Always use a strong white headlight</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onstreet/img_onStreet_10-Eye.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Make Eye Contact</b>
+                                <div class="safetyDetails">Confirm that you are seen. Establish eye contact with motorists to ensure that they know
+                                    you are on the road. Share the road in a polite and courteous manner.</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onstreet/img_onStreet_05-Scan.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Scan the Road Behind</b>
+                                <div class="safetyDetails">Look over your shoulder to check behind you regularly and use a mirror to monitor traffic.</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onstreet/img_onStreet_11-Person.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>One Person Per Bike</b>
+                                <div class="safetyDetails">Riding double is only permitted when carrying a child in an approved carrier or when riding
+                                    on a tandem bicycle.</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onstreet/img_onStreet_06-Helmet.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Helmet your Head</b>
+                                <div class="safetyDetails">Cyclists should always wear a helmet.</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onstreet/img_onStreet_12-Courteous.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Be Courteous</b>
+                                <div class="safetyDetails">Share the road and the responsibilities. Motorists and cyclists get along much better when
+                                    showing courtesy and consideration towards each other.</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onstreet/img_onStreet_13-NoEarphone.png" />
+                            <div class="safetyDetailsContainer">
+                                <b>Earphone Dangers</b>
+                                <div class="safetyDetails">Never use earphones while riding on the road</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="multiSafety" class="tab-pane fade">
+                        <h4>Multi-Use Safety Tips</h4>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onpaths/img_multiUse_01-ToRight.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Keep to the Right</b>
+                                <div class="safetyDetails">All path users must keep to the right except when passing or turning left. Move off the path
+                                    to the right when stopping.</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onpaths/img_multiUse_06-Merge.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Merge Correctly</b>
+                                <div class="safetyDetails">Look both ways. Yield to through traffic at intersections.</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onpaths/img_multiUse_02-Signal.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Signal to Others</b>
+                                <div class="safetyDetails">Cyclists</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onpaths/img_multiUse_07-Nature.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Respect Nature</b>
+                                <div class="safetyDetails">Do not disturb or feed wildlife. Keep to well established paths to protect habitats. Do not
+                                    collect plant or animal material.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onpaths/img_multiUse_03-RightWay.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Right-of-Way</b>
+                                <div class="safetyDetails">Cyclists and in-line skaters must yield to pedestrians. Pedestrians always have the right-ol-way.</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onpaths/img_multiUse_08-Skate.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Where to Skate</b>
+                                <div class="safetyDetails">Follow the same rules as cyclists. Ensure your stride does not cross the center of the path.</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onpaths/img_multiUse_04-Pet.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Control Your Pet</b>
+                                <div class="safetyDetails">Scottsdale ordinances require pets to be leashed while on the path and owners to clean up
+                                    after their pets.</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onpaths/img_multiUse_09-Visable.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Be Visible</b>
+                                <div class="safetyDetails">Outfit your bicycle with a headlight</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onpaths/img_multiUse_05-Earphone.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Earphone Dangers</b>
+                                <div class="safetyDetails">Keep the volume sufficiently low to be able to hear other path users approaching.</div>
+                            </div>
+                        </div>
+                        <div class="safetyContainer">
+                            <img class="safetyImg" src="img/onpaths/img_multiUse_10-Flood.jpg" />
+                            <div class="safetyDetailsContainer">
+                                <b>Flooded Paths</b>
+                                <div class="safetyDetails">Many of our paths are in flood channels. Do not enter when water is present.</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div id="container">
+            <div id="viewDiv"></div>
+        </div>
+
     </div>
+    <div id="legend">
+        <div id="legendDiv"></div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://js.arcgis.com/4.7/"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/layer.js"></script>
+    <script src="js/legend.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script> -->
-<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://js.arcgis.com/4.7/"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script src="js/config.js"></script>
-<script src="js/layer.js"></script>
-<script src="js/legend.js"></script>
-<script src="js/main.js"></script>
-
-
 
 </html>
