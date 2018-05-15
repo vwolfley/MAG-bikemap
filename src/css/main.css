@@ -424,13 +424,17 @@ label:hover,
     /* left: 4px; */
 }
 
-.legendDiv {
+#legend{
     padding: 10px;
-    color: #fff;
-    text-shadow: 0 1px 0 #111;
+}
+.legendDiv {
     display: flex;
-    align-items: center;
-    margin-left: 5%;
+    padding: 2px;
+    border-top: 1px solid #c2c0c0;
+}
+
+.legendDiv:first-of-type {
+    border-top: none;
 }
 
 .hiddenLegend {
@@ -501,7 +505,7 @@ label:hover,
 
 #legend {
     display: none;
-    background-color: #1d1d1d;
+    background-color: #fff;
 }
 
 .close-thick:after {
@@ -613,6 +617,63 @@ label:hover,
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.iconTooltip .iconTooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -9px;
+    border-width: 9px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+
+.iconTooltip {
+    position: absolute;
+    z-index: 9999999999;
+    display: none;
+    border-bottom: 1px dotted black;
+    /* If you want dots under the hoverable text */
+}
+
+.iconTooltip .iconTooltiptext {
+    width: 150px;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    padding: 0px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    background-color: black;
+    border: 2px solid black;
+}
+
+.iconTooltip:hover {
+    display: none;
+    opacity: 0;
+}
+
+#helpContent { 
+    max-height: 98vh;
+    overflow-y: auto;
+}
+
+#bikeDefIcon:hover{
+    cursor: pointer;
+    color: gray;
+}
+
+.popover.popover--topright {
+    /* margin-top: 0px; // Use to change vertical position */
+    margin-right: 40px;
+    /* Use to change horizontal position */
+}
+
+.popover {
+    width: 90vw;
 }
 
 /* ---------------------------------------------------

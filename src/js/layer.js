@@ -12,7 +12,6 @@ function addLayersToMap() {
         for (const layer of config.layers) {
             var layerToAdd;
             var url = config.mainUrl;
-
             if (layer.type === "feature") {
                 if (layer.popup) {
                     var popupTemplate = new PopupTemplate({

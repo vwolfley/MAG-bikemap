@@ -1,67 +1,63 @@
-var app = {};
+let app = {};
 require([
     "esri/Map",
     "esri/views/MapView",
     "esri/layers/MapImageLayer",
     "esri/widgets/Legend",
-    "esri/widgets/BasemapToggle",
     "dojo/domReady!"
-], function (Map, MapView, MapImageLayer, Legend, BasemapToggle) {
+], function (Map, MapView, MapImageLayer) {
 
-    $(document).ready(function () {
-        var $sidebar = $('#sidebar');
-        var $sidebarCollapse = $("#sidebarCollapse");
+    let $sidebar = $('#sidebar');
+    let $sidebarCollapse = $("#sidebarCollapse");
 
-        $('.sidebarCollapse').on('click', function () {
-            $sidebar.toggleClass('active');
-            $sidebarCollapse.toggleClass('active');
-        });
+    $('.sidebarCollapse').on('click', function () {
+        $sidebar.toggleClass('active');
+        $sidebarCollapse.toggleClass('active');
+    });
 
-        var $links = $('.components li');
-        var $arrows = $('.arrow-left');
-        var $panelDivs = $(".panelDiv");
-        var $content = $("#content");
-        var $legendToggle = $("#legendToggle");
+    let $links = $('.components li');
+    let $arrows = $('.arrow-left');
+    let $panelDivs = $(".panelDiv");
+    let $content = $("#content");
+    let $legendToggle = $("#legendToggle");
 
-        $links.on('click', function (e) {
-            var target = $(this).attr("panel-target");
-            if (target === "legend") {
-                toggleLegend();
-            } else {
-                var isActive = $(this).hasClass('active');
-                $links.removeClass('active');
-                $arrows.hide();
-                $panelDivs.hide();
-
-                if (isActive) {
-                    $content.hide();
-                } else {
-                    $content.show();
-                    $(this).addClass('active');
-                    $(this).find('.arrow-left').show();
-
-                    $(`div[panel-id=${target}`).fadeIn(400);
-                }
-            }
-        });
-        
-        $legendToggle.click(function(e){
-            return false;
-        });
-
-        $("#closePanel").click(function () {
+    $links.on('click', function (e) {
+        let target = $(this).attr("panel-target");
+        if (target === "legend") {
+            toggleLegend();
+        } else {
+            let isActive = $(this).hasClass('active');
             $links.removeClass('active');
             $arrows.hide();
             $panelDivs.hide();
-            $content.hide();
-        });
 
-        function toggleLegend(){
-            $("#legend").fadeToggle();
-            $legendToggle.prop("checked", !$legendToggle.prop("checked"));
+            if (isActive) {
+                $content.hide();
+            } else {
+                $content.show();
+                $(this).addClass('active');
+                $(this).find('.arrow-left').show();
+
+                $(`div[panel-id=${target}`).fadeIn(400);
+            }
         }
-
     });
+
+    $legendToggle.click(function (e) {
+        return false;
+    });
+
+    $("#closePanel").click(function () {
+        $links.removeClass('active');
+        $arrows.hide();
+        $panelDivs.hide();
+        $content.hide();
+    });
+
+    function toggleLegend() {
+        $("#legend").fadeToggle();
+        $legendToggle.prop("checked", !$legendToggle.prop("checked"));
+    }
 
     app.map = new Map({
         basemap: "streets"
@@ -72,20 +68,7 @@ require([
         map: app.map,
         extent: config.initExtent
     });
-
     app.view.ui.remove("attribution");
-
-    var toggle = new BasemapToggle({
-        view: app.view,
-        nextBasemap: "hybrid"
-    });
-    app.view.ui.add(toggle, "top-left");
-
-    var legend = $("#legend");
-    app.view.ui.add("legend", "top-right");
-
-    var sidebarCollapse = $("#sidebarCollapse");
-    app.view.ui.add("sidebarCollapse", "bottom-left");
 
     app.view.when(function () {
         $.get(config.mainUrl + "/?f=json", function (data) {
@@ -99,8 +82,90 @@ require([
             });
             addLayersToMap();
             startLegend();
+            setupHoverEvents()
+            setupWidgets();
         });
     });
+
+    function setupHoverEvents() {
+        let $container = $("#container");
+        let tt = $(".iconTooltip");
+        let text = $(".iconTooltiptext");
+
+        app.view.on("pointer-move", function (event) {
+            tt.hide();
+            $('body').css('cursor', 'default');
+            try {
+                if (event.x && event.y) {
+                    app.view.hitTest({
+                        x: event.x,
+                        y: event.y
+                    }).then(function (response) {
+                        if (!app.view.popup.visible) {
+                            // removeGraphics();
+                        }
+                        let resultGraphic = response.results[0].graphic;
+
+                        if (resultGraphic) {
+                            let confObj = config.layers[resultGraphic.layer.id];
+                            if (resultGraphic.geometry.type === "point") {
+                                let tooltipHtml = resultGraphic.attributes.Name;
+
+                                if (resultGraphic.attributes.NAME) {
+                                    tooltipHtml = resultGraphic.attributes.NAME;
+                                } else if (resultGraphic.attributes.Discript){
+                                    tooltipHtml = resultGraphic.attributes.Discript;
+                                } else if (resultGraphic.attributes.Station_Number){
+                                    tooltipHtml = `Station Number: ${resultGraphic.attributes.Station_Number}`;
+                                }
+                                if (tooltipHtml) {
+
+                                    text.html(tooltipHtml);
+
+                                    let pos = $container.position();
+
+                                    tt.css({
+                                        display: "block",
+                                        left: response.screenPoint.x + pos.left + 20,
+                                        top: response.screenPoint.y - 10
+                                    });
+                                }
+                            }
+                        }
+                    });
+                }
+            } catch (err) {}
+
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     var bikeRenderer = {
         type: "unique-value",
         field: "PathType",
@@ -159,9 +224,8 @@ require([
         }]
     };
 
-    app.popupSetup = function (value, key, data) {
+    popupSetup = function (value, key, data) {
         var html = "";
-
         if (data.PATHTYPE) {
             html += `<span class="popupItem"><span class="popupLabel">Type:</span> <span>${data.PATHTYPE}</span></span>`;
         }
@@ -174,15 +238,13 @@ require([
         if (data.SURFACE) {
             html += `<span class="popupItem"><span class="popupLabel">Surface Type:</span> <span>${data.SURFACE}</span></span>`;
         }
-
         return html;
     };
 
     var pTemplate = {
         title: "{PATHTYPE}",
-        content: `<span style='display:none;'>{PATHTYPE}{NAME}{CITY}{SURFACE}</span>{PATHTYPE: app.popupSetup}`
+        content: `<span style='display:none;'>{PATHTYPE}{NAME}{CITY}{SURFACE}</span>{PATHTYPE:popupSetup}`
     }
-
     var mainLayer = new MapImageLayer({
         url: config.mainUrl,
         opacity: .8,
@@ -209,30 +271,6 @@ require([
             maxScale: 0
         }]
     });
-
-    // $("#legal").load("views/legalPage.html");
-
-
-    // function watchScale() {
-    //     app.view.watch("scale", function (scale) {
-    //         // console.log(scale);
-    //     });
-    // }
-
-
-
-    // var legend = new Legend({
-    //     view: app.view
-    // });
-    // app.view.ui.add(legend, "bottom-right");
-
     app.map.add(mainLayer);
-
-
-    $("#testBtn").click(function () {
-        $("#sidePanel").fadeToggle(200);
-    });
-
-
 
 });

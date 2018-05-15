@@ -7,7 +7,7 @@
  * @summary     JavaScript config file for MAG Bikeways Viewer
  * ========================================================================
  */
-var config = {
+const config = {
     version: "v3.3.3 | 2018-04-11",
     copyright: "2018",
     mainUrl: "https://geo.azmag.gov/gismag/rest/services/Test/BikeMap_Test/MapServer",
@@ -22,11 +22,20 @@ var config = {
             "wkid": 102100
         }
     },
-    layers: [
-        {
+    layers: [{
             id: "USBicycleRoute90",
             layerName: "US Bicycle Route 90",
             type: "feature",
+            popup: {
+                title: "US Bicycle Route 90",
+                content: `
+                <strong>{Name}</strong>
+                </br>
+                {MPA}
+                </br>
+                {COUNTY} County
+                `
+            },
             title: 'US Bicycle Route 90',
             visible: false,
             legend: {
@@ -38,6 +47,14 @@ var config = {
             layerName: "PhoenixSonoranBikeway",
             title: "Phoenix Sonoran Bikeway",
             type: "feature",
+            popup: {
+                title: "Phoenix Sonoran Bikeway",
+                content: `
+                <strong>{Name}</strong>
+                </br>
+                {MPA}
+                `
+            },
             visible: false,
             legend: {
                 sort: 7
@@ -47,7 +64,18 @@ var config = {
             id: "Bikecrossings",
             title: "Bike Crossings",
             layerName: "Bikecrossings",
+            opacity: .9,
             type: "feature",
+            popup: {
+                title: "Bikeways Crossing",
+                content: `
+                <strong>{Discript}</strong>
+                <br>
+                {City}
+                <br>
+                <small>MAGID: {MAGID}</small>
+                `
+            },
             visible: false,
             legend: {
                 sort: 3
@@ -58,24 +86,25 @@ var config = {
             id: "BikeShops",
             layerName: "BikeShops",
             type: "feature",
+            popup: {
+                title: "Bike Shop",
+                content: `
+                <strong>{NAME}</strong>
+                <br>
+                {ADDRESS}
+                <br>
+                {CITY}
+                <br>
+                {PHONE}
+                <br>
+                <a target='_blank'href=https://{WEBSITE}>{WEBSITE}</a>
+                </br>
+                <a target='blank' href=https://{FACEBOOK}>Facebook</a>
+                `
+            },
             visible: false,
             legend: {
                 sort: 1
-            }
-        },
-        {
-            layerName: "PublicTransit",
-            type: "feature",
-            visible: false
-        },
-        {
-            title: "Light Rail & Transit Locations",
-            id: "Lightrail",
-            layerName: "Lightrail",
-            type: "feature",
-            visible: false,
-            legend: {
-                sort: 4
             }
         },
         {
@@ -84,6 +113,16 @@ var config = {
             layerName: "Bike Pictures",
             type: "feature",
             visible: false,
+            popup: {
+                title: "Bike Route Pictures",
+                content: `
+                <strong>{NAME}</strong>
+                <br>
+                <img class='pics' src='img/bikepics/{URL_NAME}.jpg'>
+                <br>
+                {DESCRIPTION}
+                `
+            },
             legend: {
                 sort: 2
             }
@@ -94,8 +133,58 @@ var config = {
             layerName: "GridBikeShare",
             type: "feature",
             visible: false,
+            popup: {
+                title: "GRID Bike Share",
+                content: `
+                <strong>{Station_Name}</strong>
+                <br>
+                <b>Location:</b> {Station_Location}
+                <br>
+                <b>Station Number:</b> {Station_Number}
+                <br>
+                <a class="link" href='https://www.gridbikes.com/' target='_blank'>www.gridbikes.com</a>
+                `
+            },
             legend: {
                 sort: 5
+            }
+        },
+        {
+            title: "Light Rail",
+            id: "Lightrail",
+            layerName: "Lightrail",
+            type: "feature",
+            visible: false,
+            legend: {
+                sort: 4,
+                group: {
+                    title: "Light Rail & Transit Locations",
+                    id: "lightRailAndTransit"
+                }
+            }
+        },
+        {
+            id: "PublicTransit",
+            title: "Public Transit",
+            layerName: "PublicTransit",
+            type: "feature",
+            popup: {
+                title: "{Category}",
+                content: `<strong>{Name}</strong>
+                <br>
+                {Location}
+                <br>
+                {City}
+                <br>
+                <a target='_blank'href={webLink}>Transit Web Link Info</a>`
+            },
+            visible: false,
+            legend: {
+                sort: 6,
+                group: {
+                    title: "Light Rail & Transit Locations",
+                    id: "lightRailAndTransit"
+                }
             }
         },
         {

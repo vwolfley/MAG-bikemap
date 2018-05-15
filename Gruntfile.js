@@ -272,11 +272,3 @@ module.exports = function (grunt) {
     grunt.registerTask("default", []);
 
 };
-
-// reference
-//
-// http://coding.smashingmagazine.com/2013/10/29/get-up-running-grunt/
-// http://csslint.net/about.html
-// http://www.jshint.com/docs/options/
-//
-// [git-labelmaker](https://github.com/himynameisdave/git-labelmaker?utm_source=hashnode.com)
