@@ -48,6 +48,7 @@
     "@babel/core": "^7.0.0-beta.46",
     "@babel/preset-env": "^7.0.0-beta.46",
     "babel-core": "^6.26.0",
+    "cssnano": "^3.10.0",
     "load-grunt-tasks": "^3.5.2"
   },
   "devDependencies": {
@@ -65,12 +66,15 @@
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-uglify": "^3.2.1",
     "grunt-contrib-watch": "^1.0.1",
+    "grunt-postcss": "^0.9.0",
     "grunt-text-replace": "^0.4.0",
     "grunt-version-check": "^0.3.8",
     "jshint-stylish-ex": "^0.2.0",
     "lodash": "^4.17.5",
     "matchdep": "^2.0.0",
-    "normalize.css": "^8.0.0"
+    "normalize.css": "^8.0.0",
+    "postcss": "^6.0.22",
+    "postcss-cssnext": "^3.1.0"
   },
   "license": "MIT"
 }
