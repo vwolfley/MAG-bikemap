@@ -1,11 +1,5 @@
 let app = {};
-require([
-    "esri/Map",
-    "esri/views/MapView",
-    "esri/layers/MapImageLayer",
-    "esri/widgets/Legend",
-    "dojo/domReady!"
-], function (Map, MapView, MapImageLayer) {
+require(["esri/Map", "esri/views/MapView", "esri/layers/MapImageLayer", "esri/widgets/Legend", "dojo/domReady!"], function (Map, MapView, MapImageLayer) {
 
     let $sidebar = $('#sidebar');
     let $sidebarCollapse = $("#sidebarCollapse");
@@ -82,9 +76,12 @@ require([
             });
             addLayersToMap();
             startLegend();
-            setupHoverEvents()
+            setupHoverEvents();
             setupWidgets();
         });
+        $('div[panel-id="about"]').load("views/about.html");
+        $('div[panel-id="help"]').load("views/help.html");
+        $('div[panel-id="safety"]').load("views/safety.html");
     });
 
     function setupHoverEvents() {
@@ -113,9 +110,9 @@ require([
 
                                 if (resultGraphic.attributes.NAME) {
                                     tooltipHtml = resultGraphic.attributes.NAME;
-                                } else if (resultGraphic.attributes.Discript){
+                                } else if (resultGraphic.attributes.Discript) {
                                     tooltipHtml = resultGraphic.attributes.Discript;
-                                } else if (resultGraphic.attributes.Station_Number){
+                                } else if (resultGraphic.attributes.Station_Number) {
                                     tooltipHtml = `Station Number: ${resultGraphic.attributes.Station_Number}`;
                                 }
                                 if (tooltipHtml) {
@@ -135,43 +132,15 @@ require([
                     });
                 }
             } catch (err) {}
-
         });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     var bikeRenderer = {
         type: "unique-value",
         field: "PathType",
         defaultSymbol: {
             type: "simple-line",
-            width: 20,
+            width: 20
         },
         uniqueValueInfos: [{
             value: "Bike Lane",
@@ -244,7 +213,7 @@ require([
     var pTemplate = {
         title: "{PATHTYPE}",
         content: `<span style='display:none;'>{PATHTYPE}{NAME}{CITY}{SURFACE}</span>{PATHTYPE:popupSetup}`
-    }
+    };
     var mainLayer = new MapImageLayer({
         url: config.mainUrl,
         opacity: .8,
@@ -254,7 +223,7 @@ require([
             popupTemplate: pTemplate,
             renderer: bikeRenderer,
             minScale: 0,
-            maxScale: 144447,
+            maxScale: 144447
         }, {
             id: 1,
             visible: true,
@@ -272,5 +241,6 @@ require([
         }]
     });
     app.map.add(mainLayer);
-
 });
+//# sourceMappingURL=main.min.js.map
+//# sourceMappingURL=main.js.map
