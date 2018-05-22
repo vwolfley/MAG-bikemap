@@ -65,8 +65,18 @@ module.exports = function (grunt) {
                     'dist/css/main.css': 'src/css/main.css'
                 }
             }
+        },
+        toggleComments: {
+            customOptions: {
+                options: {
+                    removeCommands: false
+                },
+                files: {
+                    "dist/index.html": "dist/index.html"
+                }
+            }
         }
     });
 
-    grunt.registerTask("build", ["copy", "clean", "concat", "babel", "uglify", "postcss"]);
+    grunt.registerTask("build", ["copy", "clean", "concat", "toggleComments", "babel", "uglify", "postcss"]);
 };
