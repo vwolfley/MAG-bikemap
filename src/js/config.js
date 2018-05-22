@@ -13,6 +13,23 @@ const config = {
 	mainUrl: 'https://geo.azmag.gov/gismag/rest/services/Test/BikeMap_Test/MapServer',
 	geoCoderService: '//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer',
 	emailLink: 'http://www.azmag.gov/Contact/4788?s=geo.azmag.gov/maps/bikemap&n=Jason%20Howard&popUp=true',
+
+	colors: [
+		// --mainColor: #000;
+		// --secondaryColor: gray;
+		// --textColor: #fff;
+		// --hoverColor: #4e4e4e;
+		// --hoverText: white;
+
+		[ '#466060', '#57886C', '#c0d2c1', '#81A684', 'white' ],
+		[ '#4A442D', '#386150', '#CAF7E2', '#928e81', '#ececea' ],
+		[ '#086788', '#07A0C3', '#F0C808', '#FFF1D0', '#DD1C1A' ],
+		[ '#F8F8F8', '#E0E0E0', '#F00000', '#888888', '#F8F8F8' ],
+		[ '#380000', '#900000', '#F0F0F0', '#F00000', 'white' ],
+		[ '#000', 'gray', '#fff', '#4e4e4e', 'white' ],
+		['#383838', '#585858', '#F0F0F0', '#B0B0B0', '#F8F8F8']
+	],
+
 	initExtent: {
 		xmin: -12621311,
 		ymin: 3879618,
@@ -161,7 +178,7 @@ const config = {
 			id: 'Lightrail',
 			layerName: 'Lightrail',
 			type: 'feature',
-			visible: false,
+			visible: true,
 			legend: {
 				sort: 4,
 				group: {
@@ -185,7 +202,7 @@ const config = {
                 <br>
                 <a target='_blank'href={webLink}>Transit Web Link Info</a>`
 			},
-			visible: false,
+			visible: true,
 			legend: {
 				sort: 6,
 				group: {

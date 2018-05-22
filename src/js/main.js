@@ -44,7 +44,26 @@ require([
 
 	$legendToggle.click(function(e) {
 		return false;
-	});
+    });
+    var colorCnt = 0;
+    $('body').keyup(function (e) {
+        if (e.keyCode == 32) {
+            var colors = config.colors[colorCnt];
+            
+            document.documentElement.style.setProperty('--mainColor', colors[0]);
+            document.documentElement.style.setProperty('--secondaryColor', colors[1]);
+            document.documentElement.style.setProperty('--textColor', colors[2]);
+			document.documentElement.style.setProperty('--hoverColor', colors[3]);
+			document.documentElement.style.setProperty('--hoverText', colors[4]);
+            colorCnt++;
+
+            if (colorCnt === config.colors.length) {
+                colorCnt = 0;
+            }
+            
+        }
+    });
+
 
 	$('#closePanel').click(function() {
 		$links.removeClass('active');
@@ -77,7 +96,8 @@ require([
 	app.view.when(function() {
 		$.get(config.mainUrl + '/?f=json', function(data) {
 			$.each(JSON.parse(data).layers, function(key, layer) {
-				for (const conf of config.layers) {
+				for (var i = 0; i < config.layers.length; i++) {
+					var conf = config.layers[i];
 					if (conf.layerName === layer.name) {
 						conf.index = layer.id;
 						break;
@@ -246,7 +266,7 @@ require([
 		]
 	};
 
-	popupSetup = function(value, key, data) {
+	window.popupSetup = function(value, key, data) {
 		var html = '';
 		if (data.PATHTYPE) {
 			html += `<span class="popupItem"><span class="popupLabel">Type:</span> <span>${data.PATHTYPE}</span></span>`;

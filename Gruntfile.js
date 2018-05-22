@@ -14,30 +14,59 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    "./dist/js/main.min.js": "./src/js/main.js"
+                    "./dist/js/main.js": "./dist/js/main.js"
                 }
+            }
+        },
+        copy: {
+            build: {
+                cwd: "src/",
+                src: ["**"],
+                dest: "dist/",
+                expand: true,
+                dot: true
+            }
+        },
+        uglify: {
+            options: {
+                mangle: true
+            },
+            build: {
+                files: {
+                    "dist/js/main.js": ["dist/js/main.js"],
+                }
+            }
+        },
+        clean: {
+            build: {
+                src: ["dist/js"]
+            }
+        },
+        concat: {
+            dist: {
+                src: ["src/js/*"],
+                dest: "dist/js/main.js"
             }
         },
         postcss: {
             options: {
-                map: true, // inline sourcemaps
-
-                // or
+                map: true,
                 map: {
-                    inline: false, // save all sourcemaps as separate files...
-                    annotation: 'dist/css/maps/' // ...to the specified directory
+                    inline: false,
+                    annotation: 'dist/css/maps/'
                 },
-
                 processors: [
-                    require('cssnano')() // minify the result
+                    require('postcss-cssnext')(),
+                    require('cssnano')()
                 ]
             },
             dist: {
-                src: 'src/css/*.css'
+                files: {
+                    'dist/css/main.css': 'src/css/main.css'
+                }
             }
         }
     });
 
-    // grunt.registerTask("test", ["babel", "postcss"]);
-    grunt.registerTask("test", ["postcss"]);
+    grunt.registerTask("build", ["copy", "clean", "concat", "babel", "uglify", "postcss"]);
 };

@@ -1,15 +1,10 @@
 :root {
-  --mainColor: #462749;
-  --secondaryColor: #F2D1C9;
-  --textColor: #fff;
-  --hoverColor: gray;
-  --hoverText: white;
+  --mainColor: #383838;
+  --secondaryColor: #585858;
+  --textColor: #F0F0F0;
+  --hoverColor: #B0B0B0;
+  --hoverText: #F8F8F8;
 }
-
-/* --mainColor: #7386d5;
---secondaryColor: #6d7fcc;
---textColor: #fff; */
-
 
 /* ---------------------------------------------------
     SIDEBAR STYLES
@@ -143,7 +138,8 @@ span {
 
 #sidebar .sidebar-header {
 	padding: 20px;
-	background: var(--secondaryColor);
+	border-bottom: 1px solid var(--textColor);
+	/* background: var(--secondaryColor); */
 }
 
 #sidebar .sidebar-header .smallLogo {
@@ -152,7 +148,7 @@ span {
 
 #sidebar ul.components {
 	padding: 20px 0;
-	border-bottom: 1px solid #47748b;
+	border-bottom: 1px solid var(--textColor);
 }
 
 #sidebar ul li a {
@@ -162,8 +158,8 @@ span {
 }
 
 #sidebar ul li a:hover {
-	color: var(--mainColor);
-	background: #fff;
+	color: var(--hoverText);
+	background: var(--hoverColor)
 }
 
 #sidebar ul li a i {
@@ -224,7 +220,15 @@ a.download {
 a.article,
 a.article:hover {
 	background: var(--secondaryColor) !important;
-	color: #fff !important;
+	color: var(--textColor) !important;
+}
+#sidebarCollapseInBar{
+	background-color: var(--secondaryColor);
+	color: var(--textColor);
+}
+
+a.article:hover, #sidebarCollapseInBar:hover {
+	filter: brightness(110%);
 }
 
 #sidebar .smallLogo {
@@ -279,11 +283,11 @@ a.article:hover {
 }
 
 input:checked + .slider {
-	background-color: #2196f3;
+	background-color: var(--secondaryColor);
 }
 
 input:focus + .slider {
-	box-shadow: 0 0 1px #2196f3;
+	box-shadow: 0 0 1px var(--secondaryColor);
 }
 
 input:checked + .slider:before {
@@ -371,7 +375,7 @@ body,
 #layerList .checkbox-div:hover {
 	background-color: var(--hoverColor);
 	border-color: #1f1f1f;
-	color: var(--textColor);
+	color: var(--hoverText);
 	cursor: pointer;
 }
 
@@ -414,7 +418,7 @@ label:hover,
 }
 
 #layerList .regular-checkbox:checked + label {
-	background-color: #5bc0de;
+	background-color: var(--secondaryColor);
 	border: 1px solid #adb8c0;
 	color: #000;
 }
@@ -562,8 +566,8 @@ label:hover,
 }
 
 #legendToggleLI:hover {
-	color: var(--mainColor);
-	background: #fff;
+	/* color: var(--hoverText); */
+	background: var(--hoverColor);
 }
 
 #legendToggleLI a {
@@ -609,7 +613,7 @@ label:hover,
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:focus,
 .nav-pills > li.active > a:hover {
-	background-color: #7585d3;
+	background-color: var(--secondaryColor);
 }
 
 .link {
@@ -667,7 +671,7 @@ label:hover,
 
 .iconTooltip .iconTooltiptext {
 	width: 150px;
-	color: var(--textColor);
+	color: white;
 	text-align: center;
 	font-size: 13px;
 	padding: 0px 0;
@@ -700,6 +704,7 @@ label:hover,
 }
 
 .popover {
+	color: black;
 	width: 90vw;
 }
 

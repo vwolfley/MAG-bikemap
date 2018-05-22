@@ -9,7 +9,8 @@ function startLegend() {
     }
 
     function getCheckBoxHTML(conf) {
-        var c = Object.assign({}, conf);
+        var c = $.extend({}, conf);
+
         if (c.legend.group) {
             c.id = c.legend.group.id;
             c.title = c.legend.group.title;
@@ -35,7 +36,7 @@ function startLegend() {
             return a.legend.sort - b.legend.sort
         }
 
-        const conf = {
+        var conf = {
             id: "bikeways",
             layerName: "Bikeways"
         }
@@ -54,7 +55,9 @@ function startLegend() {
         $legendDiv.append(
             `
             <div class="legendDiv" id="l-${conf.id}">
+                <div class='legendItem'>
                 ${getLegendHtml(conf)}
+                </div>
                 <a
                 style="height: 25px;"
                 tabindex="0"
@@ -73,22 +76,26 @@ function startLegend() {
             template: '<div class="popover popover--topright" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
         });
 
-        for (const conf of legendLayers.sort(sort)) {
+        for (var i = 0; i < legendLayers.sort(sort).length; i++) {
+            var conf = legendLayers.sort(sort)[i];
             $layerList.append(getCheckBoxHTML(conf));
             let legend = `<div class="legendDiv ${conf.visible ? '' : 'hiddenLegend'}" id="l-${conf.id}">${getLegendHtml(conf)}</div>`;
             $legendDiv.append(legend);
         }
 
         let groupLayers = config.layers.filter(conf => conf.legend && conf.legend.group);
-        for (const groupLayer of groupLayers) {
+        for (var i = 0; i < groupLayers.length; i++) {
+            var groupLayer = groupLayers[i];
             if ($(`#c-${groupLayer.legend.group.id}`).length === 0) {
                 $layerList.append(getCheckBoxHTML(groupLayer));
                 let grpLayers = getLayersByGroupId(groupLayer.legend.group.id);
                 let html = `<div class="legendDiv ${groupLayer.visible ? '' : 'hiddenLegend'}" id="l-${groupLayer.legend.group.id}">`;
-
-                for (const lay of grpLayers) {
+                html += "<div class='legendItem'>";
+                for (var j = 0; j < grpLayers.length; j++) {
+                    var lay = grpLayers[j];
                     html += getLegendHtml(lay);
                 }
+                html += "</div>";
                 $legendDiv.append(html)
             }
         }
@@ -109,7 +116,7 @@ function startLegend() {
                 layer.visible = !layer.visible;
             } else {
                 let grpLayers = getLayersByGroupId(layerId);
-                for (const grpLayer of grpLayers) {
+                for (var i = 0; i < grpLayers.length; i++) {
                     let lay = app.map.findLayerById(grpLayer.id);
                     if (lay) {
                         lay.visible = !lay.visible;
@@ -129,7 +136,7 @@ function startLegend() {
             $.each(data.layers, function (i, val) {
                 if (val.layerName === confObj.layerName) {
                     let legend = val.legend;
-                    legendHtml += header;
+                    // legendHtml += header;
                     let label = confObj.title;
 
                     $.each(legend, function (j, legendItem) {
@@ -142,7 +149,7 @@ function startLegend() {
                             <span class='legendItemLabel'>${label}</span><br>
                         `
                     });
-                    legendHtml += "</div>";
+                    // legendHtml += "</div>";
                     return false;
                 }
                 if (legendHtml !== "") {
