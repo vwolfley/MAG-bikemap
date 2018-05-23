@@ -117,6 +117,7 @@ function startLegend() {
             } else {
                 let grpLayers = getLayersByGroupId(layerId);
                 for (var i = 0; i < grpLayers.length; i++) {
+                    let grpLayer = grpLayers[i];
                     let lay = app.map.findLayerById(grpLayer.id);
                     if (lay) {
                         lay.visible = !lay.visible;
