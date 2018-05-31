@@ -76,23 +76,21 @@ function startLegend() {
             template: '<div class="popover popover--topright" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
         });
 
-        for (var i = 0; i < legendLayers.sort(sort).length; i++) {
-            var conf = legendLayers.sort(sort)[i];
+        for (const conf of legendLayers.sort(sort)) {
             $layerList.append(getCheckBoxHTML(conf));
             let legend = `<div class="legendDiv ${conf.visible ? '' : 'hiddenLegend'}" id="l-${conf.id}">${getLegendHtml(conf)}</div>`;
             $legendDiv.append(legend);
         }
 
         let groupLayers = config.layers.filter(conf => conf.legend && conf.legend.group);
-        for (var i = 0; i < groupLayers.length; i++) {
-            var groupLayer = groupLayers[i];
+
+        for (groupLayer of groupLayers) {
             if ($(`#c-${groupLayer.legend.group.id}`).length === 0) {
                 $layerList.append(getCheckBoxHTML(groupLayer));
                 let grpLayers = getLayersByGroupId(groupLayer.legend.group.id);
                 let html = `<div class="legendDiv ${groupLayer.visible ? '' : 'hiddenLegend'}" id="l-${groupLayer.legend.group.id}">`;
                 html += "<div class='legendItem'>";
-                for (var j = 0; j < grpLayers.length; j++) {
-                    var lay = grpLayers[j];
+                for (lay of grpLayers) {
                     html += getLegendHtml(lay);
                 }
                 html += "</div>";
@@ -116,8 +114,8 @@ function startLegend() {
                 layer.visible = !layer.visible;
             } else {
                 let grpLayers = getLayersByGroupId(layerId);
-                for (var i = 0; i < grpLayers.length; i++) {
-                    let grpLayer = grpLayers[i];
+
+                for (grpLayer of grpLayers) {
                     let lay = app.map.findLayerById(grpLayer.id);
                     if (lay) {
                         lay.visible = !lay.visible;
@@ -134,29 +132,22 @@ function startLegend() {
             let legendHtml = "";
             let header = "<div class='legendItem'>";
 
-            $.each(data.layers, function (i, val) {
+            for (const val of data.layers) {
                 if (val.layerName === confObj.layerName) {
                     let legend = val.legend;
-                    // legendHtml += header;
                     let label = confObj.title;
-
-                    $.each(legend, function (j, legendItem) {
+                    for (const legendItem of legend) {
                         if (legend.length > 1) {
                             label = legendItem.label;
                         }
-
                         legendHtml += `
                             <img src='data:${legendItem.contentType};base64,${legendItem.imageData}'</img>
                             <span class='legendItemLabel'>${label}</span><br>
-                        `
-                    });
-                    // legendHtml += "</div>";
-                    return false;
+                            `
+                    }
+                    break;
                 }
-                if (legendHtml !== "") {
-                    return false;
-                }
-            });
+            }
             return legendHtml;
         }
     })
