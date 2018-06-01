@@ -46,27 +46,27 @@
 <body>
     <div class="wrapper">
         <!-- Sidebar Holder -->
-        <nav id="sidebar">
+        <nav id="sidebar" class="active">
             <div class="sidebar-header">
-                <div class="bigLogo">
+                <!-- <div class="bigLogo">
                     <img title="MAG Interactive Bikeways" width="80" src="img\bike-icon_120x120.png" alt="Bikemap Icon">
                     <div>
                         MAG Interactive Bikeways
                     </div>
-                </div>
+                </div> -->
                 <div class="smallLogo">
                     <img title="MAG Interactive Bikeways" width="40" src="img\bike-icon_60x60.png" alt="Bikemap Icon">
                 </div>
             </div>
 
             <ul class="list-unstyled components">
-                <li id="legendToggleLI" panel-target="legend">
+                <li class="legendToggleLI" panel-target="legend">
                     <a href="#">
                         <i class="glyphicon glyphicon-th-list"></i>
                         Legend
                     </a>
                     <label class="switch">
-                        <input id="legendToggle" type="checkbox" checked>
+                        <input class="legendToggle" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
                     <span class="arrow-left"></span>
@@ -101,17 +101,6 @@
                     <span class="arrow-left"></span>
                 </li>
             </ul>
-            <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://maps.azmag.gov" class="article">Back to more MAG maps</a>
-                </li>
-            </ul>
-            <div id="collapseBtnContainer">
-                <button type="button" id="sidebarCollapseInBar" title="Toggle Sidebar" class="sidebarCollapse btn btn-info navbar-btn">
-                    <i class="glyphicon glyphicon-menu-hamburger"></i>
-                    <span class="direction">Collapse Sidebar</span>
-                </button>
-            </div>
         </nav>
 
         <!-- Page Content Holder -->
@@ -131,6 +120,50 @@
         </div>
         <div id="container">
             <div id="viewDiv"></div>
+            <div id="bottomBar">
+                <ul class="list-unstyled components">
+                    <li class="legendToggleLI" panel-target="legend">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-th-list"></i>
+                            Legend
+                        </a>
+                        <!-- <label class="switch">
+                            <input class="legendToggle" type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label> -->
+                        <span class="arrow-left"></span>
+                    </li>
+                    <li panel-target="layers">
+                        <a href="#">
+                            <i class="glyphicon glyphicon glyphicon-check"></i>
+                            Layers
+                        </a>
+                        <span class="arrow-left"></span>
+                    </li>
+                    <li panel-target="safety">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-exclamation-sign"></i>
+                            Safety
+                        </a>
+                        <span class="arrow-left"></span>
+                    </li>
+                    <li panel-target="about">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-info-sign"></i>
+                            About
+                        </a>
+                        <span class="arrow-left"></span>
+                    </li>
+                
+                    <li panel-target="help">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-question-sign"></i>
+                            Help
+                        </a>
+                        <span class="arrow-left"></span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <div id="legend">
@@ -143,7 +176,7 @@
         <i class="glyphicon glyphicon-menu-hamburger"></i>
     </button>
     <!-- comments:uncomment-block html -->
-    <!-- <script src="js/polyfill.js"></script> -->
+    <!-- <script src="resources/polyfill.js"></script> -->
     <!-- endcomments -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

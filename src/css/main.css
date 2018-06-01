@@ -75,65 +75,39 @@ span {
 }
 
 #sidebar {
-	min-width: 250px;
-	max-width: 250px;
+	min-width: 80px;
+	max-width: 80px;
+	text-align: center;
 	background: var(--mainColor);
 	color: var(--textColor);
 	transition: all 0.3s;
 }
 
-#sidebar.active {
-	min-width: 80px;
-	max-width: 80px;
-	text-align: center;
-}
-
-#sidebar.active .sidebar-header .bigLogo,
-#sidebar.active .CTAs {
-	display: none;
-}
-
-#sidebar.active .sidebar-header .smallLogo {
+#sidebar .legendToggleLI {
 	display: block;
 }
 
-#sidebar ul li a {
-	text-align: left;
-}
-
-#sidebar.active ul li a {
-	padding: 20px 10px;
-	text-align: center;
-	font-size: 0.85em;
-}
-
-#sidebar.active #legendToggleLI {
-	display: block;
-}
-
-#sidebar.active #legendToggleLI label {
+#sidebar .legendToggleLI label {
 	margin-left: 11px;
 }
 
-#sidebar.active ul li a i {
+#sidebar ul li a i {
 	margin-right: 0;
 	display: block;
 	font-size: 1.8em;
 	margin-bottom: 5px;
 }
 
-#sidebar.active ul ul a {
-	padding: 10px !important;
+#sidebar ul li a {
+	display: block;
+	padding: 20px 10px;
+	text-align: center;
+	font-size: 0.85em;
 }
 
-#sidebar.active a[aria-expanded="false"]::before,
-#sidebar.active a[aria-expanded="true"]::before {
-	top: auto;
-	bottom: 5px;
-	right: 50%;
-	-webkit-transform: translateX(50%);
-	-ms-transform: translateX(50%);
-	transform: translateX(50%);
+#sidebar ul li a:hover {
+	color: var(--hoverText);
+	background: var(--hoverColor)
 }
 
 #sidebar .sidebar-header {
@@ -142,32 +116,9 @@ span {
 	/* background: var(--secondaryColor); */
 }
 
-#sidebar .sidebar-header .smallLogo {
-	display: none;
-}
-
 #sidebar ul.components {
 	padding: 20px 0;
 	border-bottom: 1px solid var(--textColor);
-}
-
-#sidebar ul li a {
-	padding: 10px;
-	font-size: 1.1em;
-	display: block;
-}
-
-#sidebar ul li a:hover {
-	color: var(--hoverText);
-	background: var(--hoverColor)
-}
-
-#sidebar ul li a i {
-	margin-right: 10px;
-}
-
-#sidebar.active #sidebarCollapseInBar span {
-	display: none;
 }
 
 #sidebar ul li.active > a,
@@ -229,10 +180,6 @@ a.article:hover {
 
 a.article:hover, #sidebarCollapseInBar:hover {
 	filter: brightness(110%);
-}
-
-#sidebar .smallLogo {
-	display: none;
 }
 
 #content {
@@ -316,6 +263,66 @@ body,
 #container {
 	display: flex;
 	flex: 1;
+	flex-direction: column;
+}
+
+.sideways components {
+	/* background-color: blue; */
+	display: flex;
+}
+#bottomBar {
+	display: none;
+	background-color: var(--mainColor);
+	color: var(--textColor);
+}
+
+#bottomBar ul {
+	display: flex;
+	align-items: center;
+	margin: 0px;
+}
+
+#bottomBar li {
+	flex: 1;
+}
+
+#bottomBar .legendToggleLI {
+	display: block;
+}
+
+#bottomBar .legendToggleLI label {
+	margin-left: 11px;
+}
+
+#bottomBar ul li a i {
+	margin-right: 0;
+	display: block;
+	font-size: 1.8em;
+	margin-bottom: 5px;
+}
+
+#bottomBar ul li a {
+    display: block;
+    text-align: center;
+    font-size: 0.85em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#bottomBar ul li a:hover {
+	color: var(--hoverText);
+	background: var(--hoverColor)
+}
+
+#bottomBar ul li.active>a,
+a[aria-expanded="true"] {
+	color: var(--textColor);
+	background: var(--secondaryColor);
+}
+
+
+#viewDiv{
+	flex: 1;
 }
 
 @media (max-width: 900px) {
@@ -331,33 +338,8 @@ body,
 	}
 }
 
-#viewDiv {
-	flex: 4;
-}
-
-#sidePanel {
-	flex: 1;
-	background-color: #1d1d1d;
-	border-color: #1b1b1b;
-	color: var(--textColor);
-	text-shadow: 0 1px 0 #111;
-	font-weight: 700;
-}
-
-@media (max-width: 1614px) {
-	#sidePanel {
-		flex: 1.5;
-	}
-}
-
-@media (max-width: 1188px) {
-	#sidePanel {
-		flex: 2.3;
-	}
-}
-
 #layerList {
-	padding: 5%;
+	/* padding: 5%; */
 }
 
 #layerList .checkbox-div {
@@ -391,30 +373,16 @@ label:hover,
 }
 
 #layerList .regular-checkbox {
-	background-color: #37aadb;
-}
-
-#layerList label {
-	display: inline;
-}
-
-#layerList .regular-checkbox {
 	display: none;
 }
 
 #layerList .regular-checkbox + label {
-	/* background-color: #37AADB; */
 	border: 1px solid #cacece;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
 	padding: 9px;
 	border-radius: 3px;
 	display: inline-block;
 	position: relative;
-}
-
-#layerList .regular-checkbox + label:active,
-.regular-checkbox:checked + label:active {
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 #layerList .regular-checkbox:checked + label {
@@ -471,23 +439,6 @@ label:hover,
 	vertical-align: middle;
 }
 
-/* ::-webkit-scrollbar {
-    width: 15px;
-    height: 15px;
-    border-bottom: 1px solid #1d1d1d;
-    border-top: 1px solid #1d1d1d;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    background-color: #d1d1d1;
-    border: 2px solid #1d1d1d;
-}
-
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
-} */
-
 ::-webkit-scrollbar {
 	width: 12px;
 	/* for vertical scrollbars */
@@ -528,7 +479,7 @@ label:hover,
 	margin-top: -29px;
 }
 
-#sidebar.active .arrow-left {
+#sidebar .arrow-left {
 	margin-top: -50px;
 }
 
@@ -559,22 +510,22 @@ label:hover,
 	display: none;
 }
 
-#legendToggleLI {
+.legendToggleLI {
 	display: flex;
 	align-items: center;
 	cursor: pointer;
 }
 
-#legendToggleLI:hover {
+.legendToggleLI:hover {
 	/* color: var(--hoverText); */
 	background: var(--hoverColor);
 }
 
-#legendToggleLI a {
+.legendToggleLI a {
 	flex: 2;
 }
 
-#legendToggleLI label {
+.legendToggleLI label {
 	color: inherit;
 	text-decoration: none;
 	transition: all 0.3s;
@@ -722,6 +673,9 @@ label:hover,
 }
 
 @media (max-width: 768px) {
+	#bottomBar {
+		display: block;
+	}
 	#sidebar {
 		min-width: 80px;
 		max-width: 80px;
@@ -737,20 +691,8 @@ label:hover,
 		-ms-transform: translateX(50%);
 		transform: translateX(50%);
 	}
-	/* #sidebar.active #sidebarCollapse {
-        display: block;
-    } */
-	#sidebar.active {
-		margin-left: 0 !important;
-	}
 	#sidebar .sidebar-header h3,
 	#sidebar .CTAs {
-		display: none;
-	}
-	#sidebar .smallLogo {
-		display: block;
-	}
-	#sidebar .bigLogo {
 		display: none;
 	}
 	#sidebar .sidebar-header strong {
@@ -775,29 +717,4 @@ label:hover,
 	#sidebar {
 		margin-left: 0;
 	}
-	#sidebarCollapse span {
-		display: none;
-	}
-	#legendToggleLI {
-		display: none;
-	}
-	#sidebarCollapse {
-		display: block;
-	}
-	#sidebarCollapse.active {
-		display: none;
-	}
 }
-
-@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
-  html {
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    width: 100vh;
-    overflow-x: hidden;
-    position: absolute;
-    top: 100%;
-    left: 0;
-  }
-}
-

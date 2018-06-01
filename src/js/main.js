@@ -4,13 +4,13 @@ require([
 	'esri/Map',
 	'esri/views/MapView',
 	'esri/layers/MapImageLayer',
-    'esri/geometry/Extent',
+	'esri/geometry/Extent',
 	'dojo/domReady!'
-], function(Map, MapView, MapImageLayer, Extent) {
+], function (Map, MapView, MapImageLayer, Extent) {
 	let $sidebar = $('#sidebar');
 	let $sidebarCollapse = $('#sidebarCollapse');
 
-	$('.sidebarCollapse').on('click', function() {
+	$('.sidebarCollapse').on('click', function () {
 		$sidebar.toggleClass('active');
 		$sidebarCollapse.toggleClass('active');
 	});
@@ -19,9 +19,9 @@ require([
 	let $arrows = $('.arrow-left');
 	let $panelDivs = $('.panelDiv');
 	let $content = $('#content');
-	let $legendToggle = $('#legendToggle');
+	let $legendToggle = $('.legendToggle');
 
-	$links.on('click', function(e) {
+	$links.on('click', function (e) {
 		let target = $(this).attr('panel-target');
 		if (target === 'legend') {
 			toggleLegend();
@@ -43,11 +43,11 @@ require([
 		}
 	});
 
-	$legendToggle.click(function(e) {
+	$legendToggle.click(function (e) {
 		return false;
-    });
+	});
 
-	$('#closePanel').click(function() {
+	$('#closePanel').click(function () {
 		$links.removeClass('active');
 		$arrows.hide();
 		$panelDivs.hide();
@@ -60,23 +60,23 @@ require([
 	}
 
 	app.map = new Map({
-		basemap: 'streets'
+		basemap: 'gray'
 	});
 
 	app.view = new MapView({
 		container: 'viewDiv',
 		map: app.map,
-        extent: config.initExtent,
-        constraints: {
-            rotationEnabled: false,
-            minZoom: 7,
-            snapToZoom: false
-        },
+		extent: config.initExtent,
+		constraints: {
+			rotationEnabled: false,
+			minZoom: 7,
+			snapToZoom: false
+		},
 	});
 	app.view.ui.remove('attribution');
 
-	app.view.when(function() {
-		$.get(config.mainUrl + '/?f=json', function(data) {
+	app.view.when(function () {
+		$.get(config.mainUrl + '/?f=json', function (data) {
 			for (const layer of JSON.parse(data).layers) {
 				for (const conf of config.layers) {
 					if (conf.layerName === layer.name) {
@@ -97,16 +97,16 @@ require([
 	});
 
 	function setupConstrainedExtent() {
-        var maxExtent = new Extent({
-            xmax: -12326456.407013275,
-            xmin: -12619974.595628463,
-            ymax: 4014557.5992311286,
-            ymin: 3873301.9709600685,
-            spatialReference: 102100
-        });
+		var maxExtent = new Extent({
+			xmax: -12326456.407013275,
+			xmin: -12619974.595628463,
+			ymax: 4014557.5992311286,
+			ymin: 3873301.9709600685,
+			spatialReference: 102100
+		});
 		var oldExtentHeight = 0;
-		app.view.watch('extent', function(extent) {
-            var currentCenter = extent.center;
+		app.view.watch('extent', function (extent) {
+			var currentCenter = extent.center;
 			if (!maxExtent.contains(currentCenter)) {
 				var newCenter = extent.center;
 				if (currentCenter.x < maxExtent.xmin) {
@@ -135,7 +135,7 @@ require([
 		let tt = $('.iconTooltip');
 		let text = $('.iconTooltiptext');
 
-		app.view.on('pointer-move', function(event) {
+		app.view.on('pointer-move', function (event) {
 			tt.hide();
 			$('body').css('cursor', 'default');
 			try {
@@ -145,7 +145,7 @@ require([
 							x: event.x,
 							y: event.y
 						})
-						.then(function(response) {
+						.then(function (response) {
 							if (!app.view.popup.visible) {
 								// removeGraphics();
 							}
@@ -189,8 +189,7 @@ require([
 			type: 'simple-line',
 			width: 20
 		},
-		uniqueValueInfos: [
-			{
+		uniqueValueInfos: [{
 				value: 'Bike Lane',
 				symbol: {
 					type: 'simple-line',
@@ -247,7 +246,7 @@ require([
 		]
 	};
 
-	window.popupSetup = function(value, key, data) {
+	window.popupSetup = function (value, key, data) {
 		let html = '';
 		if (data.PATHTYPE) {
 			html += `<span class="popupItem"><span class="popupLabel">Type:</span> <span>${data.PATHTYPE}</span></span>`;
@@ -271,8 +270,7 @@ require([
 	let mainLayer = new MapImageLayer({
 		url: config.mainUrl,
 		opacity: 0.8,
-		sublayers: [
-			{
+		sublayers: [{
 				id: 0,
 				visible: true,
 				popupTemplate: pTemplate,
