@@ -1,9 +1,9 @@
 :root {
-  --mainColor: #383838;
-  --secondaryColor: #585858;
-  --textColor: #F0F0F0;
-  --hoverColor: #B0B0B0;
-  --hoverText: #F8F8F8;
+	--mainColor: #081F21;
+	--secondaryColor: #2BAAB1;
+	--textColor: #FFFFFF;
+	--hoverColor: #535353;
+	--hoverText: #FFFFFF;
 }
 
 /* ---------------------------------------------------
@@ -75,8 +75,9 @@ span {
 }
 
 #sidebar {
-	min-width: 80px;
-	max-width: 80px;
+	display: block;
+	min-width: 100px;
+	max-width: 100px;
 	text-align: center;
 	background: var(--mainColor);
 	color: var(--textColor);
@@ -94,7 +95,7 @@ span {
 #sidebar ul li a i {
 	margin-right: 0;
 	display: block;
-	font-size: 1.8em;
+	font-size: 2.5em;
 	margin-bottom: 5px;
 }
 
@@ -121,7 +122,7 @@ span {
 	border-bottom: 1px solid var(--textColor);
 }
 
-#sidebar ul li.active > a,
+#sidebar ul li.active>a,
 a[aria-expanded="true"] {
 	color: var(--textColor);
 	background: var(--secondaryColor);
@@ -173,21 +174,28 @@ a.article:hover {
 	background: var(--secondaryColor) !important;
 	color: var(--textColor) !important;
 }
-#sidebarCollapseInBar{
+
+#sidebarCollapseInBar {
 	background-color: var(--secondaryColor);
 	color: var(--textColor);
 }
 
-a.article:hover, #sidebarCollapseInBar:hover {
+a.article:hover,
+#sidebarCollapseInBar:hover {
 	filter: brightness(110%);
 }
 
 #content {
 	padding: 5px;
-	min-height: 100vh;
+	/* min-height: 100vh; */
 	min-width: 25%;
 	transition: all 0.3s;
 	display: none;
+	height: 100vh;
+	overflow-y: auto;
+	padding: 5px;
+	min-width: 25%;
+	transition: all 0.3s;
 }
 
 .switch {
@@ -197,7 +205,7 @@ a.article:hover, #sidebarCollapseInBar:hover {
 	height: 24px;
 	margin-left: auto;
 	margin-right: 10px;
-	top: 2px;
+	margin-top: -5px;
 	cursor: pointer;
 }
 
@@ -229,15 +237,15 @@ a.article:hover, #sidebarCollapseInBar:hover {
 	transition: .4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
 	background-color: var(--secondaryColor);
 }
 
-input:focus + .slider {
+input:focus+.slider {
 	box-shadow: 0 0 1px var(--secondaryColor);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
 	-webkit-transform: translateX(16px);
 	-ms-transform: translateX(16px);
 	transform: translateX(16px);
@@ -258,6 +266,7 @@ body,
 #container {
 	padding: 0;
 	margin: 0;
+	overflow-x: hidden !important;
 }
 
 #container {
@@ -270,6 +279,7 @@ body,
 	/* background-color: blue; */
 	display: flex;
 }
+
 #bottomBar {
 	display: none;
 	background-color: var(--mainColor);
@@ -302,11 +312,11 @@ body,
 }
 
 #bottomBar ul li a {
-    display: block;
-    text-align: center;
-    font-size: 0.85em;
-    padding-top: 10px;
-    padding-bottom: 10px;
+	display: block;
+	text-align: center;
+	font-size: 0.85em;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 #bottomBar ul li a:hover {
@@ -320,15 +330,23 @@ a[aria-expanded="true"] {
 	background: var(--secondaryColor);
 }
 
+#basemapToggle {
+	display: none;
+}
 
-#viewDiv{
+#basemapToggle img {
+	width: 27px;
+	margin-top: 10px;
+}
+
+#viewDiv {
 	flex: 1;
 }
 
 @media (max-width: 900px) {
 	#container {
 		flex-direction: column;
-		overflow: hidden;
+		/* overflow: hidden; */
 	}
 	#sidePanel {
 		flex: 1;
@@ -376,7 +394,7 @@ label:hover,
 	display: none;
 }
 
-#layerList .regular-checkbox + label {
+#layerList .regular-checkbox+label {
 	border: 1px solid #cacece;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
 	padding: 9px;
@@ -385,13 +403,13 @@ label:hover,
 	position: relative;
 }
 
-#layerList .regular-checkbox:checked + label {
+#layerList .regular-checkbox:checked+label {
 	background-color: var(--secondaryColor);
 	border: 1px solid #adb8c0;
 	color: #000;
 }
 
-#layerList .regular-checkbox:checked + label:after {
+#layerList .regular-checkbox:checked+label:after {
 	content: '\2714';
 	font-size: 10px;
 	position: absolute;
@@ -400,18 +418,34 @@ label:hover,
 	color: var(--textColor);
 }
 
-#layerList .big-checkbox + label {
+#layerList .big-checkbox+label {
 	padding: 10px;
 }
 
-#layerList .big-checkbox:checked + label:after {
+#layerList .big-checkbox:checked+label:after {
 	font-size: 15.5555px;
 	/* left: 4px; */
+}
+
+#legendHeader{
+	height: 50px;
+	background-color: var(--mainColor);
+	color: var(--textColor);
+}
+
+#legendHeader span{
+	margin: 15px;
+	font-weight: bold;
+	font-size: 15px;
 }
 
 .legendDiv {
 	display: flex;
 	padding: 2px;
+	font-size: 12px;
+    padding-left: 15px;
+    padding-right: 10px;
+	padding-bottom: 5px;
 	border-top: 1px solid #c2c0c0;
 }
 
@@ -484,10 +518,10 @@ label:hover,
 }
 
 #legend {
-    padding: 10px;
+	/* padding: 10px; */
 	display: none;
-    background-color: var(--mainColor);
-    color: var(--textColor);
+	background-color: white;
+	color: black;
 }
 
 .close-thick:after {
@@ -555,15 +589,19 @@ label:hover,
 	margin-left: 20px;
 }
 
-.tab-pane,
-.aboutTab {
-	max-height: 90vh;
-	overflow-y: auto;
+#bikeSafety .safetyDetails {
+	margin-left: 5%;
 }
 
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:focus,
-.nav-pills > li.active > a:hover {
+.tab-pane,
+.aboutTab {
+	/* max-height: 90vh; */
+	/* overflow-y: auto; */
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
 	background-color: var(--secondaryColor);
 }
 
@@ -638,11 +676,6 @@ label:hover,
 	opacity: 0;
 }
 
-#helpContent {
-	max-height: 98vh;
-	overflow-y: auto;
-}
-
 #bikeDefIcon:hover {
 	cursor: pointer;
 	color: gray;
@@ -666,13 +699,22 @@ label:hover,
 @media (max-width: 900px) {
 	#content {
 		width: 100vw;
-    }
-    .panelDiv {
+	}
+	.panelDiv {
 		max-width: 100vw;
 	}
 }
 
 @media (max-width: 768px) {
+	.iconTooltip{
+		display: none !important;
+	}
+	.arrow-left{
+		display: none !important;
+	}
+	#content {
+		height: 91vh;
+	}
 	#bottomBar {
 		display: block;
 	}
@@ -715,6 +757,10 @@ label:hover,
 		font-size: 1.3em;
 	}
 	#sidebar {
+		display: none;
 		margin-left: 0;
+	}
+	.wrapper {
+		flex-direction: column;
 	}
 }

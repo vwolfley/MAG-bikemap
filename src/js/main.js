@@ -69,11 +69,12 @@ require([
 		extent: config.initExtent,
 		constraints: {
 			rotationEnabled: false,
-			minZoom: 7,
+			minZoom: 9,
 			snapToZoom: false
 		},
 	});
 	app.view.ui.remove('attribution');
+	app.view.ui.remove('zoom');
 
 	app.view.when(function () {
 		$.get(config.mainUrl + '/?f=json', function (data) {
@@ -160,7 +161,7 @@ require([
 										tooltipHtml = resultGraphic.attributes.NAME;
 									} else if (resultGraphic.attributes.Discript) {
 										tooltipHtml = resultGraphic.attributes.Discript;
-									} else if (resultGraphic.attributes.Station_Number) {
+									} else if ( resultGraphic.attributes.Station_Number) {
 										tooltipHtml = `Station Number: ${resultGraphic.attributes.Station_Number}`;
 									}
 									if (tooltipHtml) {
@@ -269,12 +270,12 @@ require([
 	};
 	let mainLayer = new MapImageLayer({
 		url: config.mainUrl,
-		opacity: 0.8,
+		opacity: 1,
 		sublayers: [{
 				id: 0,
 				visible: true,
 				popupTemplate: pTemplate,
-				renderer: bikeRenderer,
+				// renderer: bikeRenderer,
 				minScale: 0,
 				maxScale: 144447
 			},
@@ -282,7 +283,7 @@ require([
 				id: 1,
 				visible: true,
 				popupTemplate: pTemplate,
-				renderer: bikeRenderer,
+				// renderer: bikeRenderer,
 				minScale: 144447.01,
 				maxScale: 40001
 			},
@@ -290,7 +291,7 @@ require([
 				id: 2,
 				visible: true,
 				popupTemplate: pTemplate,
-				renderer: bikeRenderer,
+				// renderer: bikeRenderer,
 				minScale: 40000,
 				maxScale: 0
 			}

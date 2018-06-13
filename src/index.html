@@ -38,15 +38,17 @@
     <link rel="shortcut icon" type="image-favorites-icon" href="img/bike-icon_60x60.png">
     
     <!-- Load CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://js.arcgis.com/4.7/esri/css/main.css">
+    <!-- <link rel="stylesheet" href="https://js.arcgis.com/4.7/esri/css/main.css"> -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.7/esri/themes/dark/main.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
     <div class="wrapper">
         <!-- Sidebar Holder -->
-        <nav id="sidebar" class="active">
+        <nav id="sidebar">
             <div class="sidebar-header">
                 <!-- <div class="bigLogo">
                     <img title="MAG Interactive Bikeways" width="80" src="img\bike-icon_120x120.png" alt="Bikemap Icon">
@@ -55,14 +57,14 @@
                     </div>
                 </div> -->
                 <div class="smallLogo">
-                    <img title="MAG Interactive Bikeways" width="40" src="img\bike-icon_60x60.png" alt="Bikemap Icon">
+                    <img title="MAG Interactive Bikeways" width="40" src="img\bike-icon_152x152.png" alt="Bikemap Icon">
                 </div>
             </div>
 
             <ul class="list-unstyled components">
                 <li class="legendToggleLI" panel-target="legend">
                     <a href="#">
-                        <i class="glyphicon glyphicon-th-list"></i>
+                        <i class="fas fa-th-list"></i>
                         Legend
                     </a>
                     <label class="switch">
@@ -73,21 +75,21 @@
                 </li>
                 <li panel-target="layers">
                     <a href="#">
-                        <i class="glyphicon glyphicon glyphicon-check"></i>
+                        <i class="fas fa-check-square"></i>
                         Layers
                     </a>
                     <span class="arrow-left"></span>
                 </li>
                 <li panel-target="safety">
                     <a href="#">
-                        <i class="glyphicon glyphicon-exclamation-sign"></i>
+                        <i class="fas fa-exclamation-triangle"></i>
                         Safety
                     </a>
                     <span class="arrow-left"></span>
                 </li>
                 <li panel-target="about">
                     <a href="#">
-                        <i class="glyphicon glyphicon-info-sign"></i>
+                        <i class="fas fa-info-circle"></i>
                         About
                     </a>
                     <span class="arrow-left"></span>
@@ -95,7 +97,7 @@
 
                 <li panel-target="help">
                     <a href="#">
-                        <i class="glyphicon glyphicon-question-sign"></i>
+                        <i class="fas fa-question"></i>
                         Help
                     </a>
                     <span class="arrow-left"></span>
@@ -124,7 +126,7 @@
                 <ul class="list-unstyled components">
                     <li class="legendToggleLI" panel-target="legend">
                         <a href="#">
-                            <i class="glyphicon glyphicon-th-list"></i>
+                            <i class="fas fa-th-list"></i>
                             Legend
                         </a>
                         <!-- <label class="switch">
@@ -135,21 +137,21 @@
                     </li>
                     <li panel-target="layers">
                         <a href="#">
-                            <i class="glyphicon glyphicon glyphicon-check"></i>
+                            <i class="fas fa-check-square"></i>
                             Layers
                         </a>
                         <span class="arrow-left"></span>
                     </li>
                     <li panel-target="safety">
                         <a href="#">
-                            <i class="glyphicon glyphicon-exclamation-sign"></i>
+                            <i class="fas fa-exclamation-triangle"></i>
                             Safety
                         </a>
                         <span class="arrow-left"></span>
                     </li>
                     <li panel-target="about">
                         <a href="#">
-                            <i class="glyphicon glyphicon-info-sign"></i>
+                            <i class="fas fa-info-circle"></i>
                             About
                         </a>
                         <span class="arrow-left"></span>
@@ -157,7 +159,7 @@
                 
                     <li panel-target="help">
                         <a href="#">
-                            <i class="glyphicon glyphicon-question-sign"></i>
+                            <i class="fas fa-question"></i>
                             Help
                         </a>
                         <span class="arrow-left"></span>
@@ -167,8 +169,15 @@
         </div>
     </div>
     <div id="legend">
+        <div id="legendHeader"><span>Legend</span></div>
         <div id="legendDiv"></div>
     </div>
+    <div id="basemapToggle" class="esri-component esri-widget-button esri-widget" role="button" tabindex="0" aria-label="Toggle Basemap"
+        title="Toggle Basemap">
+        <span class="esri-icon"><img src="img/widgetIcons/Imagery-Map-View-Icon.png" alt=""></span>
+        <span class="esri-icon-font-fallback-text">Toggle Basemap</span>
+    </div>
+
     <span class="iconTooltip">
         <span class="iconTooltiptext"></span>
     </span>
