@@ -55,6 +55,10 @@ require([
 	});
 
 	function toggleLegend() {
+		if (window.innerWidth < 768) {
+			$("#content").hide();
+			$(".components li").removeClass("active");
+		}
 		$('#legend').fadeToggle();
 		$legendToggle.prop('checked', !$legendToggle.prop('checked'));
 	}
@@ -78,8 +82,13 @@ require([
 
 	app.view.when(function () {
 		$.get(config.mainUrl + '/?f=json', function (data) {
-			for (const layer of JSON.parse(data).layers) {
-				for (const conf of config.layers) {
+			var lays = JSON.parse(data).layers;
+			for (var i = 0; i < lays.length; i++) {
+				var layer = lays[i];
+
+				for (var j = 0; j < config.layers.length; j++) {
+					var conf = config.layers[j];
+
 					if (conf.layerName === layer.name) {
 						conf.index = layer.id;
 						break;
@@ -161,7 +170,7 @@ require([
 										tooltipHtml = resultGraphic.attributes.NAME;
 									} else if (resultGraphic.attributes.Discript) {
 										tooltipHtml = resultGraphic.attributes.Discript;
-									} else if ( resultGraphic.attributes.Station_Number) {
+									} else if (resultGraphic.attributes.Station_Number) {
 										tooltipHtml = `Station Number: ${resultGraphic.attributes.Station_Number}`;
 									}
 									if (tooltipHtml) {

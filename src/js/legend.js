@@ -75,8 +75,9 @@ function startLegend() {
             offset: 100,
             template: '<div class="popover popover--topright" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
         });
-
-        for (const conf of legendLayers.sort(sort)) {
+        var arr = legendLayers.sort(sort);
+        for (var i = 0; i < arr.length; i++) {
+            var conf = arr[i];
             $layerList.append(getCheckBoxHTML(conf));
             let legend = `<div class="legendDiv ${conf.visible ? '' : 'hiddenLegend'}" id="l-${conf.id}">${getLegendHtml(conf)}</div>`;
             $legendDiv.append(legend);
@@ -84,13 +85,15 @@ function startLegend() {
 
         let groupLayers = config.layers.filter(conf => conf.legend && conf.legend.group);
 
-        for (groupLayer of groupLayers) {
+        for (var i = 0; i < groupLayers.length; i++) {
+            var groupLayer = groupLayers[i];
             if ($(`#c-${groupLayer.legend.group.id}`).length === 0) {
                 $layerList.append(getCheckBoxHTML(groupLayer));
                 let grpLayers = getLayersByGroupId(groupLayer.legend.group.id);
                 let html = `<div class="legendDiv ${groupLayer.visible ? '' : 'hiddenLegend'}" id="l-${groupLayer.legend.group.id}">`;
                 html += "<div class='legendItem'>";
-                for (lay of grpLayers) {
+                for (var j = 0; j < grpLayers.length; j++) {
+                    var lay = grpLayers[j];
                     html += getLegendHtml(lay);
                 }
                 html += "</div>";
@@ -115,7 +118,9 @@ function startLegend() {
             } else {
                 let grpLayers = getLayersByGroupId(layerId);
 
-                for (grpLayer of grpLayers) {
+                for (var i = 0; i < grpLayers.length; i++) {
+                    var grpLayer = grpLayers[i];
+
                     let lay = app.map.findLayerById(grpLayer.id);
                     if (lay) {
                         lay.visible = !lay.visible;
@@ -132,11 +137,14 @@ function startLegend() {
             let legendHtml = "";
             let header = "<div class='legendItem'>";
 
-            for (const val of data.layers) {
+            for (var i = 0; i < data.layers.length; i++) {
+                var val = data.layers[i];
                 if (val.layerName === confObj.layerName) {
                     let legend = val.legend;
                     let label = confObj.title;
-                    for (const legendItem of legend) {
+                    for (var j = 0; j < legend.length; j++) {
+                        var legendItem = legend[j];
+
                         if (legend.length > 1) {
                             label = legendItem.label;
                         }

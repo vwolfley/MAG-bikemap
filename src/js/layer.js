@@ -8,7 +8,10 @@ function addLayersToMap() {
         "esri/symbols/SimpleLineSymbol",
         "esri/renderers/SimpleRenderer"
     ], function (FeatureLayer, MapImageLayer, PopupTemplate, TextSymbol, SimpleMarkerSymbol, SimpleLineSymbol, SimpleRenderer) {
-        for (const layer of config.layers) {
+
+        for (var i = 0; i < config.layers.length; i++) {
+            var layer = config.layers[i];
+
             var layerToAdd;
             var url = config.mainUrl;
             if (layer.type === "feature") {

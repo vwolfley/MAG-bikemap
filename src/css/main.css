@@ -578,6 +578,9 @@ label:hover,
 .safetyImg {
 	width: 65px;
 }
+.liLabel{
+	font-size: 1.15em;
+}
 
 .safetyContainer {
 	display: flex;

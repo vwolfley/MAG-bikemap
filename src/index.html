@@ -36,7 +36,7 @@
     <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="img/bike-icon_76x76.png">
     <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="img/bike-icon_60x60.png">
     <link rel="shortcut icon" type="image-favorites-icon" href="img/bike-icon_60x60.png">
-    
+
     <!-- Load CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -65,7 +65,7 @@
                 <li class="legendToggleLI" panel-target="legend">
                     <a href="#">
                         <i class="fas fa-th-list"></i>
-                        Legend
+                        <span class="liLabel">Legend</span>
                     </a>
                     <label class="switch">
                         <input class="legendToggle" type="checkbox" checked>
@@ -76,21 +76,21 @@
                 <li panel-target="layers">
                     <a href="#">
                         <i class="fas fa-check-square"></i>
-                        Layers
+                        <span class="liLabel">Layers</span>
                     </a>
                     <span class="arrow-left"></span>
                 </li>
                 <li panel-target="safety">
                     <a href="#">
                         <i class="fas fa-exclamation-triangle"></i>
-                        Safety
+                        <span class="liLabel">Safety</span>
                     </a>
                     <span class="arrow-left"></span>
                 </li>
                 <li panel-target="about">
                     <a href="#">
                         <i class="fas fa-info-circle"></i>
-                        About
+                        <span class="liLabel">About</span>
                     </a>
                     <span class="arrow-left"></span>
                 </li>
@@ -98,7 +98,7 @@
                 <li panel-target="help">
                     <a href="#">
                         <i class="fas fa-question"></i>
-                        Help
+                        <span class="liLabel">Help</span>
                     </a>
                     <span class="arrow-left"></span>
                 </li>
@@ -156,7 +156,7 @@
                         </a>
                         <span class="arrow-left"></span>
                     </li>
-                
+
                     <li panel-target="help">
                         <a href="#">
                             <i class="fas fa-question"></i>
@@ -169,12 +169,16 @@
         </div>
     </div>
     <div id="legend">
-        <div id="legendHeader"><span>Legend</span></div>
+        <div id="legendHeader">
+            <span>Legend</span>
+        </div>
         <div id="legendDiv"></div>
     </div>
     <div id="basemapToggle" class="esri-component esri-widget-button esri-widget" role="button" tabindex="0" aria-label="Toggle Basemap"
         title="Toggle Basemap">
-        <span class="esri-icon"><img src="img/widgetIcons/Imagery-Map-View-Icon.png" alt=""></span>
+        <span class="esri-icon">
+            <img src="img/widgetIcons/Imagery-Map-View-Icon.png" alt="">
+        </span>
         <span class="esri-icon-font-fallback-text">Toggle Basemap</span>
     </div>
 
@@ -184,9 +188,6 @@
     <button type="button" id="sidebarCollapse" title="Toggle Sidebar" class="sidebarCollapse btn btn-info navbar-btn">
         <i class="glyphicon glyphicon-menu-hamburger"></i>
     </button>
-    <!-- comments:uncomment-block html -->
-    <!-- <script src="resources/polyfill.js"></script> -->
-    <!-- endcomments -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script rel="preload" src="https://js.arcgis.com/4.7/"></script>
