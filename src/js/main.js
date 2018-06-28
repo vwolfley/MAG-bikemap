@@ -21,6 +21,8 @@ require([
 	let $content = $('#content');
 	let $legendToggle = $('.legendToggle');
 
+	let loadedLayers = ["layers"];
+
 	$links.on('click', function (e) {
 		let target = $(this).attr('panel-target');
 		if (target === 'legend') {
@@ -37,6 +39,11 @@ require([
 				$content.show();
 				$(this).addClass('active');
 				$(this).find('.arrow-left').show();
+
+				if (loadedLayers.indexOf(target) === -1) {
+					$(`div[panel-id="${target}"]`).load(`views/${target}.html`);
+					loadedLayers.push(target);
+				}
 
 				$(`div[panel-id=${target}`).fadeIn(400);
 			}
@@ -101,9 +108,6 @@ require([
 			setupWidgets();
 			setupConstrainedExtent();
 		});
-		$('div[panel-id="about"]').load('views/about.html');
-		$('div[panel-id="help"]').load('views/help.html');
-		$('div[panel-id="safety"]').load('views/safety.html');
 	});
 
 	function setupConstrainedExtent() {
