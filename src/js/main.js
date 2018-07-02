@@ -125,10 +125,10 @@ require([
                 placeholder: "302 N 1st Ave, Phoenix, Arizona"
             }, {
                 featureLayer: new FeatureLayer(appConfig.MainURL + "/6"),
-                searchFields: ["Name"],
-                displayField: "Name",
+                searchFields: ["NAME"],
+                displayField: "NAME",
                 name: "Bike Shops",
-                outFields: ["Name", "Address", "City", "Phone", "Website", "Facebook"],
+                outFields: ["NAME", "Address", "City", "Phone", "Website", "Facebook"],
                 highlightSymbol: new PictureMarkerSymbol("https://js.arcgis.com/3.17/esri/dijit/Search/images/search-pointer.png", 36, 36).setOffset(9, 18),
                 enableLabel: false,
                 enableInfoWindow: true,
