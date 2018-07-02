@@ -25,9 +25,9 @@ This web app viewer was developed by MAG staff for MAG member agencies and the p
 
 ## Version ##
 
-* ### version | 3.3.3 ###
+* ### version | 3.3.4 ###
 
-* #### Updated | 2018-04-11 ####
+* #### Updated | 2018-07-02 ####
 
 * #### Created | 2012-08-03 ####
 

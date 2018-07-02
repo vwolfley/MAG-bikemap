@@ -36,6 +36,10 @@ And constructed with the following guidelines:
 
 ***********************************************
 
+## Version 3.3.4 | 2018-07-02
+
+* Fixed bikemap field names for popups
+
 ## Version 3.3.3 | 2018-04-11
 
 * Fixed Grunt toggle
@@ -55,6 +59,8 @@ And constructed with the following guidelines:
 ## Version 3.3.1 | 2017-11-21
 
 * updates to popup info - schema changes were made!
+* Fixed bikemap popup bug
+* Fixed PDF link
 * fixed copyright issue
 
 ## Version 3.3.0 | 2017-05-23

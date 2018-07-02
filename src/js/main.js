@@ -288,6 +288,7 @@ require([
 
             //add a feature layer Bike Shops
             //=================================================================================>
+
             var content3 = "<strong>${NAME}</strong><br>${ADDRESS}<br>${CITY}<br>${PHONE}<br><a target='_blank'href=https://${WEBSITE}>${WEBSITE}</a></br>" +
                 "<a target='blank' href=https://${FACEBOOK}>Facebook</a>";
             var template3 = new InfoTemplate("Bike Shop", content3);
