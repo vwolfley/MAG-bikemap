@@ -128,7 +128,7 @@ require([
                 searchFields: ["NAME"],
                 displayField: "NAME",
                 name: "Bike Shops",
-                outFields: ["NAME", "ADDRESS", "CITY", "PHONE", "WEBSITE", "FACEBOOK"],
+                outFields: ["NAME", "Address", "City", "Phone", "Website", "Facebook"],
                 highlightSymbol: new PictureMarkerSymbol("https://js.arcgis.com/3.17/esri/dijit/Search/images/search-pointer.png", 36, 36).setOffset(9, 18),
                 enableLabel: false,
                 enableInfoWindow: true,
