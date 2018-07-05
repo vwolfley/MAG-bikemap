@@ -24,8 +24,7 @@
     "#MAGmaps"
   ],
   "main": "index.js",
-  "repository": [
-    {
+  "repository": [{
       "type": "git",
       "url": "https://github.com/AZMAG/map-Bikeways"
     },
@@ -36,8 +35,7 @@
   ],
   "homepage": "http://geo.azmag.gov/maps/bikemap/",
   "author": "MAG Information Services (http://www.azmag.gov/About-Us/Divisions/Information-Services-Division)",
-  "contributors": [
-    {
+  "contributors": [{
       "name": "Vern Wolfley",
       "email": "vwolfley@azmag.gov"
     },
@@ -48,23 +46,37 @@
   ],
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/preset-env": "^7.0.0-beta.46",
+    "babel-core": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "cssnano": "^3.10.0",
+    "load-grunt-tasks": "^3.5.2"
   },
-  "dependencies": {},
   "devDependencies": {
-    "grunt": "^1.0.1",
+    "babel-preset-env": "^1.6.1",
+    "csslint-stylish": "^0.0.6",
+    "grunt": "^1.0.2",
+    "grunt-autoprefixer": "^3.0.4",
+    "grunt-babel": "^7.0.0",
     "grunt-comment-toggler": "^0.2.2",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-csslint": "^2.0.0",
     "grunt-contrib-cssmin": "^2.2.1",
     "grunt-contrib-jshint": "^1.1.0",
-    "grunt-contrib-uglify": "^3.1.0",
+    "grunt-contrib-uglify": "^3.2.1",
+    "grunt-contrib-watch": "^1.0.1",
+    "grunt-postcss": "^0.9.0",
     "grunt-text-replace": "^0.4.0",
-    "jshint-stylish": "^2.2.1",
+    "grunt-version-check": "^0.3.8",
     "jshint-stylish-ex": "^0.2.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.5",
     "matchdep": "^2.0.0",
-    "normalize.css": "^7.0.0"
+    "normalize.css": "^8.0.0",
+    "postcss": "^6.0.22",
+    "postcss-cssnext": "^3.1.0"
   },
   "license": "MIT"
 }
