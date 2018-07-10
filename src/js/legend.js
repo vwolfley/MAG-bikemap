@@ -33,10 +33,17 @@ function startLegend() {
 
         $("#legend").draggable({
             handle: "#legendHeader",
-            scroll: false,
-            containment: "#container"
+            // scroll: false,
+            containment: "#container",
+            cursor: "move"
         });
 
+        $(window).resize(function () {
+            $('#legend').css({
+                left: '',
+                top: ''
+            });
+        });
 
         var legendLayers = config.layers.filter(conf => conf.legend && !conf.legend.group);
 
