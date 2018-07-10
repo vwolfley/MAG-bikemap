@@ -680,6 +680,11 @@ label:hover,
     opacity: 0;
 }
 
+#legendGrip {
+    float: right;
+    margin-top: 17px !important;
+}
+
 #bikeDefIcon:hover {
     cursor: pointer;
     color: gray;

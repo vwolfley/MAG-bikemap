@@ -37,7 +37,7 @@
     <link rel="shortcut icon" type="image-favorites-icon" href="img/bike-icon_60x60.png">
 
     <!-- Load CSS -->
-    <link rel="stylesheet" rel="preload" as="style" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link rel="stylesheet" rel="preload" as="style" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
     <link rel="stylesheet" rel="preload" as="style" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" rel="preload" as="style" href="https://js.arcgis.com/4.7/esri/themes/dark/main.css">
     <link rel="stylesheet" rel="preload" as="style" href="css/main.css">
@@ -167,8 +167,11 @@
         </div>
     </div>
     <div id="legend">
-        <div id="legendHeader">
+        <div title="Click and drag to move window" id="legendHeader">
             <span>Legend</span>
+            <span id="legendGrip">
+                <i class="fas fa-grip-vertical"></i>
+            </span>
         </div>
         <div id="legendDiv"></div>
     </div>
@@ -188,8 +191,11 @@
     </button>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
+    <script src="js/draggable.js"></script>
     <script src="https://js.arcgis.com/4.7/"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
     <!-- comments:comment html -->
     <script async src="js/config.js"></script>
