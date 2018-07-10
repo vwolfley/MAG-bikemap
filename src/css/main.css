@@ -112,7 +112,7 @@ span {
 }
 
 #sidebar .sidebar-header {
-    padding: 20px;
+    padding: 12px;
     border-bottom: 1px solid var(--textColor);
     /* background: var(--secondaryColor); */
 }
