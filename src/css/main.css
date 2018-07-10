@@ -117,11 +117,6 @@ span {
     /* background: var(--secondaryColor); */
 }
 
-#sidebar ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--textColor);
-}
-
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: var(--textColor);
