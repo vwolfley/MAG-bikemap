@@ -1,60 +1,72 @@
 function setupWidgets() {
 	require([
-		'esri/widgets/BasemapToggle',
 		"esri/widgets/BasemapToggle/BasemapToggleViewModel",
 		'esri/widgets/Home',
+		'esri/widgets/Home/HomeViewModel',
 		'esri/widgets/Locate',
+		'esri/widgets/Locate/LocateViewModel',
 		'esri/widgets/Zoom',
-		'esri/widgets/Search',
+		'esri/widgets/Zoom/ZoomViewModel',
 		'dojo/domReady!'
-	], function (BasemapToggle, BasemapToggleViewModel, Home, Locate, Zoom, Search) {
-		let zoom = new Zoom({
+	], function (BasemapToggleViewModel, Home, HomeViewModel, Locate, LocateViewModel, Zoom, ZoomViewModel) {
+
+		//Zoom
+		const zoomId = "zoomWidget";
+		let zoomVM = new ZoomViewModel({
 			view: app.view
 		});
 
-		app.view.ui.add(zoom, 'bottom-right');
-		let homeWidget = new Home({
+		app.view.ui.add(zoomId, 'bottom-right');
+
+		$("#" + zoomId).on("click", ".esri-widget-button", function () {
+			const direction = $(this).data("id");
+			if (direction === "In") {
+				zoomVM.zoomIn();
+			} else {
+				zoomVM.zoomOut();
+			}
+		});
+
+		//Home
+		const homeId = "homeWidget";
+		let homeVM = new HomeViewModel({
 			view: app.view
 		});
 
-		app.view.ui.add(homeWidget, 'bottom-right');
-		let locate = new Locate({
+		app.view.ui.add(homeId, 'bottom-right');
+
+		$("#" + homeId).click(function () {
+			homeVM.go();
+		});
+
+		//Locate
+		const locateId = "locateWidget";
+		let locateVM = new LocateViewModel({
 			view: app.view
 		});
-		app.view.ui.add(locate, 'bottom-right');
+		app.view.ui.add(locateId, 'bottom-right');
 
+		$("#" + locateId).click(function () {
+			locateVM.locate();
+		});
 
-
-
-
-		let toggleView = new BasemapToggleViewModel({
+		//Basemap
+		const basemapId = "basemapToggle";
+		let toggleVM = new BasemapToggleViewModel({
 			view: app.view,
 			nextBasemap: 'hybrid'
 		});
 
-		app.view.ui.add('basemapToggle', 'bottom-right');
+		app.view.ui.add(basemapId, 'bottom-right');
 
-		$("#basemapToggle").show();
-		$("#basemapToggle").click(function(){
-			toggleView.toggle();
+		$("#" + basemapId).click(function () {
+			toggleVM.toggle();
 		});
 
+		//Legend
 		let legend = $('#legend');
 		app.view.ui.add('legend', 'top-right');
-		$('#legend').show();
 
-		let sidebarCollapse = $('#sidebarCollapse');
-		app.view.ui.add('sidebarCollapse', 'bottom-left');
-
-		var search = new Search({
-			view: app.view
-		});
-
-		// app.view.ui.add(search, 'top-left');
-
-		// app.view.ui.add(search, 'bottom-right');
-
-		// let sidebarCollapse = $("#sidebarCollapse");
-		// app.view.ui.add("sidebarCollapse", "bottom-left");
+		$(".customWidget").show();
 	});
 }

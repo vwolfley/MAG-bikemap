@@ -166,7 +166,7 @@
             </div>
         </div>
     </div>
-    <div id="legend">
+    <div class="customWidget" id="legend">
         <div title="Click and drag to move window" id="legendHeader">
             <span>Legend</span>
             <span id="legendGrip">
@@ -175,12 +175,38 @@
         </div>
         <div id="legendDiv"></div>
     </div>
-    <div id="basemapToggle" class="esri-component esri-widget-button esri-widget" role="button" tabindex="0" aria-label="Toggle Basemap"
+    <div id="basemapToggle" class="customWidget esri-component esri-widget-button esri-widget" role="button" tabindex="0" aria-label="Toggle Basemap"
         title="Toggle Basemap">
         <span class="esri-icon">
             <img src="img/widgetIcons/Imagery-Map-View-Icon.png" alt="">
         </span>
         <span class="esri-icon-font-fallback-text">Toggle Basemap</span>
+    </div>
+    <div id="locateWidget" class="customWidget esri-component esri-widget-button esri-widget" role="button" tabindex="0" aria-label="Toggle Basemap"
+        title="Toggle Basemap">
+        <span class="esri-icon">
+            <i style="margin-top: 8px;" class="fas fa-map-marker-alt"></i>
+        </span>
+        <span class="esri-icon-font-fallback-text">Toggle Basemap</span>
+    </div>
+
+    <div id="homeWidget" class="customWidget esri-component esri-widget-button esri-widget" role="button" tabindex="0" aria-label="Toggle Basemap"
+        title="Toggle Basemap">
+        <span class="esri-icon">
+            <i style="margin-top: 8px;" class="fas fa-home"></i>
+        </span>
+        <span class="esri-icon-font-fallback-text">Toggle Basemap</span>
+    </div>
+
+    <div id="zoomWidget" class="customWidget esri-component esri-zoom esri-widget">
+        <div data-id="In" class="esri-widget-button esri-widget esri-interactive" role="button" tabindex="0" title="Zoom In">
+            <i class="esri-icon fas fa-plus"></i>
+            <span class="esri-icon-font-fallback-text">Zoom In</span>
+        </div>
+        <div data-id="Out" class="esri-widget-button esri-widget esri-interactive" role="button" tabindex="0" title="Zoom Out">
+            <i class="esri-icon fas fa-minus"></i>
+            <span class="esri-icon-font-fallback-text">Zoom Out</span>
+        </div>
     </div>
 
     <span class="iconTooltip">
