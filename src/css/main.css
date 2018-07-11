@@ -359,9 +359,9 @@ a[aria-expanded="true"] {
     /* border: 1px solid black; */
     border-radius: 5px;
     padding: 7px;
-    background-color: var(--mainColor);
+    /* background-color: var(--mainColor); */
     border-color: #1d1d1d;
-    color: var(--textColor);
+    /* color: var(--textColor); */
     display: flex;
     align-items: center;
     margin: 1px;
