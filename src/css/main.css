@@ -351,8 +351,15 @@ a[aria-expanded="true"] {
     }
 }
 
+.nav-pills li {
+    background-color: lightgray;
+}
+
 #layerList {
     /* padding: 5%; */
+}
+.esri-popup__main-container{
+    background: var(--mainColor);
 }
 
 #layerList .checkbox-div {
