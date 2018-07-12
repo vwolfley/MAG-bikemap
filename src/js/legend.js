@@ -30,6 +30,21 @@ function startLegend() {
     $.getJSON(config.mainUrl + "/legend?f=pjson", function (data) {
         var $layerList = $("#layerList");
         var $legendDiv = $("#legendDiv");
+
+        $("#legend").draggable({
+            handle: "#legendHeader",
+            // scroll: false,
+            containment: "#container",
+            cursor: "move"
+        });
+
+        $(window).resize(function () {
+            $('#legend').css({
+                left: '',
+                top: ''
+            });
+        });
+
         var legendLayers = config.layers.filter(conf => conf.legend && !conf.legend.group);
 
         var sort = function (a, b) {

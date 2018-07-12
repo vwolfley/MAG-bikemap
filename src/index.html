@@ -37,7 +37,7 @@
     <link rel="shortcut icon" type="image-favorites-icon" href="img/bike-icon_60x60.png">
 
     <!-- Load CSS -->
-    <link rel="stylesheet" rel="preload" as="style" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link rel="stylesheet" rel="preload" as="style" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
     <link rel="stylesheet" rel="preload" as="style" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" rel="preload" as="style" href="https://js.arcgis.com/4.7/esri/themes/dark/main.css">
     <link rel="stylesheet" rel="preload" as="style" href="css/main.css">
@@ -55,7 +55,7 @@
                     </div>
                 </div> -->
                 <div class="smallLogo">
-                    <img title="MAG Interactive Bikeways" width="40" src="img\bike-icon_152x152.png" alt="Bikemap Icon">
+                    <img title="MAG Interactive Bikeways" width="50" src="img\bike-icon_152x152.png" alt="Bikemap Icon">
                 </div>
             </div>
 
@@ -106,12 +106,14 @@
         <!-- Page Content Holder -->
         <div id="content">
             <!-- style="display:block !important;" -->
-            <a id="closePanel" href="#">
-                <i style="float: right;" class="glyphicon glyphicon-remove"></i>
-            </a>
             <div class="panelDiv" panel-id="layers">
-                <h4>Additional Layers</h4>
-                <span>Select any of the items from the list below to add to the map.</span>
+                <div class="panelHeader">
+                    <span class="panelHeaderText">Additional Layers</span>
+                    <a class="closePanel" href="#">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </a>
+                </div>
+                <span style="margin-top: 10px; font-weight: bold; margin-bottom: 10px;">Select any of the items from the list below to add to the map.</span>
                 <div id="layerList"></div>
             </div>
             <div class="panelDiv" panel-id="about"></div>
@@ -166,18 +168,47 @@
             </div>
         </div>
     </div>
-    <div id="legend">
-        <div id="legendHeader">
+    <div class="customWidget" id="legend">
+        <div title="Click and drag to move window" id="legendHeader">
             <span>Legend</span>
+            <span id="legendGrip">
+                <i class="fas fa-grip-vertical"></i>
+            </span>
         </div>
         <div id="legendDiv"></div>
     </div>
-    <div id="basemapToggle" class="esri-component esri-widget-button esri-widget" role="button" tabindex="0" aria-label="Toggle Basemap"
+    <div id="basemapToggle" class="customWidget esri-component esri-widget-button esri-widget" role="button" tabindex="0" aria-label="Toggle Basemap"
         title="Toggle Basemap">
         <span class="esri-icon">
             <img src="img/widgetIcons/Imagery-Map-View-Icon.png" alt="">
         </span>
         <span class="esri-icon-font-fallback-text">Toggle Basemap</span>
+    </div>
+    <div id="locateWidget" class="customWidget esri-component esri-widget-button esri-widget" role="button" tabindex="0" aria-label="Toggle Basemap"
+        title="Toggle Basemap">
+        <span class="esri-icon">
+            <i style="margin-top: 8px;" class="fas fa-map-marker-alt"></i>
+        </span>
+        <span class="esri-icon-font-fallback-text">Toggle Basemap</span>
+    </div>
+
+    <div id="homeWidget" class="customWidget esri-component esri-widget-button esri-widget" role="button" tabindex="0" aria-label="Default map view"
+        title="Default map view">
+        <span class="esri-icon">
+            <i style="margin-top: 8px;" class="fas fa-home"></i>
+        </span>
+        <span class="esri-icon-font-fallback-text">Default map view</span>
+    </div>
+
+    <div id="zoomWidget" class="customWidget esri-component esri-zoom esri-widget">
+        <div data-id="In" class="esri-widget-button esri-widget esri-interactive" role="button" tabindex="0" title="Zoom In">
+            <i class="esri-icon fas fa-plus"></i>
+            <span class="esri-icon-font-fallback-text">Zoom In</span>
+        </div>
+        <div data-id="Out" class="esri-widget-button esri-widget esri-interactive" role="button" tabindex="0" title="Zoom Out">
+            <i class="esri-icon fas fa-minus"></i>
+            <span class="esri-icon-font-fallback-text">Zoom Out</span>
+        </div>
     </div>
 
     <span class="iconTooltip">
@@ -188,8 +219,11 @@
     </button>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
+    <script src="js/draggable.js"></script>
     <script src="https://js.arcgis.com/4.7/"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
     <!-- comments:comment html -->
     <script async src="js/config.js"></script>

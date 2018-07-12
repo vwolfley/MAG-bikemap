@@ -112,14 +112,9 @@ span {
 }
 
 #sidebar .sidebar-header {
-    padding: 20px;
+    padding: 12px;
     border-bottom: 1px solid var(--textColor);
     /* background: var(--secondaryColor); */
-}
-
-#sidebar ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--textColor);
 }
 
 #sidebar ul li.active>a,
@@ -186,14 +181,11 @@ a.article:hover,
 }
 
 #content {
-    padding: 5px;
-    /* min-height: 100vh; */
     min-width: 25%;
     transition: all 0.3s;
     display: none;
     height: 100vh;
     overflow-y: auto;
-    padding: 5px;
     min-width: 25%;
     transition: all 0.3s;
 }
@@ -280,6 +272,12 @@ body,
     display: flex;
 }
 
+.panelHeader {
+    height: 50px;
+    background-color: var(--mainColor);
+    color: var(--textColor);
+}
+
 #bottomBar {
     display: none;
     background-color: var(--mainColor);
@@ -330,7 +328,7 @@ a[aria-expanded="true"] {
     background: var(--secondaryColor);
 }
 
-#basemapToggle {
+.customWidget {
     display: none;
 }
 
@@ -356,17 +354,25 @@ a[aria-expanded="true"] {
     }
 }
 
+.nav-pills li {
+    background-color: lightgray;
+}
+
 #layerList {
     /* padding: 5%; */
+}
+
+.esri-popup__main-container {
+    background: var(--mainColor);
 }
 
 #layerList .checkbox-div {
     /* border: 1px solid black; */
     border-radius: 5px;
     padding: 7px;
-    background-color: var(--mainColor);
+    /* background-color: var(--mainColor); */
     border-color: #1d1d1d;
-    color: var(--textColor);
+    /* color: var(--textColor); */
     display: flex;
     align-items: center;
     margin: 1px;
@@ -514,7 +520,7 @@ label:hover,
 }
 
 #sidebar .arrow-left {
-    margin-top: -50px;
+    margin-top: -55px;
 }
 
 #legend {
@@ -538,10 +544,62 @@ label:hover,
     top: 5px;
 }
 
+.panelHeaderText {
+    padding: 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.closePanel {
+    padding: 5px;
+    float: right;
+}
+
+.esri-icon {
+    color: white;
+}
+
+.panelContent {
+    padding: 8px;
+    /* border: 1px solid black; */
+    /* -webkit-box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.75); */
+}
+
+.nav-tabs>li,
+.nav-pills>li {
+    float: none;
+    display: inline-block;
+    *display: inline;
+    /* ie7 fix */
+    zoom: 1;
+    /* hasLayout ie7 trigger */
+}
+
+.nav-tabs,
+.nav-pills {
+    text-align: center;
+    margin-top: 10px;
+}
+
 .panelDiv {
-    padding: 3px;
+    padding: 5px;
     max-width: 27vw;
     display: none;
+}
+
+.helpSection {
+    padding: 10px;
+    border-bottom: 1px solid #0000002e;
+}
+
+#helpContent h5 {
+    font-weight: bold;
+}
+
+.helpSection li {
+    padding: 5px;
 }
 
 .legendToggleLI {
@@ -678,6 +736,11 @@ label:hover,
 .iconTooltip:hover {
     display: none;
     opacity: 0;
+}
+
+#legendGrip {
+    float: right;
+    margin-top: 17px !important;
 }
 
 #bikeDefIcon:hover {

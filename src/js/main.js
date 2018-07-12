@@ -54,7 +54,7 @@ require([
         return false;
     });
 
-    $('#closePanel').click(function () {
+    $('#content').on('click', '.closePanel', function () {
         $links.removeClass('active');
         $arrows.hide();
         $panelDivs.hide();
@@ -81,7 +81,7 @@ require([
         constraints: {
             rotationEnabled: false,
             minZoom: 9,
-            snapToZoom: false
+            snapToZoom: true
         },
     });
     app.view.ui.remove('attribution');
