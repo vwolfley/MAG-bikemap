@@ -361,7 +361,8 @@ a[aria-expanded="true"] {
 #layerList {
     /* padding: 5%; */
 }
-.esri-popup__main-container{
+
+.esri-popup__main-container {
     background: var(--mainColor);
 }
 
@@ -551,15 +552,35 @@ label:hover,
 
 .closePanel {
     padding: 5px;
-    float:right;
+    float: right;
 }
 
-.panelContent{
+.esri-icon {
+    color: white;
+}
+
+.panelContent {
     padding: 8px;
     /* border: 1px solid black; */
-    -webkit-box-shadow: inset 0px 2px 2px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: inset 0px 2px 2px 0px rgba(0,0,0,0.75);
-    box-shadow: inset 0px 2px 2px 0px rgba(0,0,0,0.75);
+    /* -webkit-box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.75); */
+}
+
+.nav-tabs>li,
+.nav-pills>li {
+    float: none;
+    display: inline-block;
+    *display: inline;
+    /* ie7 fix */
+    zoom: 1;
+    /* hasLayout ie7 trigger */
+}
+
+.nav-tabs,
+.nav-pills {
+    text-align: center;
+    margin-top: 10px;
 }
 
 .panelDiv {
@@ -568,10 +589,17 @@ label:hover,
     display: none;
 }
 
+.helpSection {
+    padding: 10px;
+    border-bottom: 1px solid #0000002e;
+}
 
-.helpSection{
+#helpContent h5 {
+    font-weight: bold;
+}
+
+.helpSection li {
     padding: 5px;
-    /* border: 1px solid black; */
 }
 
 .legendToggleLI {

@@ -1,4 +1,4 @@
-<div id="helpContent">
+<iv id="helpContent">
     <div class="panelHeader">
         <span class="panelHeaderText">Using this Map</span>
         <a class="closePanel" href="#">
@@ -6,8 +6,8 @@
         </a>
     </div>
     <div class="panelContent">
+        <h5>Map Navigation</h5>
         <div class="helpSection">
-            <h4>Map Navigation</h4>
             <b>Pan:</b>
             <ul>
                 <li>Click or touch the map and drag</li>
@@ -17,7 +17,7 @@
             <ul>
                 <li>
                     <span>
-                        Click the zoom buttons
+                        Click the zoom buttons:
                     </span>
                     <span style="display: flex; align-items: center;">
                         <span style="margin-right:15px;" class="esri-widget-button esri-widget esri-interactive" role="button" tabindex="0" title="Zoom In">
@@ -38,39 +38,57 @@
             <b>Home</b>
             <ul>
                 <li>
-                    Return to default map view
-                    <div class="esri-component esri-widget-button esri-widget" role="button" tabindex="0">
-                        <span class="esri-icon">
-                            <i class="fas fa-home"></i>
+                    <span style="display: flex; align-items: center;">
+                        <span class="esri-component esri-widget-button esri-widget" role="button" tabindex="0">
+                            <span class="esri-icon">
+                                <i class="fas fa-home"></i>
+                            </span>
                         </span>
-                    </div>
+                        <span style="margin-left:15px; flex:1;">Return to the default map view</span>
+                    </span>
                 </li>
             </ul>
         </div>
+    </div>
 
-        <h4>Basemap Control</h4>
-        <div>
-            <img src="img/basemap.png"> Click the Basemap icon to change the map background. Choices are between street maps and aerial images.
-        </div>
-
-        <h4>Layer List</h4>
-        <div>
-            <i class="glyphicon glyphicon glyphicon-check"></i>
-            Open the Layer List to interact with and control the display of map content. Each entry in the list is considered to be a
-            layer. The visibility of each layer is controlled by checking (visible) or unchecking (hidden) the box to the
-            left of the layer name.
-        </div>
-
-        <h4>My Location</h4>
-        <div>
-            <img src="img/location.png"> Use the My Location button to zoom the map to an estimate of your current location. This generally works better
-            on mobile devices, especially with GPS enabled, than on desktops.
-        </div>
-
-        <h4>About</h4>
-        <div>
-            <i class="glyphicon glyphicon glyphicon-info-sign"></i>
-            The About button opens this page with map information and instructions for use.
+    <h5>Basemap Control</h5>
+    <div class="helpSection">
+        <div style="display: flex; align-items: center;">
+            <div class="esri-component esri-widget-button esri-widget" role="button" tabindex="0" aria-label="Toggle Basemap" title="Toggle Basemap">
+                <span class="esri-icon">
+                    <img style="width: 27px; margin-top: 4px;" src="img/widgetIcons/Imagery-Map-View-Icon.png" alt="">
+                </span>
+                <span class="esri-icon-font-fallback-text">Toggle Basemap</span>
+            </div>
+            <span style="margin-left:15px; flex:1;">Click the Basemap Toggle Button to toggle the map background between a gray basemap and satellite imagery.</span>
         </div>
     </div>
-</div>
+    <h5>Find My Location</h5>
+
+    <div class="helpSection">
+        <div style="display: flex; align-items: center;">
+            <div class="esri-component esri-widget-button esri-widget" role="button" tabindex="0">
+                <span class="esri-icon">
+                    <i style="margin-top: 2px;" class="fas fa-map-marker-alt"></i>
+                </span>
+            </div>
+            <span style="margin-left:15px; flex:1;">Use the My Location button to zoom the map to your current location. This works best on mobile devices with GPS
+                enabled.
+            </span>
+        </div>
+    </div>
+
+    <h5>Layer List</h5>
+    <div class="helpSection">
+        <div style="display: flex; align-items: center;">
+            <span>
+                <img width="60" src="./img/LayersBtn.png" alt="test">
+            </span>
+            <span style="margin-left:15px;">
+                Open the Layers List to interact with and control the display of map content. The visibility of each layer is controlled
+                by checking (visible) or unchecking (hidden) the box to the left of the layer name.
+            </span>
+        </div>
+    </div>
+</iv>
+</iv>

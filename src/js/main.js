@@ -81,7 +81,7 @@ require([
         constraints: {
             rotationEnabled: false,
             minZoom: 9,
-            snapToZoom: false
+            snapToZoom: true
         },
     });
     app.view.ui.remove('attribution');
@@ -192,7 +192,7 @@ require([
                             }
                         });
                 }
-            } catch (err) { }
+            } catch (err) {}
         });
     }
 
@@ -204,59 +204,59 @@ require([
             width: 20
         },
         uniqueValueInfos: [{
-            value: 'Bike Lane',
-            symbol: {
-                type: 'simple-line',
-                color: 'blue',
-                width: 2,
-                style: 'solid'
+                value: 'Bike Lane',
+                symbol: {
+                    type: 'simple-line',
+                    color: 'blue',
+                    width: 2,
+                    style: 'solid'
+                }
+            },
+            {
+                value: 'Bike Route',
+                symbol: {
+                    type: 'simple-line',
+                    color: 'green',
+                    width: 2,
+                    style: 'solid'
+                }
+            },
+            {
+                value: 'Paved Shoulder',
+                symbol: {
+                    type: 'simple-line',
+                    color: 'purple',
+                    width: 2,
+                    style: 'solid'
+                }
+            },
+            {
+                value: 'Multi-Use Path - Paved',
+                symbol: {
+                    type: 'simple-line',
+                    color: 'red',
+                    width: 2,
+                    style: 'solid'
+                }
+            },
+            {
+                value: 'Multi-Use Path - Unpaved',
+                symbol: {
+                    type: 'simple-line',
+                    color: 'orange',
+                    width: 2,
+                    style: 'solid'
+                }
+            },
+            {
+                value: 'Recreational Trail',
+                symbol: {
+                    type: 'simple-line',
+                    color: 'brown',
+                    width: 2,
+                    style: 'solid'
+                }
             }
-        },
-        {
-            value: 'Bike Route',
-            symbol: {
-                type: 'simple-line',
-                color: 'green',
-                width: 2,
-                style: 'solid'
-            }
-        },
-        {
-            value: 'Paved Shoulder',
-            symbol: {
-                type: 'simple-line',
-                color: 'purple',
-                width: 2,
-                style: 'solid'
-            }
-        },
-        {
-            value: 'Multi-Use Path - Paved',
-            symbol: {
-                type: 'simple-line',
-                color: 'red',
-                width: 2,
-                style: 'solid'
-            }
-        },
-        {
-            value: 'Multi-Use Path - Unpaved',
-            symbol: {
-                type: 'simple-line',
-                color: 'orange',
-                width: 2,
-                style: 'solid'
-            }
-        },
-        {
-            value: 'Recreational Trail',
-            symbol: {
-                type: 'simple-line',
-                color: 'brown',
-                width: 2,
-                style: 'solid'
-            }
-        }
         ]
     };
 
@@ -285,29 +285,29 @@ require([
         url: config.mainUrl,
         opacity: 1,
         sublayers: [{
-            id: 0,
-            visible: true,
-            popupTemplate: pTemplate,
-            // renderer: bikeRenderer,
-            minScale: 0,
-            maxScale: 144447
-        },
-        {
-            id: 1,
-            visible: true,
-            popupTemplate: pTemplate,
-            // renderer: bikeRenderer,
-            minScale: 144447.01,
-            maxScale: 40001
-        },
-        {
-            id: 2,
-            visible: true,
-            popupTemplate: pTemplate,
-            // renderer: bikeRenderer,
-            minScale: 40000,
-            maxScale: 0
-        }
+                id: 0,
+                visible: true,
+                popupTemplate: pTemplate,
+                // renderer: bikeRenderer,
+                minScale: 0,
+                maxScale: 144447
+            },
+            {
+                id: 1,
+                visible: true,
+                popupTemplate: pTemplate,
+                // renderer: bikeRenderer,
+                minScale: 144447.01,
+                maxScale: 40001
+            },
+            {
+                id: 2,
+                visible: true,
+                popupTemplate: pTemplate,
+                // renderer: bikeRenderer,
+                minScale: 40000,
+                maxScale: 0
+            }
         ]
     });
     app.map.add(mainLayer);
