@@ -287,26 +287,17 @@ require([
         sublayers: [{
                 id: 0,
                 visible: true,
-                popupTemplate: pTemplate,
-                // renderer: bikeRenderer,
-                minScale: 0,
-                maxScale: 144447
+                popupTemplate: pTemplate
             },
             {
                 id: 1,
                 visible: true,
-                popupTemplate: pTemplate,
-                // renderer: bikeRenderer,
-                minScale: 144447.01,
-                maxScale: 40001
+                popupTemplate: pTemplate
             },
             {
                 id: 2,
                 visible: true,
-                popupTemplate: pTemplate,
-                // renderer: bikeRenderer,
-                minScale: 40000,
-                maxScale: 0
+                popupTemplate: pTemplate
             }
         ]
     });

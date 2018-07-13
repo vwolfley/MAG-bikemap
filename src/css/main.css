@@ -358,12 +358,22 @@ a[aria-expanded="true"] {
     background-color: lightgray;
 }
 
-#layerList {
-    /* padding: 5%; */
+.esri-ui .esri-popup {
+    border-radius: 4px;
 }
 
 .esri-popup__main-container {
-    background: var(--mainColor);
+    background: white;
+    color: #333;
+    border-radius: 4px;
+}
+
+.esri-popup__content a {
+    color: #2baab1;
+}
+
+.esri-popup--shadow {
+    box-shadow: 0 1px 8px rgba(0, 0, 0, .5);
 }
 
 #layerList .checkbox-div {
@@ -379,9 +389,8 @@ a[aria-expanded="true"] {
 }
 
 #layerList .checkbox-div:hover {
-    background-color: var(--hoverColor);
+    background-color: #eee;
     border-color: #1f1f1f;
-    color: var(--hoverText);
     cursor: pointer;
 }
 
@@ -546,6 +555,7 @@ label:hover,
 
 .panelHeaderText {
     padding: 15px;
+    padding-right: 0px;
     font-weight: bold;
     font-size: 15px;
 }
