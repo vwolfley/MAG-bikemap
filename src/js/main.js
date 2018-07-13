@@ -81,7 +81,7 @@ require([
         constraints: {
             rotationEnabled: false,
             minZoom: 9,
-            snapToZoom: true
+            snapToZoom: false
         },
     });
     app.view.ui.remove('attribution');
