@@ -683,6 +683,10 @@ label:hover,
     font-weight: 700;
 }
 
+.esri-popup__pointer-direction.esri-popup--shadow {
+    background-color: white;
+}
+
 .legal {
     font-size: 11px;
     padding: 5px;
