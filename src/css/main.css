@@ -262,6 +262,10 @@ body,
     overflow-x: hidden !important;
 }
 
+.nav>li>a {
+    padding: 10px 10px;
+}
+
 #container {
     display: flex;
     flex: 1;
@@ -779,6 +783,12 @@ label:hover,
     MEDIAQUERIES
 ----------------------------------------------------- */
 
+@media (max-width: 1300px) {
+    .panelDiv {
+        max-width: 39vw;
+    }
+}
+
 @media (max-width: 900px) {
     #content {
         width: 100vw;
@@ -788,15 +798,21 @@ label:hover,
     }
 }
 
+@media (max-width: 350px) {
+    .nav>li>a {
+        padding: 10px 5px;
+    }
+}
+
 @media (max-width: 768px) {
+    #aboutTitle {
+        font-size: 12px;
+    }
     .iconTooltip {
         display: none !important;
     }
     .arrow-left {
         display: none !important;
-    }
-    #content {
-        height: 91vh;
     }
     #bottomBar {
         display: block;

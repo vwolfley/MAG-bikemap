@@ -1,5 +1,4 @@
 function startLegend() {
-
     function getLayersByGroupId(id) {
         return config.layers.filter(function (conf) {
             if (conf.legend && conf.legend.group && conf.legend.group.id === id) {
@@ -149,6 +148,7 @@ function startLegend() {
             //Toggle Legend Div
             let $legend = $("#l-" + $cbox.data('layer-id'));
             $legend.slideToggle(50);
+
         }
 
         function getLegendHtml(confObj) {

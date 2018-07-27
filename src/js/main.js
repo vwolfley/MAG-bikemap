@@ -26,6 +26,7 @@ require([
     $links.on('click', function (e) {
         let target = $(this).attr('panel-target');
         $("#viewDiv").css("visibility", "visible");
+        $("#container").css("flex", "1");
         if (target === 'legend') {
             toggleLegend();
         } else {
@@ -43,6 +44,7 @@ require([
 
                 if (window.outerWidth < 780) {
                     $("#viewDiv").css("visibility", "hidden");
+                    $("#container").css("flex", "none");
                 }
 
                 if (loadedLayers.indexOf(target) === -1) {
@@ -61,6 +63,7 @@ require([
 
     $('#content').on('click', '.closePanel', function () {
         $("#viewDiv").css("visibility", "visible");
+        $("#container").css("flex", 1);
         $links.removeClass('active');
         $arrows.hide();
         $panelDivs.hide();
@@ -114,9 +117,6 @@ require([
             setupWidgets();
             setupConstrainedExtent();
         });
-        if (window.outerWidth < 800) {
-            toggleLegend();
-        }
     });
 
     function setupConstrainedExtent() {
@@ -204,70 +204,6 @@ require([
             } catch (err) {}
         });
     }
-
-    let bikeRenderer = {
-        type: 'unique-value',
-        field: 'PathType',
-        defaultSymbol: {
-            type: 'simple-line',
-            width: 20
-        },
-        uniqueValueInfos: [{
-                value: 'Bike Lane',
-                symbol: {
-                    type: 'simple-line',
-                    color: 'blue',
-                    width: 2,
-                    style: 'solid'
-                }
-            },
-            {
-                value: 'Bike Route',
-                symbol: {
-                    type: 'simple-line',
-                    color: 'green',
-                    width: 2,
-                    style: 'solid'
-                }
-            },
-            {
-                value: 'Paved Shoulder',
-                symbol: {
-                    type: 'simple-line',
-                    color: 'purple',
-                    width: 2,
-                    style: 'solid'
-                }
-            },
-            {
-                value: 'Multi-Use Path - Paved',
-                symbol: {
-                    type: 'simple-line',
-                    color: 'red',
-                    width: 2,
-                    style: 'solid'
-                }
-            },
-            {
-                value: 'Multi-Use Path - Unpaved',
-                symbol: {
-                    type: 'simple-line',
-                    color: 'orange',
-                    width: 2,
-                    style: 'solid'
-                }
-            },
-            {
-                value: 'Recreational Trail',
-                symbol: {
-                    type: 'simple-line',
-                    color: 'brown',
-                    width: 2,
-                    style: 'solid'
-                }
-            }
-        ]
-    };
 
     window.popupSetup = function (value, key, data) {
         let html = '';

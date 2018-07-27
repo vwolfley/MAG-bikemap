@@ -69,5 +69,8 @@ function setupWidgets() {
         app.view.ui.add('legend', 'top-right');
 
         $(".customWidget").show();
+        if (window.innerWidth < 800) {
+            $("#legend").hide();
+        }
     });
 }
