@@ -24,7 +24,8 @@
     "#MAGmaps"
   ],
   "main": "index.js",
-  "repository": [{
+  "repository": [
+    {
       "type": "git",
       "url": "https://github.com/AZMAG/map-Bikeways"
     },
@@ -35,7 +36,8 @@
   ],
   "homepage": "http://geo.azmag.gov/maps/bikemap/",
   "author": "MAG Information Services (http://www.azmag.gov/About-Us/Divisions/Information-Services-Division)",
-  "contributors": [{
+  "contributors": [
+    {
       "name": "Vern Wolfley",
       "email": "vwolfley@azmag.gov"
     },

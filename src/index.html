@@ -37,6 +37,7 @@
     <link rel="shortcut icon" type="image-favorites-icon" href="img/bike-icon_60x60.png">
 
     <!-- Load CSS -->
+    <link rel="stylesheet" href="css/addtohomescreen.css">
     <link rel="stylesheet" rel="preload" as="style" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
     <link rel="stylesheet" rel="preload" as="style" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" rel="preload" as="style" href="https://js.arcgis.com/4.7/esri/themes/dark/main.css">
@@ -221,15 +222,30 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="js/jquery.ui.touch-punch.js"></script>
 
     <!-- comments:comment html -->
-    <!-- <script async src="js/draggable.js"></script> -->
+    <script src="js/addtohomescreen.min.js"></script>
+    <script async src="js/jquery.ui.touch-punch.js"></script>
     <script async src="js/config.js"></script>
     <script async src="js/layer.js"></script>
     <script async src="js/legend.js"></script>
     <script async src="js/widgets.js"></script>
     <!-- endcomments -->
+
+    <script>
+        var addToHomeConfig = {
+            animationIn: 'fade',
+            animationOut: 'bubble',
+            lifespan: 10000,
+            expire: 0,
+            touchIcon: true
+        };
+        addToHomescreen({
+            skipFirstVisit: true,
+            maxDisplayCount: 1
+        });
+
+    </script>
 
     <script src="https://js.arcgis.com/4.7/"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

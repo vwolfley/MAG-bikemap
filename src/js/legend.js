@@ -43,7 +43,8 @@ function startLegend() {
                 top: ''
             });
             if (window.outerWidth < 768 && $("#content").is(":visible") == true) {
-                $("#viewDiv").css("visibility", "hidden");
+                $("#viewDiv").css("visibility", "visible");
+                $("#container").css("flex", 1);
             }
         });
 
