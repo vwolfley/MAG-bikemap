@@ -25,6 +25,7 @@ require([
 
     $links.on('click', function (e) {
         let target = $(this).attr('panel-target');
+        $("#viewDiv").css("visibility", "visible");
         if (target === 'legend') {
             toggleLegend();
         } else {
@@ -39,6 +40,7 @@ require([
                 $content.show();
                 $(this).addClass('active');
                 $(this).find('.arrow-left').show();
+                $("#viewDiv").css("visibility", "hidden");
 
                 if (loadedLayers.indexOf(target) === -1) {
                     $(`div[panel-id="${target}"]`).load(`views/${target}.html`);

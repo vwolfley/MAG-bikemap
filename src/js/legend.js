@@ -43,6 +43,9 @@ function startLegend() {
                 left: '',
                 top: ''
             });
+            if (window.outerWidth < 768 && $("#content").is(":visible") == true) {
+                $("#viewDiv").css("visibility", "hidden");
+            }
         });
 
         var legendLayers = config.layers.filter(conf => conf.legend && !conf.legend.group);
