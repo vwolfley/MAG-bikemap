@@ -447,6 +447,7 @@ label:hover,
     height: 50px;
     background-color: var(--mainColor);
     color: var(--textColor);
+    cursor: move;
 }
 
 #legendHeader span {

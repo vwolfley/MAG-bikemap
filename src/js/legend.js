@@ -167,7 +167,7 @@ function startLegend() {
                             label = legendItem.label;
                         }
                         legendHtml += `
-                            <img style='width:20px;' src='data:${legendItem.contentType};base64,${legendItem.imageData}'</img>
+                            <img src='data:${legendItem.contentType};base64,${legendItem.imageData}'</img>
                             <span class='legendItemLabel'>${label}</span><br>
                             `
                     }
@@ -177,7 +177,7 @@ function startLegend() {
             if (legendHtml === "") {
                 legendHtml = `
                             <img style='width:20px;' src='${confObj.legend.imageData}'</img>
-                            <span class='legendItemLabel'>${confObj.title}</span><br>
+                            <span class='legendItemLabel'>${confObj.title.replace('(must be zoomed in)', '')}</span><br>
                             `
             }
             return legendHtml;
