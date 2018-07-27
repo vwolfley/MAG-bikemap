@@ -114,6 +114,9 @@ require([
             setupWidgets();
             setupConstrainedExtent();
         });
+        if (window.outerWidth < 800) {
+            toggleLegend();
+        }
     });
 
     function setupConstrainedExtent() {

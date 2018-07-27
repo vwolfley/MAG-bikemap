@@ -8,7 +8,7 @@
  * ========================================================================
  */
 
-busArrivalTimes = function (value, key, data) {
+window.busArrivalTimes = function (value, key, data) {
     var url = 'https://valleymetro-api.sdg-hosting.com/v1/realtime/stop/' + data["NextRide"] + '?type=stop&limit=100&lookAheadSec=7200&stopId=' + data["NextRide"];
 
     $.get(url, function (results) {
