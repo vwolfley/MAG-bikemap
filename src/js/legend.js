@@ -153,13 +153,13 @@ function startLegend() {
 
         function getLegendHtml(confObj) {
             let legendHtml = "";
-            let header = "<div class='legendItem'>";
 
             for (var i = 0; i < data.layers.length; i++) {
                 var val = data.layers[i];
                 if (val.layerName === confObj.layerName) {
                     let legend = val.legend;
                     let label = confObj.title;
+                    // console.log(val, confObj)
                     for (var j = 0; j < legend.length; j++) {
                         var legendItem = legend[j];
 
@@ -167,12 +167,18 @@ function startLegend() {
                             label = legendItem.label;
                         }
                         legendHtml += `
-                            <img src='data:${legendItem.contentType};base64,${legendItem.imageData}'</img>
+                            <img style='width:20px;' src='data:${legendItem.contentType};base64,${legendItem.imageData}'</img>
                             <span class='legendItemLabel'>${label}</span><br>
                             `
                     }
                     break;
                 }
+            }
+            if (legendHtml === "") {
+                legendHtml = `
+                            <img style='width:20px;' src='${confObj.legend.imageData}'</img>
+                            <span class='legendItemLabel'>${confObj.title}</span><br>
+                            `
             }
             return legendHtml;
         }
