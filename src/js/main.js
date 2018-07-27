@@ -40,7 +40,10 @@ require([
                 $content.show();
                 $(this).addClass('active');
                 $(this).find('.arrow-left').show();
-                $("#viewDiv").css("visibility", "hidden");
+
+                if (window.outerWidth < 780) {
+                    $("#viewDiv").css("visibility", "hidden");
+                }
 
                 if (loadedLayers.indexOf(target) === -1) {
                     $(`div[panel-id="${target}"]`).load(`views/${target}.html`);
@@ -57,6 +60,7 @@ require([
     });
 
     $('#content').on('click', '.closePanel', function () {
+        $("#viewDiv").css("visibility", "visible");
         $links.removeClass('active');
         $arrows.hide();
         $panelDivs.hide();
