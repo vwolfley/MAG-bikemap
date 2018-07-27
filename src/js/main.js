@@ -50,7 +50,7 @@ require([
                     loadedLayers.push(target);
                 }
 
-                $(`div[panel-id=${target}`).fadeIn(400);
+                $(`div[panel-id=${target}]`).fadeIn(400);
             }
         }
     });
