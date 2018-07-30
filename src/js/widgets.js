@@ -1,15 +1,18 @@
-function setupWidgets() {
-    require([
-        "esri/widgets/BasemapToggle/BasemapToggleViewModel",
-        'esri/widgets/Home',
-        'esri/widgets/Home/HomeViewModel',
-        'esri/widgets/Locate',
-        'esri/widgets/Locate/LocateViewModel',
-        'esri/widgets/Zoom',
-        'esri/widgets/Zoom/ZoomViewModel',
-        'dojo/domReady!'
-    ], function (BasemapToggleViewModel, Home, HomeViewModel, Locate, LocateViewModel, Zoom, ZoomViewModel) {
+require([
+    "esri/widgets/BasemapToggle/BasemapToggleViewModel",
+    'esri/widgets/Home',
+    'esri/widgets/Home/HomeViewModel',
+    'esri/widgets/Locate',
+    'esri/widgets/Locate/LocateViewModel',
+    'esri/widgets/Zoom',
+    'esri/widgets/Zoom/ZoomViewModel',
+    'dojo/topic',
+    'dojo/domReady!'
+], function (BasemapToggleViewModel, Home, HomeViewModel, Locate, LocateViewModel, Zoom, ZoomViewModel, tp) {
 
+    tp.subscribe("map-loaded", setupWidgets);
+
+    function setupWidgets() {
         //Zoom
         const zoomId = "zoomWidget";
         let zoomVM = new ZoomViewModel({
@@ -72,5 +75,5 @@ function setupWidgets() {
         if (window.innerWidth < 800) {
             $("#legend").hide();
         }
-    });
-}
+    }
+});

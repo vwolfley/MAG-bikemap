@@ -1,14 +1,13 @@
-function addLayersToMap() {
-    require([
-        "esri/layers/FeatureLayer",
-        "esri/layers/MapImageLayer",
-        "esri/PopupTemplate",
-        "esri/symbols/TextSymbol",
-        "esri/symbols/SimpleMarkerSymbol",
-        "esri/symbols/SimpleLineSymbol",
-        "esri/renderers/SimpleRenderer"
-    ], function (FeatureLayer, MapImageLayer, PopupTemplate, TextSymbol, SimpleMarkerSymbol, SimpleLineSymbol, SimpleRenderer) {
+require([
+    "esri/layers/FeatureLayer",
+    "esri/layers/MapImageLayer",
+    "esri/PopupTemplate",
+    "dojo/topic"
+], function (FeatureLayer, MapImageLayer, PopupTemplate, tp) {
 
+    tp.subscribe("map-loaded", addLayers);
+
+    function addLayers() {
         for (var i = 0; i < config.layers.length; i++) {
             var layer = config.layers[i];
 
@@ -57,5 +56,5 @@ function addLayersToMap() {
                 app.map.layers.add(imgLayer);
             }
         }
-    });
-};
+    };
+});
