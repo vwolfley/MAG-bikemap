@@ -260,6 +260,7 @@ body,
     padding: 0;
     margin: 0;
     overflow-x: hidden !important;
+    overflow-y: hidden;
 }
 
 .nav>li>a {
@@ -809,7 +810,7 @@ label:hover,
         font-size: 12px;
     }
     .iconTooltip {
-        display: none !important;
+        /* display: none !important; */
     }
     .arrow-left {
         display: none !important;
