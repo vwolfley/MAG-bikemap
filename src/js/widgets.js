@@ -1,72 +1,79 @@
-function setupWidgets() {
-	require([
-		"esri/widgets/BasemapToggle/BasemapToggleViewModel",
-		'esri/widgets/Home',
-		'esri/widgets/Home/HomeViewModel',
-		'esri/widgets/Locate',
-		'esri/widgets/Locate/LocateViewModel',
-		'esri/widgets/Zoom',
-		'esri/widgets/Zoom/ZoomViewModel',
-		'dojo/domReady!'
-	], function (BasemapToggleViewModel, Home, HomeViewModel, Locate, LocateViewModel, Zoom, ZoomViewModel) {
+require([
+    "esri/widgets/BasemapToggle/BasemapToggleViewModel",
+    'esri/widgets/Home',
+    'esri/widgets/Home/HomeViewModel',
+    'esri/widgets/Locate',
+    'esri/widgets/Locate/LocateViewModel',
+    'esri/widgets/Zoom',
+    'esri/widgets/Zoom/ZoomViewModel',
+    'dojo/topic',
+    'dojo/domReady!'
+], function (BasemapToggleViewModel, Home, HomeViewModel, Locate, LocateViewModel, Zoom, ZoomViewModel, tp) {
 
-		//Zoom
-		const zoomId = "zoomWidget";
-		let zoomVM = new ZoomViewModel({
-			view: app.view
-		});
+    tp.subscribe("map-loaded", setupWidgets);
 
-		app.view.ui.add(zoomId, 'bottom-right');
+    function setupWidgets() {
+        //Zoom
+        const zoomId = "zoomWidget";
+        let zoomVM = new ZoomViewModel({
+            view: app.view
+        });
 
-		$("#" + zoomId).on("click", ".esri-widget-button", function () {
-			const direction = $(this).data("id");
-			if (direction === "In") {
-				zoomVM.zoomIn();
-			} else {
-				zoomVM.zoomOut();
-			}
-		});
+        app.view.ui.add(zoomId, 'bottom-right');
 
-		//Home
-		const homeId = "homeWidget";
-		let homeVM = new HomeViewModel({
-			view: app.view
-		});
+        $("#" + zoomId).on("click", ".esri-widget-button", function () {
+            const direction = $(this).data("id");
+            if (direction === "In") {
+                zoomVM.zoomIn();
+            } else {
+                zoomVM.zoomOut();
+            }
+        });
 
-		app.view.ui.add(homeId, 'bottom-right');
+        //Home
+        const homeId = "homeWidget";
+        let homeVM = new HomeViewModel({
+            view: app.view
+        });
 
-		$("#" + homeId).click(function () {
-			homeVM.go();
-		});
+        app.view.ui.add(homeId, 'bottom-right');
 
-		//Locate
-		const locateId = "locateWidget";
-		let locateVM = new LocateViewModel({
-			view: app.view
-		});
-		app.view.ui.add(locateId, 'bottom-right');
+        $("#" + homeId).click(function () {
+            homeVM.go();
+        });
 
-		$("#" + locateId).click(function () {
-			locateVM.locate();
-		});
+        //Locate
 
-		//Basemap
-		const basemapId = "basemapToggle";
-		let toggleVM = new BasemapToggleViewModel({
-			view: app.view,
-			nextBasemap: 'hybrid'
-		});
+        const locateId = "locateWidget";
+        let locateVM = new LocateViewModel({
+            view: app.view
+        });
+        app.view.ui.add(locateId, 'bottom-right');
 
-		app.view.ui.add(basemapId, 'bottom-right');
+        $("#" + locateId).click(function () {
+            locateVM.locate().then(function () {});
+        });
 
-		$("#" + basemapId).click(function () {
-			toggleVM.toggle();
-		});
+        //Basemap
+        const basemapId = "basemapToggle";
+        let toggleVM = new BasemapToggleViewModel({
+            view: app.view,
+            nextBasemap: 'hybrid'
+        });
 
-		//Legend
-		let legend = $('#legend');
-		app.view.ui.add('legend', 'top-right');
+        app.view.ui.add(basemapId, 'bottom-right');
 
-		$(".customWidget").show();
-	});
-}
+        $("#" + basemapId).click(function () {
+            toggleVM.toggle();
+        });
+
+        //Legend
+        let legend = $('#legend');
+        app.view.ui.add('legend', 'top-right');
+
+        $(".customWidget").show();
+        if (window.innerWidth < 800) {
+            $("#legend").hide();
+        }
+    }
+});

@@ -5,8 +5,9 @@ require([
     'esri/views/MapView',
     'esri/layers/MapImageLayer',
     'esri/geometry/Extent',
+    'dojo/topic',
     'dojo/domReady!'
-], function (Map, MapView, MapImageLayer, Extent) {
+], function (Map, MapView, MapImageLayer, Extent, tp) {
     let $sidebar = $('#sidebar');
     let $sidebarCollapse = $('#sidebarCollapse');
 
@@ -25,6 +26,8 @@ require([
 
     $links.on('click', function (e) {
         let target = $(this).attr('panel-target');
+        $("#viewDiv").css("visibility", "visible");
+        $("#container").css("flex", "1");
         if (target === 'legend') {
             toggleLegend();
         } else {
@@ -40,12 +43,17 @@ require([
                 $(this).addClass('active');
                 $(this).find('.arrow-left').show();
 
+                if (window.outerWidth < 780) {
+                    $("#viewDiv").css("visibility", "hidden");
+                    $("#container").css("flex", "none");
+                }
+
                 if (loadedLayers.indexOf(target) === -1) {
                     $(`div[panel-id="${target}"]`).load(`views/${target}.html`);
                     loadedLayers.push(target);
                 }
 
-                $(`div[panel-id=${target}`).fadeIn(400);
+                $(`div[panel-id=${target}]`).fadeIn(400);
             }
         }
     });
@@ -55,6 +63,8 @@ require([
     });
 
     $('#content').on('click', '.closePanel', function () {
+        $("#viewDiv").css("visibility", "visible");
+        $("#container").css("flex", 1);
         $links.removeClass('active');
         $arrows.hide();
         $panelDivs.hide();
@@ -81,7 +91,7 @@ require([
         constraints: {
             rotationEnabled: false,
             minZoom: 9,
-            snapToZoom: true
+            snapToZoom: false
         },
     });
     app.view.ui.remove('attribution');
@@ -102,163 +112,90 @@ require([
                     }
                 }
             }
-            addLayersToMap();
-            startLegend();
-            setupHoverEvents();
-            setupWidgets();
-            setupConstrainedExtent();
+            tp.publish("map-loaded");
         });
     });
+    var maxExtent = new Extent({
+        xmax: -12326456.407013275,
+        xmin: -12619974.595628463,
+        ymax: 4014557.5992311286,
+        ymin: 3873301.9709600685,
+        spatialReference: 102100
+    });
 
-    function setupConstrainedExtent() {
-        var maxExtent = new Extent({
-            xmax: -12326456.407013275,
-            xmin: -12619974.595628463,
-            ymax: 4014557.5992311286,
-            ymin: 3873301.9709600685,
-            spatialReference: 102100
-        });
-        var oldExtentHeight = 0;
-        app.view.watch('extent', function (extent) {
-            var currentCenter = extent.center;
-            if (!maxExtent.contains(currentCenter)) {
-                var newCenter = extent.center;
-                if (currentCenter.x < maxExtent.xmin) {
-                    newCenter.x = maxExtent.xmin;
-                }
-                if (currentCenter.x > maxExtent.xmax) {
-                    newCenter.x = maxExtent.xmax;
-                }
-                if (currentCenter.y < maxExtent.ymin) {
-                    newCenter.y = maxExtent.ymin;
-                }
-                if (currentCenter.y > maxExtent.ymax) {
-                    newCenter.y = maxExtent.ymax;
-                }
-
-                var newExtent = app.view.extent.clone();
-                newExtent.centerAt(newCenter);
-                app.view.extent = newExtent;
+    app.view.watch('extent', function (extent) {
+        var currentCenter = extent.center;
+        if (!maxExtent.contains(currentCenter)) {
+            var newCenter = extent.center;
+            if (currentCenter.x < maxExtent.xmin) {
+                newCenter.x = maxExtent.xmin;
             }
-            oldExtentHeight = extent.height;
-        });
-    }
+            if (currentCenter.x > maxExtent.xmax) {
+                newCenter.x = maxExtent.xmax;
+            }
+            if (currentCenter.y < maxExtent.ymin) {
+                newCenter.y = maxExtent.ymin;
+            }
+            if (currentCenter.y > maxExtent.ymax) {
+                newCenter.y = maxExtent.ymax;
+            }
 
-    function setupHoverEvents() {
-        let $container = $('#container');
-        let tt = $('.iconTooltip');
-        let text = $('.iconTooltiptext');
+            var newExtent = app.view.extent.clone();
+            newExtent.centerAt(newCenter);
+            app.view.extent = newExtent;
+        }
+    });
 
-        app.view.on('pointer-move', function (event) {
-            tt.hide();
-            $('body').css('cursor', 'default');
-            try {
-                if (event.x && event.y) {
-                    app.view
-                        .hitTest({
-                            x: event.x,
-                            y: event.y
-                        })
-                        .then(function (response) {
-                            if (!app.view.popup.visible) {
-                                // removeGraphics();
-                            }
-                            let resultGraphic = response.results[0].graphic;
+    let $container = $('#container');
+    let tt = $('.iconTooltip');
+    let text = $('.iconTooltiptext');
 
-                            if (resultGraphic) {
-                                let confObj = config.layers[resultGraphic.layer.id];
-                                if (resultGraphic.geometry.type === 'point') {
-                                    let tooltipHtml = resultGraphic.attributes.Name;
+    app.view.on('pointer-move', function (event) {
+        tt.hide();
+        $('body').css('cursor', 'default');
+        try {
+            if (event.x && event.y) {
+                app.view
+                    .hitTest({
+                        x: event.x,
+                        y: event.y
+                    })
+                    .then(function (response) {
+                        if (!app.view.popup.visible) {
+                            // removeGraphics();
+                        }
+                        let resultGraphic = response.results[0].graphic;
 
-                                    if (resultGraphic.attributes.NAME) {
-                                        tooltipHtml = resultGraphic.attributes.NAME;
-                                    } else if (resultGraphic.attributes.Discript) {
-                                        tooltipHtml = resultGraphic.attributes.Discript;
-                                    } else if (resultGraphic.attributes.Station_Number) {
-                                        tooltipHtml = `Station Number: ${resultGraphic.attributes.Station_Number}`;
-                                    }
-                                    if (tooltipHtml) {
-                                        text.html(tooltipHtml);
+                        if (resultGraphic) {
+                            let confObj = config.layers[resultGraphic.layer.id];
+                            if (resultGraphic.geometry.type === 'point') {
+                                let tooltipHtml = resultGraphic.attributes.Name;
 
-                                        let pos = $container.position();
+                                if (resultGraphic.attributes.NAME) {
+                                    tooltipHtml = resultGraphic.attributes.NAME;
+                                } else if (resultGraphic.attributes.Discript) {
+                                    tooltipHtml = resultGraphic.attributes.Discript;
+                                } else if (resultGraphic.attributes.Station_Number) {
+                                    tooltipHtml = `Station Number: ${resultGraphic.attributes.Station_Number}`;
+                                }
+                                if (tooltipHtml) {
+                                    text.html(tooltipHtml);
 
-                                        tt.css({
-                                            display: 'block',
-                                            left: response.screenPoint.x + pos.left + 20,
-                                            top: response.screenPoint.y - 10
-                                        });
-                                    }
+                                    let pos = $container.position();
+
+                                    tt.css({
+                                        display: 'block',
+                                        left: response.screenPoint.x + pos.left + 20,
+                                        top: response.screenPoint.y - 10
+                                    });
                                 }
                             }
-                        });
-                }
-            } catch (err) {}
-        });
-    }
-
-    let bikeRenderer = {
-        type: 'unique-value',
-        field: 'PathType',
-        defaultSymbol: {
-            type: 'simple-line',
-            width: 20
-        },
-        uniqueValueInfos: [{
-                value: 'Bike Lane',
-                symbol: {
-                    type: 'simple-line',
-                    color: 'blue',
-                    width: 2,
-                    style: 'solid'
-                }
-            },
-            {
-                value: 'Bike Route',
-                symbol: {
-                    type: 'simple-line',
-                    color: 'green',
-                    width: 2,
-                    style: 'solid'
-                }
-            },
-            {
-                value: 'Paved Shoulder',
-                symbol: {
-                    type: 'simple-line',
-                    color: 'purple',
-                    width: 2,
-                    style: 'solid'
-                }
-            },
-            {
-                value: 'Multi-Use Path - Paved',
-                symbol: {
-                    type: 'simple-line',
-                    color: 'red',
-                    width: 2,
-                    style: 'solid'
-                }
-            },
-            {
-                value: 'Multi-Use Path - Unpaved',
-                symbol: {
-                    type: 'simple-line',
-                    color: 'orange',
-                    width: 2,
-                    style: 'solid'
-                }
-            },
-            {
-                value: 'Recreational Trail',
-                symbol: {
-                    type: 'simple-line',
-                    color: 'brown',
-                    width: 2,
-                    style: 'solid'
-                }
+                        }
+                    });
             }
-        ]
-    };
+        } catch (err) {}
+    });
+
 
     window.popupSetup = function (value, key, data) {
         let html = '';
@@ -287,26 +224,17 @@ require([
         sublayers: [{
                 id: 0,
                 visible: true,
-                popupTemplate: pTemplate,
-                // renderer: bikeRenderer,
-                minScale: 0,
-                maxScale: 144447
+                popupTemplate: pTemplate
             },
             {
                 id: 1,
                 visible: true,
-                popupTemplate: pTemplate,
-                // renderer: bikeRenderer,
-                minScale: 144447.01,
-                maxScale: 40001
+                popupTemplate: pTemplate
             },
             {
                 id: 2,
                 visible: true,
-                popupTemplate: pTemplate,
-                // renderer: bikeRenderer,
-                minScale: 40000,
-                maxScale: 0
+                popupTemplate: pTemplate
             }
         ]
     });
