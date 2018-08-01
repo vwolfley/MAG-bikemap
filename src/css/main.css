@@ -754,6 +754,10 @@ label:hover,
     border: 2px solid black;
 }
 
+.disabled {
+    background-color: lightgrey !important;
+}
+
 .iconTooltip:hover {
     display: none;
     opacity: 0;
