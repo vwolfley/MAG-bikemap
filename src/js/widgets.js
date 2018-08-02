@@ -56,14 +56,22 @@ require([
 
         //Basemap
         const basemapId = "basemapToggle";
+
         let toggleVM = new BasemapToggleViewModel({
             view: app.view,
             nextBasemap: 'hybrid'
         });
 
         app.view.ui.add(basemapId, 'bottom-right');
+        let toggled = true;
 
         $("#" + basemapId).click(function () {
+            if (toggled) {
+                $(this).attr("title", "Return to original basemap");
+            } else {
+                $(this).attr("title", "Switch to Satellite Imagery");
+            }
+            toggled = !toggled;
             toggleVM.toggle();
         });
 
