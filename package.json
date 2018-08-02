@@ -1,7 +1,7 @@
 {
   "name": "MAG-Bikeways",
-  "version": "3.3.4",
-  "date": "2018-07-02",
+  "version": "1.0.0",
+  "date": "2018-08-02",
   "copyright": "2018",
   "description": "MAG Bikeways Viewer",
   "keywords": [
@@ -24,8 +24,7 @@
     "#MAGmaps"
   ],
   "main": "index.js",
-  "repository": [
-    {
+  "repository": [{
       "type": "git",
       "url": "https://github.com/AZMAG/map-Bikeways"
     },
@@ -36,8 +35,7 @@
   ],
   "homepage": "http://geo.azmag.gov/maps/bikemap/",
   "author": "MAG Information Services (http://www.azmag.gov/About-Us/Divisions/Information-Services-Division)",
-  "contributors": [
-    {
+  "contributors": [{
       "name": "Vern Wolfley",
       "email": "vwolfley@azmag.gov"
     },

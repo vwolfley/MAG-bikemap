@@ -75,8 +75,44 @@ module.exports = function (grunt) {
                     "dist/index.html": "dist/index.html"
                 }
             }
+        },
+        replace: {
+            update_Meta: {
+                src: ["src/index.html", "src/views/about.html", "src/humans.txt", "README.md"], // source files array
+                // src: ["README.md"], // source files array
+                overwrite: true, // overwrite matched source files
+                replacements: [{
+                    // html pages
+                    from: /(<meta name="revision-date" content=")[0-9]{4}-[0-9]{2}-[0-9]{2}(">)/g,
+                    to: '<meta name="revision-date" content="' + '<%= pkg.date %>' + '">',
+                }, {
+                    // html pages
+                    from: /(<meta name="version" content=")([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))(">)/g,
+                    to: '<meta name="version" content="' + '<%= pkg.version %>' + '">',
+                }, {
+                    // config.js
+                    from: /(v)([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))( \| )[0-9]{4}-[0-9]{2}-[0-9]{2}/g,
+                    to: 'v' + '<%= pkg.version %>' + ' | ' + '<%= pkg.date %>',
+                }, {
+                    // humans.txt
+                    from: /(Version\: )([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/g,
+                    to: "Version: " + '<%= pkg.version %>',
+                }, {
+                    // humans.txt
+                    from: /(Last updated\: )[0-9]{4}-[0-9]{2}-[0-9]{2}/g,
+                    to: "Last updated: " + '<%= pkg.date %>',
+                }, {
+                    // README.md
+                    from: /(### version )([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/g,
+                    to: "### version " + '<%= pkg.version %>',
+                }, {
+                    // README.md
+                    from: /(`Updated: )[0-9]{4}-[0-9]{2}-[0-9]{2}/g,
+                    to: "`Updated: " + '<%= pkg.date %>',
+                }]
+            }
         }
     });
 
-    grunt.registerTask("build", ["copy", "clean", "concat", "toggleComments", "babel", "uglify", "postcss"]);
+    grunt.registerTask("build", ["replace", "copy", "clean", "concat", "toggleComments", "babel", "uglify", "postcss"]);
 };
