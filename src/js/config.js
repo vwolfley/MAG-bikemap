@@ -40,10 +40,10 @@ const config = {
     geoCoderService: '//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer',
     emailLink: 'http://www.azmag.gov/Contact/4788?s=geo.azmag.gov/maps/bikemap&n=Jason%20Howard&popUp=true',
     initExtent: {
-        xmax: -12399541.628698058,
-        xmin: -12542022.144727308,
-        ymax: 3997735.246959186,
-        ymin: 3923598.407025286,
+        xmax: -12440689.69436449,
+        xmin: -12488186.172632946,
+        ymax: 3997729.942790663,
+        ymin: 3921102.2911842205,
         spatialReference: {
             wkid: 102100
         }

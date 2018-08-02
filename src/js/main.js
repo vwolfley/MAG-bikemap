@@ -90,7 +90,7 @@ require([
         extent: config.initExtent,
         constraints: {
             rotationEnabled: false,
-            minZoom: 9,
+            minZoom: 10,
             snapToZoom: false
         },
     });
@@ -121,6 +121,15 @@ require([
         ymax: 4014557.5992311286,
         ymin: 3873301.9709600685,
         spatialReference: 102100
+    });
+
+    var $outBtn = $('div[data-id="Out"]');
+    app.view.watch('zoom', function (zoom) {
+        if (zoom === app.view.constraints.minZoom) {
+            $outBtn.addClass('disabled');
+        } else {
+            $outBtn.removeClass('disabled');
+        }
     });
 
     app.view.watch('extent', function (extent) {
