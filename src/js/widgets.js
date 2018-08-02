@@ -78,6 +78,7 @@ require([
         $(".customWidget").show();
         if (window.innerWidth < 800) {
             $("#legend").hide();
+            $(".legendToggle").removeAttr('checked');
         }
     }
 });
