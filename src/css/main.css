@@ -463,11 +463,11 @@ label:hover,
 
 .legendDiv {
     display: flex;
-    padding: 2px;
     font-size: 12px;
     padding-left: 15px;
     padding-right: 10px;
     padding-bottom: 5px;
+    padding-top: 4px;
     border-top: 1px solid #c2c0c0;
 }
 
