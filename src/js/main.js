@@ -128,15 +128,9 @@ require([
         ymin: 3873301.9709600685,
         spatialReference: 102100
     });
+    
+    // app.view.watch('scale', updatePopupEnabled)
 
-    var $outBtn = $('div[data-id="Out"]');
-    app.view.watch('zoom', function (zoom) {
-        if (zoom === app.view.constraints.minZoom) {
-            $outBtn.addClass('disabled');
-        } else {
-            $outBtn.removeClass('disabled');
-        }
-    });
 
     app.view.watch('extent', function (extent) {
         var currentCenter = extent.center;
@@ -233,6 +227,7 @@ require([
         title: '{PATHTYPE}',
         content: `<span style='display:none;'>{PATHTYPE}{NAME}{CITY}{SURFACE}</span>{PATHTYPE:popupSetup}`
     };
+
     let mainLayer = new MapImageLayer({
         url: config.mainUrl,
         opacity: 1,
@@ -244,16 +239,47 @@ require([
             {
                 id: 1,
                 visible: true,
-                popupTemplate: pTemplate
+                popupTemplate: pTemplate,
+                popupEnabled: false
             },
             {
                 id: 2,
                 visible: true,
-                popupTemplate: pTemplate
+                popupTemplate: pTemplate,
+                popupEnabled: false
             }
         ]
     });
     app.map.add(mainLayer);
+
+    var $outBtn = $('div[data-id="Out"]');
+    app.view.watch('zoom', function (zoom) {
+        if (zoom === app.view.constraints.minZoom) {
+            $outBtn.addClass('disabled');
+        } else {
+            $outBtn.removeClass('disabled');
+        }
+    });
+    
+    mainLayer.when(function () {
+        var bikeLay0 = mainLayer.findSublayerById(0);
+        var bikeLay1 = mainLayer.findSublayerById(1);
+        var bikeLay2 = mainLayer.findSublayerById(2);
+
+        app.view.watch("scale", function(scale){
+            bikeLay0.popupEnabled = false;
+            bikeLay1.popupEnabled = false;
+            bikeLay2.popupEnabled = false;
+            if (scale <= 40000) {
+                bikeLay2.popupEnabled = true;
+            } else if (scale <= 144448) {
+                bikeLay1.popupEnabled = true;
+            } else {
+                bikeLay0.popupEnabled = true;
+            }
+        })
+    })
+
 });
 //# sourceMappingURL=main.min.js.map
 //# sourceMappingURL=main.js.map
