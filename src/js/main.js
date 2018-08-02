@@ -26,6 +26,9 @@ require([
 
     $links.on('click', function (e) {
         let target = $(this).attr('panel-target');
+        // <!-- comments:uncomment // -->
+        // ga("send", "event", "Click", "Panel Opened", target);
+        // <!-- endcomments -->
         $("#viewDiv").css("visibility", "visible");
         $("#container").css("flex", "1");
         if (target === 'legend') {
@@ -78,6 +81,9 @@ require([
         }
         $('#legend').fadeToggle();
         $legendToggle.prop('checked', !$legendToggle.prop('checked'));
+        // <!-- comments:uncomment // -->
+        // ga("send", "event", "Click", "Legend Click", "Legend Menu");
+        // <!-- endcomments -->
     }
 
     app.map = new Map({
