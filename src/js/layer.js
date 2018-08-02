@@ -1,9 +1,11 @@
 require([
     "esri/layers/FeatureLayer",
     "esri/layers/MapImageLayer",
+    "esri/layers/GraphicsLayer",
     "esri/PopupTemplate",
     "dojo/topic"
-], function (FeatureLayer, MapImageLayer, PopupTemplate, tp) {
+],
+function (FeatureLayer, MapImageLayer, GraphicsLayer, PopupTemplate, tp) {
 
     tp.subscribe("map-loaded", addLayers);
 
@@ -56,5 +58,9 @@ require([
                 app.map.layers.add(imgLayer);
             }
         }
+        var gfxLayer = new GraphicsLayer({
+            id: "gfxLayer"
+        });
+        app.map.add(gfxLayer);
     };
 });
