@@ -157,30 +157,48 @@ require([
             }
         });
 
-        app.view.popup.watch('visible', function(vis){
-            if(!vis){
-                var gfxLay = app.map.findLayerById("gfxLayer");
+        app.view.popup.watch('visible', function (vis) {
+            var gfxLay = app.map.findLayerById("gfxLayer");
+            if (!vis) {
                 gfxLay.removeAll();
+            } else {
+                if (gfxLay.graphics.length === 0) {
+                    HighlightFeature(app.view.popup.selectedFeature);
+                }
             }
         });
 
-        app.view.popup.watch('selectedFeature', function(selectedFeature){
+        function HighlightFeature(selectedFeature) {
             var gfxLay = app.map.findLayerById("gfxLayer");
             gfxLay.removeAll();
             var f = $.extend({}, selectedFeature);
+
             if (f.geometry) {
+                var symbol = {
+                    type: "simple-line",
+                    color: "cyan",
+                    width: "5px",
+                    style: "solid"
+                }
+
+                if (f.geometry.type === "point") {
+                    symbol.type = "simple-marker";
+                    symbol.size = 16;
+                    symbol.color = [0, 255, 255, .65];
+                    symbol.outline = {
+                        width: "0px"
+                    }
+                }
+
                 var gfx = {
                     geometry: f.geometry,
-                    symbol: {
-                        type: "simple-line", // autocasts as new SimpleLineSymbol()
-                        color: "cyan",
-                        width: "5px",
-                        style: "solid"
-                    }
+                    symbol: symbol
                 };
-                gfxLay.add(gfx)
+                gfxLay.add(gfx);
             }
-        });
+        }
+
+        app.view.popup.watch('selectedFeature', HighlightFeature);
 
 
         let $container = $('#container');
@@ -282,7 +300,7 @@ require([
 
         var $outBtn = $('div[data-id="Out"]');
         app.view.watch('zoom', function (zoom) {
-            if (zoom === app.view.constraints.minZoom) {
+            if (Math.round(zoom) <= app.view.constraints.minZoom) {
                 $outBtn.addClass('disabled');
             } else {
                 $outBtn.removeClass('disabled');

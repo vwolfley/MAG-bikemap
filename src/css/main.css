@@ -756,6 +756,7 @@ label:hover,
 
 .disabled {
     background-color: lightgrey !important;
+    pointer-events: none;
 }
 
 .iconTooltip:hover {
