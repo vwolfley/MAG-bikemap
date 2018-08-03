@@ -409,6 +409,7 @@ label:hover,
 #layerList .layerLabel {
     margin-left: 5%;
     font-size: 14px;
+    flex: 1;
 }
 
 #layerList .regular-checkbox {
