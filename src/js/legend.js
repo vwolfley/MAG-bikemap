@@ -25,6 +25,17 @@ require(['dojo/topic'], function (tp) {
                     <input type="checkbox" id="c-${c.id}" ${c.visible ? 'checked' : ''} data-layer-id="${c.id}" class="regular-checkbox big-checkbox" />
                     <label></label>
                     <label class="layerLabel">${c.title}</label>
+                    <a
+                    style="height: 25px;"
+                    tabindex="0"
+                    role="button"
+                    data-html="true" 
+                    data-toggle="popover"
+                    data-placement="auto"
+                    data-trigger="hover"
+                    title="${c.title}"
+                    data-content="${c.definition}"><i class="glyphicon glyphicon glyphicon-info-sign"></i>
+                    </a>
                 </div>
             </div>
             `
@@ -95,10 +106,7 @@ require(['dojo/topic'], function (tp) {
                 </a>
             </div>
             `)
-            $("[data-toggle=popover]").popover({
-                offset: 100,
-                template: '<div class="popover popover--topright" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
-            });
+
             var arr = legendLayers.sort(sort);
             for (var i = 0; i < arr.length; i++) {
                 var conf = arr[i];
@@ -126,6 +134,11 @@ require(['dojo/topic'], function (tp) {
             }
 
             $layerList.find(".checkbox-div").click(toggleLayerItem);
+
+            $("[data-toggle=popover]").popover({
+                offset: 100,
+                template: '<div class="popover popover--topright" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+            });
 
             function toggleLayerItem(e) {
 
