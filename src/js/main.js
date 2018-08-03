@@ -157,19 +157,23 @@ require([
             }
         });
 
-        app.view.popup.watch('visible', function(vis){
-            if(!vis){
-                var gfxLay = app.map.findLayerById("gfxLayer");
+        app.view.popup.watch('visible', function (vis) {
+            var gfxLay = app.map.findLayerById("gfxLayer");
+            if (!vis) {
                 gfxLay.removeAll();
+            } else {
+                if (gfxLay.graphics.length === 0) {
+                    HighlightFeature(app.view.popup.selectedFeature);
+                }
             }
         });
 
-        app.view.popup.watch('selectedFeature', function(selectedFeature){
+        function HighlightFeature(selectedFeature) {
             var gfxLay = app.map.findLayerById("gfxLayer");
             gfxLay.removeAll();
             var f = $.extend({}, selectedFeature);
+
             if (f.geometry) {
-                
                 var symbol = {
                     type: "simple-line",
                     color: "cyan",
@@ -192,7 +196,9 @@ require([
                 };
                 gfxLay.add(gfx);
             }
-        });
+        }
+
+        app.view.popup.watch('selectedFeature', HighlightFeature);
 
 
         let $container = $('#container');
