@@ -169,16 +169,28 @@ require([
             gfxLay.removeAll();
             var f = $.extend({}, selectedFeature);
             if (f.geometry) {
+                
+                var symbol = {
+                    type: "simple-line",
+                    color: "cyan",
+                    width: "5px",
+                    style: "solid"
+                }
+
+                if (f.geometry.type === "point") {
+                    symbol.type = "simple-marker";
+                    symbol.size = 16;
+                    symbol.color = [0, 255, 255, .65];
+                    symbol.outline = {
+                        width: "0px"
+                    }
+                }
+
                 var gfx = {
                     geometry: f.geometry,
-                    symbol: {
-                        type: "simple-line", // autocasts as new SimpleLineSymbol()
-                        color: "cyan",
-                        width: "5px",
-                        style: "solid"
-                    }
+                    symbol: symbol
                 };
-                gfxLay.add(gfx)
+                gfxLay.add(gfx);
             }
         });
 
