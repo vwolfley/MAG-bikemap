@@ -282,7 +282,7 @@ require([
 
         var $outBtn = $('div[data-id="Out"]');
         app.view.watch('zoom', function (zoom) {
-            if (zoom === app.view.constraints.minZoom) {
+            if (Math.round(zoom) <= app.view.constraints.minZoom) {
                 $outBtn.addClass('disabled');
             } else {
                 $outBtn.removeClass('disabled');
