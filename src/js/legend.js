@@ -18,7 +18,6 @@ require(['dojo/topic'], function (tp) {
                 c.id = c.legend.group.id;
                 c.title = c.legend.group.title;
             }
-            console.log(c)
 
             return `
             <div>
@@ -32,7 +31,7 @@ require(['dojo/topic'], function (tp) {
                     role="button"
                     data-html="true" 
                     data-toggle="popover"
-                    data-placement="right"
+                    data-placement="auto"
                     data-trigger="hover"
                     title="${c.title}"
                     data-content="${c.definition}"><i class="glyphicon glyphicon glyphicon-info-sign"></i>
