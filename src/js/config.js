@@ -46,12 +46,13 @@ const config = {
             wkid: 102100
         }
     },
-    layers: [{
-            title: 'MAG MPO Boundary',
-            layerName: 'MAG MPO Boundary',
-            type: 'image',
-            visible: true
-        },
+    layers: [
+        // {
+        //     title: 'MAG MPO Boundary',
+        //     layerName: 'MAG MPO Boundary',
+        //     type: 'image',
+        //     visible: true
+        // },
         {
             id: 'USBicycleRoute90',
             layerName: 'US Bicycle Route 90',
