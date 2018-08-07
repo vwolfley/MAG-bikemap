@@ -457,6 +457,53 @@ label:hover,
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
+.shareLinks a {
+    cursor: pointer;
+    height: 33px;
+    width: 33px;
+    display: inline-flex;
+}
+
+.shareLinks a:hover {
+    opacity: 0.8;
+}
+
+.shareLinks ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.shareLinks li {
+    display: inline-block;
+    margin: 0px -2px;
+}
+
+#EMshareButton {
+    background: #efbe00;
+}
+
+#FBshareButton {
+    background: #3B5998;
+}
+
+#TWshareButton {
+    background: #1DA1F2;
+}
+
+#INshareButton {
+    background: #0077B5;
+}
+
+#GPlusShareButton {
+    background: #DB4437;
+}
+
+.shareLinks em {
+    margin: auto;
+    color: white;
+}
+
 textarea {
     resize: none;
 }
@@ -846,7 +893,9 @@ textarea {
 
 .popover {
     color: black;
-    width: 90vw;
+    /* width: 90vw; */
+    pointer-events: all;
+    max-width: 350px;
 }
 
 /* ---------------------------------------------------
