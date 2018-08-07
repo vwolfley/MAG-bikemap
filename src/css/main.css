@@ -415,6 +415,10 @@ a[aria-expanded="true"] {
     transform: translate(-50%, 0);
 }
 
+.formBtns {
+    text-align: right;
+}
+
 #layerList .checkbox-div:hover {
     background-color: #eee;
     border-color: #1f1f1f;
