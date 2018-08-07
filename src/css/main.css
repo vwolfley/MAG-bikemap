@@ -394,6 +394,27 @@ a[aria-expanded="true"] {
     margin: 1px;
 }
 
+.successMessage {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: black;
+    font-size: 23px;
+    /* left: 50%; */
+    top: 55px;
+    left: auto;
+    position: absolute;
+    padding: 50px;
+    font-weight: bold;
+    width: 400px;
+    z-index: 1;
+    border-radius: 4px;
+    text-align: center;
+    border: 6px solid;
+    display: none;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
 #layerList .checkbox-div:hover {
     background-color: #eee;
     border-color: #1f1f1f;
@@ -404,6 +425,40 @@ a[aria-expanded="true"] {
 label:hover,
 .regular-checkbox:hover {
     cursor: pointer;
+}
+
+.form-group.error label,
+.form-group.error .help-block,
+.form-group.error .help-inline {
+    color: #b94a48;
+}
+
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+    border-color: #b94a48;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.form-group.success label,
+.form-group.success .help-block,
+.form-group.success .help-inline {
+    color: #468847;
+}
+
+.form-group.success input,
+.form-group.success select,
+.form-group.success textarea {
+    border-color: #468847;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+textarea {
+    resize: none;
 }
 
 #layerList .layerLabel {
@@ -538,6 +593,14 @@ label:hover,
 
 #sidebar .arrow-left {
     margin-top: -55px;
+}
+
+.esri-popup__button {
+    color: #707070;
+}
+
+.esri-popup__button:hover {
+    color: black;
 }
 
 #legend {
