@@ -102,7 +102,7 @@ require(['dojo/topic'], function (tp) {
                 data-placement="left"
                 data-trigger="hover"
                 title="Bikeway Types"
-                data-content="${getBikeDefHTML()}"><i id="bikeDefIcon" class="glyphicon glyphicon glyphicon-info-sign"></i>
+                data-content="<div>${getBikeDefHTML()}</div>"><i id="bikeDefIcon" class="glyphicon glyphicon glyphicon-info-sign"></i>
                 </a>
             </div>
             `)
@@ -136,8 +136,8 @@ require(['dojo/topic'], function (tp) {
             $layerList.find(".checkbox-div").click(toggleLayerItem);
 
             $("[data-toggle=popover]").popover({
-                offset: 100,
-                template: '<div class="popover popover--topright" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+                offset: 150,
+                template: '<div class="popover popover--topright" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div style="width:350px;" class="popover-content"></div></div>'
             });
 
             function toggleLayerItem(e) {
