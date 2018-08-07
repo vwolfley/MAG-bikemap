@@ -121,6 +121,7 @@
             <div class="panelDiv" panel-id="help"></div>
             <div class="panelDiv" panel-id="safety"></div>
         </div>
+        <div class="successMessage"> Thank you, we have received your feedback.</div>
         <div id="container">
             <div id="viewDiv"></div>
             <div id="bottomBar">
@@ -166,6 +167,35 @@
                         <span class="arrow-left"></span>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="contactModalLabel">Feedback</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="contact-form" autocomplete="on">
+                        <div class="form-group">
+                            <label for="nameInput">Name</label>
+                            <input autocomplete="name" class="form-control" type="text" name="nameInput" id="nameInput" placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailInput">Email Address</label>
+                            <input autocomplete="email" class="form-control" type="text" name="emailInput" id="emailInput" placeholder="Your email address">
+                        </div>
+                        <div class="form-group">
+                            <label for="commentInput">Message</label>
+                            <textarea autocomplete="off" name="commentInput" id="commentInput" rows="8" class="form-control" placeholder="The message you want to send to us."></textarea>
+                        </div>
+                        <div class="formBtns">
+                            <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -226,6 +256,7 @@
 
     <script src="https://js.arcgis.com/4.7/"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
 
     <!-- comments:comment html -->
     <script async src="js/jquery.ui.touch-punch.js"></script>

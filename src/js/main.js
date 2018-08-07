@@ -157,6 +157,20 @@ require([
             }
         });
 
+        app.view.popup.actions.push({
+            title: "Improve this data",
+            id: "contactUs",
+            className: "esri-icon-comment"
+        })
+
+        app.view.popup.on("trigger-action", function (event) {
+            if (event.action.id === "contactUs") {
+                if (event && event.target && event.target.features[0]) {
+                    OpenContactWindow(event.target.features[0]);
+                }
+            }
+        });
+
         app.view.popup.watch('visible', function (vis) {
             var gfxLay = app.map.findLayerById("gfxLayer");
             if (!vis) {
@@ -167,6 +181,86 @@ require([
                 }
             }
         });
+        var $contactModal = $("#contactModal");
+        var $contactForm = $contactModal.find('#contact-form');
+
+        function OpenContactWindow(feature) {
+            $contactModal.modal('show');
+            var objID = feature.attributes["OBJECTID"];
+            var srcLayerID = feature.sourceLayer.id;
+
+            $contactForm.attr('data-obj-id', objID);
+            $contactForm.attr('data-layer', srcLayerID);
+        }
+
+        var form = $contactForm.validate({
+            rules: {
+                nameInput: {
+                    minlength: 2,
+                    required: true
+                },
+                emailInput: {
+                    required: true,
+                    email: true
+                },
+                commentInput: {
+                    minlength: 2,
+                    required: true
+                }
+            },
+            highlight: function (el) {
+                $(el).closest('.form-group').removeClass('success').addClass('error');
+            },
+            success: function (el) {
+                el.closest('.form-group').removeClass('error').addClass('success');
+            }
+        });
+
+        function SubmitComment() {
+
+            var layerID = $contactForm.data("layer");
+
+            if (layerID == 0) {
+                layerID = "Bikeways";
+            }
+
+            var data = {
+                objID: $contactForm.data("obj-id").toString(),
+                layerId: layerID,
+                name: $contactForm.find("#nameInput").val(),
+                email: $contactForm.find("#emailInput").val(),
+                comment: $contactForm.find("#commentInput").val()
+            }
+
+            $(".successMessage").fadeIn(300, function () {
+                var message = this;
+                setTimeout(function () {
+                    $(message).fadeOut(500);
+                }, 3000);
+            });
+
+            $contactModal.modal('hide');
+
+            ResetContactForm();
+
+            $.post("https://geo.azmag.gov/services/BikewaysEmail/Email/SendNew", data);
+        }
+
+        $contactForm.submit(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (form.numberOfInvalids() === 0) {
+                SubmitComment();
+            }
+        });
+
+        function ResetContactForm() {
+            $contactForm.trigger("reset");
+            $contactForm.find(".form-group").removeClass('success').removeClass('error');
+            form.resetForm();
+        }
+
+        $('button[type="reset"]').click(ResetContactForm);
 
         function HighlightFeature(selectedFeature) {
             var gfxLay = app.map.findLayerById("gfxLayer");
