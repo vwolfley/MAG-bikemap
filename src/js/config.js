@@ -211,10 +211,7 @@ const config = {
             visible: true,
             popup: {
                 title: 'Light Rail',
-                content: `<strong>{Section}</strong>
-                <br>
-                Direction: {Direction}
-                <br>
+                content: `<strong>{Route}</strong>
                 City: {City}
                 <br>
                 <a target='_blank'href={Website}>Web Site</a>
