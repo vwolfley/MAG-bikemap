@@ -71,9 +71,9 @@ require([
 
         $("#" + basemapId).click(function () {
             if (toggled) {
-                $(this).attr("title", "Return to original basemap");
+                $(this).attr("title", "Map");
             } else {
-                $(this).attr("title", "Switch to Satellite Imagery");
+                $(this).attr("title", "Satellite");
             }
             toggled = !toggled;
             toggleVM.toggle();

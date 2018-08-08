@@ -396,6 +396,16 @@ a[aria-expanded="true"] {
     background-color: lightgray;
 }
 
+#contactHeader {
+    background: var(--mainColor);
+    color: var(--textColor);
+}
+
+.popover-title {
+    background: var(--mainColor);
+    color: var(--textColor);
+}
+
 .esri-ui .esri-popup {
     border-radius: 4px;
 }
@@ -412,6 +422,23 @@ a[aria-expanded="true"] {
 
 .esri-popup--shadow {
     box-shadow: 0 1px 8px rgba(0, 0, 0, .5);
+}
+
+.esri-popup__header {
+    background: var(--mainColor);
+    color: var(--textColor);
+}
+
+.esri-popup__header-buttons .esri-popup__icon {
+    color: white;
+}
+
+.esri-popup__icon:hover {
+    color: lightgray;
+}
+
+.esri-feature {
+    margin-top: 5px;
 }
 
 #layerList .checkbox-div {
