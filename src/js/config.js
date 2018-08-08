@@ -209,6 +209,17 @@ const config = {
             layerName: 'Lightrail',
             type: 'feature',
             visible: true,
+            popup: {
+                title: 'Light Rail',
+                content: `<strong>{Section}</strong>
+                <br>
+                Direction: {Direction}
+                <br>
+                City: {City}
+                <br>
+                <a target='_blank'href={Website}>Web Site</a>
+                `
+            },
             legend: {
                 sort: 4,
                 group: {
