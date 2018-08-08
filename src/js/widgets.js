@@ -89,9 +89,7 @@ require([
             $(".legendToggle").removeAttr('checked');
         }
 
-        let $share = $("#shareWidget");
-        // app.view.ui.add('shareWidget', 'bottom-right');
-        app.view.ui.add('shareWidget', 'bottom-right');
+        let $share = $(".shareWidget");
 
         var baseUrl = 'https://twitter.com/intent/tweet';
         var text = "MAG%20%7C%20Bikeways";
