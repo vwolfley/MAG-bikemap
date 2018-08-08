@@ -71,9 +71,9 @@ require([
 
         $("#" + basemapId).click(function () {
             if (toggled) {
-                $(this).attr("title", "Return to original basemap");
+                $(this).attr("title", "Map");
             } else {
-                $(this).attr("title", "Switch to Satellite Imagery");
+                $(this).attr("title", "Satellite");
             }
             toggled = !toggled;
             toggleVM.toggle();
@@ -89,9 +89,7 @@ require([
             $(".legendToggle").removeAttr('checked');
         }
 
-        let $share = $("#shareWidget");
-        // app.view.ui.add('shareWidget', 'bottom-right');
-        app.view.ui.add('shareWidget', 'bottom-right');
+        let $share = $(".shareWidget");
 
         var baseUrl = 'https://twitter.com/intent/tweet';
         var text = "MAG%20%7C%20Bikeways";

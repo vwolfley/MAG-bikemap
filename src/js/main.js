@@ -35,6 +35,8 @@ require([
             $("#container").css("flex", "1");
             if (target === 'legend') {
                 toggleLegend();
+            } else if (target === 'share') {
+
             } else {
                 let isActive = $(this).hasClass('active');
                 $links.removeClass('active');

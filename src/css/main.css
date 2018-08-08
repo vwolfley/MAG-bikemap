@@ -108,7 +108,8 @@ span {
 
 #sidebar ul li a:hover {
     color: var(--hoverText);
-    background: var(--hoverColor)
+    background: var(--hoverColor);
+    cursor: pointer;
 }
 
 #sidebar .sidebar-header {
@@ -325,7 +326,8 @@ body,
 
 #bottomBar ul li a:hover {
     color: var(--hoverText);
-    background: var(--hoverColor)
+    background: var(--hoverColor);
+    cursor: pointer;
 }
 
 #bottomBar ul li.active>a,
@@ -336,6 +338,36 @@ a[aria-expanded="true"] {
 
 .customWidget {
     display: none;
+}
+
+.shareLinks a {
+    cursor: pointer;
+    height: 33px;
+    width: 33px;
+    display: inline-flex;
+}
+
+.shareLinks a:hover {
+    opacity: 0.8;
+}
+
+.shareLinks ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.shareLinks li {
+    display: inline-block;
+    margin: 0px -2px;
+}
+
+.shareLinks em {
+    margin: auto;
+    color: white;
+    margin-left: -18px;
+    margin-top: -8px;
+    font-size: 18px;
 }
 
 #basemapToggle img {
@@ -364,6 +396,16 @@ a[aria-expanded="true"] {
     background-color: lightgray;
 }
 
+#contactHeader {
+    background: var(--mainColor);
+    color: var(--textColor);
+}
+
+.popover-title {
+    background: var(--mainColor);
+    color: var(--textColor);
+}
+
 .esri-ui .esri-popup {
     border-radius: 4px;
 }
@@ -380,6 +422,23 @@ a[aria-expanded="true"] {
 
 .esri-popup--shadow {
     box-shadow: 0 1px 8px rgba(0, 0, 0, .5);
+}
+
+.esri-popup__header {
+    background: var(--mainColor);
+    color: var(--textColor);
+}
+
+.esri-popup__header-buttons .esri-popup__icon {
+    color: white;
+}
+
+.esri-popup__icon:hover {
+    color: lightgray;
+}
+
+.esri-feature {
+    margin-top: 5px;
 }
 
 #layerList .checkbox-div {
@@ -498,28 +557,6 @@ label:hover,
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
-.shareLinks a {
-    cursor: pointer;
-    height: 33px;
-    width: 33px;
-    display: inline-flex;
-}
-
-.shareLinks a:hover {
-    opacity: 0.8;
-}
-
-.shareLinks ul {
-    list-style: none;
-    padding: 0px;
-    margin: 0px;
-}
-
-.shareLinks li {
-    display: inline-block;
-    margin: 0px -2px;
-}
-
 #EMshareButton {
     background: #efbe00;
 }
@@ -538,11 +575,6 @@ label:hover,
 
 #GPlusShareButton {
     background: #DB4437;
-}
-
-.shareLinks em {
-    margin: auto;
-    color: white;
 }
 
 textarea {
@@ -965,6 +997,13 @@ textarea {
 }
 
 @media (max-width: 768px) {
+    .shareLinks a {
+        margin: 2px;
+    }
+    .shareLinks em {
+        margin-left: -27px;
+        margin-top: -4px;
+    }
     #aboutTitle {
         font-size: 12px;
     }
