@@ -375,6 +375,10 @@ a[aria-expanded="true"] {
     margin-top: 10px;
 }
 
+.esri-view .esri-view-surface--inset-outline:focus::after {
+    outline: none;
+}
+
 #viewDiv {
     flex: 1;
 }
