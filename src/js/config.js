@@ -201,7 +201,7 @@ const config = {
             legend: {
                 sort: 5
             },
-            definition: "Locations of bike racks in Valley Metro's GRID bikeshare program (Note: Other dockless bikeshare programs exist in the region, but do not have permanent locations"
+            definition: "Locations of bike racks in Valley Metro's GRID bikeshare program (Note: Other dockless bikeshare programs exist in the region, but do not have permanent locations)"
         },
         {
             title: 'Light Rail',
