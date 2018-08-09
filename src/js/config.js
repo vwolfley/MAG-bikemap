@@ -34,7 +34,7 @@ window.busArrivalTimes = function (value, key, data) {
 
 
 const config = {
-    mainUrl: 'https://geo.azmag.gov/gismag/rest/services/Test/BikeMap_Test/MapServer',
+    mainUrl: 'https://geo.azmag.gov/gismag/rest/services/maps/BikeMap_main/MapServer',
     geoCoderService: '//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer',
     emailLink: 'http://www.azmag.gov/Contact/4788?s=geo.azmag.gov/maps/bikemap&n=Jason%20Howard&popUp=true',
     initExtent: {
