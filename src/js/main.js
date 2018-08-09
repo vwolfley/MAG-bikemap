@@ -41,7 +41,9 @@ require([
                     $("#viewDiv").css("visibility", "hidden");
                 }
             } else {
+
                 let isActive = $(this).hasClass('active');
+
                 $links.removeClass('active');
                 $arrows.hide();
                 $panelDivs.hide();
@@ -49,9 +51,12 @@ require([
                 if (isActive) {
                     $content.hide();
                 } else {
+                    $(".shareWidget").popover('hide');
                     $content.show();
-                    $(this).addClass('active');
-                    $(this).find('.arrow-left').show();
+                    var $allLinks = $(`[panel-target=${target}]`);
+
+                    $allLinks.addClass('active');
+                    $allLinks.find('.arrow-left').show();
 
                     if (window.outerWidth < 780) {
                         $("#viewDiv").css("visibility", "hidden");

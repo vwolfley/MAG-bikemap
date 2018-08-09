@@ -138,6 +138,10 @@ require([
             html: true
         });
 
+        $('body').on('hidden.bs.popover', function (e) {
+            $(e.target).data("bs.popover").inState.click = false;
+        });
+
         ! function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0],
                 p = /^http:/.test(d.location) ? "http" : "https";

@@ -840,6 +840,7 @@ textarea {
 
 .safetyImg {
     width: 65px;
+    flex: 1;
 }
 
 .liLabel {
@@ -854,10 +855,12 @@ textarea {
 
 .safetyDetailsContainer {
     margin-left: 20px;
+    flex: 8;
 }
 
 #bikeSafety .safetyDetails {
     margin-left: 5%;
+    flex: 7;
 }
 
 .tab-pane,
@@ -947,9 +950,14 @@ textarea {
     pointer-events: none;
 }
 
+.bikePics {
+    max-height: 150px;
+}
+
 .iconTooltip:hover {
     display: none;
     opacity: 0;
+    pointer-events: none;
 }
 
 #legendGrip {
@@ -1012,7 +1020,7 @@ textarea {
         font-size: 12px;
     }
     .iconTooltip {
-        /* display: none !important; */
+        display: none !important;
     }
     .arrow-left {
         display: none !important;
