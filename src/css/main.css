@@ -840,6 +840,7 @@ textarea {
 
 .safetyImg {
     width: 65px;
+    flex: 1;
 }
 
 .liLabel {
@@ -854,10 +855,12 @@ textarea {
 
 .safetyDetailsContainer {
     margin-left: 20px;
+    flex: 8;
 }
 
 #bikeSafety .safetyDetails {
     margin-left: 5%;
+    flex: 7;
 }
 
 .tab-pane,
