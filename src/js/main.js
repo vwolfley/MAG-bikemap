@@ -41,6 +41,7 @@ require([
                     $("#viewDiv").css("visibility", "hidden");
                 }
             } else {
+
                 let isActive = $(this).hasClass('active');
                 $links.removeClass('active');
                 $arrows.hide();
@@ -49,6 +50,7 @@ require([
                 if (isActive) {
                     $content.hide();
                 } else {
+                    $(".shareWidget").popover('hide');
                     $content.show();
                     $(this).addClass('active');
                     $(this).find('.arrow-left').show();
