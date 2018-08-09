@@ -168,11 +168,10 @@ const config = {
             popup: {
                 title: 'Bike Route Pictures',
                 content: `
-                <strong>{NAME}</strong>
+                <strong>{DESCRIPTION}</strong>
                 <br>
-                <img class='pics' src='img/bikepics/{URL_NAME}.jpg'>
+                <img class='bikePics' src='img/bikepics/{URL_NAME}.jpg'>
                 <br>
-                {DESCRIPTION}
                 `
             },
             legend: {

@@ -950,6 +950,10 @@ textarea {
     pointer-events: none;
 }
 
+.bikePics {
+    max-height: 150px;
+}
+
 .iconTooltip:hover {
     display: none;
     opacity: 0;
