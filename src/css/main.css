@@ -1020,7 +1020,7 @@ textarea {
         font-size: 12px;
     }
     .iconTooltip {
-        /* display: none !important; */
+        display: none !important;
     }
     .arrow-left {
         display: none !important;
