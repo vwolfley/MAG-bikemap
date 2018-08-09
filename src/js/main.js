@@ -36,7 +36,10 @@ require([
             if (target === 'legend') {
                 toggleLegend();
             } else if (target === 'share') {
-
+                if ($content.is(":visible") && window.outerWidth < 780) {
+                    $("#container").css("flex", "none");
+                    $("#viewDiv").css("visibility", "hidden");
+                }
             } else {
                 let isActive = $(this).hasClass('active');
                 $links.removeClass('active');
