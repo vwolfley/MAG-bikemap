@@ -235,10 +235,9 @@ const config = {
                 title: '{Category}',
                 content: `<strong>{Name}</strong>
                 <br>
-                {Location}
+                {Location} - {City}
                 <br>
-                {City}
-                <br>
+                <img class="bikePics" src="{IMAGE0}" alt=""><br>
                 <a target='_blank'href={webLink}>Transit Web Link Info</a>`
             },
             visible: true,
