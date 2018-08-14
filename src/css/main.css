@@ -950,6 +950,10 @@ textarea {
     pointer-events: none;
 }
 
+.smallImg {
+    width: 45px;
+}
+
 .bikePics {
     max-height: 150px;
 }
