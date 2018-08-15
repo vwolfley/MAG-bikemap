@@ -843,12 +843,6 @@ textarea {
     flex: 7;
 }
 
-.tab-pane,
-.aboutTab {
-    /* max-height: 90vh; */
-    /* overflow-y: auto; */
-}
-
 .nav-pills>li.active>a,
 .nav-pills>li.active>a:focus,
 .nav-pills>li.active>a:hover {
