@@ -167,6 +167,16 @@ require([
             }
         });
 
+        $("body").on("click", ".image-container", function (e) {
+            var firstImage = e.currentTarget.children[0].src;
+
+            $("#largeBikePic").attr("src", firstImage);
+            $("#bikePicName").html("fadsfsdf");
+
+            $("#imgModal").modal("show");
+
+        });
+
         app.view.popup.actions.push({
             title: "Improve this data",
             id: "contactUs",
@@ -181,7 +191,9 @@ require([
             }
         });
 
+        let $tt = $('.iconTooltip');
         app.view.popup.watch('visible', function (vis) {
+            $tt.hide();
             var gfxLay = app.map.findLayerById("gfxLayer");
             if (!vis) {
                 gfxLay.removeAll();

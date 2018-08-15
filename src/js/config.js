@@ -171,7 +171,7 @@ const config = {
                 content: `
                 <strong>{DESCRIPTION}</strong>
                 <br>
-                <img class='bikePics' src='img/bikepics/{URL_NAME}.jpg'>
+                <span data-toggle="modal" data-target="#carouselModal" title="Click to view full size" class="image-container"><img class='bikePics' src='img/bikepics/{URL_NAME}.jpg'><div class="after"><span class="centeredContent"><i class="fa fa-search-plus" aria-hidden="true"></i></span></div></span>
                 <br>
                 `
             },
