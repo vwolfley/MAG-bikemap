@@ -40,6 +40,15 @@ require([
 
                     if (layer.id === "BusStops") {
                         layerToAdd.minScale = 25000;
+                        layerToAdd.renderer = {
+                            type: "simple",
+                            symbol: {
+                                type: "picture-marker", // autocasts as new PictureMarkerSymbol()
+                                url: "./img/Bus_Stop.png",
+                                width: "24px",
+                                height: "24px"
+                            }
+                        }
                     }
                     app.map.layers.add(layerToAdd);
                 } else if (layer.type === "image") {

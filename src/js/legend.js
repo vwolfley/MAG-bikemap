@@ -195,7 +195,7 @@ require(['dojo/topic'], function (tp) {
                 }
                 if (legendHtml === "") {
                     legendHtml = `
-                            <img style='width:20px;' src='${confObj.legend.imageData}'</img>
+                            <img style='width:26px;' src='${confObj.legend.imageData}'</img>
                             <span class='legendItemLabel'>${confObj.title.replace('(must be zoomed in)', '')}</span><br>
                             `
                 }
