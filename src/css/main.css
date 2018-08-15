@@ -410,6 +410,10 @@ a[aria-expanded="true"] {
     color: var(--textColor);
 }
 
+.esri-view-width-xlarge .esri-popup__main-container {
+    width: 375px;
+}
+
 .esri-ui .esri-popup {
     border-radius: 4px;
 }

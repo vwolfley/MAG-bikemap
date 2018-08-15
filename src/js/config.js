@@ -215,6 +215,7 @@ const config = {
                 <br>
                 City: {City}
                 <br>
+                main
                 <a target='_blank'href={Website}>Web Site</a>
                 `
             },
@@ -234,13 +235,13 @@ const config = {
             type: 'feature',
             visible: true,
             popup: {
-                title: 'Light Rail',
-                content: `<strong>{Route}</strong>
+                title: '{Category}',
+                content: `<strong>{Name}</strong>
                 <br>
-                City: {City}
+                {Location} - {City}
                 <br>
-                <a target='_blank'href={Website}>Web Site</a>
-                `
+                <img class="bikePics" src="{IMAGE0}" alt=""><br>
+                <a target='_blank'href={webLink}>Transit Web Link Info</a>`
             },
             legend: {
                 sort: 4,
@@ -265,6 +266,7 @@ const config = {
                 <img class="bikePics" src="{IMAGE0}" alt=""><br>
                 <a target='_blank'href={webLink}>Transit Web Link Info</a>`
             },
+            definitionExpression: "Category <> 'Light Rail Station'",
             visible: true,
             legend: {
                 sort: 6,
