@@ -169,10 +169,10 @@ require([
 
         $("body").on("click", ".image-container", function (e) {
             var firstImage = e.currentTarget.children[0].src;
+            var title = $(e.currentTarget.children[0]).data("title");
 
             $("#largeBikePic").attr("src", firstImage);
-            $("#bikePicName").html("fadsfsdf");
-
+            $("#bikePicName").html(title);
             $("#imgModal").modal("show");
 
         });
