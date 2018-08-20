@@ -233,8 +233,7 @@ const config = {
             popup: {
                 title: 'Light Rail',
                 content: `<strong>{Route}</strong>
-                        <br> City: {City}
-                        <br> main
+                        <br> City: {City}<br>
                         <a target='_blank' href={Website}>Web Site</a>`
             },
             legend: {
