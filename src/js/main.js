@@ -22,7 +22,7 @@ require([
         let $arrows = $('.arrow-left');
         let $panelDivs = $('.panelDiv');
         let $content = $('#content');
-        let $legendToggle = $('.legendToggle');
+        // let $legendToggle = $('.legendToggle');
 
         let loadedLayers = ["layers"];
 
@@ -73,9 +73,9 @@ require([
             }
         });
 
-        $legendToggle.click(function (e) {
-            return false;
-        });
+        // $legendToggle.click(function (e) {
+        //     return false;
+        // });
 
         $('#content').on('click', '.closePanel', function () {
             $("#viewDiv").css("visibility", "visible");
@@ -92,7 +92,7 @@ require([
                 $(".components li").removeClass("active");
             }
             $('#legend').fadeToggle();
-            $legendToggle.prop('checked', !$legendToggle.prop('checked'));
+            // $legendToggle.prop('checked', !$legendToggle.prop('checked'));
             // <!-- comments:uncomment // -->
             // ga("send", "event", "Click", "Legend Click", "Legend Menu");
             // <!-- endcomments -->
