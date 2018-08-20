@@ -82,8 +82,8 @@ require(['dojo/topic'], function (tp) {
                 <b>Bike Route </b> - A roadway open to both bicycle and motor vehicle travel and recognized as bicycle friendly. Often indicated by signage.<br>
                 <b>Paved Shoulder</b> - The portion of the roadway contiguous with the traveled way that accommodates stopped vehicles.<br>
                 <b>Multi-Use Path - Paved</b> -  A bikeway physically separated from motor vehicle traffic by an open space or barrier and either within the right of way or within an independent right of way. Trails may be used by pedestrians, skaters, wheelchair users, and joggers.<br>
-                <b>Multi-Use Path - Unpaved</b> -  A bikeway physically separated from motor vehicle traffic by an open space or barrier and either within the right of way or within an independent right of way. Trails may be used by pedestrians, skaters, wheelchair users, and joggers.<br>
-                <b>Recreational Trail</b> -  A bikeway or Trail, typically unpaved, that may be used by both hikers and bikers in recreational areas.
+                <b>Multi-Use Path - Unpaved</b> -  A bikeway physically separated from motor vehicle traffic by an open space or barrier and either within the right of way or within an independent right of way. Trails may be used by pedestrians, wheelchair users, and joggers.<br>
+                <b> Recreational Trail </b> -  A bikeway or Trail, typically unpaved, that may be used by hikers, bikers and equestrians in recreational areas.
             `
             }
 
@@ -137,6 +137,7 @@ require(['dojo/topic'], function (tp) {
 
             $("[data-toggle=popover]").popover({
                 offset: 150,
+                trigger: "hover click",
                 template: '<div class="popover popover--topright" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div style="width:350px;" class="popover-content"></div></div>'
             });
 
@@ -195,7 +196,7 @@ require(['dojo/topic'], function (tp) {
                 }
                 if (legendHtml === "") {
                     legendHtml = `
-                            <img style='width:20px;' src='${confObj.legend.imageData}'</img>
+                            <img style='width:26px;' src='${confObj.legend.imageData}'</img>
                             <span class='legendItemLabel'>${confObj.title.replace('(must be zoomed in)', '')}</span><br>
                             `
                 }
