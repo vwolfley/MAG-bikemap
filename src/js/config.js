@@ -230,11 +230,12 @@ const config = {
             layerName: 'Lightrail',
             type: 'feature',
             visible: true,
+            definitionExpression: "RouteType <> 'Maintenance'",
             popup: {
                 title: 'Light Rail',
                 content: `<strong>{Route}</strong>
                         <br> City: {City}<br>
-                        <a target='_blank' href={Website}>Web Site</a>`
+                        <a target='_blank' href='https://www.valleymetro.org/maps-schedules/rail'>Web Site</a>`
             },
             legend: {
                 sort: 4,
