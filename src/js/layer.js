@@ -49,6 +49,37 @@ require([
                                 height: "24px"
                             }
                         }
+                    } else if (layer.id === "PublicTransit") {
+                        layerToAdd.renderer = {
+                            type: "simple",
+                            symbol: {
+                                type: "picture-marker", // autocasts as new PictureMarkerSymbol()
+                                url: "./img/TC.png",
+                                width: "24px",
+                                height: "24px"
+                            }
+                        }
+                    } else if (layer.id === "ParkAndRide") {
+                        layerToAdd.renderer = {
+                            type: "simple",
+                            symbol: {
+                                type: "picture-marker", // autocasts as new PictureMarkerSymbol()
+                                url: "./img/PR.png",
+                                width: "24px",
+                                height: "24px"
+                            }
+                        }
+                    } else if (layer.id === "LightRailStations") {
+                        layerToAdd.renderer = {
+                            type: "simple",
+                            symbol: {
+                                type: "picture-marker", // autocasts as new PictureMarkerSymbol()
+                                url: "./img/LR.png",
+                                width: "24px",
+                                height: "24px"
+                            }
+                        }
+                        layerToAdd.minScale = 0;
                     }
                     app.map.layers.add(layerToAdd);
                 } else if (layer.type === "image") {

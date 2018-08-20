@@ -137,6 +137,7 @@ require(['dojo/topic'], function (tp) {
 
             $("[data-toggle=popover]").popover({
                 offset: 150,
+                trigger: "hover click",
                 template: '<div class="popover popover--topright" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div style="width:350px;" class="popover-content"></div></div>'
             });
 

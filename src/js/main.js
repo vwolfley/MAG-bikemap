@@ -170,18 +170,18 @@ require([
         $("body").on("click", ".image-container", function (e) {
             var firstImage = e.currentTarget.children[0].src;
             var title = $(e.currentTarget.children[0]).data("title");
-
-            $("#largeBikePic").attr("src", firstImage);
-            $("#bikePicName").html(title);
-            $("#imgModal").modal("show");
-
+            if (title !== "atp") {
+                $("#largeBikePic").attr("src", firstImage);
+                $("#bikePicName").html(title);
+                $("#imgModal").modal("show");
+            }
         });
 
         app.view.popup.actions.push({
-            title: "Improve this data",
+            title: "Feedback",
             id: "contactUs",
             className: "esri-icon-comment"
-        })
+        });
 
         app.view.popup.on("trigger-action", function (event) {
             if (event.action.id === "contactUs") {
@@ -203,6 +203,7 @@ require([
                 }
             }
         });
+
         var $contactModal = $("#contactModal");
         var $contactForm = $contactModal.find('#contact-form');
 
@@ -346,8 +347,10 @@ require([
                                         tooltipHtml = resultGraphic.attributes.NAME;
                                     } else if (resultGraphic.attributes.Discript) {
                                         tooltipHtml = resultGraphic.attributes.Discript;
-                                    } else if (resultGraphic.attributes.Station_Number) {
-                                        tooltipHtml = `Station Number: ${resultGraphic.attributes.Station_Number}`;
+                                    } else if (resultGraphic.attributes.StationName) {
+                                        tooltipHtml = `${resultGraphic.attributes.StationName} <br> Light Rail Station`;
+                                    } else if (resultGraphic.attributes.Location) {
+                                        tooltipHtml = `${resultGraphic.attributes.Location} <br> Bus Stop`;
                                     }
                                     if (tooltipHtml) {
                                         text.html(tooltipHtml);

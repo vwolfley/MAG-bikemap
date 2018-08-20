@@ -951,17 +951,19 @@ textarea {
 }
 
 .image-container:hover .after {
-    display: block;
+    display: flex;
     background: rgba(0, 0, 0, .6);
     border: 2px solid black;
     cursor: pointer;
 }
 
 .image-container .after .centeredContent {
-    position: absolute;
-    left: 43%;
-    top: 41%;
+    margin: auto;
     font-size: 26px;
+}
+
+.arrivalMessage {
+    font-weight: bold;
 }
 
 .iconTooltip:hover {
