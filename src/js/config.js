@@ -23,7 +23,7 @@ window.ArrivalTimes = function (value, key, data) {
         for (var i = 0; i < results.data.length; i++) {
             if (i < 5) {
                 var row = results.data[i];
-                ulHtml += "<li>" + row.departureTimeFormatted + " - " + row.headsign + "</li>";
+                ulHtml += `<li>${row.departureTimeFormatted} - ${row.headsign}</li>`;
             }
         }
         $ul.html(ulHtml);
