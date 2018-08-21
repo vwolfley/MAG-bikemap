@@ -39,7 +39,10 @@ module.exports = function (grunt) {
         },
         clean: {
             build: {
-                src: ["dist/js"]
+                src: ["dist/"]
+            },
+            cleanjs: {
+                src: ["dist/js/*.js", "!dist/js/main.js"]
             }
         },
         concat: {
@@ -114,5 +117,5 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask("build", ["replace", "copy", "clean", "concat", "toggleComments", "babel", "uglify", "postcss"]);
+    grunt.registerTask("build", ["clean:build", "replace", "copy", "clean:cleanjs", "concat", "toggleComments", "babel", "uglify", "postcss"]);
 };
