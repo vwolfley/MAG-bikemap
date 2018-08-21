@@ -1,6 +1,4 @@
 # Built Files
-dist/
-=======
 # Include your project-specific ignores in this file
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 # Useful .gitignore templates: https://github.com/github/gitignore
@@ -225,7 +223,6 @@ pip-log.txt
 ###########################
 ## Project Specific Ignores
 ###########################
->>>>>>> 5c13e85bb6c0e731f2cac69faaf4417ea93da5e6
 
 # Dependency directory
 node_modules
