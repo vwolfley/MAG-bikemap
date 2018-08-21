@@ -25,9 +25,9 @@ This web app viewer was developed by MAG staff for MAG member agencies and the p
 
 ## Version ##
 
-* ### version | 3.3.4 ###
+* ### version | 3.3.3 ###
 
-* #### Updated | 2018-07-02 ####
+* #### Updated | 2018-04-11 ####
 
 * #### Created | 2012-08-03 ####
 
@@ -70,6 +70,7 @@ A detailed list of the changes and fixes in each version update can be found in 
 * [ride the city](http://www.ridethecity.com/dc#)
 * [Washington DC](http://washcycle.typepad.com/bikemap/)
 * [Bike 36 Interactive Map](http://36commutingsolutions.org/commuting-us-36/commute-options/bikewalk/bikelinks-36/)
+* [Houston-Galveston Area Council - Bikeway Viewer](http://arcgis02.h-gac.com/Bikeway_Viewer/)
 
 ## Dependencies ##
 
