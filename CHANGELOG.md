@@ -35,6 +35,11 @@ And constructed with the following guidelines:
 * geo tracking
 
 ***********************************************
+
+## Version 4.0.1 | 2018-08-21
+
+* Fixed bugs related to version number and date
+
 ## Version 4.0.0 | 2018-08-21
 
 * Redesigned and rewrote application.
