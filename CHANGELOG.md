@@ -35,7 +35,7 @@ And constructed with the following guidelines:
 * geo tracking
 
 ***********************************************
-## Version 3.3.4 | 2018-08-20
+## Version 4.0.0 | 2018-08-21
 
 * Redesigned and rewrote application.
 * Upgraded to esri js version 4.x
