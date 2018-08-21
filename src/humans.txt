@@ -40,6 +40,12 @@
         Twitter:
         From: Phoenix, AZ
 
+        Name:  Merari Garcia
+        Role: Web Specialist II
+        Contact:
+        Twitter:
+        From: Phoenix, AZ
+
         Name:  Gordon Tyus
         Role: Graphics Specialist
         Contact:
@@ -62,9 +68,9 @@
 # SITE
     Site name:  MAG Bikeways
     Site URL:  http://geo.azmag.gov/maps/bikemap/
-    Version: 3.3.4
+    Version: 4.0.0
     Creation date: 2012-08-03
-    Last updated: 2018-07-02
+    Last updated: 2018-08-21
     Language: English
     Doctype: HTML5
     IDE: Sublime Text

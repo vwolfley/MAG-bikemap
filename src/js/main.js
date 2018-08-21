@@ -1,617 +1,450 @@
-/* ========================================================================
- * Maricopa Association of Governments
- * JS document
- * @project     MAG Bikeways
- * ========================================================================
- * @file        main.js
- * @summary     Main JavaScript file for MAG Bikeways Viewer
- * ========================================================================
- */
+let app = {};
 
 require([
-        "dojo/dom",
-        "dojo/dom-construct",
-        "dojo/on",
-        "dojo/parser",
-        "dojo/ready",
-        "dojo/query",
-
-        "esri/map",
-
-        "esri/tasks/locator",
-        "esri/dijit/BasemapToggle",
-        "esri/dijit/HomeButton",
-        "esri/dijit/Search",
-        "esri/geometry/Extent",
-
-        "esri/InfoTemplate",
-        "esri/layers/FeatureLayer",
-        "esri/dijit/Popup",
-
-        "esri/layers/ArcGISDynamicMapServiceLayer",
-        "esri/layers/ImageParameters",
-
-        "esri/dijit/Legend",
-        "dijit/form/CheckBox",
-        "dojo/_base/array",
-
-        "esri/graphic",
-        "esri/geometry/Point",
-
-        "esri/symbols/PictureMarkerSymbol",
-        "esri/symbols/SimpleFillSymbol",
-        "esri/symbols/SimpleLineSymbol",
-        "esri/symbols/SimpleMarkerSymbol",
-        "dojo/_base/Color",
-        "dojo/domReady!"
+        'esri/Map',
+        'esri/views/MapView',
+        'esri/layers/MapImageLayer',
+        'esri/geometry/Extent',
+        "esri/tasks/QueryTask",
+        'dojo/topic',
+        'dojo/domReady!'
     ],
-    function(dom, dc, on, parser, ready, query, Map, Locator, BasemapToggle, HomeButton, Search, Extent, InfoTemplate, FeatureLayer, Popup, ArcGISDynamicMapServiceLayer, ImageParameters, Legend, CheckBox, arrayUtils, Graphic, Point, PictureMarkerSymbol, SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, Color) {
-        parser.parse();
+    function (Map, MapView, MapImageLayer, Extent, QueryTask, tp) {
+        let $sidebar = $('#sidebar');
+        let $sidebarCollapse = $('#sidebarCollapse');
 
-        var map;
-        var geolocation = null;
-        var tocLayers = [];
-        var legendLayers = [];
+        $('.sidebarCollapse').on('click', function () {
+            $sidebar.toggleClass('active');
+            $sidebarCollapse.toggleClass('active');
+        });
 
-        ready(function() {
+        let $links = $('.components li');
+        let $arrows = $('.arrow-left');
+        let $panelDivs = $('.panelDiv');
+        let $content = $('#content');
+        // let $legendToggle = $('.legendToggle');
 
-            // create a new symbols to highlight popup features
-            var pointSymbol = new SimpleMarkerSymbol("circle", 32, null,
-                new Color([0, 0, 0, 0.25]));
+        let loadedLayers = ["layers"];
 
-            var lineSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
-                new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
-                    new Color([0, 0, 0, 0.35]), 5), null);
-
-            var popup = new Popup({
-                // fillSymbol:
-                // lineSymbol: lineSymbol,
-                markerSymbol: pointSymbol,
-                visibleWhenEmpty: false,
-                hideDelay: -1
-            }, dc.create("div"));
-
-            map = new Map("mapDiv", {
-                basemap: "streets", //"gray"
-                center: appConfig.center,
-                zoom: 1,
-                minZoom: 10,
-                maxZoom: 19,
-                sliderPosition: "bottom-right",
-                showAttribution: false,
-                logo: false,
-                infoWindow: popup
-            });
-
-            // create div for basemap toggle
-            var toggle = new BasemapToggle({
-                // theme: "basemapToggle",
-                map: map,
-                visible: true,
-                basemap: "satellite"
-            }, dc.create("div", {
-                id: "BasemapToggle"
-            }, "mapDiv", "last"));
-            toggle.startup();
-
-            // create div for homebutton
-            var homeButton = new HomeButton({
-                map: map,
-                visible: true //show the button
-            }, dc.create("div", {
-                id: "HomeButton"
-            }, "mapDiv", "after"));
-            homeButton._homeNode.title = "Original Extent";
-            homeButton.startup();
-
-            var sourcesConfig = [{
-                locator: new Locator(appConfig.geoCoderService),
-                singleLineFieldName: "SingleLine",
-                countryCode: "US",
-                autoNavigate: true,
-                highlightSymbol: new PictureMarkerSymbol("https://js.arcgis.com/3.17/esri/dijit/Search/images/search-pointer.png", 36, 36).setOffset(9, 18),
-                enableLabel: false,
-                enableInfoWindow: true,
-                showInfoWindowOnSelect: false,
-                enableHighlight: true,
-                autoSelect: false,
-                name: "Address",
-                searchExtent: new Extent({
-                    "xmin": -114.68,
-                    "ymin": 31.29,
-                    "xmax": -109.06,
-                    "ymax": 36.99
-                }),
-                placeholder: "302 N 1st Ave, Phoenix, Arizona"
-            }, {
-                featureLayer: new FeatureLayer(appConfig.MainURL + "/6"),
-                searchFields: ["NAME"],
-                displayField: "NAME",
-                name: "Bike Shops",
-                outFields: ["NAME", "Address", "City", "Phone", "Website", "Facebook"],
-                highlightSymbol: new PictureMarkerSymbol("https://js.arcgis.com/3.17/esri/dijit/Search/images/search-pointer.png", 36, 36).setOffset(9, 18),
-                enableLabel: false,
-                enableInfoWindow: true,
-                showInfoWindowOnSelect: false,
-                enableHighlight: true,
-                placeholder: "Bike Shops"
-            }];
-
-            // create div for search
-            var search = new Search({
-                map: map,
-                sources: []
-            }, "search");
-            search.set("sources", sourcesConfig);
-            search.startup();
-            $("#search").hide();
-
-            on(dom.byId("geolocationButton"), "click", getLocation);
-
-            //add a feature layer US Bike Route 90
-            //=================================================================================>
-            var content8 = "<strong>${Name}</strong></br>" + "${MPA}</br>" + "${COUNTY} County</br>" + "${MILES:NumberFormat(places:1)} miles";
-            var template8 = new InfoTemplate("USBR90", content8);
-            var us90 = new FeatureLayer(appConfig.MainURL + "/3", {
-                id: "USBR90",
-                visible: false,
-                mode: FeatureLayer.MODE_ONDEMAND,
-                opacity: 0.65,
-                outFields: ["Name", "COUNTY", "MPA", "MILES"],
-                infoTemplate: template8
-            });
-            // map.addLayer(us90);
-
-            // for checkbox turns layer on and off
-            $("#us90").click(function() {
-                if ($(this).is(":checked")) {
-                    us90.show();
-                } else {
-                    us90.hide();
-                }
-            });
-
-            //add a feature layer Phoenix Sonoran Bikeway
-            //=================================================================================>
-            var content9 = "<strong>${Name}</strong></br>" + "${MPA}</br>" + "${Miles:NumberFormat(places:1)} miles";
-            var template9 = new InfoTemplate("PSBikeway", content9);
-            var psbikeway = new FeatureLayer(appConfig.MainURL + "/4", {
-                id: "PSBikeway",
-                visible: false,
-                mode: FeatureLayer.MODE_ONDEMAND,
-                opacity: 0.65,
-                outFields: ["Name", "MPA", "Miles"],
-                infoTemplate: template9
-            });
-            // map.addLayer(psbikeway);
-
-            // for checkbox turns layer on and off
-            $("#psbikeway").click(function() {
-                if ($(this).is(":checked")) {
-                    psbikeway.show();
-                } else {
-                    psbikeway.hide();
-                }
-            });
-
-            //add a dynamic layer Bikeways Paths
-            //=================================================================================>
-            var bikewaysParms = new ImageParameters();
-            bikewaysParms.layerIds = [0, 1, 2];
-            bikewaysParms.layerOption = ImageParameters.LAYER_OPTION_SHOW;
-
-            var content1 = "<strong>${NAME}</strong><br>${CITY}<br><small>MAGID: ${MAGID}</small>";
-            var template1 = new InfoTemplate("${PATHTYPE}", content1);
-
-            var bikeways = new ArcGISDynamicMapServiceLayer(appConfig.MainURL, {
-                id: "Bike Paths",
-                visible: true,
-                opacity: 0.75,
-                imageParameters: bikewaysParms,
-                outFields: ["NAME", "CITY", "MAGID", "PATHTYPE"],
-                infoTemplate: template1
-            });
-            bikeways.setInfoTemplates({
-                0: {
-                    infoTemplate: template1
-                },
-                1: {
-                    infoTemplate: template1
-                },
-                2: {
-                    infoTemplate: template1
-                }
-            });
-
-            //add a feature layer Bikeways Crossings
-            //=================================================================================>
-            var content12 = "<strong>${Discript}</strong><br>${City}<br><small>MAGID: ${MAGID}</small>";
-            var template12 = new InfoTemplate("Bikeways Crossing", content12);
-            var crossings = new FeatureLayer(appConfig.MainURL + "/5", {
-                id: "crossings",
-                visible: false,
-                mode: FeatureLayer.MODE_ONDEMAND,
-                opacity: 0.75,
-                outFields: ["Discript", "City", "MAGID"],
-                infoTemplate: template12
-            });
-            // map.addLayer(crossings);
-
-            // for checkbox turns layer on and off
-            $("#crossings").click(function() {
-                if ($(this).is(":checked")) {
-                    crossings.show();
-                } else {
-                    crossings.hide();
-                }
-            });
-
-            //add a feature layer Light Rail
-            //=================================================================================>
-            var content5 = "Light Rail Route</br>" + "${Route}</br>" + "${City}";
-            var template5 = new InfoTemplate("Light Rail", content5);
-            var lightrail = new FeatureLayer(appConfig.MainURL + "/8", {
-                id: "Light Rail",
-                visible: true,
-                mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["Route", "City"],
-                infoTemplate: template5
-            });
-            // map.addLayer(lightrail);
-
-            //add a feature layer Public Transit Locations
-            //=================================================================================>
-            var content4 = "<strong>${Name}</strong><br>${Location}<br>${City}<br><a target='_blank'href=${webLink}>Transit Web Link Info</a>";
-            var template4 = new InfoTemplate("${Category}", content4);
-            var transit = new FeatureLayer(appConfig.MainURL + "/7", {
-                id: "Transit Locations",
-                visible: true,
-                mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["Name", "Location", "City", "webLink", "Category"],
-                infoTemplate: template4
-            });
-            // map.addLayer(transit);
-
-            // beginning status of checkbox
-            $("#transit").prop("checked", true);
-
-            // for checkbox turns layer on and off
-            $("#transit").click(function() {
-                if ($(this).is(":checked")) {
-                    transit.show();
-                    lightrail.show();
-                } else {
-                    transit.hide();
-                    lightrail.hide();
-                }
-            });
-
-            //add a feature layer Bike Shops
-            //=================================================================================>
-
-            var content3 = "<strong>${NAME}</strong><br>${ADDRESS}<br>${CITY}<br>${PHONE}<br><a target='_blank'href=https://${WEBSITE}>${WEBSITE}</a></br>" +
-                "<a target='blank' href=https://${FACEBOOK}>Facebook</a>";
-            var template3 = new InfoTemplate("Bike Shop", content3);
-            var bikeshops = new FeatureLayer(appConfig.MainURL + "/6", {
-                id: "Bike Shops",
-                visible: false,
-                mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["NAME", "ADDRESS", "CITY", "PHONE", "WEBSITE", "FACEBOOK"],
-                infoTemplate: template3
-            });
-            // map.addLayer(bikeshops);
-
-            // for checkbox turns layer on and off
-            $("#bikeshops").click(function() {
-                if ($(this).is(":checked")) {
-                    bikeshops.show();
-                } else {
-                    bikeshops.hide();
-                }
-            });
-
-            //add a feature layer Bike Route Pictures
-            //=================================================================================>
-            var content6 = "<strong>${NAME}</strong><br><img class='pics' src='img/bikepics/${URL_NAME}.jpg'><br>${DESCRIPTION}";
-            var template6 = new InfoTemplate("Bike Route Pictures", content6);
-            var bikepics = new FeatureLayer(appConfig.MainURL + "/9", {
-                id: "Bikeways Pics",
-                visible: false,
-                mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["NAME", "URL_NAME"],
-                infoTemplate: template6
-            });
-            // map.addLayer(bikepics);
-
-            // add a feature layer for Bike Youtube Videos
-            var content8 = "<strong>${NAME}</strong><br><iframe class='youTube' src='${LINK}' frameborder='0' allowfullscreen></iframe><br>${DESCRIPTION}";
-            var template8 = new InfoTemplate("Bike Route Videos", content8);
-            var bikevideos = new FeatureLayer(appConfig.MainURL + "/10", {
-                id: "Bikeways Videos",
-                visible: false,
-                mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["NAME", "DESCRIPTION", "LINK"],
-                infoTemplate: template8
-            });
-            // map.addLayer(bikevideos);
-
-            // for checkbox turns layer on and off
-            $("#bikepics").click(function() {
-                if ($(this).is(":checked")) {
-                    bikepics.show();
-                    bikevideos.show();
-                } else {
-                    bikepics.hide();
-                    bikevideos.hide();
-                }
-            });
-
-            //add a feature layer GRID Bike Share locations
-            //=================================================================================>
-            var content7 = "<strong>${Station_Name}</strong><br>Location: ${Station_Location}<br>Station Number: ${Station_Number}<br><a href='https://www.gridbikes.com/' target='_blank'>www.gridbikes.com</a>";
-            var template7 = new InfoTemplate("GRID Bike Share", content7);
-            var GRID = new FeatureLayer(appConfig.MainURL + "/11", {
-                id: "GRID Bike Share",
-                visible: false,
-                mode: FeatureLayer.MODE_ONDEMAND,
-                outFields: ["Station_Name", "Station_Location", "Station_Number"],
-                infoTemplate: template7
-            });
-            // map.addLayer(GRID);
-
-            // for checkbox turns layer on and off
-            $("#grid").click(function() {
-                if ($(this).is(":checked")) {
-                    GRID.show();
-                } else {
-                    GRID.hide();
-                }
-            });
-
-            //add a feature layer MAG MPO Boundary
-            //=================================================================================>
-            var mpoBoundary = new FeatureLayer(appConfig.MainURL + "/12", {
-                id: "MAG MPO Boundary",
-                visible: true,
-                mode: FeatureLayer.MODE_ONDEMAND,
-            });
-            // map.addLayer(mpoBoundary);
-
-            map.addLayers([psbikeway, us90, bikeways, crossings, lightrail, transit, bikeshops, bikepics, bikevideos, GRID, mpoBoundary]);
-
-            // Map Layers
-            //=================================================================================>
-            tocLayers.push({
-                layer: bikeshops,
-                title: "Bike Shops"
-            });
-            tocLayers.push({
-                layer: bikepics,
-                title: "Bikeways Pics"
-            });
-            tocLayers.push({
-                layer: crossings,
-                title: "Bike Crossings Types"
-            });
-            tocLayers.push({
-                layer: transit,
-                title: "Transit Locations"
-            });
-            tocLayers.push({
-                layer: lightrail,
-                title: "Light Rail"
-            });
-            tocLayers.push({
-                layer: GRID,
-                title: "GRID Bike Share"
-            });
-            tocLayers.push({
-                layer: us90,
-                title: "US Bike Route 90"
-            });
-            tocLayers.push({
-                layer: psbikeway,
-                title: "Phoenix Sonoran Bikeway"
-            });
-            // console.log(tocLayers);
-
-            // Legend Layers
-            //=================================================================================>
-            legendLayers.push({
-                layer: mpoBoundary,
-                title: "MAG MPO Boundary"
-            });
-            legendLayers.push({
-                layer: GRID,
-                title: "GRID Bike Share"
-            });
-            legendLayers.push({
-                layer: bikepics,
-                title: "Bikeways Pics"
-            });
-            legendLayers.push({
-                layer: bikeshops,
-                title: "Bike Shops"
-            });
-            legendLayers.push({
-                layer: transit,
-                title: "Transit Locations"
-            });
-            legendLayers.push({
-                layer: lightrail,
-                title: "Light Rail"
-            });
-            legendLayers.push({
-                layer: crossings,
-                title: "Bikeways Crossings"
-            });
-            legendLayers.push({
-                layer: psbikeway,
-                title: "Phoenix Sonoran Bikeway"
-            });
-            legendLayers.push({
-                layer: us90,
-                title: "US Bike Route 90"
-            });
-            legendLayers.push({
-                layer: bikeways,
-                title: "Bikeways Types"
-            });
-
-            // create legend dijit
-            var legend = new Legend({
-                map: map,
-                layerInfos: legendLayers
-            }, "legendDiv");
-            legend.startup();
-
-            // add version control & copyright
-            $(".version").text(appConfig.Version);
-            $(".copyright").text(appConfig.copyright);
-
-            // used to refresh map on page changes
-            map.reposition();
-            map.resize();
-
-        }); // end ready function
-
-        //use the geolocation api to get the current location
-        //=================================================================================>
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(zoomToLocation, locationError, {
-                    setHighAccuracy: true
-                });
-            }
+        $links.on('click', function (e) {
+            let target = $(this).attr('panel-target');
             // <!-- comments:uncomment // -->
-            // ga("send", "event", "Click", "Geo Location Click", "geolocationButton");
+            // ga("send", "event", "Click", "Panel Opened", target);
+            // <!-- endcomments -->
+            $("#viewDiv").css("visibility", "visible");
+            $("#container").css("flex", "1");
+            if (target === 'legend') {
+                toggleLegend();
+            } else if (target === 'share') {
+                if ($content.is(":visible") && window.outerWidth < 780) {
+                    $("#container").css("flex", "none");
+                    $("#viewDiv").css("visibility", "hidden");
+                }
+            } else {
+
+                let isActive = $(this).hasClass('active');
+
+                $links.removeClass('active');
+                $arrows.hide();
+                $panelDivs.hide();
+
+                if (isActive) {
+                    $content.hide();
+                } else {
+                    $(".shareWidget").popover('hide');
+                    $content.show();
+                    var $allLinks = $(`[panel-target=${target}]`);
+
+                    $allLinks.addClass('active');
+                    $allLinks.find('.arrow-left').show();
+
+                    if (window.outerWidth < 780) {
+                        $("#viewDiv").css("visibility", "hidden");
+                        $("#container").css("flex", "none");
+                    }
+
+                    if (loadedLayers.indexOf(target) === -1) {
+                        $(`div[panel-id="${target}"]`).load(`views/${target}.html`);
+                        loadedLayers.push(target);
+                    }
+
+                    $(`div[panel-id=${target}]`).fadeIn(400);
+                }
+            }
+        });
+
+        // $legendToggle.click(function (e) {
+        //     return false;
+        // });
+
+        $('#content').on('click', '.closePanel', function () {
+            $("#viewDiv").css("visibility", "visible");
+            $("#container").css("flex", 1);
+            $links.removeClass('active');
+            $arrows.hide();
+            $panelDivs.hide();
+            $content.hide();
+        });
+
+        function toggleLegend() {
+            if (window.innerWidth < 768) {
+                $("#content").hide();
+                $(".components li").removeClass("active");
+            }
+            $('#legend').fadeToggle();
+            // $legendToggle.prop('checked', !$legendToggle.prop('checked'));
+            // <!-- comments:uncomment // -->
+            // ga("send", "event", "Click", "Legend Click", "Legend Menu");
             // <!-- endcomments -->
         }
 
-        // Create the marker symbol
-        var markerSymbol = new PictureMarkerSymbol({
-            "angle": 0,
-            "xoffset": 0,
-            "yoffset": 0,
-            "type": "esriPMS",
-            "url": "img/green-pin.png",
-            "width": 35,
-            "height": 35
+        app.map = new Map({
+            basemap: 'gray'
         });
 
-        function locationError(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    console.log("Location not provided");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    console.log("Current location not available");
-                    break;
-                case error.TIMEOUT:
-                    console.log("Timeout");
-                    break;
-                default:
-                    console.log("unknown error");
-                    break;
+        app.view = new MapView({
+            container: 'viewDiv',
+            map: app.map,
+            extent: config.initExtent,
+            constraints: {
+                rotationEnabled: false,
+                minZoom: 10,
+                snapToZoom: false
+            },
+        });
+        app.view.ui.remove('attribution');
+        app.view.ui.remove('zoom');
+
+        app.view.when(function () {
+            $.get(config.mainUrl + '/?f=json', function (data) {
+                var lays = JSON.parse(data).layers;
+                for (var i = 0; i < lays.length; i++) {
+                    var layer = lays[i];
+
+                    for (var j = 0; j < config.layers.length; j++) {
+                        var conf = config.layers[j];
+
+                        if (conf.layerName === layer.name) {
+                            conf.index = layer.id;
+                            break;
+                        }
+                    }
+                }
+                tp.publish("map-loaded");
+            });
+        });
+        var maxExtent = new Extent({
+            xmax: -12326456.407013275,
+            xmin: -12619974.595628463,
+            ymax: 4014557.5992311286,
+            ymin: 3873301.9709600685,
+            spatialReference: 102100
+        });
+
+        // app.view.watch('scale', updatePopupEnabled)
+
+
+        app.view.watch('extent', function (extent) {
+            var currentCenter = extent.center;
+            if (!maxExtent.contains(currentCenter)) {
+                var newCenter = extent.center;
+                if (currentCenter.x < maxExtent.xmin) {
+                    newCenter.x = maxExtent.xmin;
+                }
+                if (currentCenter.x > maxExtent.xmax) {
+                    newCenter.x = maxExtent.xmax;
+                }
+                if (currentCenter.y < maxExtent.ymin) {
+                    newCenter.y = maxExtent.ymin;
+                }
+                if (currentCenter.y > maxExtent.ymax) {
+                    newCenter.y = maxExtent.ymax;
+                }
+
+                var newExtent = app.view.extent.clone();
+                newExtent.centerAt(newCenter);
+                app.view.extent = newExtent;
+            }
+        });
+
+        $("body").on("click", ".image-container", function (e) {
+            var firstImage = e.currentTarget.children[0].src;
+            var title = $(e.currentTarget.children[0]).data("title");
+            if (title !== "atp") {
+                $("#largeBikePic").attr("src", firstImage);
+                $("#bikePicName").html(title);
+                $("#imgModal").modal("show");
+            }
+        });
+
+        app.view.popup.actions.push({
+            title: "Feedback",
+            id: "contactUs",
+            className: "esri-icon-comment"
+        });
+
+        app.view.popup.on("trigger-action", function (event) {
+            if (event.action.id === "contactUs") {
+                if (event && event.target && event.target.features[0]) {
+                    OpenContactWindow(event.target.features[0]);
+                }
+            }
+        });
+
+        let $tt = $('.iconTooltip');
+        app.view.popup.watch('visible', function (vis) {
+            $tt.hide();
+            var gfxLay = app.map.findLayerById("gfxLayer");
+            if (!vis) {
+                gfxLay.removeAll();
+            } else {
+                if (gfxLay.graphics.length === 0) {
+                    HighlightFeature(app.view.popup.selectedFeature);
+                }
+            }
+        });
+
+        var $contactModal = $("#contactModal");
+        var $contactForm = $contactModal.find('#contact-form');
+
+        function OpenContactWindow(feature) {
+            $contactModal.modal('show');
+            var objID = feature.attributes["OBJECTID"];
+            var srcLayerID = feature.sourceLayer.id;
+
+            $contactForm.attr('data-obj-id', objID);
+            $contactForm.attr('data-layer', srcLayerID);
+        }
+
+        var form = $contactForm.validate({
+            rules: {
+                nameInput: {
+                    minlength: 2,
+                    required: true
+                },
+                emailInput: {
+                    required: true,
+                    email: true
+                },
+                commentInput: {
+                    minlength: 2,
+                    required: true
+                }
+            },
+            highlight: function (el) {
+                $(el).closest('.form-group').removeClass('success').addClass('error');
+            },
+            success: function (el) {
+                el.closest('.form-group').removeClass('error').addClass('success');
+            }
+        });
+
+        function SubmitComment() {
+
+            var layerID = $contactForm.data("layer");
+
+            if (layerID == 0) {
+                layerID = "Bikeways";
+            }
+
+            var data = {
+                objID: $contactForm.data("obj-id").toString(),
+                layerId: layerID,
+                name: $contactForm.find("#nameInput").val(),
+                email: $contactForm.find("#emailInput").val(),
+                comment: $contactForm.find("#commentInput").val()
+            }
+
+            $(".successMessage").fadeIn(300, function () {
+                var message = this;
+                setTimeout(function () {
+                    $(message).fadeOut(500);
+                }, 3000);
+            });
+
+            $contactModal.modal('hide');
+
+            ResetContactForm();
+
+            $.post("https://geo.azmag.gov/services/BikewaysEmail/Email/SendNew", data);
+        }
+
+        $contactForm.submit(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (form.numberOfInvalids() === 0) {
+                SubmitComment();
+            }
+        });
+
+        function ResetContactForm() {
+            $contactForm.trigger("reset");
+            $contactForm.find(".form-group").removeClass('success').removeClass('error');
+            form.resetForm();
+        }
+
+        $('button[type="reset"]').click(ResetContactForm);
+
+        function HighlightFeature(selectedFeature) {
+            var gfxLay = app.map.findLayerById("gfxLayer");
+            gfxLay.removeAll();
+            var f = $.extend({}, selectedFeature);
+
+            if (f.geometry) {
+                var symbol = {
+                    type: "simple-line",
+                    color: "cyan",
+                    width: "5px",
+                    style: "solid"
+                }
+
+                if (f.geometry.type === "point") {
+                    symbol.type = "simple-marker";
+                    symbol.size = 16;
+                    symbol.color = [0, 255, 255, .65];
+                    symbol.outline = {
+                        width: "0px"
+                    }
+                }
+
+                var gfx = {
+                    geometry: f.geometry,
+                    symbol: symbol
+                };
+                gfxLay.add(gfx);
             }
         }
 
-        function zoomToLocation(location) {
-            var pt = esri.geometry.geographicToWebMercator(new Point(location.coords.longitude, location.coords.latitude));
-            map.graphics.add(new Graphic(pt, markerSymbol));
-            map.centerAndZoom(pt, 22);
-        }
+        app.view.popup.watch('selectedFeature', HighlightFeature);
 
-    }); // end of main function
 
-// Page Bindings
-//=================================================================================>
-//
-$(document).ready(function() {
+        let $container = $('#container');
+        let tt = $('.iconTooltip');
+        let text = $('.iconTooltiptext');
 
-    $("#Info").load("views/infoPage.html");
-    $("#Safety").load("views/safteyPage.html");
-    $("#OnStreet").load("views/onStreetPage.html");
-    $("#OnPaths").load("views/onPathsPage.html");
-    $("#Legend").load("views/legendPage.html");
-    $("#Legal").load("views/legalPage.html");
-    $("#Help").load("views/helpPage.html");
-});
+        app.view.on('pointer-move', function (event) {
+            tt.hide();
+            $('body').css('cursor', 'default');
+            try {
+                if (event.x && event.y) {
+                    app.view
+                        .hitTest({
+                            x: event.x,
+                            y: event.y
+                        })
+                        .then(function (response) {
+                            if (!app.view.popup.visible) {
+                                // removeGraphics();
+                            }
+                            let resultGraphic = response.results[0].graphic;
 
-$(document).on("pageinit", function(event) {
-    $("#popupModal").popup({ positionTo: "window" }).popup("open");
-});
+                            if (resultGraphic) {
+                                let confObj = config.layers[resultGraphic.layer.id];
+                                if (resultGraphic.geometry.type === 'point') {
+                                    let tooltipHtml = resultGraphic.attributes.Name;
 
-//*** open email window ***//
-//=================================================================================>
-function openemailwin() {
-    var emailURL = appConfig.emailLink;
+                                    if (resultGraphic.attributes.NAME) {
+                                        tooltipHtml = resultGraphic.attributes.NAME;
+                                    } else if (resultGraphic.attributes.Discript) {
+                                        tooltipHtml = resultGraphic.attributes.Discript;
+                                    } else if (resultGraphic.attributes.StationName) {
+                                        tooltipHtml = `${resultGraphic.attributes.StationName} <br> Light Rail Station`;
+                                    } else if (resultGraphic.attributes.Location) {
+                                        tooltipHtml = `${resultGraphic.attributes.Location} <br> Bus Stop`;
+                                    }
+                                    if (tooltipHtml) {
+                                        text.html(tooltipHtml);
 
-    // used to center popup in dual-screen computers
-    // Fixes dual-screen position               Most browsers      Firefox
-    var dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left;
-    var dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top;
-    var w = 600;
-    var h = 660;
-    var width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
-    var height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+                                        let pos = $container.position();
 
-    var left = ((width / 2) - (w / 2)) + dualScreenLeft;
-    var top = ((height / 2) - (h / 2)) + dualScreenTop;
+                                        tt.css({
+                                            display: 'block',
+                                            left: response.screenPoint.x + pos.left + 20,
+                                            top: response.screenPoint.y - 10
+                                        });
+                                    }
+                                }
+                            }
+                        });
+                }
+            } catch (err) {}
+        });
 
-    var newWindow = window.open(emailURL, "", "resizable=no,location=no,menubar=no,status=no,toolbar=no,fullscreen=no,dependent=no,directories=no,copyhistory=no,scrollbars=no, width=" + w + ", height=" + h + ", top=" + top + ", left=" + left);
+        let pTemplate = {
+            title: '{PATHTYPE}',
+            content: `<span style='display:none;'>{PATHTYPE}{NAME}{CITY}{SURFACE}</span>{OBJECTID:popupSetup}`
+        };
+        window.popupSetup = function (value, key, data) {
 
-    // Puts focus on the newWindow
-    if (window.focus) {
-        newWindow.focus();
-    }
-}
+            let html = '';
+            if (data.PATHTYPE) {
+                html += `<span class="popupItem"><span class="popupLabel">Type:</span> <span>${data.PATHTYPE}</span></span>`;
+            }
+            if (data.NAME) {
+                html += `<span class="popupItem"><span class="popupLabel">Location:</span> <span>${data.NAME}</span></span>`;
+            }
+            if (data.CITY) {
+                html += `<span class="popupItem"><span class="popupLabel">City:</span> <span>${data.CITY}</span></span>`;
+            }
+            if (data.SURFACE) {
+                html += `<span class="popupItem"><span class="popupLabel">Surface Type:</span> <span>${data.SURFACE}</span></span>`;
+            }
+            return html;
+        };
 
-function opensearchwin() {
-    if ($("#search").is(":hidden")) {
-        $("#search").show();
-    } else {
-        $("#search").hide();
-    }
-    // console.log("Search");
-    // <!-- comments:uncomment // -->
-    // ga("send", "event", "Click", "Search Click", "Search Menu");
-    // <!-- endcomments -->
-}
+        let mainLayer = new MapImageLayer({
+            url: config.mainUrl,
+            opacity: 1,
+            sublayers: [{
+                    id: 0,
+                    visible: true,
+                    popupTemplate: pTemplate
+                },
+                {
+                    id: 1,
+                    visible: true,
+                    popupTemplate: pTemplate,
+                    popupEnabled: false
+                },
+                {
+                    id: 2,
+                    visible: true,
+                    popupTemplate: pTemplate,
+                    popupEnabled: false
+                }
+            ]
+        });
 
-$("#legendBut").on("click", function() {
-    // console.log("Legend");
-    // <!-- comments:uncomment // -->
-    // ga("send", "event", "Click", "Legend Click", "Legend Menu");
-    // <!-- endcomments -->
-});
+        app.map.add(mainLayer);
 
-$("#infoBut").on("click", function() {
-    // console.log("Info");
-    // <!-- comments:uncomment // -->
-    // ga("send", "event", "Click", "Info Click", "Info Menu");
-    // <!-- endcomments -->
-});
+        var $outBtn = $('div[data-id="Out"]');
+        app.view.watch('zoom', function (zoom) {
+            if (Math.round(zoom) <= app.view.constraints.minZoom) {
+                $outBtn.addClass('disabled');
+            } else {
+                $outBtn.removeClass('disabled');
+            }
+        });
 
-$("#safeBut").on("click", function() {
-    // <!-- comments:uncomment // -->
-    // ga("send", "event", "Click", "Safety Click", "Safety Menu");
-    // <!-- endcomments -->
-});
+        mainLayer.when(function () {
+            var bikeLay0 = mainLayer.findSublayerById(0);
+            var bikeLay1 = mainLayer.findSublayerById(1);
+            var bikeLay2 = mainLayer.findSublayerById(2);
 
-$("#streetBut").on("click", function() {
-    // <!-- comments:uncomment // -->
-    // ga("send", "event", "Click", "Streets Click", "Streets Menu");
-    // <!-- endcomments -->
-});
+            app.view.watch("scale", function (scale) {
+                bikeLay0.popupEnabled = false;
+                bikeLay1.popupEnabled = false;
+                bikeLay2.popupEnabled = false;
+                if (scale <= 40000) {
+                    bikeLay2.popupEnabled = true;
+                } else if (scale <= 144448) {
+                    bikeLay1.popupEnabled = true;
+                } else {
+                    bikeLay0.popupEnabled = true;
+                }
+            })
+        })
 
-$("#pathsBut").on("click", function() {
-    // <!-- comments:uncomment // -->
-    // ga("send", "event", "Click", "Paths Click", "Paths Menu");
-    // <!-- endcomments -->
-});
-$("#helpBut").on("click", function() {
-    // <!-- comments:uncomment // -->
-    // ga("send", "event", "Click", "Help Click", "Help Menu");
-    // <!-- endcomments -->
-});
+    });
+//# sourceMappingURL=main.min.js.map
+//# sourceMappingURL=main.js.map

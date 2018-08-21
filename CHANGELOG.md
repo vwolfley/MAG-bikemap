@@ -35,10 +35,10 @@ And constructed with the following guidelines:
 * geo tracking
 
 ***********************************************
+## Version 4.0.0 | 2018-08-21
 
-## Version 3.3.4 | 2018-07-02
-
-* Fixed bikemap field names for popups
+* Redesigned and rewrote application.
+* Upgraded to esri js version 4.x
 
 ## Version 3.3.3 | 2018-04-11
 
@@ -59,8 +59,6 @@ And constructed with the following guidelines:
 ## Version 3.3.1 | 2017-11-21
 
 * updates to popup info - schema changes were made!
-* Fixed bikemap popup bug
-* Fixed PDF link
 * fixed copyright issue
 
 ## Version 3.3.0 | 2017-05-23
