@@ -36,6 +36,10 @@ And constructed with the following guidelines:
 
 ***********************************************
 
+## Version 4.0.2 | 2018-09-04
+
+* Fixed bug in PDF link
+
 ## Version 4.0.1 | 2018-08-21
 
 * Fixed bugs related to version number and date

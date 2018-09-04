@@ -1,4 +1,4 @@
-![](http://geo.azmag.gov/maps/readonaz/app/resources/img/maglogo_black.png)
+![](http://geo.azmag.gov/maps/docs/img/maglogo_black.png)
 
 # MAG Bikeways Map Viewer
 MAG mapping application showing locally-designated bicycle facilities data
@@ -25,9 +25,9 @@ This web app viewer was developed by MAG staff for MAG member agencies and the p
 
 ## Version ##
 
-* ### version | 4.0.1
+### version | 4.0.2
 
-* #### Updated | 2018-08-21
+* #### Updated | 2018-09-04
 
 * #### Created | 2012-08-03
 
@@ -47,7 +47,7 @@ And constructed with the following guidelines:
 
 ## Site URL ##
 
-* [MAG Bikemap](http://geo.azmag.gov/maps/bikemap/) : http://geo.azmag.gov/maps/bikemap/
+* [MAG Bikemap](http://geo.azmag.gov/maps/bikemap/)
 
 ## Documentation ##
 
@@ -57,9 +57,9 @@ A detailed list of the changes and fixes in each version update can be found in 
 
 ## Resources ##
 
-* [2015 Bikeways Map PDF](http://www.azmag.gov/portals/0/Documents/MAG_`Updated |#### Updated |#### Updated | 2018-08-21_Bike-Pathways-Map.pdf)
+* [2015 Bikeways Map PDF](http://www.azmag.gov/portals/0/Documents/MAG_2015-10-21_Bike-Pathways-Map.pdf)
 
-* [2012 Bikeways Map PDF](http://www.azmag.gov/Documents/MAG_`Updated |#### Updated |#### Updated | 2018-08-21_Bike-Pathways-Map.pdf)
+* [2012 Bikeways Map PDF](http://www.azmag.gov/Portals/0/Documents/MAG_2012-10-19_Bike-Pathways-Map.pdf)
 
 ## Examples ##
 
