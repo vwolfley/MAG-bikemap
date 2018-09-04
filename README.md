@@ -25,9 +25,9 @@ This web app viewer was developed by MAG staff for MAG member agencies and the p
 
 ## Version ##
 
-### version | 4.0.1
+### version | 4.0.2
 
-* #### Updated | 2018-08-21
+* #### Updated | 2018-09-04
 
 * #### Created | 2012-08-03
 
@@ -59,7 +59,7 @@ A detailed list of the changes and fixes in each version update can be found in 
 
 * [2015 Bikeways Map PDF](http://www.azmag.gov/portals/0/Documents/MAG_2015-10-21_Bike-Pathways-Map.pdf)
 
-* [2012 Bikeways Map PDF](http://www.azmag.gov/Portals/0/Documents/MAG_2012-10-19_Bike-Pathways-Map.pdf?ver=2017-04-06-111251-817)
+* [2012 Bikeways Map PDF](http://www.azmag.gov/Portals/0/Documents/MAG_2012-10-19_Bike-Pathways-Map.pdf)
 
 ## Examples ##
 
