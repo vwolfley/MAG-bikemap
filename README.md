@@ -1,17 +1,19 @@
-![](http://geo.azmag.gov/maps/docs/img/maglogo_black.png)
+<div>
+    <img src="https://geo.azmag.gov/maps/bikemap/img/MagLogo.png" width="200">
+    <img src="https://geo.azmag.gov/maps/bikemap/img/bike-icon_main.png" width="120">
+</div>
 
 # MAG Bikeways Map Viewer
 MAG mapping application showing locally-designated bicycle facilities data
 
+[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=my-website)](https://geo.azmag.gov/maps/bikemap/)
+[![GitHub version](https://badge.fury.io/gh/AZMAG%2Fmap-Bikeways.svg)](https://badge.fury.io/gh/AZMAG%2Fmap-Bikeways.svg)
 [![GitHub issues](https://img.shields.io/github/issues/AZMAG/map-Bikeways.svg)](https://github.com/AZMAG/map-Bikeways/issues)
 [![dependencies](https://david-dm.org/AZMAG/map-Bikeways.png)](https://david-dm.org/AZMAG/map-Bikeways)
 [![devDependency Status](https://david-dm.org/AZMAG/map-Bikeways/dev-status.png)](https://david-dm.org/AZMAG/map-Bikeways)
 [![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=my-website)](https://geo.azmag.gov/maps/bikemap/)
-
-***********************************************************************************************************
 
 The Bikeways Map Viewer is one of the Maricopa Association of Governments (MAG) interactive mapping sites, showing locally-designated bicycle facilities data.
 
@@ -25,12 +27,6 @@ This web app viewer was developed by MAG staff for MAG member agencies and the p
 
 ## Version ##
 
-### version | 4.0.2
-
-* #### Updated | 2018-09-04
-
-* #### Created | 2012-08-03
-
 Releases will be numbered with the following format:
 
 **`<major>.<minor>.<patch>`**
@@ -40,6 +36,12 @@ And constructed with the following guidelines:
 1. **MAJOR** version when you make incompatible API changes **bumps the major** resets minor and patch
 2. **MINOR** version when you add functionality in a backwards-compatible manner **bumps the minor** resets patch
 3. **PATCH** version when you make backwards-compatible bug fixes and misc changes **bumps only the patch**
+
+### version | 4.0.2
+
+* #### Updated | 2018-09-04
+
+* #### Created | 2012-08-03
 
 ## Credits ##
 
@@ -95,6 +97,7 @@ Please acknowledge the Maricopa Association of Governments (MAG) GIS as the sour
 ## Copyright and Licensing ##
 
 Code released under the MIT license.
+A copy of the license is available in the repository's `LICENSE` file.
 
 * [LICENSE](LICENSE)
 
