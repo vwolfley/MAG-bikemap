@@ -1,6 +1,6 @@
 <div>
-    <img src="https://geo.azmag.gov/maps/bikemap/img/MagLogo.png" width="200">
-    <img src="https://geo.azmag.gov/maps/bikemap/img/bike-icon_main.png" width="120">
+    <img src="https://geo.azmag.gov/maps/bikemap/img/MagLogo.png" width="300">
+    <img src="https://geo.azmag.gov/maps/bikemap/img/bike-icon_main.png" width="80">
 </div>
 
 # MAG Bikeways Map Viewer
